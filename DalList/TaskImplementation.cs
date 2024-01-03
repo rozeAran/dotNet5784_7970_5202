@@ -7,12 +7,19 @@ public class TaskImplementation : ITask
 {
     public int Create(Task item)
     {
-        throw new NotImplementedException();
+        int id = DataSource.Config.NextTaskId;
+        Task copy = item with { Id = id };
+        if (Read(item.Id) is not null)
+            throw new Exception($"task with ID={item.Id} already exists");
+        DataSource.Tasks.Add(item);
+        return item.Id;
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        if (DataSource.Tasks.Exists(X => X.Id == id))
+            DataSource.Tasks.RemoveAll(x => x.Id == id);
+        else throw new Exception($"task doesnt exsist");
     }
 
     public Task? Read(int id)

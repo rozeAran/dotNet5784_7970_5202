@@ -7,12 +7,19 @@ public class EngineerImplementation : IEngineer
 {
     public int Create(Engineer item)
     {
-        throw new NotImplementedException();
+        Engineer copy = item with { Id = item.Id };
+        if (Read(item.Id) is not null)
+            throw new Exception($"Engineer with ID={item.Id} already exists");
+        DataSource.Engineers.Add(item);
+        return item.Id;
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        if (DataSource.Engineers.Exists(X => X.Id == id))
+            DataSource.Engineers.RemoveAll(x => x.Id == id);
+        else throw new Exception($"Engineer doesnt exsist");
+
     }
 
     public Engineer? Read(int id)
@@ -34,6 +41,6 @@ public class EngineerImplementation : IEngineer
             DataSource.Engineers.Remove(DataSource.Engineers.Find(X => X.Id == item.Id));
             DataSource.Engineers.Add(item);
         }
-        else { throw new NotImplementedException("The task with this id does not exists"); }
+        else { throw new NotImplementedException("The Engineer with this id does not exists"); }
     }
 }
