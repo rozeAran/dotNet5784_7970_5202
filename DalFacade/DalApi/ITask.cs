@@ -1,5 +1,4 @@
-﻿
-namespace DalApi.DO;
+﻿namespace DalApi;
 using DO;
 public interface ITask
  {
