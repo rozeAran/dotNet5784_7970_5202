@@ -1,2 +1,1 @@
-﻿
-namespace DO;
+﻿namespace DO;
