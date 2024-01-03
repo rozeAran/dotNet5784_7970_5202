@@ -17,13 +17,13 @@ public record Task
     TimeSpan RequiredEffortTime,
     EngineerExperience Complexity,
     DateTime ScheduledDate,
-    DateTime DeadLineDate,
     DateTime CompleteDate,
     string Deliverables ,
     int EngineerId,
     string ? Remarks,
+    DateTime? DeadLineDate = null,
     bool IsMilestone = false,
-    DateTime? StartDate=null,
+    DateTime? StartDate=null
 )
 {
 
