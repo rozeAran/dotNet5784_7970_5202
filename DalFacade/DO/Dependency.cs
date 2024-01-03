@@ -13,7 +13,7 @@ public record Dependency
 {
     public Dependency() : this() { }//deafult constractor
     public Dependency(int id, int dependentTask, int dependOnTask) :this() //all parameter constractor
-    {
+{
         this.Id = id;
         this.DependentTask = dependentTask;
         this.DependOnTask = dependOnTask;

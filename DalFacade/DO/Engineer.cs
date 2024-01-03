@@ -13,15 +13,5 @@ public record Engineer
 )
 
 {
-    public Engineer() : this() { }//deafult constractor
-    public Engineer(int id, string name, string email, DO.EngineerExperience level, double cost) : this()//all parameter constractor
-    {
-        this.Id = id;
-        this.Name = name;
-        this.Email = email;
-        this.Level = level;
-        this.Cost = cost;
-    }
- }
 
-
+}
