@@ -7,29 +7,31 @@
 /// <param name="Description"> a short description</param>
 /// <param name="Id"> identifier of the object</param>
 public record Task
-{ 
+(
     int Id,
     string Alias,
     string Description,
-    Datetime CreatedAtDate,
+    DateTime CreatedAtDate,
     TimeSpan RequiredEffortTime,
     bool IsMilestone = false,
-    DO.EngineerExperience Complexity,
-    Datetime StartDate,
-    Datetime ScheduledDate,
-    Datetime DeadLineDate,
-    Datetime? CompleteDate = null,
-    string Deliverables,
-    string Remarks,
-    int Engineerid,
-    enum.Level Level,
+    DO.EngineerExperience ?Complexity=null,
+    DateTime? StartDate = null,
+    DateTime? ScheduledDate = null,
+    DateTime? DeadLineDate = null,
+    DateTime? CompleteDate = null,
+    string? Deliverables = null,
+    string? Remarks = null,
+    int? Engineerid = null,
+    Level Level =
+)
+{
 
-
+    public DateTime RegistrationDate => DateTime.Now; //get only
     public Task() : this(0) { }
-    public Task(int id,string alias,string description,Datetime createdAtDate,TimeSpan requiredEffortTime,bool isMilestone = false;DO.EngineerExperience complexity,Datetime startDate,Datetime scheduledDate,Datetime deadLineDate,Datetime completeDate, string deliverables,string remarks,int engineerid,enum.Level level) 
-     {
-        this.Id=id;
-        this.Alias=alias;
+    public Task(int id, string alias, string description, DateTime createdAtDate, TimeSpan requiredEffortTime, bool isMilestone ; DO.EngineerExperience complexity, DateTime startDate=null,DateTime scheduledDate, DateTime deadLineDate,DateTime completeDate, string deliverables,string remarks,int engineerid,Level level))
+    {
+     Id= id;
+        this.Alias= alias;
         this.Description=description;
         this.CreatedAtDate=createdAtDate;
         this.RequiredEffortTime=requiredEffortTime;
@@ -43,6 +45,6 @@ public record Task
         this.Remarks=remarks;
         this.Engineerid=engineerid;
         this.Level=level;
-
     }
 }
+

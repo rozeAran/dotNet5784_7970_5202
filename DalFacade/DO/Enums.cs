@@ -2,7 +2,7 @@
 public enum Level
 {
     Beginner,
-    Advanced Beginner, 
+    AdvancedBeginner, 
     Intermediate, 
     Advanced, 
     Expert
