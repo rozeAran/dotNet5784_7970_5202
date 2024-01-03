@@ -9,14 +9,8 @@ public record Dependency
     int DependentTask,//number of the task depending on this task
     int DependOnTask//number of the task this task is depending on
 )
-
 {
-    public Dependency() : this() { }//deafult constractor
-    public Dependency(int id, int dependentTask, int dependOnTask) :this() //all parameter constractor
-{
-        this.Id = id;
-        this.DependentTask = dependentTask;
-        this.DependOnTask = dependOnTask;
-    }
+    public Dependency() : this(1,1,1) { }//deafult constractor
+   
 
 }
