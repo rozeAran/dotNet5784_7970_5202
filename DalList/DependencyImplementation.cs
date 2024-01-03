@@ -10,7 +10,7 @@ public class DependencyImplementation : IDependency
     {
         int rtrn = DataSource.Config.NextDepId;
         //Dependency temp=new Dependency(rtrn, item.DependentTask,item.DependOnTask);
-        Dependency temp = new Dependency with(DataSource.Config.NextDepId,)
+        Dependency temp = new Dependency with(DataSource.Config.NextDepId,);
         //if(Read(rtrn)!=null) { throw new NotImplementedException(); }
         DataSource.Dependencies.Add(temp);
         return rtrn;  
