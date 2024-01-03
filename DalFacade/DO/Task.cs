@@ -28,7 +28,7 @@ public record Task
 {
 
     public DateTime RegistrationDate => DateTime.Now; //get only
-    public Task() : this(1,"","",DataSetDateTime.Local, TimeSpan.FromSeconds, EngineerExperience.Intermediate, DateTime.UtcNow, DateTime.UtcNow, DateTime.UtcNow, "",1,"",false, DateTime.UtcNow) { }
+    public Task() : this(1,"","", DateTime.Now, TimeSpan.MinValue, EngineerExperience.Intermediate, DateTime.Now, DateTime.Now, "",1,"",DateTime.Now,false,DateTime.Now) { }
    
 }
 
