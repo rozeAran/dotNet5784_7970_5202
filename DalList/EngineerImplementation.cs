@@ -17,16 +17,23 @@ public class EngineerImplementation : IEngineer
 
     public Engineer? Read(int id)
     {
-        throw new NotImplementedException();
+        if (DataSource.Engineers.Exists(X => X.Id == id))
+            return DataSource.Engineers.Find(x => x.Id == id);
+        return null;
     }
 
     public List<Engineer> ReadAll()
     {
-        throw new NotImplementedException();
+        return new List<Engineer>(DataSource.Engineers);
     }
 
     public void Update(Engineer item)
     {
-        throw new NotImplementedException();
+        if (DataSource.Engineers.Exists(X => X.Id == item.Id))
+        {
+            DataSource.Engineers.Remove(DataSource.Engineers.Find(X => X.Id == item.Id));
+            DataSource.Engineers.Add(item);
+        }
+        else { throw new NotImplementedException("The task with this id does not exists"); }
     }
 }

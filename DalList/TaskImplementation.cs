@@ -17,16 +17,23 @@ public class TaskImplementation : ITask
 
     public Task? Read(int id)
     {
-        throw new NotImplementedException();
+        if (DataSource.Tasks.Exists(X => X.Id == id))
+            return DataSource.Tasks.Find(x => x.Id == id);
+        return null;
     }
 
     public List<Task> ReadAll()
     {
-        throw new NotImplementedException();
+        return new List<Task>(DataSource.Tasks);
     }
 
     public void Update(Task item)
     {
-        throw new NotImplementedException();
+        if (DataSource.Tasks.Exists(X => X.Id == item.Id))
+        {
+            DataSource.Tasks.Remove(DataSource.Tasks.Find(X=>X.Id == item.Id));
+            DataSource.Tasks.Add(item);
+        }
+        else { throw new NotImplementedException("The task with this id does not exists"); }
     }
 }

@@ -9,35 +9,43 @@ public class DependencyImplementation : IDependency
     public int Create(Dependency item)
     {
         int rtrn = DataSource.Config.NextDepId;
-        Dependency temp=new Dependency(rtrn, item.DependentTask,item.DependOnTask);
-        if(Read(rtrn)!=null) { throw new NotImplementedException(); }
+        //Dependency temp=new Dependency(rtrn, item.DependentTask,item.DependOnTask);
+        Dependency temp = new Dependency with(DataSource.Config.NextDepId,)
+        //if(Read(rtrn)!=null) { throw new NotImplementedException(); }
         DataSource.Dependencies.Add(temp);
         return rtrn;  
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
-        
+        if (DataSource.Dependencies.Exists(X => X.Id == id))
+            DataSource.Dependencies.RemoveAll(x => x.Id == id);
+        else throw new Exception($"");
+
+
     }
 
     public Dependency? Read(int id)
     {
-        throw new NotImplementedException();
-       // Dependency temp=new Dependency(id,0,0);
-        return DataSource.Dependencies.Find(x => x.Id == id);
-
+        if (DataSource.Dependencies.Exists(X => X.Id == id))
+            return DataSource.Dependencies.Find(x => x.Id == id);
+        return null;
 
     }
 
     public List<Dependency> ReadAll()
     {
-        throw new NotImplementedException();
-        return new List<T>(DataSource.Ts);
+        
+        return new List<Dependency>(DataSource.Dependencies);
     }
 
     public void Update(Dependency item)
     {
-        throw new NotImplementedException();
+        if (DataSource.Dependencies.Exists(X => X.Id == item.Id))
+        {
+            DataSource.Dependencies.Remove(DataSource.Dependencies.Find(X => X.Id == item.Id));
+            DataSource.Dependencies.Add(item);
+        }
+        else { throw new NotImplementedException($"The task with {item.Id} does not exist"); }
     }
 }
