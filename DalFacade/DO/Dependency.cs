@@ -10,7 +10,5 @@ public record Dependency
     int DependOnTask//number of the task this task is depending on
 )
 {
-    public Dependency() : this(1,1,1) { }//deafult constractor
-   
-
+    public Dependency() : this(1, 1, 1) { }//deafult constractor
 }

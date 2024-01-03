@@ -8,7 +8,11 @@ public class DependencyImplementation : IDependency
 {
     public int Create(Dependency item)
     {
-        throw new NotImplementedException();
+        int rtrn = DataSource.Config.NextDepId;
+        Dependency temp=new Dependency(rtrn, item.DependentTask,item.DependOnTask);
+        if(Read(rtrn)!=null) { throw new NotImplementedException(); }
+        DataSource.Dependencies.Add(temp);
+        return rtrn;  
     }
 
     public void Delete(int id)
