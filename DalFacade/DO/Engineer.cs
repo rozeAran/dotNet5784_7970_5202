@@ -14,7 +14,7 @@ public record Engineer
 )
 
 {
-    public Engineer() : this(1,"","", ,1) { }//deafult constractor
+    public Engineer() : this(1,"","", EngineerExperience.Beginner, 1) { }//deafult constractor
    
  }
 

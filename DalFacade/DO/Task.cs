@@ -1,4 +1,6 @@
-﻿namespace DO;
+﻿using System.Data;
+
+namespace DO;
 /// <summary>
 /// 
 /// </summary>
@@ -26,7 +28,7 @@ public record Task
 {
 
     public DateTime RegistrationDate => DateTime.Now; //get only
-    public Task() : this(0) { }
+    public Task() : this(1,"","",DataSetDateTime.Local, TimeSpan.FromSeconds, EngineerExperience.Intermediate, DateTime.UtcNow, DateTime.UtcNow, DateTime.UtcNow, "",1,"",false, DateTime.UtcNow) { }
    
 }
 
