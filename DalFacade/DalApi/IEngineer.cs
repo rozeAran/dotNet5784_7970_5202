@@ -1,6 +1,6 @@
 ﻿namespace DalApi;
 using DO;
-using global::DO;
+
 
 public interface IEngineer
 {
