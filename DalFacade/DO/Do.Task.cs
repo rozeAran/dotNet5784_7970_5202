@@ -9,20 +9,20 @@
 public record Task
 { 
     int Id,
-    string Alias;
-    string Description;
-    Datetime CreatedAtDate;
-    TimeSpan RequiredEffortTime;
-    bool IsMilestone = false;
-    DO.EngineerExperience Complexity;
-    Datetime StartDate;
-    Datetime ScheduledDate;
-    Datetime DeadLineDate;
-    Datetime? CompleteDate = null;
-    string Deliverables;
-    string Remarks;
-    int Engineerid;
-    enum.Level Level; 
+    string Alias,
+    string Description,
+    Datetime CreatedAtDate,
+    TimeSpan RequiredEffortTime,
+    bool IsMilestone = false,
+    DO.EngineerExperience Complexity,
+    Datetime StartDate,
+    Datetime ScheduledDate,
+    Datetime DeadLineDate,
+    Datetime? CompleteDate = null,
+    string Deliverables,
+    string Remarks,
+    int Engineerid,
+    enum.Level Level,
 
 
     public Task() : this(0) { }
@@ -44,5 +44,5 @@ public record Task
         this.Engineerid=engineerid;
         this.Level=level;
 
-}
+    }
 }
