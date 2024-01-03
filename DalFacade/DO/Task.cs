@@ -28,9 +28,9 @@ public record Task
 
     public DateTime RegistrationDate => DateTime.Now; //get only
     public Task() : this(0) { }
-    public Task(int id, string alias, string description, DateTime createdAtDate, TimeSpan requiredEffortTime, bool isMilestone ; DO.EngineerExperience complexity, DateTime startDate=null,DateTime scheduledDate, DateTime deadLineDate,DateTime completeDate, string deliverables,string remarks,int engineerid,Level level))
+    public Task(int id, string alias, string description, DateTime createdAtDate, TimeSpan requiredEffortTime, bool isMilestone ; DO.EngineerExperience complexity, DateTime startDate=null,DateTime scheduledDate, DateTime deadLineDate,DateTime completeDate, string deliverables,string remarks,int engineerid,Level level)) :this()
     {
-     Id= id;
+        this.Id= id;
         this.Alias= alias;
         this.Description=description;
         this.CreatedAtDate=createdAtDate;
