@@ -9,8 +9,8 @@ public class TaskImplementation : ITask
     {
         int id = DataSource.Config.NextTaskId;
         Task copy = item with { Id = id };
-        if (Read(item.Id) is not null)
-            throw new Exception($"task with ID={item.Id} already exists");
+       // if (Read(item.Id) is not null)
+           // throw new Exception($"task with ID={item.Id} already exists");
         DataSource.Tasks.Add(item);
         return item.Id;
     }
@@ -19,7 +19,7 @@ public class TaskImplementation : ITask
     {
         if (DataSource.Tasks.Exists(X => X.Id == id))
             DataSource.Tasks.RemoveAll(x => x.Id == id);
-        else throw new Exception($"task doesnt exsist");
+        else throw new Exception($"task with ID={id} doesnt exsist");
     }
 
     public Task? Read(int id)
@@ -41,6 +41,6 @@ public class TaskImplementation : ITask
             DataSource.Tasks.Remove(DataSource.Tasks.Find(X=>X.Id == item.Id));
             DataSource.Tasks.Add(item);
         }
-        else { throw new NotImplementedException("The task with this id does not exists"); }
+        else { throw new NotImplementedException($"The task with Id {item.Id} does not exists"); }
     }
 }

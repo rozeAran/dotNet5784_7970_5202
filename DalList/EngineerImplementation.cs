@@ -18,7 +18,7 @@ public class EngineerImplementation : IEngineer
     {
         if (DataSource.Engineers.Exists(X => X.Id == id))
             DataSource.Engineers.RemoveAll(x => x.Id == id);
-        else throw new Exception($"Engineer doesnt exsist");
+        else throw new Exception($"Engineer with ID={id} doesnt exsist");
 
     }
 
@@ -41,6 +41,6 @@ public class EngineerImplementation : IEngineer
             DataSource.Engineers.Remove(DataSource.Engineers.Find(X => X.Id == item.Id));
             DataSource.Engineers.Add(item);
         }
-        else { throw new NotImplementedException("The Engineer with this id does not exists"); }
+        else { throw new NotImplementedException($"The Engineer with Id {item.Id} does not exists"); }
     }
 }
