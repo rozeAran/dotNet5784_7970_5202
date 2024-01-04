@@ -19,9 +19,15 @@ public static class Initialization
         int NUMDEP = 40;
         for (int i = 0; i < NUMDEP; i++)
         {
-            int dependentTask = s_rand.Next(); ;//number of the task depending on this task
+            int dependentTask; ;//number of the task depending on this task
             int dependOnTask = s_rand.Next();//number of the task this task is depending on
-                                             
+            do
+                dependentTask = s_rand.Next();
+            while ((s_dalTask!.Read(dependentTask) == null) );
+            ///&&( s_dalTask!.Read(dependentTask).ScheduledDate> s_dalTask!.Read(this.id)
+            do
+                dependOnTask = s_rand.Next();
+            while ((s_dalTask!.Read(dependOnTask) == null)) ;
             Dependency newDep = new(0, dependentTask, dependOnTask);
             s_dalDependency!.Create(newDep);
         }
@@ -147,5 +153,15 @@ public static class Initialization
 
 
 
+    }
+
+    public static void Do(IDependency? dalDependency, ITask? dalTask, IEngineer? dalEngineer)
+    {
+        s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
+        s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
+        s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
+        createDependency();
+        createTask();
+        createEngineer();
     }
 }
