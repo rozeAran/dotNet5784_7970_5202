@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class TaskImplementation : ITask
 {
-    public int Create(Task item)
+    public int Create(Task item)//create a new task
     {
         int id = DataSource.Config.NextTaskId;
         Task copy = item with { Id = id };
@@ -15,26 +15,26 @@ public class TaskImplementation : ITask
         return item.Id;
     }
 
-    public void Delete(int id)
+    public void Delete(int id)//delete a task
     {
         if (DataSource.Tasks.Exists(X => X.Id == id))
             DataSource.Tasks.RemoveAll(x => x.Id == id);
         else throw new Exception($"task with ID={id} doesnt exsist");
     }
 
-    public Task? Read(int id)
+    public Task? Read(int id)// find a specific task
     {
         if (DataSource.Tasks.Exists(X => X.Id == id))
             return DataSource.Tasks.Find(x => x.Id == id);
         return null;
     }
 
-    public List<Task> ReadAll()
+    public List<Task> ReadAll()// find all tasks
     {
         return new List<Task>(DataSource.Tasks);
     }
 
-    public void Update(Task item)
+    public void Update(Task item)//update a task
     {
         if (DataSource.Tasks.Exists(X => X.Id == item.Id))
         {
