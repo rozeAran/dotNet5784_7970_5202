@@ -13,7 +13,7 @@ internal class Program
     private static IEngineer? s_dalEngineer = new EngineerImplementation();
     private static IDependency? s_dalDependency = new DependencyImplementation();
 
-    public EngineerExperience setEX(int num)
+    public static EngineerExperience setEX(int num)
     {
         switch(num) 
         {
@@ -27,13 +27,13 @@ internal class Program
         }
     }
 
-    public DO.Task createT()
+    public static DO.Task createT()
     {
         int id = Convert.ToInt32(Console.ReadKey());
         string alias = Console.ReadLine();
         string description = Console.ReadLine();
         DateTime createdAtDate = Convert.ToDateTime(Console.Read());
-        TimeSpan requiredEffortTime;
+        TimeSpan requiredEffortTime= Convert.ToTimeSpan(Console.Read()); ;
         int temp= Convert.ToInt32(Console.ReadKey());
         EngineerExperience complexity=setEX(Convert.ToInt32(Console.ReadKey()));
         string deliverables = Console.ReadLine();
@@ -47,7 +47,7 @@ internal class Program
         DO.Task item = new DO.Task(id, alias, description, createdAtDate, requiredEffortTime, complexity, deliverables, engineerId, remarks, scheduledDate, completeDate, deadLineDate, isMilestone, startDate);
         return item;
     }
-    public DO.Dependency createD()
+    public static DO.Dependency createD()
     {
         int id= Convert.ToInt32(Console.ReadKey());
         int dependentTask= Convert.ToInt32(Console.ReadKey());
@@ -55,7 +55,7 @@ internal class Program
         DO.Dependency item = new DO.Dependency(id, dependentTask, dependOnTask);
         return item;
     }
-    public DO.Engineer createE() 
+    public static DO.Engineer createE() 
     {
         int id = Convert.ToInt32(Console.ReadKey());
         string name = Console.ReadLine();
@@ -66,7 +66,7 @@ internal class Program
         return item;
     }
 
-    public void TaskImp(ITask s_dalTask)
+    public static void TaskImp()
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : find a specific task \n 4: find all tasks \n 5: update a task\n");
         int choice = Convert.ToInt32(Console.ReadKey());
@@ -115,7 +115,7 @@ internal class Program
             choice = Convert.ToInt32(Console.ReadKey());
         }
     }
-    public void DependencyImp(IDependency s_dalDependency)
+    public static void DependencyImp()
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new dependency \n 2 : delete a dependency \n 3 : find a specific dependency \n 4: find all dependencies \n 5: update a dependency\n");
         int choice = Convert.ToInt32(Console.ReadKey());
@@ -166,7 +166,7 @@ internal class Program
             choice = Convert.ToInt32(Console.ReadKey());
         }
     }
-    public void EngineerImp(IEngineer s_dalEngineer)
+    public static void EngineerImp()
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new engineer \n 2 : delete a engineer \n 3 : find a specific engineer \n 4: find all engineers \n 5: update an engineer\n");
         int choice = Convert.ToInt32(Console.ReadKey());
@@ -224,7 +224,7 @@ internal class Program
         }
     }
 
-    static void MainMenu(ITask s_dalTask, IDependency s_dalDependency, IEngineer s_dalEngineer)
+    static void MainMenu()
     {
         Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
         int choice = Convert.ToInt32(Console.ReadKey());
@@ -232,9 +232,9 @@ internal class Program
         {
             switch (choice)
             {
-                case 1: TaskImp(s_dalTask); break;
-                case 2: DependencyImp(s_dalDependency); break;
-                case 3: EngineerImp(s_dalEngineer); break;
+                case 1: TaskImp(); break;
+                case 2: DependencyImp(); break;
+                case 3: EngineerImp(); break;
                 default: throw new Exception("no suche possibility");
             }
             Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
@@ -248,7 +248,7 @@ internal class Program
 		try
 		{
             Initialization.Do(s_dalDependency, s_dalTask, s_dalEngineer);
-            MainMenu(s_dalTask, s_dalDependency, s_dalEngineer);
+            MainMenu();
 
         }
 		catch (Exception ex)
