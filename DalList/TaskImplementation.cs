@@ -9,9 +9,7 @@ public class TaskImplementation : ITask
     {
         int id = DataSource.Config.NextTaskId;
         Task copy = item with { Id = id };
-       // if (Read(item.Id) is not null)
-           // throw new Exception($"task with ID={item.Id} already exists");
-        DataSource.Tasks.Add(item);
+        DataSource.Tasks.Add(copy);
         return item.Id;
     }
 

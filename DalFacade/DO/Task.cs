@@ -2,7 +2,7 @@
 
 namespace DO;
 /// <summary>
-/// 
+/// represents a task and include its time line
 /// </summary>
 /// <param name="Id"> identifier of the object</param>
 /// <param name="Alias"> a uniqe short name</param>
@@ -21,12 +21,12 @@ namespace DO;
 public record Task
 (
     int Id,
-    string Alias,
-    string Description,
+    string? Alias,
+    string? Description,
     DateTime CreatedAtDate,
     TimeSpan RequiredEffortTime,
     EngineerExperience Complexity,
-    string Deliverables ,
+    string? Deliverables ,
     int EngineerId,
     string ? Remarks,
     DateTime? ScheduledDate=null,

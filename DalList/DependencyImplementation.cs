@@ -10,9 +10,7 @@ public class DependencyImplementation : IDependency
     {
         int id = DataSource.Config.NextDepId;
         Dependency copy = item with { Id = id };
-        //if (Read(item.Id) is not null)
-           // throw new Exception($"Dependency with ID={item.Id} already exists");
-        DataSource.Dependencies.Add(item);
+        DataSource.Dependencies.Add(copy);
         return item.Id;  
     }
 
@@ -21,7 +19,6 @@ public class DependencyImplementation : IDependency
         if (DataSource.Dependencies.Exists(X => X.Id == id))
             DataSource.Dependencies.RemoveAll(x => x.Id == id);
         else throw new Exception($"Dependency with id{id} doesnt exist");
-
 
     }
 

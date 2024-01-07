@@ -4,13 +4,18 @@ namespace DO;
 /// <summary>
 /// represents an engineer that works on a task and includes usefull information about him/her
 /// </summary>
+/// <param name="Id"> engineer's id</param>
+/// <param name="Name"> engineer's name</param>
+/// <param name="Email"> engineer's mail</param>
+/// <param name="Level">engineer's experience </param>
+/// <param name="Cost">engineer's salary</param>
 public record Engineer
 (
-    int Id,//engineer's id
-    string Name,//engineer's name
-    string Email,//engineer's mail
-    EngineerExperience Level,//engineer's experience
-    double Cost//engineer's salary
+    int Id,
+    string Name,
+    string Email,
+    EngineerExperience Level,
+    double Cost
 )
 
 {

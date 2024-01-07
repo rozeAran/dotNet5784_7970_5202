@@ -10,7 +10,7 @@ public class EngineerImplementation : IEngineer
         Engineer copy = item with { Id = item.Id };
         if (Read(item.Id) is not null)
             throw new Exception($"Engineer with ID={item.Id} already exists");
-        DataSource.Engineers.Add(item);
+        DataSource.Engineers.Add(copy);
         return item.Id;
     }
 
