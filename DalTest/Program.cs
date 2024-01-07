@@ -80,7 +80,7 @@ internal class Program
 
     public static void TaskImp()//task menu
     {
-        Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : find a specific task \n 4: find all tasks \n 5: update a task\n");
+        Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : print a specific task \n 4: print all tasks \n 5: update a task\n");
         int choice = int.Parse(Console.ReadLine());
         while (choice != 0)
         {
@@ -129,7 +129,7 @@ internal class Program
     }
     public static void DependencyImp()//dependency menu
     {
-        Console.WriteLine("0 : Exit task menu \n 1 : create a new dependency \n 2 : delete a dependency \n 3 : find a specific dependency \n 4: find all dependencies \n 5: update a dependency\n");
+        Console.WriteLine("0 : Exit task menu \n 1 : create a new dependency \n 2 : delete a dependency \n 3 : print a specific dependency \n 4: print all dependencies \n 5: update a dependency\n");
         int choice = int.Parse(Console.ReadLine());
         while (choice != 0)
         {
@@ -174,7 +174,7 @@ internal class Program
                     break;
                 default: throw new Exception("no suche possibility");
             }
-            Console.WriteLine("0 : Exit task menu \n 1 : create a new dependency \n 2 : delete a dependency \n 3 : find a specific dependency \n 4: find all dependencies \n 5: update a dependency\n");
+            Console.WriteLine("0 : Exit task menu \n 1 : create a new dependency \n 2 : delete a dependency \n 3 : print a specific dependency \n 4: print all dependencies \n 5: update a dependency\n");
             choice = int.Parse(Console.ReadLine());
         }
     }

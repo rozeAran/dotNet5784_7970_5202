@@ -166,10 +166,6 @@ public static class Initialization
         int NUMDEP = 40;
         for (int i = 0; i < NUMDEP; i++)
         {
-            /*int dependentTask = 1;
-            int dependOnTask = 2;
-            Dependency newDep = new(0, dependentTask, dependOnTask);
-            s_dalDependency!.Create(newDep)*/
             int dependentTask;///ID number of depending task
             do
                 dependentTask =s_rand.Next(0, 20);
