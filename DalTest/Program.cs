@@ -1,4 +1,4 @@
-﻿///mini project ex1 roze arenbayev 329335202 and tal biton 329397970
+﻿///mini project stage1 roze arenbayev 329335202 and tal biton 329397970
 
 using System.Reflection.Emit;
 using Dal;
