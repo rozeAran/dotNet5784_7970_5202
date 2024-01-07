@@ -1,4 +1,4 @@
-﻿//mini project ex1 roz arenbaiyev 329335202 and tal biton 329397970
+﻿///mini project ex1 roze arenbayev 329335202 and tal biton 329397970
 
 using System.Reflection.Emit;
 using Dal;
@@ -31,13 +31,13 @@ internal class Program
 
     public static DO.Task CreateT()//creates a new task
     {
-        Console.WriteLine("enter id,alias,description of the task,creation date,the required Effort Time," +
-            "the tasks complexity, deliverables, engineerId, remarks, scheduledDate,completeDate,deadLineDate" +
-            "is the task is a mile stone, start date");
-        int id = int.Parse(Console.ReadLine());
+        Console.WriteLine("enter task alias\n");
         string alias = Console.ReadLine();
+        Console.WriteLine("enter task description\n");
         string description = Console.ReadLine();
+        Console.WriteLine("enter task createdAtDate\n");
         DateTime createdAtDate = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("enter tasks required Effort Time\n");
         int days = int.Parse(Console.ReadLine());
         Console.ReadKey();
         int hours= int.Parse(Console.ReadLine());
@@ -45,34 +45,51 @@ internal class Program
         int sec = int.Parse(Console.ReadLine());
         Console.ReadKey();
         int minutes = int.Parse(Console.ReadLine());
-        TimeSpan requiredEffortTime= new TimeSpan(days,hours,sec,minutes); 
+        TimeSpan requiredEffortTime= new TimeSpan(days,hours,sec,minutes);
+        Console.WriteLine("enter task complexity\n");
         int temp= int.Parse(Console.ReadLine());
         EngineerExperience complexity=SetEX(int.Parse(Console.ReadLine()));
+        Console.WriteLine("enter task deliverables\n");
         string deliverables = Console.ReadLine();
+        Console.WriteLine("enter engineer Id\n");
         int engineerId = Console.Read();
+        Console.WriteLine("enter tasks remarks\n");
         string? remarks = Console.ReadLine();
+        Console.WriteLine("enter tasks scheduledDate\n");
         DateTime? scheduledDate = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("enter tasks completeDate\n");
         DateTime? completeDate = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("enter tasks deadLineDate\n");
         DateTime? deadLineDate = DateTime.Parse(Console.ReadLine());
+        Console.WriteLine("enter if the task is a mile stone\n");
         bool isMilestone = bool.Parse(Console.ReadLine());
+        Console.WriteLine("enter task startDate\n");
         DateTime? startDate = DateTime.Parse(Console.ReadLine());
-        DO.Task item = new DO.Task(id, alias, description, createdAtDate, requiredEffortTime, complexity, deliverables, engineerId, remarks, scheduledDate, completeDate, deadLineDate, isMilestone, startDate);
+        
+        DO.Task item = new DO.Task(0, alias, description, createdAtDate, requiredEffortTime, complexity, deliverables, engineerId, remarks, scheduledDate, completeDate, deadLineDate, isMilestone, startDate);
         return item;
     }
     public static DO.Dependency CreateD()//creates a new dependency
     {
-        int id= int.Parse(Console.ReadLine());
+        Console.WriteLine("enter dependentTask \n ");
+        ///int id= int.Parse(Console.ReadLine());
         int dependentTask= int.Parse(Console.ReadLine());
+        Console.WriteLine("enter dependOnTask \n ");
         int dependOnTask= int.Parse(Console.ReadLine());
-        DO.Dependency item = new DO.Dependency(id, dependentTask, dependOnTask);
+        DO.Dependency item = new DO.Dependency(0, dependentTask, dependOnTask);
         return item;
     }
     public static DO.Engineer CreateE()//creates a new engineer 
     {
+        Console.WriteLine("enter engineer id\n");
         int id = int.Parse(Console.ReadLine());
+        Console.WriteLine("enter engineer name\n");
         string name = Console.ReadLine();
+        Console.WriteLine("enter engineer email\n");
         string email = Console.ReadLine();
+        Console.WriteLine("enter engineer level\n");
         EngineerExperience level = SetEX(Convert.ToInt32(Console.ReadKey()));
+        Console.WriteLine("enter engineer cost for hour\n");
         double cost = double.Parse(Console.ReadLine());
         DO.Engineer item = new DO.Engineer(id, name, email, level, cost);
         return item;
@@ -86,10 +103,10 @@ internal class Program
         {
             switch (choice)
             {
-                case 1:
+                case 1:///create a new task
                     Console.Write(s_dalTask.Create(CreateT()));
                     break;
-                case 2:
+                case 2:///delete a task
                     try
                     {
                         int id2 = int.Parse(Console.ReadLine());
@@ -100,14 +117,14 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                case 3:
+                case 3:///find a specific task
                     int id = int.Parse(Console.ReadLine());
                     Console.Write(s_dalTask.Read(id));
                     break;
-                case 4:
+                case 4:///find all tasks
                     Console.Write(s_dalTask.ReadAll());
                     break;
-                case 5:
+                case 5:///update a task
                     try
                     {
                         Console.Write(s_dalTask.ReadAll());
@@ -135,10 +152,10 @@ internal class Program
         {
             switch (choice)
             {
-                case 1:
+                case 1:///create a new dependency
                     Console.Write(s_dalDependency.Create(CreateD()));
                     break;
-                case 2:
+                case 2:///delete a dependency
 
                     try
                     {
@@ -150,14 +167,14 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                case 3:
+                case 3:///find a specific dependency
                     int id2 = int.Parse(Console.ReadLine());
                     Console.Write(s_dalDependency.Read(id2));
                     break;
-                case 4:
+                case 4:///find all dependencies
                     Console.Write(s_dalDependency.ReadAll());
                     break;
-                case 5:
+                case 5:///update a dependency
                     try
                     {
                         int id = int.Parse(Console.ReadLine());
@@ -186,7 +203,7 @@ internal class Program
         {
             switch(choice)
             {
-                case 1:
+                case 1:///create a new engineer
                     try
                     {
                         Console.Write(s_dalEngineer.Create(CreateE()));
@@ -196,7 +213,7 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                case 2:
+                case 2:///delete a engineer
 
                     try
                     {
@@ -208,14 +225,14 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                case 3:
+                case 3:///find a specific engineer
                     int id2 = Convert.ToInt32(Console.ReadKey());
                     Console.Write(s_dalEngineer.Read(id2));
                     break;
-                case 4:
+                case 4:///find all engineers
                     Console.Write(s_dalEngineer.ReadAll());
                     break;
-                case 5:
+                case 5:///update an engineers
                     try
                     {
                         Console.Write(s_dalEngineer.ReadAll());

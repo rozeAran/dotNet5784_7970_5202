@@ -35,7 +35,7 @@ public static class Initialization
             //engineer's mail
             string email = name + "@jct.com";
 
-            //engineers leval
+            //engineers level
             int x = s_rand.Next(0, 5);
             EngineerExperience level;
             switch (x)
@@ -151,9 +151,9 @@ public static class Initialization
             TimeSpan requiredEffortTime = deadLineDate - createdAtDate;
             
             int engineerId=0;
-           /// do
-                ///engineerId = s_rand.Next(100000000, 1000000000);
-            ///while (s_dalEngineer!.Read(engineerId) == null);
+            do
+                engineerId = s_rand.Next(100000000, 1000000000);
+            while (s_dalEngineer!.Read(engineerId) == null);
             //creates the new engineer 
             Task newTask = new(0, $"task{i}", description[i], createdAtDate, requiredEffortTime, level, "deliverables", engineerId, "remarks", null, null, deadLineDate, false, null);
             s_dalTask!.Create(newTask);
@@ -166,10 +166,6 @@ public static class Initialization
         int NUMDEP = 40;
         for (int i = 0; i < NUMDEP; i++)
         {
-            /*int dependentTask = 1;
-            int dependOnTask = 2;
-            Dependency newDep = new(0, dependentTask, dependOnTask);
-            s_dalDependency!.Create(newDep)*/
             int dependentTask;///ID number of depending task
             do
                 dependentTask =s_rand.Next(0, 20);
@@ -179,7 +175,7 @@ public static class Initialization
             {
                 dependOnTask = s_rand.Next(0,50);
                 if ((s_dalTask!.Read(dependOnTask) != null))
-                    if ((s_dalTask!.Read(dependOnTask).DeadLineDate <= s_dalTask!.Read(dependentTask).ScheduledDate))
+                    if ((s_dalTask!.Read(dependOnTask).DeadLineDate <= s_dalTask!.Read(dependentTask).ScheduledDate))///if the time line fits
                         break;
             }
             while ((s_dalTask!.Read(dependOnTask) == null));
