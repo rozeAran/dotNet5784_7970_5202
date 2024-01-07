@@ -14,7 +14,7 @@ public static class Initialization
     private static IDependency? s_dalDependency; //stage 1
 
     private static readonly Random s_rand = new();
-    private static void createEngineer()
+    private static void createEngineer()// initialization of an engineer
     {
         string[] engineerNames =
         {
@@ -83,7 +83,7 @@ public static class Initialization
 
 
     }
-    private static void createTask()
+    private static void createTask()// initialization of a task
     {
         string[] description =
         {
@@ -161,14 +161,13 @@ public static class Initialization
 
 
     }
-    private static void createDependency()
+    private static void createDependency()// initialization of a dependency
     {
         int NUMDEP = 40;
         for (int i = 0; i < NUMDEP; i++)
         {
             /*int dependentTask = 1;
             int dependOnTask = 2;
-
             Dependency newDep = new(0, dependentTask, dependOnTask);
             s_dalDependency!.Create(newDep)*/
             int dependentTask;///ID number of depending task
@@ -192,7 +191,7 @@ public static class Initialization
    
   
 
-    public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)
+    public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)// initialization
     {
         s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
         s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");

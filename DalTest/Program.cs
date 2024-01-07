@@ -1,4 +1,6 @@
-﻿using System.Reflection.Emit;
+﻿//mini project ex1 roz arenbaiyev 329335202 and tal biton 329397970
+
+using System.Reflection.Emit;
 using Dal;
 using DalApi;
 using DO;
@@ -13,7 +15,7 @@ internal class Program
     private static IEngineer? s_dalEngineer = new EngineerImplementation();
     private static IDependency? s_dalDependency = new DependencyImplementation();
 
-    public static EngineerExperience SetEX(int num)
+    public static EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
     {
         switch(num) 
         {
@@ -27,7 +29,7 @@ internal class Program
         }
     }
 
-    public static DO.Task CreateT()
+    public static DO.Task CreateT()//creates a new task
     {
         Console.WriteLine("enter id,alias,description of the task,creation date,the required Effort Time," +
             "the tasks complexity, deliverables, engineerId, remarks, scheduledDate,completeDate,deadLineDate" +
@@ -57,7 +59,7 @@ internal class Program
         DO.Task item = new DO.Task(id, alias, description, createdAtDate, requiredEffortTime, complexity, deliverables, engineerId, remarks, scheduledDate, completeDate, deadLineDate, isMilestone, startDate);
         return item;
     }
-    public static DO.Dependency CreateD()
+    public static DO.Dependency CreateD()//creates a new dependency
     {
         int id= int.Parse(Console.ReadLine());
         int dependentTask= int.Parse(Console.ReadLine());
@@ -65,7 +67,7 @@ internal class Program
         DO.Dependency item = new DO.Dependency(id, dependentTask, dependOnTask);
         return item;
     }
-    public static DO.Engineer CreateE() 
+    public static DO.Engineer CreateE()//creates a new engineer 
     {
         int id = int.Parse(Console.ReadLine());
         string name = Console.ReadLine();
@@ -76,7 +78,7 @@ internal class Program
         return item;
     }
 
-    public static void TaskImp()
+    public static void TaskImp()//task menu
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : find a specific task \n 4: find all tasks \n 5: update a task\n");
         int choice = int.Parse(Console.ReadLine());
@@ -125,7 +127,7 @@ internal class Program
             choice = int.Parse(Console.ReadLine());
         }
     }
-    public static void DependencyImp()
+    public static void DependencyImp()//dependency menu
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new dependency \n 2 : delete a dependency \n 3 : find a specific dependency \n 4: find all dependencies \n 5: update a dependency\n");
         int choice = int.Parse(Console.ReadLine());
@@ -176,7 +178,7 @@ internal class Program
             choice = int.Parse(Console.ReadLine());
         }
     }
-    public static void EngineerImp()
+    public static void EngineerImp()//engineer menu
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new engineer \n 2 : delete a engineer \n 3 : find a specific engineer \n 4: find all engineers \n 5: update an engineer\n");
         int choice = int.Parse(Console.ReadLine());
@@ -234,7 +236,7 @@ internal class Program
         }
     }
 
-    static void MainMenu()
+    static void MainMenu()//menu
     {
         Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
         int choice = int.Parse(Console.ReadLine());
@@ -257,7 +259,7 @@ internal class Program
 	{
 		try
 		{
-            Initialization.Do(s_dalEngineer, s_dalTask,s_dalDependency );
+            Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
             MainMenu();
 
         }

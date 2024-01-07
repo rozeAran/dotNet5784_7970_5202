@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class EngineerImplementation : IEngineer
 {
-    public int Create(Engineer item)
+    public int Create(Engineer item)// creates a new engineer
     {
         Engineer copy = item with { Id = item.Id };
         if (Read(item.Id) is not null)
@@ -14,7 +14,7 @@ public class EngineerImplementation : IEngineer
         return item.Id;
     }
 
-    public void Delete(int id)
+    public void Delete(int id)//deletes an engineer
     {
         if (DataSource.Engineers.Exists(X => X.Id == id))
             DataSource.Engineers.RemoveAll(x => x.Id == id);
@@ -22,19 +22,19 @@ public class EngineerImplementation : IEngineer
 
     }
 
-    public Engineer? Read(int id)
+    public Engineer? Read(int id)// reads an engineer
     {
         if (DataSource.Engineers.Exists(X => X.Id == id))
             return DataSource.Engineers.Find(x => x.Id == id);
         return null;
     }
 
-    public List<Engineer> ReadAll()
+    public List<Engineer> ReadAll()// reads all the engineers
     {
         return new List<Engineer>(DataSource.Engineers);
     }
 
-    public void Update(Engineer item)
+    public void Update(Engineer item)// updates an engineer
     {
         if (DataSource.Engineers.Exists(X => X.Id == item.Id))
         {
