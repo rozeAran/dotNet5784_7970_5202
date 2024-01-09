@@ -9,7 +9,7 @@ namespace DO;
 /// <param name="Email"> engineer's mail</param>
 /// <param name="Level">engineer's experience </param>
 /// <param name="Cost">engineer's salary</param>
-public record Engineer
+public record Engineer 
 (
     int Id,
     string Name,

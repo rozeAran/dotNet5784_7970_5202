@@ -9,9 +9,10 @@ using System.Xml.Linq;
 
 public static class Initialization
 {
-    private static IEngineer? s_dalEngineer; //stage 1
-    private static ITask? s_dalTask; //stage 1
-    private static IDependency? s_dalDependency; //stage 1
+    private static IDal? s_dal;
+    //private static ICrud<Engineer>? s_dalEngineer; //stage 1
+    //private static ICrud<Task>? s_dalTask; //stage 1
+    //private static ICrud<Dependency>? s_dalDependency; //stage 1
 
     private static readonly Random s_rand = new();
     private static void createEngineer()// initialization of an engineer
@@ -30,7 +31,7 @@ public static class Initialization
             int id;
             do
                 id = s_rand.Next(100000000, 1000000000);
-            while (s_dalEngineer!.Read(id) != null);
+            while (s_dal!.Engineer.Read(id) != null);
 
             //engineer's mail
             string email = name + "@jct.com";
@@ -77,7 +78,7 @@ public static class Initialization
 
             //creates the new engineer 
             Engineer newEng = new(id, name, email, level, cost);
-            s_dalEngineer!.Create(newEng);
+            s_dal!.Engineer.Create(newEng);
         }
 
 
@@ -153,10 +154,10 @@ public static class Initialization
             int engineerId=0;
             do
                 engineerId = s_rand.Next(100000000, 1000000000);
-            while (s_dalEngineer!.Read(engineerId) == null);
+            while (s_dal!.Engineer.Read(engineerId) == null);
             //creates the new engineer 
             Task newTask = new(0, $"task{i}", description[i], createdAtDate, requiredEffortTime, level, "deliverables", engineerId, "remarks", null, null, deadLineDate, false, null);
-            s_dalTask!.Create(newTask);
+            s_dal!.Task.Create(newTask);
         }
 
 
@@ -169,29 +170,31 @@ public static class Initialization
             int dependentTask;///ID number of depending task
             do
                 dependentTask =s_rand.Next(0, 20);
-            while ((s_dalTask!.Read(dependentTask) == null) );
+            while ((s_dal!.Task.Read(dependentTask) == null) );
             int dependOnTask;///Previous task ID number
             do
             {
                 dependOnTask = s_rand.Next(0,50);
-                if ((s_dalTask!.Read(dependOnTask) != null))
-                    if ((s_dalTask!.Read(dependOnTask).DeadLineDate <= s_dalTask!.Read(dependentTask).ScheduledDate))///if the time line fits
+                if ((s_dal!.Task.Read(dependOnTask) != null))
+                    if ((s_dal!.Task.Read(dependOnTask).DeadLineDate <= s_dal!.Task.Read(dependentTask).ScheduledDate))///if the time line fits
                         break;
             }
-            while ((s_dalTask!.Read(dependOnTask) == null));
+            while ((s_dal!.Task.Read(dependOnTask) == null));
             Dependency newDep = new(0, dependentTask, dependOnTask);
-            s_dalDependency!.Create(newDep);
+            s_dal!.Dependency.Create(newDep);
 
         }
     }
    
   
 
-    public static void Do(IEngineer? dalEngineer, ITask? dalTask, IDependency? dalDependency)// initialization
+    public static void Do(IDal dal)// initialization
     {
-        s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
-        s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
-        s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
+        //s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
+        //s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
+        //s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
+        s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
+
         createEngineer();
         createTask();
         createDependency();

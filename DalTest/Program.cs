@@ -1,19 +1,26 @@
 ﻿///mini project stage1 roze arenbayev 329335202 and tal biton 329397970
 
 using System.Reflection.Emit;
+namespace DalTest;
 using Dal;
 using DalApi;
 using DO;
+using System.Data.Common;
+using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Xml.Linq;
 
 
-namespace DalTest;
 
 internal class Program
 {
 
-    private static ITask? s_dalTask = new TaskImplementation();
-    private static IEngineer? s_dalEngineer = new EngineerImplementation();
-    private static IDependency? s_dalDependency = new DependencyImplementation();
+    //private static ITask? s_dalTask = new TaskImplementation();
+    //private static IEngineer? s_dalEngineer = new EngineerImplementation();
+    //private static IDependency? s_dalDependency = new DependencyImplementation();
+    static readonly IDal s_dal = new DalList(); //stage 2
+
 
     public static EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
     {
@@ -29,7 +36,7 @@ internal class Program
         }
     }
 
-    public static DO.Task CreateT()//creates a new task
+    public static Task CreateT()//creates a new task
     {
         Console.WriteLine("enter task alias\n");
         string alias = Console.ReadLine();
@@ -69,7 +76,7 @@ internal class Program
         DO.Task item = new DO.Task(0, alias, description, createdAtDate, requiredEffortTime, complexity, deliverables, engineerId, remarks, scheduledDate, completeDate, deadLineDate, isMilestone, startDate);
         return item;
     }
-    public static DO.Dependency CreateD()//creates a new dependency
+    public static Dependency CreateD()//creates a new dependency
     {
         Console.WriteLine("enter dependentTask \n ");
         ///int id= int.Parse(Console.ReadLine());
@@ -79,7 +86,7 @@ internal class Program
         DO.Dependency item = new DO.Dependency(0, dependentTask, dependOnTask);
         return item;
     }
-    public static DO.Engineer CreateE()//creates a new engineer 
+    public static Engineer CreateE()//creates a new engineer 
     {
         Console.WriteLine("enter engineer id\n");
         int id = int.Parse(Console.ReadLine());
@@ -104,13 +111,13 @@ internal class Program
             switch (choice)
             {
                 case 1:///create a new task
-                    Console.Write(s_dalTask.Create(CreateT()));
+                    Console.Write(s_dal.Task.Create(CreateT()));
                     break;
                 case 2:///delete a task
                     try
                     {
                         int id2 = int.Parse(Console.ReadLine());
-                        s_dalTask.Delete(id2);
+                        s_dal.Task.Delete(id2);
                     }
                     catch (Exception ex)
                     {
@@ -119,19 +126,19 @@ internal class Program
                     break;
                 case 3:///find a specific task
                     int id = int.Parse(Console.ReadLine());
-                    Console.Write(s_dalTask.Read(id));
+                    Console.Write(s_dal.Task.Read(id));
                     break;
                 case 4:///find all tasks
-                    Console.Write(s_dalTask.ReadAll());
+                    Console.Write(s_dal.Task.ReadAll());
                     break;
                 case 5:///update a task
                     try
                     {
-                        Console.Write(s_dalTask.ReadAll());
+                        Console.Write(s_dal.Task.ReadAll());
                         Console.WriteLine("please enter the  task's updated values");
                         DO.Task temp = CreateT();
                         if(temp.ScheduledDate != null)
-                          s_dalTask.Update(temp);
+                          s_dal.Task.Update(temp);
                     }
                     catch (Exception ex)
                     {
@@ -153,14 +160,14 @@ internal class Program
             switch (choice)
             {
                 case 1:///create a new dependency
-                    Console.Write(s_dalDependency.Create(CreateD()));
+                    Console.Write(s_dal.Dependency.Create(CreateD()));
                     break;
                 case 2:///delete a dependency
 
                     try
                     {
                         int id = Convert.ToInt32(Console.ReadKey());
-                        s_dalDependency.Delete(id);
+                        s_dal.Dependency.Delete(id);
                     }
                     catch (Exception ex)
                     {
@@ -169,20 +176,20 @@ internal class Program
                     break;
                 case 3:///find a specific dependency
                     int id2 = int.Parse(Console.ReadLine());
-                    Console.Write(s_dalDependency.Read(id2));
+                    Console.Write(s_dal.Dependency.Read(id2));
                     break;
                 case 4:///find all dependencies
-                    Console.Write(s_dalDependency.ReadAll());
+                    Console.Write(s_dal.Dependency.ReadAll());
                     break;
                 case 5:///update a dependency
                     try
                     {
                         int id = int.Parse(Console.ReadLine());
-                        Console.Write(s_dalDependency.ReadAll());
+                        Console.Write(s_dal.Dependency.ReadAll());
                         Console.WriteLine("please enter the dependency's updated values");
                         DO.Dependency temp = CreateD();
                         if (temp.Id != 0)
-                            s_dalDependency.Update(temp);
+                            s_dal.Dependency.Update(temp);
                     }
                     catch (Exception ex)
                     {
@@ -206,7 +213,7 @@ internal class Program
                 case 1:///create a new engineer
                     try
                     {
-                        Console.Write(s_dalEngineer.Create(CreateE()));
+                        Console.Write(s_dal.Engineer.Create(CreateE()));
                     }
                     catch (Exception ex)
                     {
@@ -218,7 +225,7 @@ internal class Program
                     try
                     {
                         int id = Convert.ToInt32(Console.ReadKey());
-                        s_dalEngineer.Delete(id);
+                        s_dal.Engineer.Delete(id);
                     }
                     catch (Exception ex)
                     {
@@ -227,19 +234,19 @@ internal class Program
                     break;
                 case 3:///find a specific engineer
                     int id2 = Convert.ToInt32(Console.ReadKey());
-                    Console.Write(s_dalEngineer.Read(id2));
+                    Console.Write(s_dal.Engineer.Read(id2));
                     break;
                 case 4:///find all engineers
-                    Console.Write(s_dalEngineer.ReadAll());
+                    Console.Write(s_dal.Engineer.ReadAll());
                     break;
                 case 5:///update an engineers
                     try
                     {
-                        Console.Write(s_dalEngineer.ReadAll());
+                        Console.Write(s_dal.Engineer.ReadAll());
                         Console.WriteLine("please enter the dependency's updated values");
                         Engineer temp = CreateE();
                         if(temp.Id!=0)
-                          s_dalEngineer.Update(temp);
+                          s_dal.Engineer.Update(temp);
                     }
                     catch (Exception ex)
                     {
@@ -276,7 +283,7 @@ internal class Program
 	{
 		try
 		{
-            Initialization.Do(s_dalEngineer, s_dalTask, s_dalDependency);
+            Initialization.Do(s_dal);
             MainMenu();
 
         }

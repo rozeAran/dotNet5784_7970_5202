@@ -4,7 +4,7 @@ using DO;
 using System.Collections.Generic;
 using System.Linq;
 
-public class DependencyImplementation : IDependency
+internal class DependencyImplementation : IDependency
 {
     public int Create(Dependency item)//creates a dependency
     {
