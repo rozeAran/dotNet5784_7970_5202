@@ -23,7 +23,7 @@ internal class DependencyImplementation : IDependency
         }
         else
         {
-            throw new Exception($"Dependency with id {id} doesn't exist");
+            throw new DalDeletionImpossible($"Dependency with id {id} doesn't exist");
         }
     }
 
@@ -54,7 +54,7 @@ internal class DependencyImplementation : IDependency
         }
         else
         {
-            throw new NotImplementedException($"The Dependency with {item.Id} does not exist");
+            throw new DalDoesNotExistException($"The Dependency with {item.Id} does not exist");
         }
     }
     public Dependency? Read(Func<Dependency, bool> filter)

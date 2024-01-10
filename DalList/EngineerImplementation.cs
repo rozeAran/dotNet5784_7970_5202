@@ -13,7 +13,7 @@ internal class EngineerImplementation :IEngineer
 
         // Check if an engineer with the same Id already exists
         if (DataSource.Engineers.Any(e => e.Id == item.Id))
-            throw new Exception($"Engineer with ID={item.Id} already exists");
+            throw new DalAlreadyExistsException($"Engineer with ID={item.Id} already exists");
 
         // Add the copied engineer to the collection of engineers
         DataSource.Engineers.Add(copy);
@@ -34,7 +34,7 @@ internal class EngineerImplementation :IEngineer
         }
         else
         {
-            throw new Exception($"Engineer with ID={id} doesn't exist");
+            throw new DalDeletionImpossible($"Engineer with ID={id} doesn't exist");
         }
     }
 
@@ -73,7 +73,7 @@ internal class EngineerImplementation :IEngineer
         }
         else
         {
-            throw new NotImplementedException($"The Engineer with Id {item.Id} does not exist");
+            throw new DalDoesNotExistException($"The Engineer with Id {item.Id} does not exist");
         }
     }
     public Engineer? Read(Func<Engineer, bool> filter)

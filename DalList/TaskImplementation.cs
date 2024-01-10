@@ -23,7 +23,7 @@ internal class TaskImplementation :ITask
         }
         else
         {
-            throw new Exception($"Task with ID={id} doesn't exist");
+            throw new DalDeletionImpossible($"Task with ID={id} doesn't exist");
         }
     }
 
@@ -55,7 +55,7 @@ internal class TaskImplementation :ITask
         }
         else
         {
-            throw new NotImplementedException($"The task with Id {item.Id} does not exist");
+            throw new DalDoesNotExistException($"The task with Id {item.Id} does not exist");
         }
     }
     public Task? Read(Func<Task, bool> filter)
