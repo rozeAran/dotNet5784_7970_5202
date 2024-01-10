@@ -6,8 +6,8 @@ static class DataSource
 {
     //private static List<IDal> Dals { get; } = new();
     internal static List<DO.Task> Tasks { get; } = new();
-    internal static List<DO.Engineer> Engineers { get; } = new();
-    internal static List<DO.Dependency> Dependencies { get; } = new();
+    internal static List<Engineer> Engineers { get; } = new();
+    internal static List<Dependency> Dependencies { get; } = new();
     internal static class Config
     {
         //running number dependency::id

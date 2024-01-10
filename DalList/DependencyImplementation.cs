@@ -36,11 +36,11 @@ internal class DependencyImplementation : IDependency
     {
         if (filter != null)
         {
-            return from item in DataSource.Dependency
+            return from item in DataSource.Dependencies
                    where filter(item)
                    select item;
         }
-        return from item in DataSource.Dependency
+        return from item in DataSource.Dependencies
                select item;
     }
 

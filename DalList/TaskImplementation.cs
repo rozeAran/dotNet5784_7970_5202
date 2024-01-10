@@ -37,11 +37,11 @@ internal class TaskImplementation :ITask
     {
         if (filter != null)
         {
-            return from item in DataSource.Task
+            return from item in DataSource.Tasks
                    where filter(item)
                    select item;
         }
-        return from item in DataSource.Task
+        return from item in DataSource.Tasks
                select item;
     }
     public void Update(Task item)
