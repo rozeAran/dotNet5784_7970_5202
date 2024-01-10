@@ -13,32 +13,42 @@ internal class TaskImplementation :ITask
         return item.Id;
     }
 
-    public void Delete(int id)//delete a task
+    public void Delete(int id)
     {
-        if (DataSource.Tasks.Exists(X => X.Id == id))
-            DataSource.Tasks.RemoveAll(x => x.Id == id);
-        else throw new Exception($"task with ID={id} doesnt exsist");
-    }
+        Task taskToDelete = DataSource.Tasks.FirstOrDefault(x => x.Id == id);
 
-    public Task? Read(int id)// find a specific task
-    {
-        if (DataSource.Tasks.Exists(X => X.Id == id))
-            return DataSource.Tasks.Find(x => x.Id == id);
-        return null;
-    }
-
-    public List<Task> ReadAll()// find all tasks
-    {
-        return new List<Task>(DataSource.Tasks);
-    }
-
-    public void Update(Task item)//update a task
-    {
-        if (DataSource.Tasks.Exists(X => X.Id == item.Id))
+        if (taskToDelete != null)
         {
-            DataSource.Tasks.Remove(DataSource.Tasks.Find(X=>X.Id == item.Id));
+            DataSource.Tasks.RemoveAll(x => x.Id == id);
+        }
+        else
+        {
+            throw new Exception($"Task with ID={id} doesn't exist");
+        }
+    }
+
+    public Task? Read(int id)
+    {
+        Task? task = DataSource.Tasks.FirstOrDefault(x => x.Id == id);
+        return task;
+    }
+
+    public List<Task> ReadAll()
+    {
+        return DataSource.Tasks.ToList();
+    }
+    public void Update(Task item)
+    {
+        Task existingTask = DataSource.Tasks.FirstOrDefault(x => x.Id == item.Id);
+
+        if (existingTask != null)
+        {
+            DataSource.Tasks.Remove(DataSource.Tasks.Find(X => X.Id == item.Id));
             DataSource.Tasks.Add(item);
         }
-        else { throw new NotImplementedException($"The task with Id {item.Id} does not exists"); }
+        else
+        {
+            throw new NotImplementedException($"The task with Id {item.Id} does not exist");
+        }
     }
 }

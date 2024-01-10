@@ -14,33 +14,49 @@ internal class EngineerImplementation :IEngineer
         return item.Id;
     }
 
-    public void Delete(int id)//deletes an engineer
+    public void Delete(int id) // deletes an engineer
     {
-        if (DataSource.Engineers.Exists(X => X.Id == id))
+        // Check if an engineer with the given Id exists
+        if (DataSource.Engineers.Exists(x => x.Id == id))
+        {
+            // Remove all engineers with the given Id
             DataSource.Engineers.RemoveAll(x => x.Id == id);
-        else throw new Exception($"Engineer with ID={id} doesnt exsist");
-
+        }
+        else
+        {
+            throw new Exception($"Engineer with ID={id} doesn't exist");
+        }
     }
 
-    public Engineer? Read(int id)// reads an engineer
+    public Engineer? Read(int id) // reads an engineer
     {
-        if (DataSource.Engineers.Exists(X => X.Id == id))
+        // Check if an engineer with the given Id exists
+        if (DataSource.Engineers.Exists(x => x.Id == id))
+        {
+            // Find and return the engineer with the given Id
             return DataSource.Engineers.Find(x => x.Id == id);
+        }
+
+        // If no engineer with the given Id exists, return null
         return null;
     }
 
-    public List<Engineer> ReadAll()// reads all the engineers
+    public List<Engineer> ReadAll()
     {
-        return new List<Engineer>(DataSource.Engineers);
+        return DataSource.Engineers.ToList();
     }
 
-    public void Update(Engineer item)// updates an engineer
+    public void Update(Engineer item)
     {
-        if (DataSource.Engineers.Exists(X => X.Id == item.Id))
+        var engineerToUpdate = DataSource.Engineers.FirstOrDefault(x => x.Id == item.Id);
+        if (engineerToUpdate != null)
         {
-            DataSource.Engineers.Remove(DataSource.Engineers.Find(X => X.Id == item.Id));
+            DataSource.Engineers.Remove(engineerToUpdate);
             DataSource.Engineers.Add(item);
         }
-        else { throw new NotImplementedException($"The Engineer with Id {item.Id} does not exists"); }
+        else
+        {
+            throw new NotImplementedException($"The Engineer with Id {item.Id} does not exist");
+        }
     }
 }
