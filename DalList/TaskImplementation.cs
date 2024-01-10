@@ -60,8 +60,8 @@ internal class TaskImplementation :ITask
     }
     public Task? Read(Func<Task, bool> filter)
     {
-        var result = DataSource.Tasks; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
+        var result = DataSource.Tasks; 
 
-        return result.FirstOrDefault(filter); // החזרת האובייקט הראשון שמתאים לסינון המתקבל
+        return result.FirstOrDefault(filter); 
     }
 }

@@ -78,8 +78,8 @@ internal class EngineerImplementation :IEngineer
     }
     public Engineer? Read(Func<Engineer, bool> filter)
     {
-        var result = DataSource.Engineers; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
-        return result.FirstOrDefault(filter); // החזרת האובייקט הראשון שמתאים לסינון המתקבל
+        var result = DataSource.Engineers; 
+        return result.FirstOrDefault(filter); 
 
     }
 }

@@ -27,7 +27,7 @@ public class DalDeletionImpossible : Exception// its impossible to delete this o
 }
 
 [Serializable]
-public class DalNotAPossabilityException : Exception//there is suche an option
+public class DalNotAPossabilityException : Exception//there is such an option
 {
     public DalNotAPossabilityException(string? message) : base(message) { }
 }
