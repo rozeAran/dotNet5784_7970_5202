@@ -59,6 +59,8 @@ internal class DependencyImplementation : IDependency
     }
     Dependency? Read(Func<Dependency, bool> filter)
     {
+        var result = DataSource.Dependencies; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
 
+        return result.Where(filter).ToList(); // החזרת רשימה של כל האובייקטים שמתאימים לסינון המתקבל
     }
 }

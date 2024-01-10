@@ -58,8 +58,15 @@ internal class TaskImplementation :ITask
             throw new NotImplementedException($"The task with Id {item.Id} does not exist");
         }
     }
-    Task? Read(Func<Task, bool> filter)
+    public Task? Read(Func<Task, bool> filter)
     {
+        
+         //var result = await DataSource.Tasks; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
+
+         //return result.FirstOrDefault(filter); // החזרת האובייקט הראשון שמתאים לסינון המתקבל
+        var result = DataSource.Tasks(); // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
+
+        return result.Where(filter).ToList(); // החזרת רשימה של כל האובייקטים שמתאימים לסינון המתקבל
 
     }
 }
