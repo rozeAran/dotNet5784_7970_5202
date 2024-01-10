@@ -7,11 +7,20 @@ internal class EngineerImplementation :IEngineer
 {
     public int Create(Engineer item)// creates a new engineer
     {
+        // Create a copy of the item with the same Id
         Engineer copy = item with { Id = item.Id };
-        if (Read(item.Id) is not null)
+
+        // Check if an engineer with the same Id already exists
+        if (DataSource.Engineers.Any(e => e.Id == item.Id))
             throw new Exception($"Engineer with ID={item.Id} already exists");
+
+        // Add the copied engineer to the collection of engineers
         DataSource.Engineers.Add(copy);
+
+        // Return the Id of the created engineer
         return item.Id;
+
+
     }
 
     public void Delete(int id)//deletes an engineer
