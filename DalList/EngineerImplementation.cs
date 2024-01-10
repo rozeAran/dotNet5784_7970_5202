@@ -54,11 +54,11 @@ internal class EngineerImplementation :IEngineer
     {
         if (filter != null)
         {
-            return from item in DataSource.Engineer
+            return from item in DataSource.Engineers
                    where filter(item)
                    select item;
         }
-        return from item in DataSource.Engineer
+        return from item in DataSource.Engineers
                select item;
     }
 
