@@ -145,7 +145,7 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                default: throw new Exception("no suche possibility");
+                default: throw new DalNotAPossabilityException("no suche possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : find a specific task \n 4: find all tasks \n 5: update a task\n"); 
             choice = int.Parse(Console.ReadLine());
@@ -196,7 +196,7 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                default: throw new Exception("no such possibility");
+                default: throw new Exception("no suche possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new dependency \n 2 : delete a dependency \n 3 : print a specific dependency \n 4: print all dependencies \n 5: update a dependency\n");
             choice = int.Parse(Console.ReadLine());
@@ -253,7 +253,7 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                default: throw new Exception("no such possibility");
+                default: throw new Exception("no suche possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new engineer \n 2 : delete a engineer \n 3 : find a specific engineer \n 4: find all engineers \n 5: update an engineer\n");
             choice = Convert.ToInt32(Console.ReadKey());
