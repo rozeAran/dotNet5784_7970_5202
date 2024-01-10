@@ -60,13 +60,8 @@ internal class TaskImplementation :ITask
     }
     public Task? Read(Func<Task, bool> filter)
     {
-        
-         //var result = await DataSource.Tasks; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
+        var result = DataSource.Tasks; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
 
-         //return result.FirstOrDefault(filter); // החזרת האובייקט הראשון שמתאים לסינון המתקבל
-        var result = DataSource.Tasks(); // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
-
-        return result.Where(filter).ToList(); // החזרת רשימה של כל האובייקטים שמתאימים לסינון המתקבל
-
+        return result.FirstOrDefault(filter); // החזרת האובייקט הראשון שמתאים לסינון המתקבל
     }
 }

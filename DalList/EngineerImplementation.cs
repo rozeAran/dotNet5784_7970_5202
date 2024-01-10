@@ -2,6 +2,7 @@
 using DalApi;
 using DO;
 using System.Collections.Generic;
+using System.Linq;
 
 internal class EngineerImplementation :IEngineer
 {
@@ -75,8 +76,10 @@ internal class EngineerImplementation :IEngineer
             throw new NotImplementedException($"The Engineer with Id {item.Id} does not exist");
         }
     }
-    Engineer? Read(Func<Engineer, bool> filter)
+    public Engineer? Read(Func<Engineer, bool> filter)
     {
+        var result = DataSource.Engineers; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
+        return result.FirstOrDefault(filter); // החזרת האובייקט הראשון שמתאים לסינון המתקבל
 
     }
 }

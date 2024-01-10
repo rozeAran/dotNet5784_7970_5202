@@ -57,10 +57,10 @@ internal class DependencyImplementation : IDependency
             throw new NotImplementedException($"The Dependency with {item.Id} does not exist");
         }
     }
-    Dependency? Read(Func<Dependency, bool> filter)
+    public Dependency? Read(Func<Dependency, bool> filter)
     {
         var result = DataSource.Dependencies; // קבלת אובייקטים מבסיס הנתונים, יתכן שיהיה צורך להתאים את הקריאה למאגר הנתונים שלך
 
-        return result.Where(filter).ToList(); // החזרת רשימה של כל האובייקטים שמתאימים לסינון המתקבל
+        return result.FirstOrDefault(filter); // החזרת האובייקט הראשון שמתאים לסינון המתקבל
     }
 }
