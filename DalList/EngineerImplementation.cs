@@ -75,4 +75,8 @@ internal class EngineerImplementation :IEngineer
             throw new NotImplementedException($"The Engineer with Id {item.Id} does not exist");
         }
     }
+    Engineer? Read(Func<Engineer, bool> filter)
+    {
+
+    }
 }

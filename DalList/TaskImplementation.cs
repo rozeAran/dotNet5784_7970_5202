@@ -58,4 +58,8 @@ internal class TaskImplementation :ITask
             throw new NotImplementedException($"The task with Id {item.Id} does not exist");
         }
     }
+    Task? Read(Func<Task, bool> filter)
+    {
+
+    }
 }

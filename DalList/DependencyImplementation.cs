@@ -57,4 +57,8 @@ internal class DependencyImplementation : IDependency
             throw new NotImplementedException($"The Dependency with {item.Id} does not exist");
         }
     }
+    Dependency? Read(Func<Dependency, bool> filter)
+    {
+
+    }
 }
