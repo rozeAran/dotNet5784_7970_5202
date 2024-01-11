@@ -30,7 +30,7 @@ public static class Initialization
             //engineer's id
             int id;
             do
-                id = s_rand.Next(100000000, 1000000000);
+                id = s_rand.Next(200000000,400000000);
             while (s_dal!.Engineer.Read(id) != null);
 
             //engineer's mail
@@ -153,7 +153,7 @@ public static class Initialization
             
             int engineerId=0;
             do
-              engineerId = s_rand.Next(100000000, 1000000000);
+                engineerId = s_rand.Next(200000000, 400000000);
             while (s_dal!.Engineer.Read(engineerId) == null);
             //creates the new engineer 
             Task newTask = new(0, $"task{i}", description[i], createdAtDate, requiredEffortTime, level, "deliverables", engineerId, "remarks", null, null, deadLineDate, false, null);
