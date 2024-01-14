@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace DO;
 /// <summary>
 /// exeptions for :
-/// 1.the object with this id doesn exsist
-/// 2.the object withe this id already exsists
+/// 1.the object with this id doesn exist
+/// 2.the object withe this id already exists
 /// 3.its impossible to delete this object- not allowed
 /// 4.there is no option to fallow your request
 /// </summary>

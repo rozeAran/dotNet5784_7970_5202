@@ -10,9 +10,6 @@ using System.Xml.Linq;
 public static class Initialization
 {
     private static IDal? s_dal;//stage 2
-    //private static ICrud<Engineer>? s_dalEngineer; //stage 1
-    //private static ICrud<Task>? s_dalTask; //stage 1
-    //private static ICrud<Dependency>? s_dalDependency; //stage 1
 
     private static readonly Random s_rand = new();
     private static void createEngineer()// initialization of an engineer
@@ -190,15 +187,10 @@ public static class Initialization
 
     public static void Do(IDal dal)// initialization
     {
-        //s_dalDependency = dalDependency ?? throw new NullReferenceException("DAL can not be null!");
-        //s_dalTask = dalTask ?? throw new NullReferenceException("DAL can not be null!");
-        //s_dalEngineer = dalEngineer ?? throw new NullReferenceException("DAL can not be null!");
         s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
 
         createEngineer();
         createTask();
-        createDependency();
-      
-        
+        createDependency();        
     }
 }

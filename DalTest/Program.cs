@@ -16,10 +16,7 @@ using System.Xml.Linq;
 internal class Program
 {
 
-    //private static ITask? s_dalTask = new TaskImplementation();
-    //private static IEngineer? s_dalEngineer = new EngineerImplementation();
-    //private static IDependency? s_dalDependency = new DependencyImplementation();
-    static readonly IDal s_dal = new DalList(); //stage 2
+    static readonly IDal? s_dal = new DalList(); //stage 2
 
 
     public static EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 

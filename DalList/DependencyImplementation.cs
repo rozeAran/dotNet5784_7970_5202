@@ -9,8 +9,6 @@ internal class DependencyImplementation : IDependency
     public int Create(Dependency item)//creates a dependency
     {
         int id = DataSource.Config.NextDepId;
-       // Dependency copy = item with { Id = id };
-       //DataSource.Dependencies.Add(copy);
         Dependency copy = new Dependency{  Id = id, DependentTask = item.DependentTask, DependOnTask = item.DependOnTask };
         return item.Id;  
     }
