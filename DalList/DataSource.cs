@@ -2,6 +2,9 @@
 using DO;
 namespace Dal;
 
+/// <summary>
+/// running numbers and definitions of Tasks,Engineers,Dependencies
+/// </summary>
 static class DataSource
 {
     internal static List<DO.Task> Tasks { get; } = new();

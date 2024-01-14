@@ -6,6 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DalApi;
+/// <summary>
+/// general interface
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public interface ICrud<T> where T : class
 {
     int Create(T item); //Creates new entity object in DAL

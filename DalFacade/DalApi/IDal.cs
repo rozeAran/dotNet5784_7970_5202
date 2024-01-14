@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DalApi;
+/// <summary>
+/// interface for dal- task, engineer and dependency (all readOnly)
+/// </summary>
 public interface IDal
 {
     ITask Task { get; }
