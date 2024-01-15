@@ -37,3 +37,9 @@ public class DalNotAPossabilityException : Exception//there is no such an option
 {
     public DalNotAPossabilityException(string? message) : base(message) { }
 }
+
+[Serializable]
+public class DalXMLFileLoadCreateException : Exception//something with the xml file went wrong
+{
+    public DalXMLFileLoadCreateException(string? message) : base(message) { }
+}
