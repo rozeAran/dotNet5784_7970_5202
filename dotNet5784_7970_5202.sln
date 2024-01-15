@@ -10,11 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalFacade", "DalFacade\DalFacade.csproj", "{7EAEB7CA-E787-435A-B0BD-EB2365E21EB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalFacade", "DalFacade\DalFacade.csproj", "{7EAEB7CA-E787-435A-B0BD-EB2365E21EB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalList", "DalList\DalList.csproj", "{FFD8220A-8CBD-4186-8862-0E81F2F51CBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalList", "DalList\DalList.csproj", "{FFD8220A-8CBD-4186-8862-0E81F2F51CBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalTest", "DalTest\DalTest.csproj", "{9969705B-8BB8-4319-9214-41226644676A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalTest", "DalTest\DalTest.csproj", "{9969705B-8BB8-4319-9214-41226644676A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalXml", "DalXml\DalXml.csproj", "{D993CDB3-74FB-44C6-BF5C-844024512BD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,12 +40,17 @@ Global
 		{9969705B-8BB8-4319-9214-41226644676A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9969705B-8BB8-4319-9214-41226644676A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9969705B-8BB8-4319-9214-41226644676A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D993CDB3-74FB-44C6-BF5C-844024512BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D993CDB3-74FB-44C6-BF5C-844024512BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D993CDB3-74FB-44C6-BF5C-844024512BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D993CDB3-74FB-44C6-BF5C-844024512BD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9969705B-8BB8-4319-9214-41226644676A} = {B573CF20-DD24-470F-9269-9130695F6BC4}
+		{D993CDB3-74FB-44C6-BF5C-844024512BD2} = {B573CF20-DD24-470F-9269-9130695F6BC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B59F32E-09CA-4162-A51E-3BE4FDB62039}
