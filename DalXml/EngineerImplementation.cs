@@ -1,7 +1,7 @@
 ﻿using Dal;
 using DalApi;
 using DO;
-using System.Xml.Serialization;
+using System.Xml.Linq;
 
 namespace Dal;
 
@@ -21,7 +21,8 @@ internal class EngineerImplementation : IEngineer
 
     public Engineer? Read(int id)
     {
-        throw new NotImplementedException();
+        XElement? engineerElem=XMLTools.LoadListFromXMLElement(s_engineers_xml).Elements().FirstOrDefault(en=>(int?)en.Element("Id")==id);
+        return engineerElem is null ? null : getEngineer(engineerElem);
     }
 
     public Engineer? Read(Func<Engineer, bool> filter)

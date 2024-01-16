@@ -2,7 +2,6 @@
 using DalApi;
 using DO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Dal;
