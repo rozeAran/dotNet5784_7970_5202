@@ -3,6 +3,7 @@ using Dal;
 using DO;
 using System.Xml.Serialization;
 using System.Data.Common;
+using System.IO;
 namespace Dal;
 
 internal class TaskImplementation : ITask
@@ -14,6 +15,12 @@ internal class TaskImplementation : ITask
         int id = Config.NextTaskId;
         DO.Task copy = item with { Id = id };
         List<DO.Task> tasks = new List<DO.Task>();
+        tasks= LoadListFromXMLSerializer(s_tasks_xml);
+        //FileStream fs = new FileStream(path, FileMode.Open);
+        XmlSerializer x = new XmlSerializer(typeof(List<DO.Task>));
+         (List<DO.Task>)x.Deserialize(s_tasks_xml);
+
+
         XmlSerializer Deserialize = new XmlSerializer(typeof(DO.Task));
         if (tasks.Count > 0 )
              tasks.Deserialize(s_tasks_xml);
