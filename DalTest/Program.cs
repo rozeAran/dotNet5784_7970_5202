@@ -1,4 +1,4 @@
-﻿///mini project stage1 roze arenbayev 329335202 and tal biton 329397970
+﻿///mini project stage3 roze arenbayev 329335202 and tal biton 329397970
 
 using System.Reflection.Emit;
 namespace DalTest;
@@ -16,7 +16,9 @@ using System.Xml.Linq;
 internal class Program
 {
 
-    static readonly IDal? s_dal = new DalList(); //stage 2
+    //static readonly IDal s_dal = new DalList(); //stage 2
+    static readonly IDal s_dal = new DalXml(); //stage 3
+
 
 
     public static EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
@@ -259,15 +261,36 @@ internal class Program
 
     static void MainMenu()//menu
     {
-        Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
+        Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n 4 : Initialization\n");
         int choice = int.Parse(Console.ReadLine());
         while (choice != 0)
         {
             switch (choice)
             {
-                case 1: TaskImp(); break;
-                case 2: DependencyImp(); break;
-                case 3: EngineerImp(); break;
+                case 1:
+                    {
+                        TaskImp();
+                        break;
+                    }
+                case 2:
+                    {
+                        EngineerImp();
+                        break;
+                    }
+                case 3:
+                    {
+                        DependencyImp();  
+                        break; 
+                    }
+                case 4:
+                    {
+                        Console.Write("Would you like to create Initial data? (Y/N)"); //stage 3
+                        string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input"); //stage 3
+                        if (ans == "Y") //stage 3
+                            Initialization.Do(s_dal); //stage 2
+                        break;
+
+                    }
                 default: throw new Exception("no such possibility");
             }
             Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
@@ -280,7 +303,7 @@ internal class Program
 	{
 		try
 		{
-            Initialization.Do(s_dal);
+            //Initialization.Do(s_dal);
             MainMenu();
 
         }
