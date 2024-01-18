@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 static class XMLTools
 {
     const string s_xml_dir = @"..\xml\";
+
     static XMLTools()
     {
         if (!Directory.Exists(s_xml_dir))
@@ -97,4 +98,5 @@ static class XMLTools
         }
     }
     #endregion
+
 }
