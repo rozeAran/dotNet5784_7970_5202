@@ -24,14 +24,19 @@ internal class EngineerImplementation : IEngineer
     }
 
     public int Create(Engineer item)
-    { 
+    {
 
         XElement? engineerElements = XMLTools.LoadListFromXMLElement(s_engineers_xml);
-        int id = Config.NextTaskId;
-        DO.Engineer copy = item with { Id = id };
+        //int id = Config.NextTaskId;
+        Engineer copy = item with { Id = item.Id };
+
+        // Check if an engineer with the same Id already exists
+        if (Read(item.Id)!=null)
+            throw new DalAlreadyExistsException($"Engineer with ID={item.Id} already exists");
         engineerElements.Add(copy);
         XMLTools.SaveListToXMLElement(engineerElements, s_engineers_xml);
         return item.Id;
+
     }
 
     public void Delete(int id)

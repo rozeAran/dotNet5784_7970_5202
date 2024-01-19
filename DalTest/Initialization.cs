@@ -12,7 +12,7 @@ public static class Initialization
     private static IDal? s_dal;//stage 2
 
     private static readonly Random s_rand = new();
-    private static void createEngineer()// initialization of an engineer
+    private static void CreateEngineer()// initialization of an engineer
     {
         string[] engineerNames =
         {
@@ -81,7 +81,7 @@ public static class Initialization
 
 
     }
-    private static void createTask()// initialization of a task
+    private static void CreateTask()// initialization of a task
     {
         string[] description =
         {
@@ -159,7 +159,7 @@ public static class Initialization
 
 
     }
-    private static void createDependency()// initialization of a dependency
+    private static void CreateDependency()// initialization of a dependency
     {
         int NUMDEP = 40;
         for (int i = 0; i < NUMDEP; i++)
@@ -189,8 +189,8 @@ public static class Initialization
     {
         s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
 
-        createEngineer();
-        createTask();
-        createDependency();        
+        CreateEngineer();
+        CreateTask();
+        CreateDependency();        
     }
 }
