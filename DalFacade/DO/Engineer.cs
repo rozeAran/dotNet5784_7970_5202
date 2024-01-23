@@ -17,7 +17,6 @@ public record Engineer
     EngineerExperience Level,
     double Cost
 )
-
 {
     public Engineer() : this(0,"","", EngineerExperience.Beginner, 0) { }//deafult constractor
    

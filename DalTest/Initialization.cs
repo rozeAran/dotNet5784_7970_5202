@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 public static class Initialization
 {
+
     private static IDal? s_dal;//stage 2
 
     private static readonly Random s_rand = new();

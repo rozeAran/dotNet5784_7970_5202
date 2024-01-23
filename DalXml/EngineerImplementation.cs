@@ -41,6 +41,9 @@ internal class EngineerImplementation : IEngineer
 
     public void Delete(int id)
     {
+
+        //XElement? engineerElements = XMLTools.LoadListFromXMLElement(s_engineers_xml);
+        XElement? engineerElem = XMLTools.LoadListFromXMLElement(s_engineers_xml).Elements().FirstOrDefault(en => (int?)en.Element("Id") == id);
         //Engineer engineerToDelete = Read(id);
         if (Read(id)!=null)
         {
@@ -56,6 +59,7 @@ internal class EngineerImplementation : IEngineer
             //XMLTools.SaveListToXMLElement(engineerElem, s_engineers_xml);
             throw new DalDeletionImpossible($"Engineer with ID={id} doesn't exist");
         }
+        */
 
     }
 
