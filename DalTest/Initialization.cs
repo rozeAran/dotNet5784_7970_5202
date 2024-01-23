@@ -190,18 +190,21 @@ public static class Initialization
 
     public static void Do(IDal dal)// initialization
     {
-        
+
         //deleting everything before the initialization
-       
-        foreach (var task in s_dal!.Task.ReadAll())
-        {
-            s_dal!.Task.Delete(task.Id); ;
-        }
-        foreach (var dep in s_dal.Dependency.ReadAll())
+
+
+        IEnumerable<DO.Dependency?> dependencies = s_dal.Dependency.ReadAll();
+        foreach (var dep in dependencies)
         {
             s_dal!.Dependency.Delete(dep.Id); ;
         }
-        foreach(var eng in s_dal.Engineer.ReadAll())
+        IEnumerable<DO.Task?> tasks = s_dal.Task.ReadAll();
+        foreach (var task in tasks)
+        {
+            s_dal!.Task.Delete(task.Id); ;
+        }
+        foreach (var eng in s_dal.Engineer.ReadAll())
         {
             s_dal!.Dependency.Delete(eng.Id); ;
         }

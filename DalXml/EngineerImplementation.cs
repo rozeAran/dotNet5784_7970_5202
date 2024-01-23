@@ -41,12 +41,12 @@ internal class EngineerImplementation : IEngineer
 
     public void Delete(int id)
     {
-
-        //XElement? engineerElements = XMLTools.LoadListFromXMLElement(s_engineers_xml);
-        XElement? engineerElem = XMLTools.LoadListFromXMLElement(s_engineers_xml).Elements().FirstOrDefault(en => (int?)en.Element("Id") == id);
         //Engineer engineerToDelete = Read(id);
-        if (engineerElem != null)
+        if (Read(id)!=null)
         {
+
+            XElement? engineerElements = XMLTools.LoadListFromXMLElement(s_engineers_xml);
+            XElement? engineerElem = engineerElements.Elements().FirstOrDefault(en => (int?)en.Element("Id") == id);
             engineerElem.Remove();
             XMLTools.SaveListToXMLElement(engineerElem, s_engineers_xml);
 
@@ -92,5 +92,9 @@ internal class EngineerImplementation : IEngineer
         engineerElem.Add(item);
         XMLTools.SaveListToXMLElement(engineerElem, s_engineers_xml);
 
+    }
+
+    public void DeleteAll() 
+    {
     }
 }
