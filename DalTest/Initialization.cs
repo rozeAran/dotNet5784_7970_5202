@@ -5,7 +5,10 @@ using System.Data.Common;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Xml.Serialization;
+using Dal;
 using System.Xml.Linq;
+using System.Threading.Tasks;
 
 public static class Initialization
 {
@@ -153,7 +156,7 @@ public static class Initialization
                 //engineerId = s_rand.Next(200000000, 400000000);
            // while (s_dal!.Engineer.Read(engineerId) == null);
             //creates the new engineer 
-            Task newTask = new(0, $"task{i}", description[i], createdAtDate, requiredEffortTime, level, "deliverables", engineerId, "remarks", null, null, deadLineDate, false, null);
+            DO.Task newTask = new(0, $"task{i}", description[i], createdAtDate, requiredEffortTime, level, "deliverables", engineerId, "remarks", null, null, deadLineDate, false, null);
             s_dal!.Task.Create(newTask);
         }
 
@@ -187,8 +190,24 @@ public static class Initialization
 
     public static void Do(IDal dal)// initialization
     {
-        s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
+        
+        //deleting everything before the initialization
+       
+        foreach (var task in s_dal!.Task.ReadAll())
+        {
+            s_dal!.Task.Delete(task.Id); ;
+        }
+        foreach (var dep in s_dal.Dependency.ReadAll())
+        {
+            s_dal!.Dependency.Delete(dep.Id); ;
+        }
+        foreach(var eng in s_dal.Engineer.ReadAll())
+        {
+            s_dal!.Dependency.Delete(eng.Id); ;
+        }
+        //s_dal.Dependency.Delete;
 
+        s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
         CreateEngineer();
         CreateTask();
         CreateDependency();        
