@@ -170,7 +170,7 @@ public static class Initialization
         {
             int dependentTask;///ID number of depending task
             do
-                dependentTask =s_rand.Next(0, 20);
+                dependentTask =s_rand.Next(270, 400);
             while ((s_dal!.Task.Read(dependentTask) == null) );
             int dependOnTask;///Previous task ID number
             do
@@ -195,7 +195,7 @@ public static class Initialization
         //deleting everything before the initialization
 
 
-        IEnumerable<DO.Dependency?> dependencies = s_dal.Dependency.ReadAll();
+        /*IEnumerable<DO.Dependency?> dependencies = s_dal.Dependency.ReadAll();
         foreach (var dep in dependencies)
         {
             s_dal!.Dependency.Delete(dep.Id); ;
@@ -208,8 +208,12 @@ public static class Initialization
         foreach (var eng in s_dal.Engineer.ReadAll())
         {
             s_dal!.Dependency.Delete(eng.Id); ;
-        }
+        }*/
         //s_dal.Dependency.Delete;
+        
+        dal.Engineer.DeleteAll();
+        dal.Task.DeleteAll();
+        dal.Dependency.DeleteAll();
 
         s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
         CreateEngineer();

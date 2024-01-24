@@ -33,7 +33,7 @@ internal class EngineerImplementation : IEngineer
         // Check if an engineer with the same Id already exists
         if (Read(item.Id)!=null)
             throw new DalAlreadyExistsException($"Engineer with ID={item.Id} already exists");
-        engineerElements.Add(copy);
+        engineerElements.SetValue(copy);
         XMLTools.SaveListToXMLElement(engineerElements, s_engineers_xml);
         return item.Id;
 
@@ -43,7 +43,6 @@ internal class EngineerImplementation : IEngineer
     {
 
         //XElement? engineerElements = XMLTools.LoadListFromXMLElement(s_engineers_xml);
-        XElement? engineerElem = XMLTools.LoadListFromXMLElement(s_engineers_xml).Elements().FirstOrDefault(en => (int?)en.Element("Id") == id);
         //Engineer engineerToDelete = Read(id);
         if (Read(id)!=null)
         {
@@ -59,7 +58,7 @@ internal class EngineerImplementation : IEngineer
             //XMLTools.SaveListToXMLElement(engineerElem, s_engineers_xml);
             throw new DalDeletionImpossible($"Engineer with ID={id} doesn't exist");
         }
-        */
+        
 
     }
 
@@ -98,7 +97,10 @@ internal class EngineerImplementation : IEngineer
 
     }
 
-    public void DeleteAll() 
+    public void DeleteAll()
     {
+        XElement? dependencies = XMLTools.LoadListFromXMLElement(s_engineers_xml);
+        dependencies.RemoveAll();
+        XMLTools.SaveListToXMLElement(dependencies, s_engineers_xml);
     }
 }
