@@ -123,36 +123,7 @@ internal class DependenceImplementation : IDependence
 internal class EngineerImplementation : IEngineer
 {
     XElement? EngineerRoot;
-    string s_engineers_xml = @"engineers.xml";
-    public EngineerImplementation()
-    {
-        if (!File.Exists(s_engineers_xml))
-            CreateFiles();
-        else
-            LoadData();
-    }
-    private void CreateFiles()
-    {
-        EngineerRoot = new XElement("Engineers"); EngineerRoot.Save(s_engineers_xml);
-    }
-    public void DeleteFiles()
-    {
-       EngineerRoot!.RemoveAll();
-    }
-    private void LoadData()
-    {
-        try
-        {
-            EngineerRoot = XElement.Load(s_engineers_xml);
-        }
-
-        catch
-
-        {
-            Console.WriteLine("File upload problem");
-        }
-    }
-
+    readonly string s_engineers_xml = "engineers";
     static Engineer GetEngineer(XElement s)
     {
         return new Engineer()
