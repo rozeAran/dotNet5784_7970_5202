@@ -64,4 +64,9 @@ internal class TaskImplementation :ITask
 
         return result.FirstOrDefault(filter); 
     }
+
+    public void DeleteAll()
+    {
+        DataSource.Tasks.Clear();
+    }
 }

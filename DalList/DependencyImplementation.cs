@@ -61,4 +61,9 @@ internal class DependencyImplementation : IDependency
 
         return result.FirstOrDefault(filter); 
     }
+
+    public void DeleteAll()
+    {
+        DataSource.Dependencies.Clear();
+    }
 }

@@ -82,4 +82,8 @@ internal class EngineerImplementation :IEngineer
         return result.FirstOrDefault(filter); 
 
     }
+    public void DeleteAll()
+    {
+        DataSource.Engineers.Clear();
+    }
 }
