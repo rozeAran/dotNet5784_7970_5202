@@ -142,10 +142,10 @@ internal class EngineerImplementation : IEngineer
     {
 
         XElement engineerElements = XMLTools.LoadListFromXMLElement(s_engineers_xml);
-        Engineer copy = item with { Id = item.Id };
+        XElement copy= new XElement(engineerElements);
         if (Read(item.Id)!=null)// Check if an engineer with the same Id already exists
             throw new DalAlreadyExistsException($"Engineer with ID={item.Id} already exists");
-        engineerElements.SetValue(copy);
+        engineerElements.Add(copy);
         XMLTools.SaveListToXMLElement(engineerElements, s_engineers_xml);
         return item.Id;
 
