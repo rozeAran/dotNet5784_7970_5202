@@ -67,6 +67,6 @@ internal class TaskImplementation :ITask
 
     public void DeleteAll()
     {
-
+        DataSource.Tasks.Clear();
     }
 }

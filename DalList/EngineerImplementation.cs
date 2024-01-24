@@ -84,6 +84,6 @@ internal class EngineerImplementation :IEngineer
     }
     public void DeleteAll()
     {
-        
+        DataSource.Engineers.Clear();
     }
 }
