@@ -1,94 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfEngineer>
   <Engineer>
-    <Id>376087551</Id>
+    <Id>257483232</Id>
     <DependentTask>Dani Lnui</DependentTask>
     <DependsOnTask>Dani Lnui@jct.com</DependsOnTask>
-    <DependsOnTask>AdvancedBeginner</DependsOnTask>
-    <DependsOnTask>266.74655180251347</DependsOnTask>
+    <DependsOnTask>Beginner</DependsOnTask>
+    <DependsOnTask>129.4305862776893</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>396583028</Id>
+    <Id>201078555</Id>
     <DependentTask>Tamar Yarin</DependentTask>
     <DependsOnTask>Tamar Yarin@jct.com</DependsOnTask>
-    <DependsOnTask>AdvancedBeginner</DependsOnTask>
-    <DependsOnTask>109.47006492764274</DependsOnTask>
+    <DependsOnTask>Intermediate</DependsOnTask>
+    <DependsOnTask>76.11062245697605</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>351958452</Id>
+    <Id>383401138</Id>
     <DependentTask>Yoval Cohen</DependentTask>
     <DependsOnTask>Yoval Cohen@jct.com</DependsOnTask>
-    <DependsOnTask>Intermediate</DependsOnTask>
-    <DependsOnTask>381.8176681404167</DependsOnTask>
+    <DependsOnTask>Advanced</DependsOnTask>
+    <DependsOnTask>38.32645953767955</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>304830557</Id>
+    <Id>368509860</Id>
     <DependentTask>Ariel Levi</DependentTask>
     <DependsOnTask>Ariel Levi@jct.com</DependsOnTask>
-    <DependsOnTask>Expert</DependsOnTask>
-    <DependsOnTask>232.61539256147407</DependsOnTask>
+    <DependsOnTask>Advanced</DependsOnTask>
+    <DependsOnTask>9.717542693629921</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>220616266</Id>
+    <Id>236492621</Id>
     <DependentTask>Dana Klein</DependentTask>
     <DependsOnTask>Dana Klein@jct.com</DependsOnTask>
     <DependsOnTask>AdvancedBeginner</DependsOnTask>
-    <DependsOnTask>121.28379908200785</DependsOnTask>
+    <DependsOnTask>76.26002867124622</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>326245349</Id>
+    <Id>396983106</Id>
     <DependentTask>Shira Israelof</DependentTask>
     <DependsOnTask>Shira Israelof@jct.com</DependsOnTask>
-    <DependsOnTask>Expert</DependsOnTask>
-    <DependsOnTask>248.99003376571054</DependsOnTask>
+    <DependsOnTask>Intermediate</DependsOnTask>
+    <DependsOnTask>69.13777953314118</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>352559551</Id>
+    <Id>269641549</Id>
     <DependentTask>Gal Tnzanya</DependentTask>
     <DependsOnTask>Gal Tnzanya@jct.com</DependsOnTask>
-    <DependsOnTask>Beginner</DependsOnTask>
-    <DependsOnTask>318.78349372818985</DependsOnTask>
+    <DependsOnTask>Advanced</DependsOnTask>
+    <DependsOnTask>110.97973388461725</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>231169990</Id>
+    <Id>393310626</Id>
     <DependentTask>Aharon Yoni</DependentTask>
     <DependsOnTask>Aharon Yoni@jct.com</DependsOnTask>
-    <DependsOnTask>Advanced</DependsOnTask>
-    <DependsOnTask>96.61399851258437</DependsOnTask>
+    <DependsOnTask>Beginner</DependsOnTask>
+    <DependsOnTask>206.52766520767872</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>252878443</Id>
+    <Id>228712837</Id>
     <DependentTask>Yahel Koper</DependentTask>
     <DependsOnTask>Yahel Koper@jct.com</DependsOnTask>
-    <DependsOnTask>AdvancedBeginner</DependsOnTask>
-    <DependsOnTask>17.57888901753791</DependsOnTask>
+    <DependsOnTask>Beginner</DependsOnTask>
+    <DependsOnTask>26.47772591528538</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>323576935</Id>
+    <Id>348030740</Id>
     <DependentTask>Oded Paz</DependentTask>
     <DependsOnTask>Oded Paz@jct.com</DependsOnTask>
-    <DependsOnTask>Intermediate</DependsOnTask>
-    <DependsOnTask>410.4185253536252</DependsOnTask>
+    <DependsOnTask>Beginner</DependsOnTask>
+    <DependsOnTask>0.7676069720817287</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>356269990</Id>
+    <Id>312762279</Id>
     <DependentTask>Simon Yalon</DependentTask>
     <DependsOnTask>Simon Yalon@jct.com</DependsOnTask>
-    <DependsOnTask>Expert</DependsOnTask>
-    <DependsOnTask>367.3941617758082</DependsOnTask>
+    <DependsOnTask>Advanced</DependsOnTask>
+    <DependsOnTask>6.988795168433041</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>271832096</Id>
+    <Id>255431289</Id>
     <DependentTask>Saked Yair</DependentTask>
     <DependsOnTask>Saked Yair@jct.com</DependsOnTask>
     <DependsOnTask>Expert</DependsOnTask>
-    <DependsOnTask>84.68721093652172</DependsOnTask>
+    <DependsOnTask>52.79312737113846</DependsOnTask>
   </Engineer>
   <Engineer>
-    <Id>222316207</Id>
+    <Id>219829131</Id>
     <DependentTask>Yehoda Davidi</DependentTask>
     <DependsOnTask>Yehoda Davidi@jct.com</DependsOnTask>
-    <DependsOnTask>AdvancedBeginner</DependsOnTask>
-    <DependsOnTask>5.0939046689634555</DependsOnTask>
+    <DependsOnTask>Intermediate</DependsOnTask>
+    <DependsOnTask>24.133553208297183</DependsOnTask>
   </Engineer>
 </ArrayOfEngineer>
