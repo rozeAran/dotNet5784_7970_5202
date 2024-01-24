@@ -170,12 +170,12 @@ public static class Initialization
         {
             int dependentTask;///ID number of depending task
             do
-                dependentTask =s_rand.Next(270, 400);
+                dependentTask =s_rand.Next(1, 1000);
             while ((s_dal!.Task.Read(dependentTask) == null) );
             int dependOnTask;///Previous task ID number
             do
             {
-                dependOnTask = s_rand.Next(0,50);
+                dependOnTask = s_rand.Next(0,1000);
                 if ((s_dal!.Task.Read(dependOnTask) != null))
                     if ((s_dal!.Task.Read(dependOnTask).DeadLineDate <= s_dal!.Task.Read(dependentTask).ScheduledDate))///if the time line fits
                         break;
@@ -191,25 +191,6 @@ public static class Initialization
 
     public static void Do(IDal dal)// initialization
     {
-
-        //deleting everything before the initialization
-
-
-        /*IEnumerable<DO.Dependency?> dependencies = s_dal.Dependency.ReadAll();
-        foreach (var dep in dependencies)
-        {
-            s_dal!.Dependency.Delete(dep.Id); ;
-        }
-        IEnumerable<DO.Task?> tasks = s_dal.Task.ReadAll();
-        foreach (var task in tasks)
-        {
-            s_dal!.Task.Delete(task.Id); ;
-        }
-        foreach (var eng in s_dal.Engineer.ReadAll())
-        {
-            s_dal!.Dependency.Delete(eng.Id); ;
-        }*/
-        //s_dal.Dependency.Delete;
         
         dal.Engineer.DeleteAll();
         dal.Task.DeleteAll();
@@ -217,7 +198,7 @@ public static class Initialization
 
         s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
         CreateEngineer();
-      //  CreateTask();
-      //  CreateDependency();        
+        CreateTask();
+        CreateDependency();        
     }
 }
