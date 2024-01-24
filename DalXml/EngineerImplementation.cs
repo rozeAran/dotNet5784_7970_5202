@@ -2,6 +2,7 @@
 using DalApi;
 using DO;
 using System;//.Data.Common;
+using System.Reflection.Emit;
 using System.Xml.Linq;
 
 
@@ -138,17 +139,40 @@ internal class EngineerImplementation : IEngineer
 
     }
 
+
     public int Create(Engineer item)
     {
 
         XElement engineerElements = XMLTools.LoadListFromXMLElement(s_engineers_xml);
-        XElement copy= new XElement(engineerElements);
+        XElement newItem = EngineerToXelement(item with { Id = item.Id });
+        //XElement copy= new XElement(engineerElements);
+
         if (Read(item.Id)!=null)// Check if an engineer with the same Id already exists
             throw new DalAlreadyExistsException($"Engineer with ID={item.Id} already exists");
-        engineerElements.Add(copy);
+        engineerElements.Add(newItem);
         XMLTools.SaveListToXMLElement(engineerElements, s_engineers_xml);
         return item.Id;
 
+
+    }
+    /*static Engineer XelementToEngineer(XElement x)
+    {
+        return new Engineer(XMLTools.ToIntNullable(x, "Id") ?? 0,
+                        XMLTools.(x, "Name") ?? 0,
+                        XMLTools.(x, "Email") ?? 0,
+                        XMLTools.ToEnumNullable(x, "Level") ?? BEGINNER,
+                        XMLTools.ToDoubleNullable(x, "Cost") ?? 0);
+    }*/
+
+    static XElement EngineerToXelement(Engineer item)
+    {
+        return new XElement("Engineer",
+            new XElement("Id", item.Id),
+            new XElement("DependentTask", item.Name),
+            new XElement("DependsOnTask", item.Email),
+            new XElement("DependsOnTask", item.Level),
+            new XElement("DependsOnTask", item.Cost)
+            ) ; 
     }
 
     public void Delete(int id)
