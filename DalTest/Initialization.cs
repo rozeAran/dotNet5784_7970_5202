@@ -1,5 +1,6 @@
 ﻿namespace DalTest;
 using DalApi;
+using DalList;
 using DO;
 using System.Data.Common;
 using System.Reflection.Emit;
@@ -170,7 +171,7 @@ public static class Initialization
         {
             int dependentTask;///ID number of depending task
             do
-                dependentTask =s_rand.Next(270, 400);
+                dependentTask =s_rand.Next(1, 100000);
             while ((s_dal!.Task.Read(dependentTask) == null) );
             int dependOnTask;///Previous task ID number
             do
