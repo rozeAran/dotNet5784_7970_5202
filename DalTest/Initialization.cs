@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 public static class Initialization
 {
 
-    private static IDal? s_dal;//stage 2
+    internal static IDal? s_dal;//stage 2
+    internal static readonly Random s_rand = new(); //stage 4
 
-    private static readonly Random s_rand = new();
     private static void CreateEngineer()// initialization of an engineer
     {
         string[] engineerNames =
