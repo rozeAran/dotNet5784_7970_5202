@@ -7,3 +7,13 @@ public enum EngineerExperience
     Advanced, 
     Expert
 }
+
+public enum Status
+{
+    unscheduled,
+    scheduled,
+    onTrack,
+    InJeopardy,
+    Done
+}
+
