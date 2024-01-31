@@ -34,7 +34,7 @@ internal class DependencyImplementation: IDependency
         else
         {
             XMLTools.SaveListToXMLSerializer(dependencies, s_dependencies_xml);
-            throw new DalDeletionImpossible($"Task with ID={id} doesn't exist");
+            throw new DalDeletionImpossible($"dependency with ID={id} doesn't exist");
         }
     }
 
@@ -77,7 +77,7 @@ internal class DependencyImplementation: IDependency
     {
         List<DO.Dependency> dependencies = XMLTools.LoadListFromXMLSerializer<DO.Dependency>(s_dependencies_xml);
         if (dependencies.RemoveAll(it => it.Id == item.Id) == 0)
-            throw new DalDoesNotExistException($"task with id={item.Id} does not exist");
+            throw new DalDoesNotExistException($"Dependency with id={item.Id} does not exist");
         dependencies.Add(item);
         XMLTools.SaveListToXMLSerializer(dependencies, s_dependencies_xml);
     }

@@ -43,7 +43,7 @@ internal class TaskImplementation : ITask
     public DO.Task? Read(int id)
     {
         List<DO.Task> tasks = XMLTools.LoadListFromXMLSerializer<DO.Task>(s_tasks_xml);
-        DO.Task? task = tasks.Find(x => x.Id == id);
+        DO.Task? task = tasks.FirstOrDefault(x => x.Id == id);
         XMLTools.SaveListToXMLSerializer(tasks, s_tasks_xml);
         return task;
     }
