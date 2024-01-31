@@ -15,6 +15,7 @@ public static class Initialization
 {
 
     internal static IDal? s_dal;//stage 2
+
     internal static readonly Random s_rand = new(); //stage 4
 
     private static void CreateEngineer()// initialization of an engineer
@@ -190,14 +191,16 @@ public static class Initialization
    
   
 
-    public static void Do(IDal dal)// initialization
+    public static void Do()// initialization
     {
-        
-        dal.Engineer.DeleteAll();
-        dal.Task.DeleteAll();
-        dal.Dependency.DeleteAll();
 
-        s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
+        s_dal.Engineer.DeleteAll();
+        s_dal.Task.DeleteAll();
+        s_dal.Dependency.DeleteAll();
+
+        //s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
+        s_dal = DalApi.Factory.Get; //stage 4
+
         CreateEngineer();
         CreateTask();
         CreateDependency();        
