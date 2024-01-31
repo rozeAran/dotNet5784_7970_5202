@@ -16,11 +16,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalList", "DalList\DalList.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalTest", "DalTest\DalTest.csproj", "{9969705B-8BB8-4319-9214-41226644676A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalXml", "DalXml\DalXml.csproj", "{D993CDB3-74FB-44C6-BF5C-844024512BD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalXml", "DalXml\DalXml.csproj", "{D993CDB3-74FB-44C6-BF5C-844024512BD2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{7B738D8B-15A7-474C-B4F2-46478B5EE33D}"
 	ProjectSection(SolutionItems) = preProject
 		xml\data-config.xml = xml\data-config.xml
+		xml\dal-config.xml = xml\dal-config.xml
 		xml\dependencies.xml = xml\dependencies.xml
 		xml\engineers.xml = xml\engineers.xml
 		xml\tasks.xml = xml\tasks.xml
