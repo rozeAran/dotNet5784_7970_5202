@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace BO;
 
-public record MilestoneInTask
-(
-    int Id,
-    string? Alias
-)
-{
+public class MilestoneInTask
+{ 
+    public int Id { get; init; }
+
+    public string? Alias { get; init; }
+
+
 }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace BO;
 
-public class EngineerInTask
+public class MilestoneInList
 {
-   public int Id { get; init; }
-
-    public string Name { get; set; }
+    int Id,
+    string? Alias,
+    string? Description,
+    BO.Status Status,
+    double CompletionPercentage
 
 }

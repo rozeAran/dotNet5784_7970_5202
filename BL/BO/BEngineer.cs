@@ -7,15 +7,18 @@ using DO;
 
 namespace BO;
 
-public record BEngineer
-(
-    int Id,
-    string Name,
-    string Email,
-    BO.EngineerExperience Level,
-    double Cost,
-    BO.TaskInEngineer Task
-)
+public class BEngineer
 {
-    
+    public int Id { get; init; }
+
+    public string Name { get; set; }
+
+    public string Email { get; set; }
+
+    BO.EngineerExperience Level { get; set; }
+
+    public double Cost { get; set; }
+
+    BO.TaskInEngineer Task { get; set; }
+
 }
