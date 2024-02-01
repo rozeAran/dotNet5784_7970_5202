@@ -16,17 +16,17 @@ public record BTask
     BO.EngineerExperience Complexity,
     string? Deliverables,
     int EngineerId,
+    BO.Status Status,
+    List<BO.TaskInList> Dependencies,
+    BO.MilestoneInTask Milestone,
+    BO.EngineerInTask Engineer,
     string? Remarks,
     DateTime? ScheduledDate = null,
     DateTime? CompleteDate = null,
     DateTime? DeadLineDate = null,
     bool IsMilestone = false,
     DateTime? StartDate = null,
-    datetime ForecastDate,
-    BO.Status Status,
-    List<BO.TaskInList> Dependencies,
-    BO.MilestoneInTask Milestone,
-    BO.EngineerInTask Engineer 
+    DateTime? ForecastDate = null
 )
 {
 
