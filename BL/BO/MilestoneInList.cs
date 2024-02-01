@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BO;
+﻿namespace BO;
 
 public class MilestoneInList
 {
-    int Id,
-    string? Alias,
-    string? Description,
-    BO.Status Status,
-    double CompletionPercentage
+    public int Id { get; init; }
+    public string? Alias { get; set; }
+    public string? Description { get; set; }
+    BO.Status Status { get; set; }
+    public double CompletionPercentage { get; set; }
 
 }

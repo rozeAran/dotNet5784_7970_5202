@@ -8,8 +8,8 @@ namespace BO;
 
 public class TaskInList
 { 
-  int Id,
-  string Description,
-  string Alias,
-  BO.Status Status
+    public int Id { get; init; }
+    public string Description { get; set; }
+    public string Alias { get; set; }
+    BO.Status Status { get; set; }
 }
