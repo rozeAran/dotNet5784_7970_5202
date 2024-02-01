@@ -1,5 +1,5 @@
 ﻿namespace BO;
-public class BTask//maybe we need to make more public
+public class BTask
 {
     public int Id { get; init; }
     public string? Alias { get; set; }
