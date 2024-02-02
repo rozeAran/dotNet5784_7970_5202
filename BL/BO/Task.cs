@@ -16,8 +16,26 @@
 /// <param name="DeadLineDate"> The latest possible date on which the task is finished will not cause the project to fail, so that the entire sequence of tasks that depend on it will be completed before the deadline of the entire project.</param>
 /// <param name="IsMilestone"> </param>
 /// <param name="StartDate"> Work Start Date - When an engineer begins actual work on the task</param>
-public class TaskInEngineer
-{ 
+public class Task
+{
     public int Id { get; init; }
     public string? Alias { get; set; }
+    public string? Description { get; set; }
+    DateTime CreatedAtDate { get; init; }
+    TimeSpan RequiredEffortTime { get; set; }
+    BO.EngineerExperience Complexity { get; set; }
+    public string? Deliverables { get; set; }
+    public int EngineerId { get; set; }
+    BO.Status Status { get; set; }
+    List<BO.TaskInList> Dependencies { get; set; }
+    BO.MilestoneInTask Milestone { get; set; }
+    BO.EngineerInTask Engineer { get; set; }
+    public string? Remarks { get; set; }
+    public bool IsMilestone { get; init; }=false;
+    DateTime? ForecastDate { get; set; } = null;
+    DateTime? ScheduledDate { get; set; } = null;
+    DateTime? CompleteDate { get; set; } = null;
+    DateTime? DeadLineDate { get; set; } = null;
+    DateTime? StartDate { get; init; } = null;
+    
 }
