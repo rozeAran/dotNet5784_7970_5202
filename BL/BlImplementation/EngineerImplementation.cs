@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BO;
+using System.Linq;
 
 namespace BlImplementation;
 
@@ -8,7 +9,23 @@ internal class EngineerImplementation : IEngineer
     private DalApi.IDal _dal = DalApi.Factory.Get;
     public int Create(Engineer item)
     {
-        throw new NotImplementedException();
+
+        try
+        {
+            if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || !(item.Email.Contains(" ")) || item.Email.Contains("@") || item.Email.Contains(".co"))
+            {
+                throw new Exception("data is not valid\n");
+            }
+            DO.Engineer doEngineer = new DO.Engineer
+                (item.Id, item.Name, item.Email, (DO.EngineerExperience?)item.Level, item.Cost);
+            int idEng = _dal.Engineer.Create(doEngineer);
+            return idEng;
+        }
+        catch (DO.DalAlreadyExistsException ex)
+        {
+            throw new BO.BlAlreadyExistsException($"Student with ID={item.Id} already exists", ex);
+        }
+
     }
 
     public void Delete(int id)
@@ -18,10 +35,23 @@ internal class EngineerImplementation : IEngineer
 
     public Engineer? Read(int id)
     {
-        throw new NotImplementedException();
-    }
+        DO.Engineer? doEngineer = _dal.Engineer.Read(id);
+        if (doEngineer == null)
+            throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
 
-    public IEnumerable<Engineer?> ReadAll(Func<Engineer, bool>? filter = null)
+        return new BO.Engineer()
+        {
+            Id = id,
+            Name = doEngineer.Name,
+            Email = doEngineer.Email,
+            Level = (EngineerExperience)doEngineer.Level,
+            Cost = doEngineer.Cost,
+            Task = null;//adding the current task that the engineer is workng on
+        };
+
+    
+
+    public IEnumerable<EngineerInTask> ReadAll(Func<Engineer, bool>? filter = null)
     {
         throw new NotImplementedException();
     }

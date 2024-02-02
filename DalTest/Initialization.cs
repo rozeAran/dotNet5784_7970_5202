@@ -37,7 +37,9 @@ public static class Initialization
             while (s_dal!.Engineer.Read(id) != null);
 
             //engineer's mail
-            string email = name + "@jct.com";
+            string firstName=name.Substring(0,name.IndexOf(' '));
+            string lastName = name.Substring(name.IndexOf(' '), name.Length);
+            string email = firstName + lastName+ "@jct.com";
 
             //engineers level
             int x = s_rand.Next(0, 5);

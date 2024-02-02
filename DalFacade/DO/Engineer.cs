@@ -1,5 +1,4 @@
-﻿
-namespace DO;
+﻿namespace DO;
 
 /// <summary>
 /// represents an engineer that works on a task and includes usefull information about him/her
@@ -12,10 +11,10 @@ namespace DO;
 public record Engineer 
 (
     int Id,
-    string Name,
-    string Email,
-    EngineerExperience Level,
-    double Cost
+    string? Name,
+    string? Email,
+    EngineerExperience? Level,
+    double? Cost
 )
 {
     public Engineer() : this(0,"","", EngineerExperience.Beginner, 0) { }//deafult constractor
