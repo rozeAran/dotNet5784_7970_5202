@@ -21,7 +21,6 @@ namespace BO;
 /// <param name="EngineerId"> The engineer ID assigned to the task</param>
 /// <param name="Remarks"> Remarks about the task</param>
 /// <param name="DeadLineDate"> The latest possible date on which the task is finished will not cause the project to fail, so that the entire sequence of tasks that depend on it will be completed before the deadline of the entire project.</param>
-/// <param name="IsMilestone"> </param>
 /// <param name="StartDate"> Work Start Date - When an engineer begins actual work on the task</param>
 public class Engineer
 {
@@ -37,7 +36,7 @@ public class Engineer
 
     public Tuple<int,string> ?Task { get; set; }
 
-    /public override string? ToString() => this.ToStringProperty();
+    public override string? ToString() => this.ToStringProperty();
 
 
 }

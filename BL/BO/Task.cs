@@ -28,10 +28,9 @@ public class Task
     public int EngineerId { get; set; }
     BO.Status Status { get; set; }
     List<BO.TaskInList> Dependencies { get; set; }
-    BO.MilestoneInTask Milestone { get; set; }
     BO.EngineerInTask Engineer { get; set; }
     public string? Remarks { get; set; }
-    public bool IsMilestone { get; init; }=false;
+    //public bool IsMilestone { get; init; }=false;
     DateTime? ForecastDate { get; set; } = null;
     DateTime? ScheduledDate { get; set; } = null;
     DateTime? CompleteDate { get; set; } = null;

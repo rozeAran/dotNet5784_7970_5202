@@ -16,8 +16,7 @@ internal class EngineerImplementation : IEngineer
             {
                 throw new Exception("data is not valid\n");
             }
-            DO.Engineer doEngineer = new DO.Engineer
-                (item.Id, item.Name, item.Email, (DO.EngineerExperience?)item.Level, item.Cost);
+            DO.Engineer doEngineer = new DO.Engineer (item.Id, item.Name, item.Email, (DO.EngineerExperience/*?*/)item.Level, item.Cost);
             int idEng = _dal.Engineer.Create(doEngineer);
             return idEng;
         }
@@ -46,10 +45,11 @@ internal class EngineerImplementation : IEngineer
             Email = doEngineer.Email,
             Level = (EngineerExperience)doEngineer.Level,
             Cost = doEngineer.Cost,
-            Task = null;//adding the current task that the engineer is workng on
+            Task = null//adding the current task that the engineer is workng on
         };
+    }
 
-    
+
 
     public IEnumerable<EngineerInTask> ReadAll(Func<Engineer, bool>? filter = null)
     {
