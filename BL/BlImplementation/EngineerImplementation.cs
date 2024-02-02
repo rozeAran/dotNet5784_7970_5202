@@ -53,8 +53,14 @@ internal class EngineerImplementation : IEngineer
 
     public IEnumerable<EngineerInTask> ReadAll(Func<Engineer, bool>? filter = null)
     {
-        throw new NotImplementedException();
+        return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
+                select new BO.EngineerInTask
+                {
+                    Id = doEngineer.Id,
+                    Name = doEngineer.Name,
+                });
     }
+
 
     public void Update(Engineer item)
     {
