@@ -14,7 +14,7 @@ public record Engineer
     string? Name,
     string? Email,
     EngineerExperience? Level,
-    double/*?*/ Cost
+    double? Cost
 )
 {
     public Engineer() : this(0,"","", EngineerExperience.Beginner, 0) { }//deafult constractor
