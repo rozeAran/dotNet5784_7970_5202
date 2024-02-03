@@ -1,6 +1,7 @@
 ﻿using BlApi;
 using BO;
 using DO;
+using System.Data.Common;
 
 namespace BlImplementation;
 
@@ -14,7 +15,7 @@ internal class TaskImplementation : ITask
 
     public int Create(BO.Task item)
     {
-        DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, item.Complexity, item.Deliverables, item.EngineerId, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate, item.IsMilestone, item.StartDate);
+        DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables, item.EngineerId, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate,false, item.StartDate);
         try
         {
             int idTask = _dal.Task.Create(doTask);
@@ -45,43 +46,67 @@ internal class TaskImplementation : ITask
             Description=doTask.Description,
             CreatedAtDate= doTask.CreatedAtDate,
             RequiredEffortTime = doTask.RequiredEffortTime,
-            Complexity=doTask.Complexity,
+            Complexity= (BO.EngineerExperience)doTask.Complexity,
             Deliverables=doTask.Deliverables,
             EngineerId = doTask.EngineerId,
             Remarks=doTask.Remarks,
             ScheduledDate = doTask.ScheduledDate,
             CompleteDate = doTask.CompleteDate,
             DeadLineDate = doTask.DeadLineDate,
-            IsMilestone = doTask.IsMilestone,
+            //IsMilestone = doTask.IsMilestone,
             StartDate = doTask.StartDate
             // CurrentYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
         };
 
     }
 
-    public IEnumerable<TaskInList> ReadAll()
+    /*public IEnumerable<TaskInList> ReadAll()
     {
         throw new NotImplementedException();
-    }
+    }*/
 
     public IEnumerable<BO.Task?> ReadAll(Func<BO.Task, bool>? filter = null)
     {
+
+        if (filter != null)
+        {
+            return (from DO.Task doTask in _dal.Task.ReadAll()
+                    where filter(doTask)
+                    select new BO.Task
+                    {
+                        Id = doTask.Id,
+                        Alias = doTask.Alias,
+                        Description = doTask.Description,
+                        CreatedAtDate = doTask.CreatedAtDate,
+                        RequiredEffortTime = doTask.RequiredEffortTime,
+                        Complexity = (BO.EngineerExperience)doTask.Complexity,
+                        Deliverables = doTask.Deliverables,
+                        EngineerId = doTask.EngineerId,
+                        Remarks = doTask.Remarks,
+                        ScheduledDate = doTask.ScheduledDate,
+                        CompleteDate = doTask.CompleteDate,
+                        DeadLineDate = doTask.DeadLineDate,
+                        //IsMilestone = doTask.IsMilestone,
+                        StartDate = doTask.StartDate
+                        //tYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
+                    });
+        }
         return (from DO.Task doTask in _dal.Task.ReadAll()
-                select new BO.TaskInList
+                select new BO.Task
                 {
                     Id = doTask.Id,
                     Alias = doTask.Alias,
                     Description = doTask.Description,
                     CreatedAtDate = doTask.CreatedAtDate,
                     RequiredEffortTime = doTask.RequiredEffortTime,
-                    Complexity = doTask.Complexity,
+                    Complexity = (BO.EngineerExperience)doTask.Complexity,
                     Deliverables = doTask.Deliverables,
                     EngineerId = doTask.EngineerId,
                     Remarks = doTask.Remarks,
                     ScheduledDate = doTask.ScheduledDate,
                     CompleteDate = doTask.CompleteDate,
                     DeadLineDate = doTask.DeadLineDate,
-                    IsMilestone = doTask.IsMilestone,
+                    //IsMilestone = doTask.IsMilestone,
                     StartDate = doTask.StartDate
                     //tYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
                 });
@@ -90,6 +115,15 @@ internal class TaskImplementation : ITask
 
     public void Update(BO.Task item)
     {
-        throw new NotImplementedException();
+        DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables, item.EngineerId, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate, false, item.StartDate);
+        try
+        {
+            int idTask = _dal.Task.Create(doTask);
+            return idTask;
+        }
+        catch (DO.DalAlreadyExistsException ex)
+        {
+            throw new BO.BlAlreadyExistsException($"Task with ID={item.Id} already exists", ex);
+        }
     }
 }

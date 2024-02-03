@@ -34,7 +34,7 @@ public class Engineer
 
     public double ?Cost { get; set; }
 
-    public Tuple<int,string> ?Task { get; set; }
+    public  BO.TaskInEngineer ?Tasks{ get; set; }
 
     public override string? ToString() => this.ToStringProperty();
 
