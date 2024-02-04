@@ -8,9 +8,29 @@ namespace BlImplementation;
 internal class TaskImplementation : ITask
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
+    public DateTime? ForecastDate()//what does it suposed to return?
+    {
+        DateTime? dateTime = new DateTime();
+        return dateTime;
+    }
+    public List<BO.TaskInList> dependencies() //what does it suposed to return?
+    {
+        List<BO.TaskInList> taskInLists = new List<BO.TaskInList>();
+        return taskInLists;
+    }
+    public BO.EngineerInTask engineer(DO.Engineer e)
+    {
+        BO.EngineerInTask engineerInTask=new BO.EngineerInTask(e.Id,e.Name);//we need a constractor but they told us no to make one
+        return engineerInTask;
+    }
+    public BO.Status status()//how to calculate the status?
+    {
+        BO.Status status = new BO.Status();
+        return status;
+    }
     public void AddBeginingDate(BO.Task item, DateTime begin)
     {
-        throw new NotImplementedException();
+       
     }
 
     public int Create(BO.Task item)

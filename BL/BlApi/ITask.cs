@@ -20,5 +20,10 @@ public interface ITask
     public void Update(BO.Task item);
     public void AddBeginingDate(BO.Task item, DateTime begin);
     public void Delete(int id);
-    //יש לייצר מתודות פרטיות לחישוב כל אחד מהשדות שיש לחשב.
+    public DateTime? ForecastDate();
+    public List<BO.TaskInList> dependencies();
+    public BO.EngineerInTask engineer(DO.Engineer e);
+    public BO.Status status();
 }
+    
+        //יש לייצר מתודות פרטיות לחישוב כל אחד מהשדות שיש לחשב.
