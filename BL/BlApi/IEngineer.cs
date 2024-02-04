@@ -15,4 +15,7 @@ public interface IEngineer
     public IEnumerable<BO.EngineerInTask> ReadAll(Func<BO.Engineer, bool>? filter = null);
     public void Update(BO.Engineer item);
     public void Delete(int id);
+
+    public BO.TaskInEngineer FindTask(int id);
+
 }

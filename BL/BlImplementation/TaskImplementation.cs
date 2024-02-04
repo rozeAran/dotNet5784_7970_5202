@@ -119,7 +119,7 @@ internal class TaskImplementation : ITask
         try
         {
             int idTask = _dal.Task.Create(doTask);
-            return idTask;
+            
         }
         catch (DO.DalAlreadyExistsException ex)
         {

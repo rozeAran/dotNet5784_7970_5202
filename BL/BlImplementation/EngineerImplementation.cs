@@ -32,7 +32,8 @@ internal class EngineerImplementation : IEngineer
         DO.Engineer? doEngineer = _dal.Engineer.Read(id);
         if (doEngineer == null)
             throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
-        if (Tasks==null) 
+        BO.Engineer? temp = Read(id);
+        if (temp.Tasks==null) 
         {
             throw new BlCantBeDeletedException($"Engineer with ID={id} cant be deleted");
         }
@@ -52,7 +53,7 @@ internal class EngineerImplementation : IEngineer
             Email = doEngineer.Email,
             Level = (EngineerExperience)doEngineer.Level,
             Cost = doEngineer.Cost,
-            Tasks = null//adding the current task that the engineer is workng on
+            Tasks = FindTask(id)//adding the current task that the engineer is workng on
         };
     }
 
@@ -82,11 +83,27 @@ internal class EngineerImplementation : IEngineer
         {
             throw new BlDataNotValidException("data is not valid\n");
         }
-        if (item.Tasks != doEngineer.Tasks)
+        BO.Engineer? boEngineer = Read(item.Id);
+        if (item.Tasks != boEngineer.Tasks)
         {
+            DO.Task newTask= _dal.Task.Read(item.Tasks.Id);
+            newTask.EngineerId.(item.Id);
             //updet in engineer in task
         }
         _dal.Engineer.Update(doEngineer);
     }
 
+    public BO.TaskInEngineer FindTask(int id)
+    {
+        if (_dal.Task.Read(id) == null)
+            return null;
+        return ((TaskInEngineer)(from DO.Task task in _dal.Task.ReadAll()
+                where task.Id == id
+                select new BO.TaskInEngineer
+                {
+                    Id = task.Id,
+                    Alias = task.Alias,
+                }));
+
+    }
 }
