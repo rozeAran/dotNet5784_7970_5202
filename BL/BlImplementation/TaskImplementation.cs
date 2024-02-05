@@ -9,30 +9,15 @@ internal class TaskImplementation : ITask
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
     
-    public void FindDependencies(BO.Task item) //what does it suposed to return?
+    public List<BO.TaskInList> FindDependencies(BO.Task item) //what does it suposed to return?
     {
-        //idk how to go over the inumerator
+        return ((List<BO.TaskInList>)(from DO.Task task in _dal.Task.ReadAll()
+                                    where task.Id == item.EngineerId//task is depended on this task
+                                    select new List<BO.TaskInList>
+                                    {
+                                       //a list of all the task this task is depended on
+                                    }));
 
-        if (_dal.Task.Read(item.EngineerId) == null)
-            return ;
-        return ((TaskInEngineer)(from DO.Task task in _dal.Task.ReadAll()
-                                 where task.Id == item.EngineerId
-                                 select new BO.TaskInEngineer
-                                 {
-                                     Id = task.Id,
-                                     Alias = task.Alias,
-                                 }));
-
-        from DO.Task doTask in _dal.Task.ReadAll()
-        where (doTask.EngineerId == item.EngineerId)
-
-           /* item.Engineer.Id = doTask.EngineerId;
-            item.Engineer.Name = doTask.Engineer.Name;*/
-
-
-
-
-        return;
     }
     public BO.EngineerInTask FindEngineer(BO.Task item)
     {
@@ -58,6 +43,7 @@ internal class TaskImplementation : ITask
             return BO.Status.onTrack;
         if (item.CompleteDate <= DateTime.Now)
             return BO.Status.Done;
+        throw new WrongOrderOfDatesException("impossible order of dates");
     }
 
     public int Create(BO.Task item)

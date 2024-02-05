@@ -20,7 +20,7 @@ public interface ITask
     public void Update(BO.Task item);
     public void Delete(int id);
     public void AddBeginingDate(BO.Task item, DateTime begin);
-    public void FindDependencies(BO.Task item);
+    public List<BO.TaskInList> FindDependencies(BO.Task item);
     public BO.EngineerInTask FindEngineer(BO.Task item);
     public BO.Status FindStatus(BO.Task item);
 }
