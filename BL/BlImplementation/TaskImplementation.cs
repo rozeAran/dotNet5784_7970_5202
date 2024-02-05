@@ -9,7 +9,7 @@ internal class TaskImplementation : ITask
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
     
-    public List<BO.TaskInList> FindDependencies(BO.Task item) //what does it suposed to return?
+    public List<BO.TaskInList> FindDependencies(BO.Task item) 
     {
         return ((List<BO.TaskInList>)(from DO.Task task in _dal.Task.ReadAll()
                                     where task.Id == item.EngineerId//task is depended on this task
@@ -63,7 +63,11 @@ internal class TaskImplementation : ITask
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        DO.Task? doTask = _dal.Task.Read(id);
+        if (doTask == null)
+            throw new BO.BlDoesNotExistException($"Task with ID={id} does Not exist");
+        _dal.Task.Delete(id);
+
     }
 
     public BO.Task? Read(int id)

@@ -25,4 +25,4 @@ public interface ITask
     public BO.Status FindStatus(BO.Task item);
 }
     
-        //יש לייצר מתודות פרטיות לחישוב כל אחד מהשדות שיש לחשב.
+      
