@@ -7,11 +7,6 @@ namespace BlImplementation;
 internal class EngineerImplementation : IEngineer
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
-    public BO.TaskInEngineer? tasks(DO.Task t)
-    {
-        BO.TaskInEngineer? boEn = new BO.TaskInEngineer?(t.id, t.alias);
-        return boEn;
-    }
     public int Create(Engineer item)
     {
 

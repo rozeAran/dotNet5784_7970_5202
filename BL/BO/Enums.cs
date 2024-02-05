@@ -19,7 +19,7 @@ public enum Status
     unscheduled,
     scheduled,
     onTrack,
-    InJeopardy,
+   // InJeopardy, relevnt only if we decide to make a secedual look in the general instractions at the end of the definition of logical items
     Done
 }
 

@@ -12,10 +12,10 @@
 /// <param name="CompleteDate"> Actual work completion date - when an engineer reports that he has finished working on the task</param>
 /// <param name="Deliverables"> A string describing the results or items provided at the end of the task</param>
 /// <param name="EngineerId"> The engineer ID assigned to the task</param>
-/// <param name="Remarks"> Remarks about the task</param>
+/// <param name="Remarks"> Remarks about the task(notes)</param>
 /// <param name="DeadLineDate"> The latest possible date on which the task is finished will not cause the project to fail, so that the entire sequence of tasks that depend on it will be completed before the deadline of the entire project.</param>
-/// <param name="IsMilestone"> </param>
 /// <param name="StartDate"> Work Start Date - When an engineer begins actual work on the task</param>
+/// <param name="EngineerId"> id of engineer</param>
 public class Task
 {
     public int Id { get; init; }
@@ -26,12 +26,12 @@ public class Task
     public BO.EngineerExperience Complexity { get; set; }
     public string? Deliverables { get; set; }
     public int EngineerId { get; set; }
-    BO.Status Status { get; set; }
+    public BO.Status TaskStatus { get; set; }
     public List<BO.TaskInList> Dependencies { get; set; }
     public BO.EngineerInTask Engineer { get; set; }
     public string? Remarks { get; set; }
     //public bool IsMilestone { get; init; }=false;
-    public DateTime? ForecastDate { get; set; } = null;
+   // public DateTime? ForecastDate { get; set; } = null; i think its only for milestone
     public DateTime? ScheduledDate { get; set; } = null;
     public DateTime? CompleteDate { get; set; } = null;
     public DateTime? DeadLineDate { get; set; } = null;

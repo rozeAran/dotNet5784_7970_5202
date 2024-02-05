@@ -12,6 +12,8 @@ namespace DO;
 /// 3.its impossible to delete this object- not allowed
 /// 4.there is no option to fallow your request
 /// </summary>
+
+
 [Serializable]
 public class DalDoesNotExistException : Exception//the object with this id doesn exsist
 {
@@ -43,3 +45,10 @@ public class DalXMLFileLoadCreateException : Exception//something with the xml f
 {
     public DalXMLFileLoadCreateException(string? message) : base(message) { }
 }
+
+[Serializable]
+public class DalCantBeUpdetedException : Exception//Bl- this item cant be updated
+{
+    public DalCantBeUpdetedException(string? message) : base(message) { }
+}
+

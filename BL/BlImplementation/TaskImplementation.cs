@@ -8,34 +8,61 @@ namespace BlImplementation;
 internal class TaskImplementation : ITask
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
-    public DateTime? ForecastDate()//what does it suposed to return?
+    
+    public void FindDependencies(BO.Task item) //what does it suposed to return?
     {
-        DateTime? dateTime = new DateTime();
-        return dateTime;
+        //idk how to go over the inumerator
+
+        if (_dal.Task.Read(item.EngineerId) == null)
+            return ;
+        return ((TaskInEngineer)(from DO.Task task in _dal.Task.ReadAll()
+                                 where task.Id == item.EngineerId
+                                 select new BO.TaskInEngineer
+                                 {
+                                     Id = task.Id,
+                                     Alias = task.Alias,
+                                 }));
+
+        from DO.Task doTask in _dal.Task.ReadAll()
+        where (doTask.EngineerId == item.EngineerId)
+
+           /* item.Engineer.Id = doTask.EngineerId;
+            item.Engineer.Name = doTask.Engineer.Name;*/
+
+
+
+
+        return;
     }
-    public List<BO.TaskInList> dependencies() //what does it suposed to return?
+    public BO.EngineerInTask FindEngineer(BO.Task item)
     {
-        List<BO.TaskInList> taskInLists = new List<BO.TaskInList>();
-        return taskInLists;
+        return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()
+                                 where eng.Id == item.EngineerId
+                                 select new BO.EngineerInTask
+                                 {
+                                     Id = eng.Id,
+                                     Name = eng.Name,
+                                 }));
     }
-    public BO.EngineerInTask engineer(DO.Engineer e)
+    public void AddBeginingDate(BO.Task item, DateTime begin)// are you sure its requiered?
     {
-        BO.EngineerInTask engineerInTask=new BO.EngineerInTask(e.Id,e.Name);//we need a constractor but they told us no to make one
-        return engineerInTask;
+        return;
     }
-    public BO.Status status()//how to calculate the status?
+    public BO.Status FindStatus(BO.Task item)//sets the status of the task
     {
-        BO.Status status = new BO.Status();
-        return status;
-    }
-    public void AddBeginingDate(BO.Task item, DateTime begin)
-    {
-       
+        if (item.StartDate == null)
+            return BO.Status.unscheduled;
+        if (item.StartDate.Value > DateTime.Now)
+            return  BO.Status.scheduled;
+        if (item.CompleteDate==null)
+            return BO.Status.onTrack;
+        if (item.CompleteDate <= DateTime.Now)
+            return BO.Status.Done;
     }
 
     public int Create(BO.Task item)
     {
-        DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables, item.EngineerId, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate,false, item.StartDate);
+        DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables,item.Engineer.Id, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate,false, item.StartDate);
         try
         {
             int idTask = _dal.Task.Create(doTask);
@@ -68,8 +95,8 @@ internal class TaskImplementation : ITask
             RequiredEffortTime = doTask.RequiredEffortTime,
             Complexity= (BO.EngineerExperience)doTask.Complexity,
             Deliverables=doTask.Deliverables,
-            EngineerId = doTask.EngineerId,
-            Remarks=doTask.Remarks,
+            EngineerId=doTask.EngineerId,
+            Remarks =doTask.Remarks,
             ScheduledDate = doTask.ScheduledDate,
             CompleteDate = doTask.CompleteDate,
             DeadLineDate = doTask.DeadLineDate,
@@ -121,7 +148,7 @@ internal class TaskImplementation : ITask
                     RequiredEffortTime = doTask.RequiredEffortTime,
                     Complexity = (BO.EngineerExperience)doTask.Complexity,
                     Deliverables = doTask.Deliverables,
-                    EngineerId = doTask.EngineerId,
+                     EngineerId=doTask.EngineerId,
                     Remarks = doTask.Remarks,
                     ScheduledDate = doTask.ScheduledDate,
                     CompleteDate = doTask.CompleteDate,
@@ -135,7 +162,7 @@ internal class TaskImplementation : ITask
 
     public void Update(BO.Task item)
     {
-        DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables, item.EngineerId, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate, false, item.StartDate);
+        DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables,item.Engineer.Id, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate, false, item.StartDate);
         try
         {
             int idTask = _dal.Task.Create(doTask);

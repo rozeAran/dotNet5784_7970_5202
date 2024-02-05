@@ -18,12 +18,11 @@ public interface ITask
     //public IEnumerable<BO.TaskInList> ReadAll();
     public IEnumerable<BO.Task?> ReadAll(Func<BO.Task, bool>? filter = null);
     public void Update(BO.Task item);
-    public void AddBeginingDate(BO.Task item, DateTime begin);
     public void Delete(int id);
-    public DateTime? ForecastDate();
-    public List<BO.TaskInList> dependencies();
-    public BO.EngineerInTask engineer(DO.Engineer e);
-    public BO.Status status();
+    public void AddBeginingDate(BO.Task item, DateTime begin);
+    public void FindDependencies(BO.Task item);
+    public BO.EngineerInTask FindEngineer(BO.Task item);
+    public BO.Status FindStatus(BO.Task item);
 }
     
         //יש לייצר מתודות פרטיות לחישוב כל אחד מהשדות שיש לחשב.
