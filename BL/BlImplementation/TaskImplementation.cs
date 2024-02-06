@@ -11,7 +11,19 @@ internal class TaskImplementation : ITask
     
     public List<BO.TaskInList> FindDependencies(DO.Task item) 
     {
-        return ((List<BO.TaskInList>)(from DO.Task task in _dal.Task.ReadAll()
+        return ((List<BO.TaskInList>)(from DO.Dependency dep in _dal.Dependency.ReadAll()
+                                    where dep.DependentTask == item.Id//task is depended on this task
+                                    select new BO.TaskInList
+                                    {
+                                        //a list of all the task this task is depended on
+                                        Id = dep.DependOnTask,
+                                        Description= _dal.Task.Read(dep.DependOnTask).Description,
+                                        Alias= _dal.Task.Read(dep.DependOnTask).Alias,
+                                        Status=FindStatus(_dal.Task.Read(dep.DependOnTask))
+                                        
+                                    }));
+        /*
+                 return ((List<BO.TaskInList>)(from DO.Task task in _dal.Task.ReadAll()
                                     where task.Id == item.EngineerId//task is depended on this task
                                     select new BO.TaskInList
                                     {
@@ -21,7 +33,7 @@ internal class TaskImplementation : ITask
                                         Alias=task.Alias,
                                         Status=FindStatus(task)
                                         
-                                    }));
+                                    }));*/
 
     }
     public BO.EngineerInTask FindEngineer(DO.Task item)

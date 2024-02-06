@@ -36,7 +36,7 @@ public class Engineer
 
     public  BO.TaskInEngineer ?Tasks{ get; set; }
 
-    public override string? ToString() => this.ToStringProperty();
+    public override string? ToString() => this.ToStringProperty < Engineer>();
 
 
 }

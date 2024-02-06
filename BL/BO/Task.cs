@@ -36,5 +36,7 @@ public class Task
     public DateTime? CompleteDate { get; set; } = null;
     public DateTime? DeadLineDate { get; set; } = null;
     public DateTime? StartDate { get; init; } = null;
-    
+
+    public override string? ToString() => this.ToStringProperty<Task>();
+
 }
