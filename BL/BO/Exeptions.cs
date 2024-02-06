@@ -57,3 +57,10 @@ public class WrongOrderOfDatesException : Exception// order of dates doesnt make
 {
     public WrongOrderOfDatesException(string? message) : base(message) { }
 }
+
+[Serializable]
+public class BlNullPropertyException : Exception
+{
+    public BlNullPropertyException(string? message) : base(message) { }
+}
+

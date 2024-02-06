@@ -87,7 +87,7 @@ internal class EngineerImplementation : IEngineer
         if (item.Tasks != boEngineer.Tasks)
         {
             DO.Task newTask= _dal.Task.Read(item.Tasks.Id);
-            newTask.EngineerId.(item.Id);
+            newTask.EngineerId=item.Id;
             //updet in engineer in task
         }
         _dal.Engineer.Update(doEngineer);

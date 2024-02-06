@@ -27,8 +27,8 @@ public class Task
     public string? Deliverables { get; set; }
     public int EngineerId { get; set; }
     public BO.Status TaskStatus { get; set; }
-    public List<BO.TaskInList> Dependencies { get; set; }
-    public BO.EngineerInTask Engineer { get; set; }
+    public List<BO.TaskInList>? Dependencies { get; set; }
+    public BO.EngineerInTask? Engineer { get; set; }
     public string? Remarks { get; set; }
     //public bool IsMilestone { get; init; }=false;
    // public DateTime? ForecastDate { get; set; } = null; i think its only for milestone

@@ -9,17 +9,22 @@ internal class TaskImplementation : ITask
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
     
-    public List<BO.TaskInList> FindDependencies(BO.Task item) 
+    public List<BO.TaskInList> FindDependencies(DO.Task item) 
     {
         return ((List<BO.TaskInList>)(from DO.Task task in _dal.Task.ReadAll()
                                     where task.Id == item.EngineerId//task is depended on this task
-                                    select new List<BO.TaskInList>
+                                    select new BO.TaskInList
                                     {
-                                       //a list of all the task this task is depended on
+                                        //a list of all the task this task is depended on
+                                        Id = task.Id,
+                                        Description=task.Description,
+                                        Alias=task.Alias,
+                                        Status=FindStatus(task)
+                                        
                                     }));
 
     }
-    public BO.EngineerInTask FindEngineer(BO.Task item)
+    public BO.EngineerInTask FindEngineer(DO.Task item)
     {
         return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()
                                  where eng.Id == item.EngineerId
@@ -29,11 +34,11 @@ internal class TaskImplementation : ITask
                                      Name = eng.Name,
                                  }));
     }
-    public void AddBeginingDate(BO.Task item, DateTime begin)// are you sure its requiered?
+    public void AddBeginingDate(DO.Task item, DateTime begin)// are you sure its requiered?
     {
         return;
     }
-    public BO.Status FindStatus(BO.Task item)//sets the status of the task
+    public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
         if (item.StartDate == null)
             return BO.Status.unscheduled;
@@ -78,29 +83,27 @@ internal class TaskImplementation : ITask
 
         return new BO.Task()
         {
-            Id=id,
+            Id = id,
             Alias = doTask.Alias,
-            Description=doTask.Description,
-            CreatedAtDate= doTask.CreatedAtDate,
+            Description = doTask.Description,
+            CreatedAtDate = doTask.CreatedAtDate,
             RequiredEffortTime = doTask.RequiredEffortTime,
-            Complexity= (BO.EngineerExperience)doTask.Complexity,
-            Deliverables=doTask.Deliverables,
-            EngineerId=doTask.EngineerId,
+            Complexity = (BO.EngineerExperience)doTask.Complexity,
+            Deliverables = doTask.Deliverables,
+            EngineerId = doTask.EngineerId,
+            TaskStatus = FindStatus(doTask),
+            Dependencies=FindDependencies(doTask),
+            Engineer=FindEngineer(doTask),
             Remarks =doTask.Remarks,
             ScheduledDate = doTask.ScheduledDate,
             CompleteDate = doTask.CompleteDate,
             DeadLineDate = doTask.DeadLineDate,
-            //IsMilestone = doTask.IsMilestone,
             StartDate = doTask.StartDate
-            // CurrentYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
+
         };
 
     }
 
-    /*public IEnumerable<TaskInList> ReadAll()
-    {
-        throw new NotImplementedException();
-    }*/
 
     public IEnumerable<BO.Task?> ReadAll(Func<BO.Task, bool>? filter = null)
     {
@@ -108,7 +111,7 @@ internal class TaskImplementation : ITask
         if (filter != null)
         {
             return (from DO.Task doTask in _dal.Task.ReadAll()
-                    where filter(doTask)
+                    where filter(Read(doTask.Id))
                     select new BO.Task
                     {
                         Id = doTask.Id,
@@ -123,30 +126,27 @@ internal class TaskImplementation : ITask
                         ScheduledDate = doTask.ScheduledDate,
                         CompleteDate = doTask.CompleteDate,
                         DeadLineDate = doTask.DeadLineDate,
-                        //IsMilestone = doTask.IsMilestone,
                         StartDate = doTask.StartDate
-                        //tYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
                     });
         }
         return (from DO.Task doTask in _dal.Task.ReadAll()
-                select new BO.Task
-                {
-                    Id = doTask.Id,
-                    Alias = doTask.Alias,
-                    Description = doTask.Description,
-                    CreatedAtDate = doTask.CreatedAtDate,
-                    RequiredEffortTime = doTask.RequiredEffortTime,
-                    Complexity = (BO.EngineerExperience)doTask.Complexity,
-                    Deliverables = doTask.Deliverables,
-                     EngineerId=doTask.EngineerId,
-                    Remarks = doTask.Remarks,
-                    ScheduledDate = doTask.ScheduledDate,
-                    CompleteDate = doTask.CompleteDate,
-                    DeadLineDate = doTask.DeadLineDate,
-                    //IsMilestone = doTask.IsMilestone,
-                    StartDate = doTask.StartDate
-                    //tYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
-                });
+            select new BO.Task
+            {
+                Id = doTask.Id,
+                Alias = doTask.Alias,
+                Description = doTask.Description,
+                CreatedAtDate = doTask.CreatedAtDate,
+                RequiredEffortTime = doTask.RequiredEffortTime,
+                Complexity = (BO.EngineerExperience)doTask.Complexity,
+                Deliverables = doTask.Deliverables,
+                 EngineerId=doTask.EngineerId,
+                Remarks = doTask.Remarks,
+                ScheduledDate = doTask.ScheduledDate,
+                CompleteDate = doTask.CompleteDate,
+                DeadLineDate = doTask.DeadLineDate,
+                StartDate = doTask.StartDate
+                //tYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
+            });
 
     }
 
@@ -155,12 +155,12 @@ internal class TaskImplementation : ITask
         DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables,item.Engineer.Id, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate, false, item.StartDate);
         try
         {
-            int idTask = _dal.Task.Create(doTask);
-            
+          _dal.Task.Update(doTask);
+
         }
         catch (DO.DalAlreadyExistsException ex)
         {
-            throw new BO.BlAlreadyExistsException($"Task with ID={item.Id} already exists", ex);
+           throw new BO.BlAlreadyExistsException($"Task with ID={item.Id} already exists", ex);
         }
     }
 }

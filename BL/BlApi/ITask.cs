@@ -15,14 +15,13 @@ public interface ITask
 {
     public int Create(BO.Task item);
     public BO.Task? Read(int id);
-    //public IEnumerable<BO.TaskInList> ReadAll();
     public IEnumerable<BO.Task?> ReadAll(Func<BO.Task, bool>? filter = null);
     public void Update(BO.Task item);
     public void Delete(int id);
-    public void AddBeginingDate(BO.Task item, DateTime begin);
-    public List<BO.TaskInList> FindDependencies(BO.Task item);
-    public BO.EngineerInTask FindEngineer(BO.Task item);
-    public BO.Status FindStatus(BO.Task item);
+    public void AddBeginingDate(DO.Task item, DateTime begin);
+    public List<BO.TaskInList> FindDependencies(DO.Task item);
+    public BO.EngineerInTask FindEngineer(DO.Task item);
+    public BO.Status FindStatus(DO.Task item);
 }
     
       
