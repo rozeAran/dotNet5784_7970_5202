@@ -22,19 +22,6 @@ internal class TaskImplementation : ITask
                                         Status=FindStatus(_dal.Task.Read(dep.DependOnTask))
                                         
                                     }));
-        /*
-                 return ((List<BO.TaskInList>)(from DO.Task task in _dal.Task.ReadAll()
-                                    where task.Id == item.EngineerId//task is depended on this task
-                                    select new BO.TaskInList
-                                    {
-                                        //a list of all the task this task is depended on
-                                        Id = task.Id,
-                                        Description=task.Description,
-                                        Alias=task.Alias,
-                                        Status=FindStatus(task)
-                                        
-                                    }));*/
-
     }
     public BO.EngineerInTask FindEngineer(DO.Task item)
     {
@@ -46,9 +33,9 @@ internal class TaskImplementation : ITask
                                      Name = eng.Name,
                                  }));
     }
-    public void AddBeginingDate(DO.Task item, DateTime begin)// are you sure its requiered?
+    public void AddBeginingDate(DO.Task item, DateTime begin)
     {
-        return;
+ 
     }
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
@@ -78,7 +65,7 @@ internal class TaskImplementation : ITask
 
     }
 
-    public void Delete(int id)
+    public void Delete(int id)//WE NEED TO CONSIDER THE DEPENDED TASKS
     {
         DO.Task? doTask = _dal.Task.Read(id);
         if (doTask == null)

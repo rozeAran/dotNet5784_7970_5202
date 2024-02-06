@@ -5,26 +5,28 @@ namespace BlTest;
 
 using BlApi;
 using BO;
+using DO;
+
 
 internal class Program
 {
     static readonly IBl s_bl = BlApi.Factory.Get(); //stage 4
 
-    public static EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
+    public static BO.EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
     {
         switch (num)
         {
-            case 0: return EngineerExperience.Beginner;
-            case 1: return EngineerExperience.AdvancedBeginner;
-            case 2: return EngineerExperience.Intermediate;
-            case 3: return EngineerExperience.Advanced;
-            case 4: return EngineerExperience.Expert;
+            case 0: return BO.EngineerExperience.Beginner;
+            case 1: return BO.EngineerExperience.AdvancedBeginner;
+            case 2: return BO.EngineerExperience.Intermediate;
+            case 3: return BO.EngineerExperience.Advanced;
+            case 4: return BO.EngineerExperience.Expert;
             default:
                 throw new Exception("no such level");
         }
     }
 
-    public static Task CreateT()//creates a new task
+    public static BO.Task CreateT()//creates a new task
     {
         Console.WriteLine("enter task alias\n");
         string alias = Console.ReadLine();
@@ -43,7 +45,7 @@ internal class Program
         TimeSpan requiredEffortTime = new TimeSpan(days, hours, sec, minutes);
         Console.WriteLine("enter task complexity\n");
         int temp = int.Parse(Console.ReadLine());
-        EngineerExperience complexity = SetEX(int.Parse(Console.ReadLine()));
+        BO.EngineerExperience complexity = SetEX(int.Parse(Console.ReadLine()));
         Console.WriteLine("enter task deliverables\n");
         string deliverables = Console.ReadLine();
         Console.WriteLine("enter engineer Id\n");
@@ -60,11 +62,10 @@ internal class Program
         bool isMilestone = bool.Parse(Console.ReadLine());
         Console.WriteLine("enter task startDate\n");
         DateTime? startDate = DateTime.Parse(Console.ReadLine());
-
         BO.Task item = new BO.Task();
         return item;
     }
-    public static Engineer CreateE()//creates a new engineer 
+    public static BO.Engineer CreateE()//creates a new engineer 
     {
         Console.WriteLine("enter engineer id\n");
         int id = int.Parse(Console.ReadLine());
@@ -73,7 +74,7 @@ internal class Program
         Console.WriteLine("enter engineer email\n");
         string email = Console.ReadLine();
         Console.WriteLine("enter engineer level\n");
-        EngineerExperience level = SetEX(Convert.ToInt32(Console.ReadKey()));
+        BO.EngineerExperience level = SetEX(Convert.ToInt32(Console.ReadKey()));
         Console.WriteLine("enter engineer cost for hour\n");
         double cost = double.Parse(Console.ReadLine());
         BO.Engineer item = new BO.Engineer();
@@ -171,7 +172,7 @@ internal class Program
                     {
                         Console.Write(s_bl.Engineer.ReadAll());
                         Console.WriteLine("please enter the dependency's updated values");
-                        Engineer temp = CreateE();
+                        BO.Engineer temp = CreateE();
                         if (temp.Id != 0)
                             s_bl.Engineer.Update(temp);
                     }
