@@ -2,20 +2,16 @@
 
 using System.Reflection.Emit;
 namespace DalTest;
-using Dal;
+
 using DalApi;
+using BlApi;
 using DO;
-using System.Data.Common;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Xml.Linq;
-
-
 
 internal class Program
 {
-    static readonly IDal s_dal = Factory.Get; //stage 4
+    static readonly IDal s_dal = DalApi.Factory.Get; //stage 4
+    static readonly IBl s_bl = BlApi.Factory.Get;
+
     public static EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
     {
         switch(num) 
@@ -298,7 +294,10 @@ internal class Program
 	{
 		try
 		{
-            //Initialization.Do(s_dal);
+            Console.Write("Would you like to create Initial data? (Y/N)");
+            string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input");
+            if (ans == "Y")
+                DalTest.Initialization.Do();
             MainMenu();
 
         }
