@@ -79,7 +79,7 @@ internal class TaskImplementation : ITask
         DO.Task? doTask = _dal.Task.Read(id);
         if (doTask == null)
             throw new BO.BlDoesNotExistException($"Task with ID={id} does Not exist");
-
+        
         return new BO.Task()
         {
             Id = id,

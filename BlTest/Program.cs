@@ -12,7 +12,7 @@ internal class Program
 {
     static readonly IBl s_bl = BlApi.Factory.Get(); //stage 4
 
-    /* public static BO.EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
+     public static BO.EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
      {
          switch (num)
          {
@@ -58,15 +58,32 @@ internal class Program
          DateTime? completeDate = DateTime.Parse(Console.ReadLine());
          Console.WriteLine("enter tasks deadLineDate\n");
          DateTime? deadLineDate = DateTime.Parse(Console.ReadLine());
-         Console.WriteLine("enter if the task is a mile stone\n");
-         bool isMilestone = bool.Parse(Console.ReadLine());
+         //Console.WriteLine("enter if the task is a mile stone\n");
+         //bool isMilestone = bool.Parse(Console.ReadLine());
          Console.WriteLine("enter task startDate\n");
          DateTime? startDate = DateTime.Parse(Console.ReadLine());
-         BO.Task item = new BO.Task();
+        BO.Task item = new BO.Task
+        {
+            Alias = alias,
+            Description= description,
+            CreatedAtDate= createdAtDate,
+            RequiredEffortTime= requiredEffortTime,
+            Complexity= complexity,
+            Deliverables= deliverables,
+            EngineerId= engineerId,
+            Remarks= remarks,
+            ScheduledDate = scheduledDate,
+            CompleteDate= completeDate,
+            DeadLineDate= deadLineDate,
+            StartDate= startDate
+        };
+        
+         s_bl.Task.Create(item);
          return item;
      }
      public static BO.Engineer CreateE()//creates a new engineer 
      {
+        
          Console.WriteLine("enter engineer id\n");
          int id = int.Parse(Console.ReadLine());
          Console.WriteLine("enter engineer name\n");
@@ -77,9 +94,17 @@ internal class Program
          BO.EngineerExperience level = SetEX(Convert.ToInt32(Console.ReadKey()));
          Console.WriteLine("enter engineer cost for hour\n");
          double cost = double.Parse(Console.ReadLine());
-         BO.Engineer item = new BO.Engineer();
-         return item;
-     }*/
+        BO.Engineer item = new BO.Engineer()
+        {
+            Id = id,
+            Name = name,
+            Email = email,
+            Cost = cost,
+
+        };
+        s_bl.Engineer.Create(item);
+        return item;
+     }
 
     public static void TaskImp()//task menu
     {
@@ -90,25 +115,53 @@ internal class Program
             switch (choice)
             {
                 case 1:///create a new task
-                    Console.Write(s_bl.Task.Create(DalTest.(program.cs).CreateT()));
-                    break;
+                    {
+                        try
+                        {
+                            BO.Task newT = CreateT();
+                            Console.WriteLine(newT.ToString()); ;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        break;
+                    }
                 case 2:///delete a task
+                    {
+                        try
+                        {
+                            int id2 = int.Parse(Console.ReadLine());
+                            s_bl.Task.Delete(id2);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        break;
+                    }
+                case 3:///find a specific task
+                    {
+                        try
+                        {
+                            int id = int.Parse(Console.ReadLine());
+                            Console.Write(s_bl.Task.Read(id));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        break;
+                    }
+                case 4:///find all tasks
                     try
                     {
-                        int id2 = int.Parse(Console.ReadLine());
-                        s_bl.Task.Delete(id2);
+                        Console.Write(s_bl.Task.ReadAll());
                     }
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex);
                     }
-                    break;
-                case 3:///find a specific task
-                    int id = int.Parse(Console.ReadLine());
-                    Console.Write(s_bl.Task.Read(id));
-                    break;
-                case 4:///find all tasks
-                    Console.Write(s_bl.Task.ReadAll());
                     break;
                 case 5:///update a task
                     try
@@ -124,7 +177,7 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                default: throw new BlNotAPossabilityException("no suche possibility");
+                default: throw new BlNotAPossabilityException("no such possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : find a specific task \n 4: find all tasks \n 5: update a task\n");
             choice = int.Parse(Console.ReadLine());
@@ -141,7 +194,8 @@ internal class Program
                 case 1:///create a new engineer
                     try
                     {
-                        Console.Write(s_bl.Engineer.Create(CreateE()));
+                        BO.Engineer newE = CreateE();
+                        Console.Write(newE.ToString());
                     }
                     catch (Exception ex)
                     {
@@ -149,7 +203,6 @@ internal class Program
                     }
                     break;
                 case 2:///delete a engineer
-
                     try
                     {
                         int id = Convert.ToInt32(Console.ReadKey());
@@ -190,7 +243,7 @@ internal class Program
 
     static void MainMenu()//menu
     {
-        Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n 4 : Initialization\n");
+        Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
         int choice = int.Parse(Console.ReadLine());
         while (choice != 0)
         {
@@ -206,7 +259,7 @@ internal class Program
                         EngineerImp();
                         break;
                     }
-                case 3:
+               /* case 3:
                     {
                         Console.Write("Would you like to create Initial data? (Y/N)");
                         string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input");
@@ -214,7 +267,7 @@ internal class Program
                             DalTest.Initialization.Do();
                         break;
 
-                    }
+                    }*/
                 default: throw new Exception("no such possibility");
             }
             Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
@@ -227,6 +280,10 @@ internal class Program
     {
         try
         {
+            Console.Write("Would you like to create Initial data? (Y/N)");
+            string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input");
+            if (ans == "Y")
+                DalTest.Initialization.Do();
             MainMenu();
 
         }
