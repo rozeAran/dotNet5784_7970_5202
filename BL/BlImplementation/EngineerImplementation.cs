@@ -97,7 +97,6 @@ internal class EngineerImplementation : IEngineer
     {
         if (_dal.Task.Read(id) == null)
             throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
-        //return null;
         return ((TaskInEngineer)(from DO.Task task in _dal.Task.ReadAll()
                 where task.Id == id
                 select new BO.TaskInEngineer
