@@ -52,7 +52,7 @@ internal class EngineerImplementation : IEngineer
             Id = id,
             Name = doEngineer.Name,
             Email = doEngineer.Email,
-            Level = (EngineerExperience)doEngineer.Level,
+            Level = (BO.EngineerExperience)doEngineer.Level,
             Cost = doEngineer.Cost,
             Tasks = FindTask(id)//adding the current task that the engineer is workng on
         };
