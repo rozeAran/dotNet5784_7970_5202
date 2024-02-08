@@ -37,7 +37,37 @@ internal class TaskImplementation : ITask
     {
         List<BO.TaskInList> listDep = FindDependencies(item);
         bool theDependencies= listDep.Any<BO.TaskInList>();
- 
+        BO.TaskInList taskInList;
+        DO.Task task;
+        int i= listDep.Count();
+        foreach (BO.TaskInList dep in listDep)
+        {
+            taskInList = listDep.ElementAt(i);
+            task =_dal.Task.Read(taskInList.Id);
+            if (task.ScheduledDate == null)
+                throw new BO.WrongOrderOfDatesException($"task with id:{taskInList.Id} doesnt have scedualed date");
+            if(task.ScheduledDate>= begin)
+                throw new BO.WrongOrderOfDatesException("order of dates is impossible");
+            i--;
+        }
+       
+        DO.Task temp = new DO.Task
+        {
+            Id = item.Id,
+            Alias = item.Alias,
+            Description = item.Description,
+            CreatedAtDate = item.CreatedAtDate,
+            RequiredEffortTime = item.RequiredEffortTime,
+            Complexity = item.Complexity,
+            Deliverables = item.Deliverables,
+            EngineerId = item.Id,
+            Remarks = item.Remarks,
+            ScheduledDate = begin,
+            CompleteDate = item.CompleteDate,
+            DeadLineDate = item.DeadLineDate,
+            StartDate = item.StartDate
+        };
+        _dal.Task.Update(temp);
     }
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
