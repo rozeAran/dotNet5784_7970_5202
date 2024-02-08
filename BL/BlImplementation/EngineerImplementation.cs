@@ -1,5 +1,6 @@
 ﻿using BlApi;
 using BO;
+using DO;
 using System.Linq;
 
 namespace BlImplementation;
@@ -7,7 +8,7 @@ namespace BlImplementation;
 internal class EngineerImplementation : IEngineer
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
-    public int Create(Engineer item)
+    public int Create(BO.Engineer item)
     {
 
         try
@@ -40,7 +41,7 @@ internal class EngineerImplementation : IEngineer
         _dal.Engineer.Delete(id);
     }
 
-    public Engineer? Read(int id)
+    public BO.Engineer? Read(int id)
     {
         DO.Engineer? doEngineer = _dal.Engineer.Read(id);
         if (doEngineer == null)
@@ -59,7 +60,7 @@ internal class EngineerImplementation : IEngineer
 
 
 
-    public IEnumerable<EngineerInTask> ReadAll(Func<Engineer, bool>? filter = null)
+    public IEnumerable<EngineerInTask> ReadAll(Func<BO.Engineer, bool>? filter = null)
     {
         return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
                 select new BO.EngineerInTask
@@ -70,7 +71,7 @@ internal class EngineerImplementation : IEngineer
     }
 
 
-    public void Update(Engineer item)
+    public void Update(BO.Engineer item)
     {
         DO.Engineer? doEngineer = _dal.Engineer.Read(item.Id);
         if (doEngineer == null)
@@ -87,7 +88,23 @@ internal class EngineerImplementation : IEngineer
         if (item.Tasks != boEngineer.Tasks)
         {
             DO.Task newTask= _dal.Task.Read(item.Tasks.Id);
-            newTask.EngineerId=item.Id;
+            DO.Task temp = new DO.Task
+            {
+                Id = newTask.Id,
+                Alias = newTask.Alias,
+                Description = newTask.Description,
+                CreatedAtDate = newTask.CreatedAtDate,
+                RequiredEffortTime = newTask.RequiredEffortTime,
+                Complexity = newTask.Complexity,
+                Deliverables = newTask.Deliverables,
+                EngineerId = item.Id,
+                Remarks = newTask.Remarks,
+                ScheduledDate = newTask.ScheduledDate,
+                CompleteDate = newTask.CompleteDate,
+                DeadLineDate = newTask.DeadLineDate,
+                StartDate = newTask.StartDate
+            };
+            _dal.Task.Update(temp);
             //updet in engineer in task
         }
         _dal.Engineer.Update(doEngineer);
