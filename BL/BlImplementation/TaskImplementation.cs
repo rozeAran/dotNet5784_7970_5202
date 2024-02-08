@@ -35,7 +35,7 @@ internal class TaskImplementation : ITask
     }
     public void AddBeginingDate(DO.Task item, DateTime begin)
     {
- 
+        
     }
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
