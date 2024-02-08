@@ -12,11 +12,11 @@ internal class TaskImplementation : ITask
     public List<BO.TaskInList> FindDependencies(DO.Task item) 
     {
         return ((List<BO.TaskInList>)(from DO.Dependency dep in _dal.Dependency.ReadAll()
-                                    where dep.DependentTask == item.Id//task is depended on this task
+                                    where dep.DependOnTask == item.Id//task is depended on this task
                                     select new BO.TaskInList
                                     {
                                         //a list of all the task this task is depended on
-                                        Id = dep.DependOnTask,
+                                        Id = dep.DependentTask,
                                         Description= _dal.Task.Read(dep.DependOnTask).Description,
                                         Alias= _dal.Task.Read(dep.DependOnTask).Alias,
                                         Status=FindStatus(_dal.Task.Read(dep.DependOnTask))
@@ -35,7 +35,9 @@ internal class TaskImplementation : ITask
     }
     public void AddBeginingDate(DO.Task item, DateTime begin)
     {
-        
+        List<BO.TaskInList> listDep = FindDependencies(item);
+        bool theDependencies= listDep.Any<BO.TaskInList>();
+ 
     }
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
