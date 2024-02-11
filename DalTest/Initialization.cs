@@ -17,7 +17,11 @@ public static class Initialization
     internal static IDal? s_dal;//stage 2
 
     internal static readonly Random s_rand = new(); //stage 4
-
+    public static void scedual()
+    {
+        DateTime scheduledDate = DateTime.Parse(Console.ReadLine());
+        foreach (var item in s_dal) { }
+    }
     private static void CreateEngineer()// initialization of an engineer
     {
         string[] engineerNames =

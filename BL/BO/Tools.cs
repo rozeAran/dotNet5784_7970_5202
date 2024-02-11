@@ -16,8 +16,6 @@ static class Tools
         { 
             str += "\n"+item.Name+ ": "+item.GetValue(t,null);
         }
-        //Console.WriteLine(str);
         return str;
     }
-    
 }
