@@ -38,7 +38,7 @@ public static class Initialization
 
             //engineer's mail
             string firstName=name.Substring(0,name.IndexOf(' '));
-            string lastName = name.Substring(name.IndexOf(' '), name.Length);
+            string lastName = name.Substring(name.IndexOf(' '), name.Length-1);//the problem 
             string email = firstName + lastName+ "@jct.com";
 
             //engineers level
@@ -195,10 +195,13 @@ public static class Initialization
 
     public static void Do()// initialization
     {
+        if(s_dal != null)
+        {
+            s_dal.Engineer.DeleteAll();
+            s_dal.Task.DeleteAll();
+            s_dal.Dependency.DeleteAll();
+        }
 
-        s_dal.Engineer.DeleteAll();
-        s_dal.Task.DeleteAll();
-        s_dal.Dependency.DeleteAll();
 
         //s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
         s_dal = DalApi.Factory.Get; //stage 4
