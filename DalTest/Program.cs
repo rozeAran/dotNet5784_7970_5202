@@ -37,10 +37,10 @@ internal class Program
         Console.ReadKey();
         int hours= int.Parse(Console.ReadLine());
         Console.ReadKey();
-        int sec = int.Parse(Console.ReadLine());
-        Console.ReadKey();
         int minutes = int.Parse(Console.ReadLine());
-        TimeSpan requiredEffortTime= new TimeSpan(days,hours,sec,minutes);
+        Console.ReadKey();
+        int sec = int.Parse(Console.ReadLine());
+        TimeSpan requiredEffortTime= new TimeSpan(days,hours,minutes,sec);
         Console.WriteLine("enter task complexity\n");
         int temp= int.Parse(Console.ReadLine());
         EngineerExperience complexity=SetEX(int.Parse(Console.ReadLine()));

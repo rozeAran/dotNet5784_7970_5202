@@ -37,8 +37,9 @@ public static class Initialization
             while (s_dal!.Engineer.Read(id) != null);
 
             //engineer's mail
-            string firstName=name.Substring(0,name.IndexOf(' '));
-            string lastName = name.Substring(name.IndexOf(' '), name.Length-1);//the problem 
+            string[] subs = name.Split(' ');
+            string firstName= subs[0];
+            string lastName= subs[1]; 
             string email = firstName + lastName+ "@jct.com";
 
             //engineers level
