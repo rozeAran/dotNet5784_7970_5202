@@ -9,7 +9,7 @@ internal class TaskImplementation : ITask
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
     
-    public List<BO.TaskInList> FindDependencies(DO.Task item) 
+    public List<BO.TaskInList> FindDependencies(DO.Task item) //finds the task this task is depended on
     {
         return ((List<BO.TaskInList>)(from DO.Dependency dep in _dal.Dependency.ReadAll()
                                     where dep.DependOnTask == item.Id//task is depended on this task
@@ -23,7 +23,7 @@ internal class TaskImplementation : ITask
                                         
                                     }));
     }
-    public BO.EngineerInTask FindEngineer(DO.Task item)
+    public BO.EngineerInTask FindEngineer(DO.Task item)//finds the engineer this task is asigned to
     {
         return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()
                                  where eng.Id == item.EngineerId
@@ -33,7 +33,7 @@ internal class TaskImplementation : ITask
                                      Name = eng.Name,
                                  }));
     }
-    public void AddBeginingDate(DO.Task item, DateTime begin)
+    public void AddBeginingDate(DO.Task item, DateTime begin)//adds a start date
     {
         List<BO.TaskInList> listDep = FindDependencies(item);
         bool theDependencies= listDep.Any<BO.TaskInList>();
@@ -82,7 +82,7 @@ internal class TaskImplementation : ITask
         throw new WrongOrderOfDatesException("impossible order of dates");
     }
 
-    public int Create(BO.Task item)
+    public int Create(BO.Task item)//creates a new task
     {
         DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables,item.Engineer.Id, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate,false, item.StartDate);
         try
@@ -97,7 +97,7 @@ internal class TaskImplementation : ITask
 
     }
 
-    public void Delete(int id)//WE NEED TO CONSIDER THE DEPENDED TASKS
+    public void Delete(int id)//deletes a task
     {
         DO.Task? doTask = _dal.Task.Read(id);
         if (doTask == null)
@@ -106,7 +106,7 @@ internal class TaskImplementation : ITask
 
     }
 
-    public BO.Task? Read(int id)
+    public BO.Task? Read(int id)//finds a task
     {
         DO.Task? doTask = _dal.Task.Read(id);
         if (doTask == null)
@@ -136,7 +136,7 @@ internal class TaskImplementation : ITask
     }
 
 
-    public IEnumerable<BO.Task?> ReadAll(Func<BO.Task, bool>? filter = null)
+    public IEnumerable<BO.Task?> ReadAll(Func<BO.Task, bool>? filter = null)//returns a list of tasks that matches the function
     {
 
         if (filter != null)
@@ -181,7 +181,7 @@ internal class TaskImplementation : ITask
 
     }
 
-    public void Update(BO.Task item)
+    public void Update(BO.Task item)// updates a task
     {
         DO.Task doTask = new DO.Task(item.Id, item.Alias, item.Description, item.CreatedAtDate, item.RequiredEffortTime, (DO.EngineerExperience)item.Complexity, item.Deliverables,item.Engineer.Id, item.Remarks, item.ScheduledDate, item.CompleteDate, item.DeadLineDate, false, item.StartDate);
         try

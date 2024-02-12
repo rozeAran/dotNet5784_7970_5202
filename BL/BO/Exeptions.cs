@@ -59,7 +59,7 @@ public class WrongOrderOfDatesException : Exception// order of dates doesnt make
 }
 
 [Serializable]
-public class BlNullPropertyException : Exception
+public class BlNullPropertyException : Exception//this item is null therfor the program cant operate on it
 {
     public BlNullPropertyException(string? message) : base(message) { }
 }

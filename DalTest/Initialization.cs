@@ -17,11 +17,6 @@ public static class Initialization
     internal static IDal? s_dal;//stage 2
 
     internal static readonly Random s_rand = new(); //stage 4
-    public static void scedual()
-    {
-        DateTime scheduledDate = DateTime.Parse(Console.ReadLine());
-        foreach (var item in s_dal) { }
-    }
     private static void CreateEngineer()// initialization of an engineer
     {
         string[] engineerNames =
@@ -162,10 +157,6 @@ public static class Initialization
             TimeSpan requiredEffortTime = deadLineDate - createdAtDate;
             
             int engineerId=0;
-           // do
-           //     engineerId = s_rand.Next(200000000, 400000000);
-            //while (s_dal!.Engineer.Read(engineerId) == null);
-            //creates the new engineer 
             DO.Task newTask = new(0, $"task{i}", description[i], createdAtDate, requiredEffortTime, level, "deliverables", engineerId, "remarks", null, null, deadLineDate, false, null);
             s_dal!.Task.Create(newTask);
         }

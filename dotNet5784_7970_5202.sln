@@ -27,9 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{7B738D8B-15A
 		xml\tasks.xml = xml\tasks.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{AA023ABF-2CB0-488F-AF57-9FB1C9649584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{AA023ABF-2CB0-488F-AF57-9FB1C9649584}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlTest", "BlTest\BlTest.csproj", "{58ED3C14-EAC8-45DD-AB54-28DC1E17D52D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlTest", "BlTest\BlTest.csproj", "{58ED3C14-EAC8-45DD-AB54-28DC1E17D52D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +72,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9969705B-8BB8-4319-9214-41226644676A} = {B573CF20-DD24-470F-9269-9130695F6BC4}
 		{D993CDB3-74FB-44C6-BF5C-844024512BD2} = {B573CF20-DD24-470F-9269-9130695F6BC4}
+		{58ED3C14-EAC8-45DD-AB54-28DC1E17D52D} = {B573CF20-DD24-470F-9269-9130695F6BC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B59F32E-09CA-4162-A51E-3BE4FDB62039}

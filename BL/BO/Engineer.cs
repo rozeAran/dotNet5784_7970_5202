@@ -7,21 +7,14 @@ using DO;
 
 namespace BO;
 /// <summary>
-/// represents a task and include its time line
+/// represents an engineer that works on a task and includes usefull information about him/her
 /// </summary>
-/// <param name="Id"> identifier of the object</param>
-/// <param name="Alias"> a uniqe short name</param>
-/// <param name="Description"> a short description</param>
-/// <param name="CreatedAtDate"> Indicates the time when the task was created by the administrator
-/// <param name="RequiredEffortTime"> The amount of time required to perform the task</param>
-/// <param name="Complexity"> The difficulty level of the task</param>
-/// <param name="ScheduledDate"> Planned date for the start of work</param>
-/// <param name="CompleteDate"> Actual work completion date - when an engineer reports that he has finished working on the task</param>
-/// <param name="Deliverables"> A string describing the results or items provided at the end of the task</param>
-/// <param name="EngineerId"> The engineer ID assigned to the task</param>
-/// <param name="Remarks"> Remarks about the task</param>
-/// <param name="DeadLineDate"> The latest possible date on which the task is finished will not cause the project to fail, so that the entire sequence of tasks that depend on it will be completed before the deadline of the entire project.</param>
-/// <param name="StartDate"> Work Start Date - When an engineer begins actual work on the task</param>
+/// <param name="Id"> engineer's id</param>
+/// <param name="Name"> engineer's name</param>
+/// <param name="Email"> engineer's mail</param>
+/// <param name="Level">engineer's experience </param>
+/// <param name="Cost">engineer's salary</param>
+/// <param name="Tasks"> the tasks asigned to the engineer</param>
 public class Engineer
 {
     public int Id { get; init; }

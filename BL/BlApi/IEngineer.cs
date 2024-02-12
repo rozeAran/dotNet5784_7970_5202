@@ -2,7 +2,7 @@
 /// <summary>
 /// the interface of engineer in the logical layer 
 /// </summary>
-/// <method name=""> 
+/// <method name="FindTask"> finds the task asigned to the engineer</method>
 /// <method name="create"> : trys to add a Engineer to the data layer</method>
 /// <method name="read">: returns the Engineer that matches the id </method>
 /// <method name="readAll">: returns a list of Engineers that matches the function </method>
