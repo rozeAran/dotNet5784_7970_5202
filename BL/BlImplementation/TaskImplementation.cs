@@ -8,8 +8,7 @@ namespace BlImplementation;
 internal class TaskImplementation : ITask
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
-    
-    public List<BO.TaskInList> FindDependencies(DO.Task item) //finds the task this task is depended on
+    public List<BO.TaskInList> FindDependencies(DO.Task item) //finds the tasks this task is depended on
     {
         return ((List<BO.TaskInList>)(from DO.Dependency dep in _dal.Dependency.ReadAll()
                                     where dep.DependOnTask == item.Id//task is depended on this task

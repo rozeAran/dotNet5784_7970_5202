@@ -11,6 +11,7 @@
 /// <method name="Update">: if the data is valid, will try to update the task in the data layer </method>
 /// <method name="AddBeginingDate">: adding to the task a begining date </method>
 /// <method name="Delete">: if the task is deletebul then will delete it </method>
+/// <method name="EarliestDate">:  </method>
 
 public interface ITask
 {
