@@ -8,6 +8,7 @@
         Title="EngineerWindow" Height="450" Width="800">
     <!--Extrnal Grid-->
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="500*"/>
@@ -22,6 +23,13 @@
         </Grid>
         <Label Content="engineer level" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Grid.Column="0"/>
         <!--combobox to chose a level of engineer-->
-        <ComboBox HorizontalAlignment="Right" Width="800" SelectionChanged="ComboBox_SelectionChanged"/> 
+        <ComboBox HorizontalAlignment="Right" Width="800" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ListView Grid.Row="1" Margin="0,138,0,-138">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
