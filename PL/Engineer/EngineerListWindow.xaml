@@ -9,9 +9,9 @@
     <Grid>
 
         <Grid Margin="10,10,-10,-10">
-            <Label Content="engineer's level" HorizontalAlignment="Left" Margin="61,66,0,0" VerticalAlignment="Top" Height="108" Width="220"/>
-
-            <ComboBox x:Name="cbFromXML" HorizontalAlignment="Left" Margin="532,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="cbFromXML_SelectionChanged">
+            <Label Content="engineer's level" HorizontalAlignment="Left" Margin="61,66,0,0" VerticalAlignment="Top" Height="108" Width="220" Grid.Column="0"/>
+            
+            <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1">
                 <ComboBox.Items>
                     <ComboBoxItem Content="Begginer" />
                     <ComboBoxItem Content="AdvancedBeginner" />
