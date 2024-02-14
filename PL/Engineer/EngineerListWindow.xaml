@@ -23,7 +23,6 @@
             <Label Content="engineer's level" HorizontalAlignment="Left" Margin="61,66,0,0" VerticalAlignment="Top" Height="108" Width="220" Grid.Column="0"/>
             
             <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1">
->>>>>>> 3e2656bcd7f02b6b74e989f80fa4193c7572ac0a
                 <ComboBox.Items>
                     <ComboBoxItem Content="Begginer" />
                     <ComboBoxItem Content="AdvancedBeginner" />
@@ -32,13 +31,6 @@
                     <ComboBoxItem Content="Expert" />
                 </ComboBox.Items>
             </ComboBox>
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="206,192,265,73">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
         </Grid>
     </Grid>
 
