@@ -15,7 +15,9 @@
 /// <param name="Remarks"> Remarks about the task(notes)</param>
 /// <param name="DeadLineDate"> The latest possible date on which the task is finished will not cause the project to fail, so that the entire sequence of tasks that depend on it will be completed before the deadline of the entire project.</param>
 /// <param name="StartDate"> Work Start Date - When an engineer begins actual work on the task</param>
-/// <param name="EngineerId"> id of engineer</param>
+/// <param name="TaskStatus"> status of task</param>
+/// <param name="Dependencies"> the tasks this task is depende on</param>
+/// <param name="Engineer"> engineer this task asigned to</param>
 public class Task
 {
     public int Id { get; init; }
@@ -30,8 +32,7 @@ public class Task
     public List<BO.TaskInList>? Dependencies { get; set; }
     public BO.EngineerInTask? Engineer { get; set; }
     public string? Remarks { get; set; }
-    public bool IsMilestone { get; init; }=false;
-   // public DateTime? ForecastDate { get; set; } = null; i think its only for milestone
+    //public bool IsMilestone { get; init; }=false;
     public DateTime? ScheduledDate { get; set; } = null;
     public DateTime? CompleteDate { get; set; } = null;
     public DateTime? DeadLineDate { get; set; } = null;

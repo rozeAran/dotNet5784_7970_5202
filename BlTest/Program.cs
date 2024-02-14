@@ -7,7 +7,9 @@ using BlApi;
 using BO;
 using BL;
 
-
+/// <summary>
+/// the program in BO gets from user the data and calls DO to use it
+/// </summary>
 internal class Program
 {
     static readonly IBl s_bl = BlApi.Factory.Get(); //stage 4
@@ -259,15 +261,6 @@ internal class Program
                         EngineerImp();
                         break;
                     }
-               /* case 3:
-                    {
-                        Console.Write("Would you like to create Initial data? (Y/N)");
-                        string? ans = Console.ReadLine() ?? throw new FormatException("Wrong input");
-                        if (ans == "Y")
-                            DalTest.Initialization.Do();
-                        break;
-
-                    }*/
                 default: throw new Exception("no such possibility");
             }
             Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");

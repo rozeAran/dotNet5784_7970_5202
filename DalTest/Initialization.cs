@@ -17,7 +17,6 @@ public static class Initialization
     internal static IDal? s_dal;//stage 2
 
     internal static readonly Random s_rand = new(); //stage 4
-
     private static void CreateEngineer()// initialization of an engineer
     {
         string[] engineerNames =
@@ -37,8 +36,9 @@ public static class Initialization
             while (s_dal!.Engineer.Read(id) != null);
 
             //engineer's mail
-            string firstName=name.Substring(0,name.IndexOf(' '));
-            string lastName = name.Substring(name.IndexOf(' '), name.Length);
+            string[] subs = name.Split(' ');
+            string firstName= subs[0];
+            string lastName= subs[1]; 
             string email = firstName + lastName+ "@jct.com";
 
             //engineers level
@@ -157,10 +157,6 @@ public static class Initialization
             TimeSpan requiredEffortTime = deadLineDate - createdAtDate;
             
             int engineerId=0;
-           // do
-           //     engineerId = s_rand.Next(200000000, 400000000);
-            //while (s_dal!.Engineer.Read(engineerId) == null);
-            //creates the new engineer 
             DO.Task newTask = new(0, $"task{i}", description[i], createdAtDate, requiredEffortTime, level, "deliverables", engineerId, "remarks", null, null, deadLineDate, false, null);
             s_dal!.Task.Create(newTask);
         }
@@ -195,10 +191,13 @@ public static class Initialization
 
     public static void Do()// initialization
     {
+        if(s_dal != null)
+        {
+            s_dal.Engineer.DeleteAll();
+            s_dal.Task.DeleteAll();
+            s_dal.Dependency.DeleteAll();
+        }
 
-        s_dal.Engineer.DeleteAll();
-        s_dal.Task.DeleteAll();
-        s_dal.Dependency.DeleteAll();
 
         //s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
         s_dal = DalApi.Factory.Get; //stage 4

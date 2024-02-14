@@ -16,7 +16,7 @@ namespace BlImplementation;
 internal class EngineerImplementation : IEngineer
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
-    public int Create(BO.Engineer item)
+    public int Create(BO.Engineer item)//creates a new engineer
     {
 
         try
@@ -36,7 +36,7 @@ internal class EngineerImplementation : IEngineer
 
     }
 
-    public void Delete(int id)
+    public void Delete(int id)//deletes an engineer
     {
         DO.Engineer? doEngineer = _dal.Engineer.Read(id);
         if (doEngineer == null)
@@ -49,7 +49,7 @@ internal class EngineerImplementation : IEngineer
         _dal.Engineer.Delete(id);
     }
 
-    public BO.Engineer? Read(int id)
+    public BO.Engineer? Read(int id)// finds an engineer
     {
         DO.Engineer? doEngineer = _dal.Engineer.Read(id);
         if (doEngineer == null)
@@ -68,7 +68,7 @@ internal class EngineerImplementation : IEngineer
 
 
 
-    public IEnumerable<EngineerInTask> ReadAll(Func<BO.Engineer, bool>? filter = null)
+    public IEnumerable<EngineerInTask> ReadAll(Func<BO.Engineer, bool>? filter = null)// returns a list of Engineers that matches the function
     {
         return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
                 select new BO.EngineerInTask
@@ -79,7 +79,7 @@ internal class EngineerImplementation : IEngineer
     }
 
 
-    public void Update(BO.Engineer item)
+    public void Update(BO.Engineer item)//updates an engineer
     {
         DO.Engineer? doEngineer = _dal.Engineer.Read(item.Id);
         if (doEngineer == null)
@@ -118,7 +118,7 @@ internal class EngineerImplementation : IEngineer
         _dal.Engineer.Update(doEngineer);
     }
 
-    public BO.TaskInEngineer FindTask(int id)
+    public BO.TaskInEngineer FindTask(int id)// finds the task asigned to the engineer
     {
         if (_dal.Task.Read(id) == null)
             throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
