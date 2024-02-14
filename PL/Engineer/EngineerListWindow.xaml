@@ -9,6 +9,7 @@
     <Grid>
 
         <Grid Margin="10,10,-10,-10">
+<<<<<<< HEAD
             <Label Content="engineer's level" HorizontalAlignment="Left" Margin="61,66,0,0" VerticalAlignment="Top" Height="108" Width="220"/>
 
             <ComboBox x:Name="cbFromXML" HorizontalAlignment="Left" Margin="532,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="cbFromXML_SelectionChanged">
@@ -18,6 +19,11 @@
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>
                 </ComboBox.Background>
+=======
+            <Label Content="engineer's level" HorizontalAlignment="Left" Margin="61,66,0,0" VerticalAlignment="Top" Height="108" Width="220" Grid.Column="0"/>
+            
+            <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1">
+>>>>>>> 3e2656bcd7f02b6b74e989f80fa4193c7572ac0a
                 <ComboBox.Items>
                     <ComboBoxItem Content="Begginer" />
                     <ComboBoxItem Content="AdvancedBeginner" />
