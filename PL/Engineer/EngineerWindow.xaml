@@ -6,7 +6,21 @@
         xmlns:local="clr-namespace:PL.Engineer"
         mc:Ignorable="d"
         Title="EngineerWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="116,149,471,186" RenderTransformOrigin="2.416,-3.837">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="82*"/>
+            <RowDefinition Height="17*"/>
+        </Grid.RowDefinitions>
+        <Label Content="engineer's level" HorizontalAlignment="Left" VerticalAlignment="Top" Height="108" Width="220" Margin="-78,-127,0,0"/>
+
+        <ComboBox RenderTransformOrigin="2.698,-6.816" Margin="398,-35,-398,0" Height="38" VerticalAlignment="Top">
+            <ComboBox.Items>
+                <ComboBoxItem Content="Begginer" />
+                <ComboBoxItem Content="AdvancedBeginner" />
+                <ComboBoxItem Content="Intermediate" />
+                <ComboBoxItem Content="Advanced" />
+                <ComboBoxItem Content="Expert" />
+            </ComboBox.Items>
+        </ComboBox>
     </Grid>
 </Window>
