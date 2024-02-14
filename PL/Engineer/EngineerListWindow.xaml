@@ -11,15 +11,16 @@
         <Grid Margin="10,10,-10,-10">
             <Label Content="engineer's level" HorizontalAlignment="Left" Margin="61,66,0,0" VerticalAlignment="Top" Height="108" Width="220"/>
 
-            <ComboBox
-x:Name="cbFromXML" Grid.Column="1" HorizontalAlignment="Left" Margin="86,33,0,0" Grid.Row="1" VerticalAlignment="Top" Width="180" Height="38">
-               <ComboBox.Items>
-                    <ComboBoxItem Content="Item 1 from XML" />
-                    <ComboBoxItem Content="Item 2 from XML" />
-                    <ComboBoxItem Content="Item 3 from XML" />
-               </ComboBox.Items>
+            <ComboBox x:Name="cbFromXML" HorizontalAlignment="Left" Margin="532,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="cbFromXML_SelectionChanged">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="Begginer" />
+                    <ComboBoxItem Content="AdvancedBeginner" />
+                    <ComboBoxItem Content="Intermediate" />
+                    <ComboBoxItem Content="Advanced" />
+                    <ComboBoxItem Content="Expert" />
+                </ComboBox.Items>
             </ComboBox>
         </Grid>
     </Grid>
-    
+
 </Window>

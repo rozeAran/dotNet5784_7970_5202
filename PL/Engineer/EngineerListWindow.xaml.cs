@@ -38,6 +38,11 @@ namespace PL.Engineer
         {
 
         }
+
+        private void cbFromXML_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
 /*<ListBox x:Name="list" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"
