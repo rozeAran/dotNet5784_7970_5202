@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PL.Engineer;
 
 namespace PL
 {
@@ -19,6 +20,16 @@ namespace PL
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ButtonEngineer_Click(object sender, RoutedEventArgs e)
+        {
+            new EngineerWindow().Show();
+        }
+
+        private void ButtonInisialization_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

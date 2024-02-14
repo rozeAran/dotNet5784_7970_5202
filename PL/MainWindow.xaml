@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <!--takes care of engineer-->
+        <Button Content="handelEngineer" HorizontalAlignment="Left" Margin="563,262,0,0" VerticalAlignment="Top" Height="107" Width="185" Click="ButtonEngineer_Click"/>
+        <Button Content="inisialization" HorizontalAlignment="Left" Margin="354,262,0,0" VerticalAlignment="Top" Height="107" Width="161" Click="ButtonInisialization_Click"/>
 
     </Grid>
 </Window>
