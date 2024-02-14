@@ -4,7 +4,15 @@ using DO;
 using System.Linq;
 
 namespace BlImplementation;
-
+/// <summary>
+/// the interface of engineer in the logical layer 
+/// </summary>
+/// <method name="findTask"> :find the task that the engineer is working on
+/// <method name="create"> : trys to add a Engineer to the data layer</method>
+/// <method name="read">: returns the Engineer that matches the id </method>
+/// <method name="readAll">: returns a list of Engineers that matches the function </method>
+/// <method name="update">: if the data is valid, will try to update the Engineer in the data layer </method>
+/// <method name="delete">: if the Engineer is deletebul then will delete it </method>
 internal class EngineerImplementation : IEngineer
 {
     private DalApi.IDal _dal = DalApi.Factory.Get;
