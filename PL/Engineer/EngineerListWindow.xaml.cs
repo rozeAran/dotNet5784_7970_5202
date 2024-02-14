@@ -23,5 +23,30 @@ namespace PL.Engineer
         {
             InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComboBoxItem_Selected_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
+/*<ListBox x:Name="list" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"
+                     SelectionChanged="lbFromXML_SelectionChanged">
+              <ListBox.Items>
+                <ListBoxItem Content="beginner"/>
+                <ListBoxItem Content="advanced beginer"/>
+                <ListBoxItem Content="intermediate"/>
+                <ListBoxItem Content="advancrd"/>
+                <ListBoxItem Content="expert"/>
+                </ListBox.Items>     
+            */
