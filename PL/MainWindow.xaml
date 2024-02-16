@@ -9,8 +9,8 @@
     <Grid>
         <!--takes care of engineer-->
         <Button Content="handelEngineer" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="185" Click="ButtonEngineer_Click"/>
-        <Button Content="inisialization" HorizontalAlignment="Left" Margin="208,262,0,0" VerticalAlignment="Top" Height="107" Width="161" Click="ButtonInisialization_Click"/>
-        <Button Content="reset" HorizontalAlignment="Left" Margin="51,262,0,0" VerticalAlignment="Top" Height="107" Width="127" Click="Reset_Click"/>
+        <Button Content="initialization" HorizontalAlignment="Left" Margin="208,262,0,0" VerticalAlignment="Top" Height="107" Width="161" Click="ButtonInitialization_Click"/>
+        <Button Content="reset" HorizontalAlignment="Left" Margin="51,262,0,0" VerticalAlignment="Top" Height="107" Width="127" Click="ButtonReset_Click"/>
 
     </Grid>
 </Window>
