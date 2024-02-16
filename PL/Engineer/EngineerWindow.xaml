@@ -21,10 +21,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Label Content="engineer level" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+            <!--combobox to chose a level of engineer-->
+            <ComboBox HorizontalAlignment="Right" Width="800" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1"/>
         </Grid>
-        <Label Content="engineer level" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Grid.Column="0"/>
-        <!--combobox to chose a level of engineer-->
-        <ComboBox HorizontalAlignment="Right" Width="800" SelectionChanged="ComboBox_SelectionChanged"/>
+
         <ListView Grid.Row="1" Margin="0,138,0,-138">
             <ListView.View>
                 <GridView>
