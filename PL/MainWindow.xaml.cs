@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PL.Engineer;
+using BO;
 
 namespace PL
 {
@@ -27,9 +28,14 @@ namespace PL
             new EngineerWindow().Show();
         }
 
-        private void ButtonInisialization_Click(object sender, RoutedEventArgs e)
+        private void ButtonInitialization_Click(object sender, RoutedEventArgs e)
         {
+            BlApi.IBl.s_bl.InitializeDB();
+        }
 
+        private void ButtonReset_Click(object sender, RoutedEventArgs e)
+        {
+            BlApi.IBl.s_bl.ResetDB();
         }
     }
 }
