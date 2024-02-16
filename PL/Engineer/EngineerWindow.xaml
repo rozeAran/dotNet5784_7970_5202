@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.Engineer"
         mc:Ignorable="d"
+        
         Title="EngineerWindow" Height="450" Width="800">
     <!--Extrnal Grid-->
     <Grid>
@@ -31,7 +32,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
         <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Height="50" Width="100"/>
 
     </Grid>
+    
 </Window>

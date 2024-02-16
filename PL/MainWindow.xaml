@@ -8,8 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <!--takes care of engineer-->
-        <Button Content="handelEngineer" HorizontalAlignment="Left" Margin="563,262,0,0" VerticalAlignment="Top" Height="107" Width="185" Click="ButtonEngineer_Click"/>
-        <Button Content="inisialization" HorizontalAlignment="Left" Margin="354,262,0,0" VerticalAlignment="Top" Height="107" Width="161" Click="ButtonInisialization_Click"/>
+        <Button Content="handelEngineer" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="185" Click="ButtonEngineer_Click"/>
+        <Button Content="inisialization" HorizontalAlignment="Left" Margin="208,262,0,0" VerticalAlignment="Top" Height="107" Width="161" Click="ButtonInisialization_Click"/>
+        <Button Content="reset" HorizontalAlignment="Left" Margin="51,262,0,0" VerticalAlignment="Top" Height="107" Width="127" Click="Reset_Click"/>
 
     </Grid>
 </Window>

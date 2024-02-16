@@ -186,22 +186,21 @@ public static class Initialization
 
         }
     }
-   
-  
-
-    public static void Do()// initialization
+    public static void Reset()//stage 5
     {
-        if(s_dal != null)
+        if (s_dal != null)
         {
             s_dal.Engineer.DeleteAll();
             s_dal.Task.DeleteAll();
             s_dal.Dependency.DeleteAll();
         }
 
-
+    }
+    public static void Do()// initialization
+    {
         //s_dal = dal ?? throw new NullReferenceException("DAL object can not be null!"); //stage 2
         s_dal = DalApi.Factory.Get; //stage 4
-
+        Reset();
         CreateEngineer();
         CreateTask();
         CreateDependency();        
