@@ -7,4 +7,6 @@ public interface IBl
     public IEngineer Engineer { get; }
 
     public void InisializeDB()=>DalTest.Initialization.Do();
+
+    public void ResetDB() => DalTest.Initialization.Reset();
 }
