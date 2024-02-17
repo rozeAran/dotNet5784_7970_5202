@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace PL.Engineer;
 public partial class EngineerWindow : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+    public BO.EngineerExperience Experience { get; set; } = BO.EngineerExperience.Beginner;
     public EngineerWindow()
     {
         InitializeComponent();
@@ -35,13 +37,16 @@ public partial class EngineerWindow : Window
     public static readonly DependencyProperty EngListProperty =
         DependencyProperty.Register("CourseList", typeof(IEnumerable<BO.EngineerInTask>), typeof(EngineerWindow), new PropertyMetadata(null));
 
+
     private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-
+        EngList = (Experience == BO.EngineerExperience.Beginner) ?
+           s_bl?.Engineer.ReadAll()! : s_bl?.Engineer.ReadAll(item => item.Level == Experience)!;
     }
 
     private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
 
     }
+
 }
