@@ -78,6 +78,20 @@ internal class EngineerImplementation : IEngineer
                 });
     }
 
+    public IEnumerable<BO.Engineer> ReadAllEngineers(Func<BO.Engineer, bool>? filter = null)
+    {
+        return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
+                select new BO.Engineer
+                {
+                    Id = doEngineer.Id,
+                    Name = doEngineer.Name,
+                    Email = doEngineer.Email,
+                    Level = (BO.EngineerExperience)doEngineer.Level,
+                    Cost = doEngineer.Cost,
+                    Tasks = FindTask(doEngineer.Id)//adding the current task that the engineer is workng on
+                });
+
+    }
 
     public void Update(BO.Engineer item)//updates an engineer
     {

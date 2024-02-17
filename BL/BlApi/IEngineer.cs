@@ -13,6 +13,7 @@ public interface IEngineer
     public int Create(BO.Engineer item);
     public BO.Engineer? Read(int id);
     public IEnumerable<BO.EngineerInTask> ReadAll(Func<BO.Engineer, bool>? filter = null);
+    public IEnumerable<BO.Engineer> ReadAllEngineers(Func<BO.Engineer, bool>? filter = null);
     public void Update(BO.Engineer item);
     public void Delete(int id);
     public BO.TaskInEngineer FindTask(int id);

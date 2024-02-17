@@ -12,21 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL.Engineer
+namespace PL.Engineer;
+
+/// <summary>
+/// Interaction logic for EngineerWindow.xaml
+/// </summary>
+
+public partial class EngineerWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for EngineerWindow.xaml
-    /// </summary>
-    public partial class EngineerWindow : Window
+    static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+    public EngineerWindow()
     {
-        public EngineerWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        EngList = s_bl?.Engineer.ReadAll()!;
+    }
+    public IEnumerable<BO.EngineerInTask> EngList
+    {
+        get { return (IEnumerable<BO.EngineerInTask>)GetValue(EngListProperty); }
+        set { SetValue(EngListProperty, value); }
+    }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+    public static readonly DependencyProperty EngListProperty =
+        DependencyProperty.Register("CourseList", typeof(IEnumerable<BO.EngineerInTask>), typeof(EngineerWindow), new PropertyMetadata(null));
 
-        }
+    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
+
+    private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
     }
 }
