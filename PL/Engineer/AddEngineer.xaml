@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.Engineer"
         mc:Ignorable="d"
-        Title="AddEngineer" Height="640" Width="800">
+        Title="AddEngineer" Height="640" Width="800"
+        DataContext="{Binding eng, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
+
     <Grid>
-        
+        <Button Content="Button" HorizontalAlignment="Left" Margin="90,365,0,0" VerticalAlignment="Top" Height="174" Width="265"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="400,365,0,0" VerticalAlignment="Top" Height="174" Width="262"/>
+
     </Grid>
 </Window>
