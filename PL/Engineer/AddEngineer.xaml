@@ -9,7 +9,7 @@
         DataContext="{Binding eng, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
 
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="90,365,0,0" VerticalAlignment="Top" Height="174" Width="265"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="90,365,0,0" VerticalAlignment="Top" Height="174" Width="265" Click="Button_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="400,365,0,0" VerticalAlignment="Top" Height="174" Width="262"/>
 
     </Grid>

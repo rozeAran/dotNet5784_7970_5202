@@ -37,7 +37,6 @@ public partial class EngineerWindow : Window
     public static readonly DependencyProperty EngListProperty =
         DependencyProperty.Register("CourseList", typeof(IEnumerable<BO.EngineerInTask>), typeof(EngineerWindow), new PropertyMetadata(null));
 
-
     private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         EngList = (Experience == BO.EngineerExperience.Beginner) ?

@@ -25,8 +25,8 @@
             </Grid.ColumnDefinitions>
             <Label Content="engineer level" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Grid.Column="0"/>
             <!--combobox to chose a level of engineer-->
-            <ComboBox HorizontalAlignment="Right" Width="800" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1"/>
-            <ComboBox ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Right" Width="800" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1"/>
+            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <ComboBox Grid.Column="1" SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Left" Width="400"/>
         </Grid>
 
@@ -39,7 +39,7 @@
             <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" />
         </ListView>
         
-        <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Height="50" Width="100"/>
+        <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Height="50" Width="100" Click=""/>
 
     </Grid>
     
