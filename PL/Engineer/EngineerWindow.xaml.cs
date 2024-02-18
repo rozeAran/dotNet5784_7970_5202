@@ -48,5 +48,15 @@ public partial class EngineerWindow : Window
     {
 
     }
+    public IEnumerable<BO.EngineerInTask> EngineerList
+    {
+        get { return (IEnumerable<BO.EngineerInTask>)GetValue(EngineerListProperty); }
+        set { SetValue(EngineerListProperty, value); }
+    }
+
+    public static readonly DependencyProperty EngineerListProperty =
+        DependencyProperty.Register("EngineerList", typeof(IEnumerable<BO.EngineerInTask>), typeof(EngineerListWindow), new PropertyMetadata(null));
+
+
 
 }

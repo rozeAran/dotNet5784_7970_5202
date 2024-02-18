@@ -45,13 +45,4 @@ namespace PL.Engineer
         }
     }
 }
-/*<ListBox x:Name="list" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"
-                     SelectionChanged="lbFromXML_SelectionChanged">
-              <ListBox.Items>
-                <ListBoxItem Content="beginner"/>
-                <ListBoxItem Content="advanced beginer"/>
-                <ListBoxItem Content="intermediate"/>
-                <ListBoxItem Content="advancrd"/>
-                <ListBoxItem Content="expert"/>
-                </ListBox.Items>     
-            */
+
