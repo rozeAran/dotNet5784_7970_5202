@@ -7,18 +7,18 @@
         mc:Ignorable="d"
         Title="EngineerWindow" Height="450" Width="800"
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
-   
+
 
     <!--Extrnal Grid-->
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="500*"/>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="353*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Internal, Upper Grid-->
-        <Grid HorizontalAlignment="Stretch" Height="auto" Grid.Row="0" VerticalAlignment="Stretch" Width="auto">
+        <Grid Height="auto" Grid.Row="0" Width="auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -30,7 +30,7 @@
             <ComboBox Grid.Column="1" SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Left" Width="400"/>
         </Grid>
 
-        <ListView Grid.Row="1" Margin="0,138,0,-138" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngineerList}">
+        <ListView Grid.Row="1" Margin="0,138,0,-88" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngineerList}" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -38,9 +38,9 @@
             </ListView.View>
             <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" />
         </ListView>
-        
-        <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Height="50" Width="100" Click=""/>
+
+        <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Width="100" Click="" Margin="0,13,0,-13"/>
 
     </Grid>
-    
+
 </Window>
