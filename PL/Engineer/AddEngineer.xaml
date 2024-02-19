@@ -21,5 +21,18 @@
         <TextBox Grid.Row="3" Grid.Column="1" 
               Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="4" Grid.Column="1" 
+              Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
+              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" 
+            ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" 
+            SelectedValue="{Binding Experience, Mode=TwoWay, NotifyOnValidationError=true, 
+            ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="6" Grid.Column="1" 
+              Text="{Binding Cost, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
+              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="4" Grid.Column="1" 
+              Text="{Binding Tasks, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
+              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
     </Grid>
 </Window>
