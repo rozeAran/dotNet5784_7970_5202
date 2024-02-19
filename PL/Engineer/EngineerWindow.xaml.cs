@@ -45,7 +45,7 @@ public partial class EngineerWindow : Window
 
     private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        s_bl.Engineer.ReadAll();
+
     }
 
     private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)
@@ -59,5 +59,6 @@ public partial class EngineerWindow : Window
 
         new AddEngineer(eng.Id).ShowDialog();
     }
+
 
 }
