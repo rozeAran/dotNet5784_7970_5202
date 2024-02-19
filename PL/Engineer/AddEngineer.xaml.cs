@@ -45,6 +45,20 @@ public partial class AddEngineer : Window
 
     private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
     {
+        try
+        {
+            if (eng.Id == 0)
+                s_bl.Engineer.Create(eng);
+            else
+                s_bl.Engineer.Update(eng);
+        }
+        catch  (BO.BlAlreadyExistsException ex) { Console.WriteLine(ex); }
+        catch (BO.BlDoesNotExistException ex) { Console.WriteLine(ex); }
+        catch(BO.BlCantBeUpdetedException ex) { Console.WriteLine(ex); }
+    }
 
+    private void Button_Click_1(object sender, RoutedEventArgs e)
+    {
+     
     }
 }
