@@ -20,7 +20,7 @@ namespace PL.Engineer;
 public partial class AddEngineer : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-    BO.Engineer eng;
+    BO.Engineer? eng;
     public AddEngineer(int id=0)
     {
         InitializeComponent();
@@ -43,7 +43,7 @@ public partial class AddEngineer : Window
         catch (BO.BlDoesNotExistException ex) { Console.WriteLine(ex); }
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
+    private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
     {
 
     }
