@@ -48,9 +48,15 @@ public partial class AddEngineer : Window
         try
         {
             if (eng.Id == 0)
+            {
                 s_bl.Engineer.Create(eng);
+                Console.WriteLine("engineer was succsesfuly created");
+            }
             else
+            {
                 s_bl.Engineer.Update(eng);
+                Console.WriteLine("engineer was succsesfuly updated");
+            }
         }
         catch  (BO.BlAlreadyExistsException ex) { Console.WriteLine(ex); }
         catch (BO.BlDoesNotExistException ex) { Console.WriteLine(ex); }
