@@ -63,8 +63,4 @@ public partial class AddEngineer : Window
         catch(BO.BlCantBeUpdetedException ex) { Console.WriteLine(ex); }
     }
 
-    private void Button_Click_1(object sender, RoutedEventArgs e)
-    {
-     
-    }
 }

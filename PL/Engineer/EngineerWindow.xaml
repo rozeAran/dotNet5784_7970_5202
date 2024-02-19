@@ -36,7 +36,7 @@
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
-            <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" MouseDoubleClick="OpenEngineer" />
+            <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" MouseDoubleClick="ButtonAddEngineer_Click" />
         </ListView>
 
         <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Width="100" Margin="0,13,0,-13" Click="ButtonAddEngineer_Click"/>

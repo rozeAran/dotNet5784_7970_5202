@@ -30,7 +30,9 @@ namespace PL
 
         private void ButtonInitialization_Click(object sender, RoutedEventArgs e)
         {
-            BlApi.IBl.s_bl.InitializeDB();
+            if (MessageBox.Show("Do you want to initialize?", "initialization", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                BlApi.IBl.s_bl.InitializeDB();
+
         }
 
         private void ButtonReset_Click(object sender, RoutedEventArgs e)

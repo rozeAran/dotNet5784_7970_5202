@@ -53,9 +53,11 @@ public partial class EngineerWindow : Window
         new AddEngineer().ShowDialog();
     }
     
-    private void OpenEngineer()
+    private void ListView_OpenEngineer(object sender, RoutedEventArgs e)
     {
+        BO.Engineer? eng = (sender as ListView)?.SelectedItem as BO.Engineer;
 
+        new AddEngineer(eng.Id).ShowDialog();
     }
 
 }
