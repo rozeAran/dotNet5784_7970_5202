@@ -9,8 +9,13 @@
        
         Title="EngineerListWindow" Height="640" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="448*"/>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="201*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid Margin="10,10,-10,-10">
+        <Grid Margin="10,10,-10,-10" Grid.ColumnSpan="3">
             <Label Content="engineer's level" HorizontalAlignment="Left" Margin="61,66,0,0" VerticalAlignment="Top" Height="108" Width="220"/>
 
             <ComboBox x:Name="cbFromXML" HorizontalAlignment="Left" Margin="532,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="cbFromXML_SelectionChanged">

@@ -39,8 +39,8 @@ public partial class AddEngineer : Window
             else
                 eng = s_bl?.Engineer.Read(id)!;
         }
-        catch (BO.BlAlreadyExistsException ex) { Console.WriteLine(ex); }
-        catch (BO.BlDoesNotExistException ex) { Console.WriteLine(ex); }
+        catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
+        catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
     }
 
     private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
@@ -50,17 +50,17 @@ public partial class AddEngineer : Window
             if (eng.Id == 0)
             {
                 s_bl.Engineer.Create(eng);
-                Console.WriteLine("engineer was succsesfuly created");
+                MessageBox.Show("engineer was succsesfuly created");
             }
             else
             {
                 s_bl.Engineer.Update(eng);
-                Console.WriteLine("engineer was succsesfuly updated");
+                MessageBox.Show("engineer was succsesfuly updated");
             }
         }
-        catch  (BO.BlAlreadyExistsException ex) { Console.WriteLine(ex); }
-        catch (BO.BlDoesNotExistException ex) { Console.WriteLine(ex); }
-        catch(BO.BlCantBeUpdetedException ex) { Console.WriteLine(ex); }
+        catch  (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
+        catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
+        catch(BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
     }
 
 }
