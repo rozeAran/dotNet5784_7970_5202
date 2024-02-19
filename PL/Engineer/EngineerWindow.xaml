@@ -10,7 +10,7 @@
 
 
     <!--Extrnal Grid-->
-    <Grid x:Name="list">
+    <Grid x:Name="list" Height="434" VerticalAlignment="Center" HorizontalAlignment="Left" Width="800">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="61*"/>
@@ -30,7 +30,7 @@
             <ComboBox Grid.Column="1" SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Left" Width="400"/>
         </Grid>
 
-        <ListView Grid.Row="1" Margin="0,138,0,-88" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngineerList}" Grid.RowSpan="2">
+        <ListView Grid.Row="1" Margin="0,138,0,-88" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngineerList}" Grid.RowSpan="2" Background="#FFDF9EE2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
@@ -39,7 +39,7 @@
             <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" MouseDoubleClick="ButtonAddEngineer_Click" />
         </ListView>
 
-        <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Width="100" Margin="0,13,0,-13" Click="ButtonAddEngineer_Click"/>
+        <Button Content="Add" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="570,49,0,240" FontSize="30" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
 
     </Grid>
 

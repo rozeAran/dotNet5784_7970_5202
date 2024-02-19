@@ -9,9 +9,15 @@
         DataContext="{Binding eng, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
 
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF4DEBCF" Offset="1"/>
+                <GradientStop Color="#FFAA3E9E"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Button Grid.Row="9" Grid.Column="0" 
         Content="{Binding Id, Mode=OneTime, Converter={StaticResource ConvertIdToContentKey}}" 
-        HorizontalAlignment="Left" Margin="3,0,0,0"  VerticalAlignment="Top" Padding="5" 
+        HorizontalAlignment="Left" Margin="3,0,0,0"  VerticalAlignment="Top" Padding="5" Background="AliceBlue"
         Click="btnAddUpdate_Click"/>
         <TextBox Grid.Row="2" Grid.Column="1" 
               Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" 

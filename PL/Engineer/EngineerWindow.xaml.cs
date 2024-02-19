@@ -43,10 +43,6 @@ public partial class EngineerWindow : Window
            s_bl?.Engineer.ReadAll()! : s_bl?.Engineer.ReadAll(item => item.Level == Experience)!;
     }
 
-    private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-
-    }
 
     private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)
     {
