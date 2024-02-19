@@ -10,7 +10,7 @@
 
 
     <!--Extrnal Grid-->
-    <Grid>
+    <Grid x:Name="list">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="61*"/>
@@ -36,10 +36,10 @@
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
-            <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" />
+            <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" MouseDoubleClick="OpenEngineer" />
         </ListView>
 
-        <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Width="100" Margin="0,13,0,-13"/>
+        <Button Content="Add" Grid.Row="2" HorizontalAlignment="Center" Width="100" Margin="0,13,0,-13" Click="ButtonAddEngineer_Click"/>
 
     </Grid>
 

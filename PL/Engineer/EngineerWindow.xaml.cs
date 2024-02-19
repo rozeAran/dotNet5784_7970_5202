@@ -48,4 +48,14 @@ public partial class EngineerWindow : Window
 
     }
 
+    private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)
+    {
+        new AddEngineer().ShowDialog();
+    }
+    
+    private void OpenEngineer()
+    {
+
+    }
+
 }
