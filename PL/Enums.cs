@@ -13,7 +13,8 @@ public enum Levels
     AdvancedBeginner,
     Intermediate,
     Advanced,
-    Expert
+    Expert,
+    None
 }
 internal class EngineerExp : IEnumerable
 {

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL.Engineer"
         mc:Ignorable="d"
         Title="AddEngineer" Height="640" Width="800"
-        DataContext="{Binding eng, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
+        DataContext="{Binding Eng, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
 
     <Grid>
         <Grid.Background>

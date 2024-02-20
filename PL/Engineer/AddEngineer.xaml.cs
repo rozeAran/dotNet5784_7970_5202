@@ -17,17 +17,21 @@ namespace PL.Engineer;
 /// <summary>
 /// Interaction logic for AddEngineer.xaml
 /// </summary>
+/// <parameter name="Eng">: the engineer that i get from the engineer window </parameter>
+/// <method name="AddEngineer">: constractor of the window </method>
+/// <method name="BtnAddUpdate_Click">: the button of the add or the update </method>
+
 public partial class AddEngineer : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-    BO.Engineer? eng;
+    private BO.Engineer? Eng;
     public AddEngineer(int id=0)
     {
         InitializeComponent();
         try
         {
-            if (id == 0)
-                eng = new BO.Engineer()
+            if (id == 0)//in case of add
+                Eng = new BO.Engineer()
                 {
                     Id = id,
                     Name = "rose",
@@ -36,25 +40,25 @@ public partial class AddEngineer : Window
                     Cost = 39.5,
                     Tasks = null//adding the current task that the engineer is workng on
                 };
-            else
-                eng = s_bl?.Engineer.Read(id)!;
+            else//in case of update
+                Eng = s_bl?.Engineer.Read(id)!;
         }
         catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
     }
 
-    private void btnAddUpdate_Click(object sender, RoutedEventArgs e)
+    private void BtnAddUpdate_Click(object sender, RoutedEventArgs e)
     {
         try
         {
-            if (eng.Id == 0)
+            if (Eng.Id == 0)//in case of add
             {
-                s_bl.Engineer.Create(eng);
+                s_bl.Engineer.Create(Eng);
                 MessageBox.Show("engineer was succsesfuly created");
             }
-            else
+            else//in case of update
             {
-                s_bl.Engineer.Update(eng);
+                s_bl.Engineer.Update(Eng);
                 MessageBox.Show("engineer was succsesfuly updated");
             }
         }

@@ -18,6 +18,13 @@ namespace PL.Engineer;
 /// <summary>
 /// Interaction logic for EngineerWindow.xaml
 /// </summary>
+/// <method name="EngineerWindow">: constractor of the window </method>
+/// <parameter name="EngList">: a list of all the enginners </parameter>
+/// <method name="ComboBox_SelectionChanged">: select all the engineers with a specipic experiance </method>
+/// <method name="ButtonAddEngineer_Click">: open the window of add engineer and addes a engineer</method>
+/// <method name="ListView_OpenEngineer">: open the window of add engineer and updet an engineer</method>
+
+
 
 public partial class EngineerWindow : Window
 {
@@ -26,41 +33,39 @@ public partial class EngineerWindow : Window
     public EngineerWindow()
     {
         InitializeComponent();
-        EngList = s_bl?.Engineer.ReadAll()!;
+        EngList = s_bl?.Engineer.ReadAllEngineers()!;
     }
-    public IEnumerable<BO.EngineerInTask> EngList
+    public IEnumerable<BO.Engineer> EngList
     {
-        get { return (IEnumerable<BO.EngineerInTask>)GetValue(EngListProperty); }
+        get { return (IEnumerable<BO.Engineer>)GetValue(EngListProperty); }
         set { SetValue(EngListProperty, value); }
     }
 
     public static readonly DependencyProperty EngListProperty =
-        DependencyProperty.Register("CourseList", typeof(IEnumerable<BO.EngineerInTask>), typeof(EngineerWindow), new PropertyMetadata(null));
+        DependencyProperty.Register("EngineerList", typeof(IEnumerable<BO.Engineer>), typeof(EngineerWindow), new PropertyMetadata(null));
 
-    private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        EngList = s_bl.Engineer.ReadAll();
-    }
 
     private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e )
      {
         
         EngList = (Experience == BO.EngineerExperience.Beginner) ?
-           s_bl?.Engineer.ReadAll()! : s_bl?.Engineer.ReadAll(item => item.Level == Experience)!;
+           s_bl?.Engineer.ReadAllEngineers()! : s_bl?.Engineer.ReadAllEngineers(item => item.Level == Experience)!;
     }
 
     private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)
     {
         new AddEngineer().ShowDialog();
+        EngList = s_bl?.Engineer.ReadAllEngineers()!;
     }
     private void ListView_OpenEngineer(object sender, RoutedEventArgs e)
     {
         BO.Engineer? eng = (sender as ListView)?.SelectedItem as BO.Engineer;
 
         new AddEngineer(eng.Id).ShowDialog();
+        EngList = s_bl?.Engineer.ReadAllEngineers()!;
     }
 
-    
+
 
 
 

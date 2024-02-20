@@ -16,6 +16,12 @@ namespace PL
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// <method name="MainWindow">: the constracture of the window</method>
+    /// <method name="ButtonEngineer_Click">: show the enginner window </method>
+    /// <method name="ButtonInitialization_Click">: button to initialize the data</method>
+    /// <method name="ButtonReset_Click">: button to reset the data</method>
+
+
     public partial class MainWindow : Window
     {
         public MainWindow()
