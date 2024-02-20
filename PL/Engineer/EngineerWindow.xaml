@@ -11,6 +11,12 @@
 
     <!--Extrnal Grid-->
     <Grid x:Name="list" Height="434" VerticalAlignment="Center" HorizontalAlignment="Left" Width="800">
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="Beige"/>
+                <GradientStop Color="#FFF5A7DD" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="61*"/>
@@ -27,10 +33,12 @@
                 <ColumnDefinition Width="353*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="engineer level" VerticalAlignment="Center" Height="86" Margin="28,0,23,0" FontSize="50" Grid.ColumnSpan="4"/>
+            <Label Content="Engineer level:" VerticalAlignment="Center" Height="86" Margin="28,0,23,0" FontSize="50" Grid.ColumnSpan="4"/>
+
 
             <!--combobox to chose a level of engineer-->
-            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" Grid.Column="2" HorizontalAlignment="Left" Width="436" Margin="37,0,0,0" Grid.ColumnSpan="3"/>
+            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Center" Width="800" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="2" Margin="0,356,0,-356"/>
+            <ComboBox Grid.Column="3" SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Left" Width="400" Margin="0,2,0,-2" Grid.ColumnSpan="2"/>
 
             <!--combobox to chose an engineer-->
             <ComboBox HorizontalAlignment="Left" Margin="532,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="Combobox_SelectionChanged" ItemsSource="{Binding Path=EngList}">
@@ -44,7 +52,7 @@
         </Grid>
 
         <!---list of engineers-->
-        <ListView Grid.Row="1" Margin="35,33,400,97" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngList}" Background="#FFDF9EE2">
+        <ListView Grid.Row="1" Margin="0,10,284,10" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngList}" Background="#FFDF9EE2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
