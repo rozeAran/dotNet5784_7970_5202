@@ -42,7 +42,7 @@ public partial class EngineerWindow : Window
         EngList = s_bl.Engineer.ReadAll();
     }
 
-    private void Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e )
      {
         
         EngList = (Experience == BO.EngineerExperience.Beginner) ?
@@ -53,13 +53,16 @@ public partial class EngineerWindow : Window
     {
         new AddEngineer().ShowDialog();
     }
-    
     private void ListView_OpenEngineer(object sender, RoutedEventArgs e)
     {
         BO.Engineer? eng = (sender as ListView)?.SelectedItem as BO.Engineer;
 
         new AddEngineer(eng.Id).ShowDialog();
     }
+
+    
+
+
 
 
 }
