@@ -37,15 +37,16 @@ public partial class EngineerWindow : Window
     public static readonly DependencyProperty EngListProperty =
         DependencyProperty.Register("CourseList", typeof(IEnumerable<BO.EngineerInTask>), typeof(EngineerWindow), new PropertyMetadata(null));
 
-    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        EngList = (Experience == BO.EngineerExperience.Beginner) ?
-           s_bl?.Engineer.ReadAll()! : s_bl?.Engineer.ReadAll(item => item.Level == Experience)!;
-    }
-
     private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        EngList = s_bl.Engineer.ReadAll();
+    }
 
+    private void Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+     {
+        
+        EngList = (Experience == BO.EngineerExperience.Beginner) ?
+           s_bl?.Engineer.ReadAll()! : s_bl?.Engineer.ReadAll(item => item.Level == Experience)!;
     }
 
     private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)

@@ -18,28 +18,43 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Internal, Upper Grid-->
-        <Grid Height="auto" Grid.Row="0" Width="auto">
+        <Grid Height="auto" Grid.Row="0" Width="auto" Margin="0,0,0,370" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="193*"/>
+                <ColumnDefinition Width="134*"/>
+                <ColumnDefinition Width="73*"/>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="353*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="engineer level" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+
+            <Label Content="engineer level" VerticalAlignment="Center" Height="86" Margin="28,0,23,0" FontSize="50" Grid.ColumnSpan="4"/>
+
             <!--combobox to chose a level of engineer-->
-            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Right" Width="800" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1"/>
-            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <ComboBox Grid.Column="1" SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Left" Width="400"/>
+            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" Grid.Column="2" HorizontalAlignment="Left" Width="436" Margin="37,0,0,0" Grid.ColumnSpan="3"/>
+
+            <!--combobox to chose an engineer-->
+            <ComboBox HorizontalAlignment="Left" Margin="532,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="Combobox_SelectionChanged" ItemsSource="{Binding Path=EngList}">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
         </Grid>
 
-        <ListView Grid.Row="1" Margin="0,138,0,-88" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngineerList}" Grid.RowSpan="2" Background="#FFDF9EE2">
+        <!---list of engineers-->
+        <ListView Grid.Row="1" Margin="35,33,400,97" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngList}" Background="#FFDF9EE2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
-            <ListView Margin="5" Grid.Row="1" ItemsSource="{Binding EngList}" MouseDoubleClick="ButtonAddEngineer_Click" />
+            <ListView Margin="5" Grid.Row="1" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Path=EngList}" MouseDoubleClick="ButtonAddEngineer_Click" />
         </ListView>
 
-        <Button Content="Add" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="570,49,0,240" FontSize="30" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
+        <!---add button-->
+        <Button Content="Add" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="617,29,0,260" FontSize="30" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
 
     </Grid>
 
