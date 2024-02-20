@@ -15,28 +15,35 @@
                 <GradientStop Color="#FFAA3E9E"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Grid.Row="9" Grid.Column="0" 
+        <Button Grid.Column="0" 
         Content="{Binding Id, Mode=OneTime, Converter={StaticResource ConvertIdToContentKey}}" 
-        HorizontalAlignment="Left" Margin="3,0,0,0"  VerticalAlignment="Top" Padding="5" Background="AliceBlue"
-        Click="btnAddUpdate_Click"/>
-        <TextBox Grid.Row="2" Grid.Column="1" 
+        HorizontalAlignment="Left" Margin="564,450,0,0"  VerticalAlignment="Top" Padding="5" Background="AliceBlue"
+        Click="btnAddUpdate_Click" Height="97" Width="142" />
+        <TextBox 
               Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" 
-              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
-        <TextBox Grid.Row="3" Grid.Column="1" 
+              HorizontalAlignment="Center" Height="34" Margin="0,62,0,0"  VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.395,-8.003" Background="SeaShell"/>
+        <TextBox 
               Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
-              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
-        <TextBox Grid.Row="4" Grid.Column="1" 
+              HorizontalAlignment="Center" Height="34" Margin="0,111,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell"/>
+        <TextBox 
               Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
-              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
-        <ComboBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" 
+              HorizontalAlignment="Center" Height="38" Margin="0,172,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell"/>
+        <ComboBox HorizontalAlignment="Center" Height="36" Margin="0,234,0,0" 
             ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" 
             SelectedValue="{Binding Experience, Mode=TwoWay, NotifyOnValidationError=true, 
-            ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-        <TextBox Grid.Row="6" Grid.Column="1" 
+            ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="148" Background="SeaShell"/>
+        <TextBox 
               Text="{Binding Cost, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
-              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
-        <TextBox Grid.Row="4" Grid.Column="1" 
+              HorizontalAlignment="Center" Height="35" Margin="0,307,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell"/>
+        <TextBox 
               Text="{Binding Tasks, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
-              HorizontalAlignment="Left" Height="NaN" Margin="3"  VerticalAlignment="Center" Width="120"/>
+              HorizontalAlignment="Center" Height="28" Margin="0,372,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="95,54,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="98,111,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Height="57" Margin="92,172,0,0" VerticalAlignment="Top" Width="91" FontSize="30" RenderTransformOrigin="-0.155,0.206" />
+        <Label Content="Experience:" HorizontalAlignment="Left" Height="73" Margin="87,234,0,0" VerticalAlignment="Top" Width="167" FontSize="30" />
+        <Label Content="Cost:" HorizontalAlignment="Left" Height="69" Margin="92,290,0,0" VerticalAlignment="Top" Width="78" FontSize="30"/>
+        <Label Content="Task:" HorizontalAlignment="Left" Height="59" Margin="92,358,0,0" VerticalAlignment="Top" Width="91" FontSize="30"/>
+
     </Grid>
 </Window>
