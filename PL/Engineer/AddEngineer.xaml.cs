@@ -38,7 +38,7 @@ public partial class AddEngineer : Window
                     Email = "tit@gmail.com",
                     Level = BO.EngineerExperience.Beginner,
                     Cost = 39.5,
-                    Tasks = null//adding the current task that the engineer is workng on
+                    Task = null//adding the current task that the engineer is workng on
                 };
             else//in case of update
                 Eng = s_bl?.Engineer.Read(id)!;

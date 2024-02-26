@@ -1,17 +1,5 @@
-﻿using BO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PL.Engineer;
 
@@ -24,50 +12,47 @@ namespace PL.Engineer;
 /// <method name="ButtonAddEngineer_Click">: open the window of add engineer and addes a engineer</method>
 /// <method name="ListView_OpenEngineer">: open the window of add engineer and updet an engineer</method>
 
-
-
 public partial class EngineerWindow : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
     public BO.EngineerExperience Experience { get; set; } = BO.EngineerExperience.Beginner;
+
+    public static readonly DependencyProperty EngListProperty =
+        DependencyProperty.Register(nameof(EngList), typeof(IEnumerable<BO.Engineer>), typeof(EngineerWindow));
+    public IEnumerable<BO.Engineer>? EngList
+    {
+        get => (IEnumerable<BO.Engineer>)GetValue(EngListProperty);
+        set => SetValue(EngListProperty, value);
+    }
+
     public EngineerWindow()
     {
         InitializeComponent();
-        EngList = s_bl?.Engineer.ReadAllEngineers()!;
     }
-    public IEnumerable<BO.Engineer> EngList
+
+    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        get { return (IEnumerable<BO.Engineer>)GetValue(EngListProperty); }
-        set { SetValue(EngListProperty, value); }
-    }
 
-    public static readonly DependencyProperty EngListProperty =
-        DependencyProperty.Register("EngineerList", typeof(IEnumerable<BO.Engineer>), typeof(EngineerWindow), new PropertyMetadata(null));
-
-
-    private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e )
-     {
-        
         EngList = (Experience == BO.EngineerExperience.Beginner) ?
-           s_bl?.Engineer.ReadAllEngineers()! : s_bl?.Engineer.ReadAllEngineers(item => item.Level == Experience)!;
+           s_bl?.Engineer.ReadAllEngineers() : s_bl?.Engineer.ReadAllEngineers(item => item.Level == Experience);
     }
 
     private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)
     {
         new AddEngineer().ShowDialog();
-        EngList = s_bl?.Engineer.ReadAllEngineers()!;
+        EngList = s_bl?.Engineer.ReadAllEngineers();
     }
+    
     private void ListView_OpenEngineer(object sender, RoutedEventArgs e)
     {
         BO.Engineer? eng = (sender as ListView)?.SelectedItem as BO.Engineer;
 
         new AddEngineer(eng.Id).ShowDialog();
-        EngList = s_bl?.Engineer.ReadAllEngineers()!;
+        EngList = s_bl?.Engineer.ReadAllEngineers();
     }
 
-
-
-
-
-
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        EngList = s_bl?.Engineer.ReadAllEngineers();
+    }
 }

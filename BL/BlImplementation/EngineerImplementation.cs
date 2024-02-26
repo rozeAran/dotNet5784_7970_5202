@@ -43,7 +43,7 @@ internal class EngineerImplementation : IEngineer
         if (doEngineer == null)
             throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
         BO.Engineer? temp = Read(id);
-        if (temp.Tasks==null) 
+        if (temp.Task==null) 
         {
             throw new BlCantBeDeletedException($"Engineer with ID={id} cant be deleted");
         }
@@ -63,7 +63,7 @@ internal class EngineerImplementation : IEngineer
             Email = doEngineer.Email,
             Level = (BO.EngineerExperience)doEngineer.Level,
             Cost = doEngineer.Cost,
-            Tasks = FindTask(id)//adding the current task that the engineer is workng on
+            Task = FindTask(id)//adding the current task that the engineer is workng on
         };
     }
 
@@ -89,7 +89,7 @@ internal class EngineerImplementation : IEngineer
                     Email = doEngineer.Email,
                     Level = (BO.EngineerExperience)doEngineer.Level,
                     Cost = doEngineer.Cost,
-                    Tasks = FindTask(doEngineer.Id)//adding the current task that the engineer is workng on
+                    Task = FindTask(doEngineer.Id)//adding the current task that the engineer is workng on
                 });
 
     }
@@ -108,9 +108,9 @@ internal class EngineerImplementation : IEngineer
             throw new BlDataNotValidException("data is not valid\n");
         }
         BO.Engineer? boEngineer = Read(item.Id);
-        if (item.Tasks != boEngineer.Tasks)
+        if (item.Task != boEngineer.Task)
         {
-            DO.Task newTask= _dal.Task.Read(item.Tasks.Id);
+            DO.Task newTask= _dal.Task.Read(item.Task.Id);
             DO.Task temp = new DO.Task
             {
                 Id = newTask.Id,
@@ -133,10 +133,10 @@ internal class EngineerImplementation : IEngineer
         _dal.Engineer.Update(doEngineer);
     }
 
-    public BO.TaskInEngineer FindTask(int id)// finds the task asigned to the engineer
+    public BO.TaskInEngineer? FindTask(int id)// finds the task asigned to the engineer
     {
-        if (_dal.Task.Read(id) == null)
-            throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
+        if (_dal.Task.Read(id) == null) return null;
+//            throw new BO.BlDoesNotExistException($"Engineer with ID={id} does Not exist");
         return ((TaskInEngineer)(from DO.Task task in _dal.Task.ReadAll()
                 where task.Id == id
                 select new BO.TaskInEngineer
