@@ -33,7 +33,7 @@ public partial class EngineerWindow : Window
     private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         EngList = (Experience != BO.EngineerExperience.Level) ?
-           s_bl?.Engineer.ReadAllEngineers() : s_bl?.Engineer.ReadAllEngineers(item => item.Level == Experience);
+            s_bl?.Engineer.ReadAllEngineers(item => item.Level == Experience): s_bl?.Engineer.ReadAllEngineers() ;
     }
 
     private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)

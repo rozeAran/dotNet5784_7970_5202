@@ -81,8 +81,21 @@ internal class EngineerImplementation : IEngineer
 
     public IEnumerable<BO.Engineer> ReadAllEngineers(Func<BO.Engineer, bool>? filter = null)
     {
+       if(filter != null)
+        {
+            return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
+                    where filter(Read(doEngineer.Id))
+                    select new BO.Engineer
+                    {
+                        Id = doEngineer.Id,
+                        Name = doEngineer.Name,
+                        Email = doEngineer.Email,
+                        Level = (BO.EngineerExperience)doEngineer.Level,
+                        Cost = doEngineer.Cost,
+                        Task = FindTask(doEngineer.Id)//adding the current task that the engineer is workng on
+                    });
+        }
         return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
-                where filter
                 select new BO.Engineer
                 {
                     Id = doEngineer.Id,
@@ -92,6 +105,7 @@ internal class EngineerImplementation : IEngineer
                     Cost = doEngineer.Cost,
                     Task = FindTask(doEngineer.Id)//adding the current task that the engineer is workng on
                 });
+
 
     }
 
