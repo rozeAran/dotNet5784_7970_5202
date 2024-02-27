@@ -26,7 +26,7 @@ internal class EngineerImplementation : IEngineer
             {
                 throw new BlDataNotValidException("data is not valid\n");
             }
-            DO.Engineer doEngineer = new DO.Engineer (item.Id, item.Name, item.Email, (DO.EngineerExperience/*?*/)item.Level, item.Cost);
+            DO.Engineer doEngineer = new(item.Id, item.Name, item.Email, (DO.EngineerExperience/*?*/)item.Level, item.Cost);
             int idEng = _dal.Engineer.Create(doEngineer);
             return idEng;
         }
