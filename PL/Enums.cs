@@ -9,6 +9,7 @@ namespace PL;
 
 public enum Levels
 {
+    Level,
     Beginner,
     AdvancedBeginner,
     Intermediate,

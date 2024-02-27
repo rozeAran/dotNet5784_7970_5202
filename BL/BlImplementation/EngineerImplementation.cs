@@ -24,7 +24,7 @@ internal class EngineerImplementation : IEngineer
         {
             if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || !(item.Email.Contains(" ")) || item.Email.Contains("@") || item.Email.Contains(".co"))
             {
-                throw new BlDataNotValidException("data is not valid\n");
+                throw new BlDataNotValidException("data is not valid\n");//צריך לעשות חלון קופץ
             }
             DO.Engineer doEngineer = new DO.Engineer (item.Id, item.Name, item.Email, (DO.EngineerExperience/*?*/)item.Level, item.Cost);
             int idEng = _dal.Engineer.Create(doEngineer);

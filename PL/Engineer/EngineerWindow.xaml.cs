@@ -15,7 +15,7 @@ namespace PL.Engineer;
 public partial class EngineerWindow : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-    public BO.EngineerExperience Experience { get; set; } = BO.EngineerExperience.Beginner;
+    public BO.EngineerExperience Experience { get; set; } = BO.EngineerExperience.Level;
 
     public static readonly DependencyProperty EngListProperty =
         DependencyProperty.Register(nameof(EngList), typeof(IEnumerable<BO.Engineer>), typeof(EngineerWindow));
@@ -32,8 +32,7 @@ public partial class EngineerWindow : Window
 
     private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-
-        EngList = (Experience == BO.EngineerExperience.Beginner) ?
+        EngList = (Experience != BO.EngineerExperience.Level) ?
            s_bl?.Engineer.ReadAllEngineers() : s_bl?.Engineer.ReadAllEngineers(item => item.Level == Experience);
     }
 
@@ -46,7 +45,6 @@ public partial class EngineerWindow : Window
     private void ListView_OpenEngineer(object sender, RoutedEventArgs e)
     {
         BO.Engineer? eng = (sender as ListView)?.SelectedItem as BO.Engineer;
-
         new AddEngineer(eng.Id).ShowDialog();
         EngList = s_bl?.Engineer.ReadAllEngineers();
     }
@@ -56,3 +54,4 @@ public partial class EngineerWindow : Window
         EngList = s_bl?.Engineer.ReadAllEngineers();
     }
 }
+
