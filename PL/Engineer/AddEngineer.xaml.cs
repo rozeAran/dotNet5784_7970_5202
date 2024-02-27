@@ -45,6 +45,7 @@ public partial class AddEngineer : Window
         }
         catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
+        catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
     }
 
     private void BtnAddUpdate_Click(object sender, RoutedEventArgs e)
@@ -62,9 +63,11 @@ public partial class AddEngineer : Window
                 MessageBox.Show("engineer was succsesfuly updated");
             }
         }
+
         catch  (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
-        catch(BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
+        catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+        catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
     }
 
 }

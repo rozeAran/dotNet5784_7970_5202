@@ -24,7 +24,7 @@ internal class EngineerImplementation : IEngineer
         {
             if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || !(item.Email.Contains(" ")) || item.Email.Contains("@") || item.Email.Contains(".co"))
             {
-                throw new BlDataNotValidException("data is not valid\n");//צריך לעשות חלון קופץ
+                throw new BlDataNotValidException("data is not valid\n");
             }
             DO.Engineer doEngineer = new(item.Id, item.Name, item.Email, (DO.EngineerExperience/*?*/)item.Level, item.Cost);
             int idEng = _dal.Engineer.Create(doEngineer);
@@ -82,6 +82,7 @@ internal class EngineerImplementation : IEngineer
     public IEnumerable<BO.Engineer> ReadAllEngineers(Func<BO.Engineer, bool>? filter = null)
     {
         return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
+                where filter
                 select new BO.Engineer
                 {
                     Id = doEngineer.Id,
