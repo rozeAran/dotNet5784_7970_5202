@@ -55,3 +55,14 @@ public partial class EngineerWindow : Window
     }
 }
 
+/*
+   <!--combobox to chose an engineer-->
+            <ComboBox HorizontalAlignment="Left" Margin="85,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding EngList}" Grid.Column="4" Grid.ColumnSpan="2">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+ */

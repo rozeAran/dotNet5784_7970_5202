@@ -24,7 +24,7 @@
             <RowDefinition Height="353*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <!--Internal, Upper Grid-->
         <Grid Height="auto" Grid.Row="0" Width="auto" Margin="0,0,0,370" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -32,24 +32,15 @@
                 <ColumnDefinition Width="134*"/>
                 <ColumnDefinition Width="73*"/>
                 <ColumnDefinition Width="47*"/>
-                <ColumnDefinition Width="353*"/>
+                <ColumnDefinition Width="224*"/>
+                <ColumnDefinition Width="129*"/>
             </Grid.ColumnDefinitions>
 
             <Label Content="Engineer level:" VerticalAlignment="Center" Height="86" Margin="28,0,23,0" FontSize="50" Grid.ColumnSpan="4"/>
 
 
             <!--combobox to chose a level of engineer-->
-            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" HorizontalAlignment="Left"   Width="400" Margin="0,2,0,-2" Grid.ColumnSpan="2" Grid.Column="3"/>
-           
-            <!--combobox to chose an engineer-->
-            <ComboBox HorizontalAlignment="Left" Margin="532,66,0,0" VerticalAlignment="Top" Width="180" Height="38" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding EngList}">
-                <ComboBox.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </ComboBox.Background>
-            </ComboBox>
+            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" SelectionChanged="ComboBox_SelectionChanged"  HorizontalAlignment="Left"   Width="400" Margin="0,2,0,-2" Grid.ColumnSpan="3" Grid.Column="3"/>
 
         </Grid>
 
