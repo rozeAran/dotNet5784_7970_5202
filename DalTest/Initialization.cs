@@ -36,10 +36,16 @@ public static class Initialization
             while (s_dal!.Engineer.Read(id) != null);
 
             //engineer's mail
-            string[] subs = name.Split(' ');
+            /*string[] subs = name.Split(' ');
             string firstName= subs[0];
             string lastName= subs[1]; 
-            string email = firstName + lastName+ "@jct.com";
+            string email = firstName + lastName+ "@jct.com";*/
+            string email="";
+            for (int i = 0; i < name.Length; i++)
+            {
+                if (name[i] != ' ')
+                    email += name[i];
+            }
 
             //engineers level
             int x = s_rand.Next(0, 5);

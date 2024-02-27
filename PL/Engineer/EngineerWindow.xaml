@@ -36,38 +36,38 @@
                 <ColumnDefinition Width="129*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Engineer level:" VerticalAlignment="Center" Height="86" Margin="28,0,23,0" FontSize="50" Grid.ColumnSpan="4"/>
+            <Label Content="Engineer level:" VerticalAlignment="Top" Height="86" Margin="41,10,10,0" FontSize="30" Grid.ColumnSpan="4" FontWeight="Light" FontStretch="SemiExpanded"/>
 
 
             <!--combobox to chose a level of engineer-->
-            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" SelectionChanged="ComboBox_SelectionChanged"  HorizontalAlignment="Left"   Width="400" Margin="0,2,0,-2" Grid.ColumnSpan="3" Grid.Column="3"/>
+            <ComboBox SelectedValue="{Binding Experience, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" SelectionChanged="ComboBox_SelectionChanged"  HorizontalAlignment="Left"   Width="400" Margin="0,2,0,-2" Grid.ColumnSpan="3" Grid.Column="3" FontSize="20" FontStretch="SemiCondensed"/>
 
         </Grid>
 
         <!---list of engineers-->
-        <ListView Grid.Row="1" Margin="0,10,284,10" ItemsSource="{Binding EngList}" Background="#FFDF9EE2" MouseDoubleClick="ListView_OpenEngineer">
+        <ListView Grid.Row="1" Margin="0,10,173,10" ItemsSource="{Binding EngList}" Background="#FFDF9EE2" MouseDoubleClick="ListView_OpenEngineer">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel Orientation="Horizontal">
-                        <Label Content="id:"/>
-                        <TextBlock Text="{Binding Id}" Margin="5"/>
-                        <Label Content="name:"/>
-                        <TextBlock Text="{Binding Name}" Margin="5"/>
-                        <Label Content="Email:"/>
-                        <TextBlock Text="{Binding Email}" Margin="5"/>
-                        <Label Content="level:"/>
-                        <TextBlock Text="{Binding Level}" Margin="5"/>
-                        <Label Content="cost:"/>
-                        <TextBlock Text="{Binding Cost}" Margin="5"/>
-                        <Label Content="tasks:"/>
-                        <TextBlock Text="{Binding Tasks}" Margin="5"/>
+                        <Label Content="Id:" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Id}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Name:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Name}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Email:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Email}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Level:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Level}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Cost:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Cost}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Task:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Tasks}" Margin="5" FontSize="15" FontStyle="Italic"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
         <!---add button-->
-        <Button Content="Add" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="617,29,0,260" FontSize="30" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
+        <Button Content="Add" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="665,246,0,43" FontSize="30" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
 
     </Grid>
 
