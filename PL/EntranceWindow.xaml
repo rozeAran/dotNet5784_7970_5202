@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="EntranceWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="ManagerWindow" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonManager_Click" Foreground="#FF161927"/>
+
     </Grid>
 </Window>

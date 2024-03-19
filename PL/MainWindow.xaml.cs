@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PL.Engineer;
+using PL.Task;
 using BO;
 
 namespace PL
@@ -44,6 +45,11 @@ namespace PL
         private void ButtonReset_Click(object sender, RoutedEventArgs e)
         {
             BlApi.IBl.s_bl.ResetDB();
+        }
+
+        private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
+        {
+            new TaskForListWindow().Show(); 
         }
     }
 }

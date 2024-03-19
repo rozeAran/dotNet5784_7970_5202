@@ -23,5 +23,10 @@ namespace PL
         {
             InitializeComponent();
         }
+
+        private void ButtonManager_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+        }
     }
 }
