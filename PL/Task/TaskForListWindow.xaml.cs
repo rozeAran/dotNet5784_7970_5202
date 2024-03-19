@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Engineer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,19 @@ namespace PL.Task
     /// </summary>
     public partial class TaskForListWindow : Window
     {
+        static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+        public static readonly DependencyProperty TaskListProperty =
+            DependencyProperty.Register(nameof(TaskList), typeof(IEnumerable<BO.Task>), typeof(TaskForListWindow));
+        public IEnumerable<BO.Task>? TaskList
+        {
+            get => (IEnumerable<BO.Task>)GetValue(TaskListProperty);
+            set => SetValue(TaskListProperty, value);
+        }
+
         public TaskForListWindow()
         {
             InitializeComponent();
+            TaskList = s_bl?.Task.ReadAll()!;
         }
     }
 }
