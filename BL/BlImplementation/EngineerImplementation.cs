@@ -16,6 +16,9 @@ namespace BlImplementation;
 /// <method name="delete">: if the Engineer is deletebul then will delete it </method>
 internal class EngineerImplementation : IEngineer
 {
+    private readonly IBl _bl;
+    internal EngineerImplementation(IBl bl) => _bl = bl;
+
     private DalApi.IDal _dal = DalApi.Factory.Get;
     public int Create(BO.Engineer item)//creates a new engineer
     {

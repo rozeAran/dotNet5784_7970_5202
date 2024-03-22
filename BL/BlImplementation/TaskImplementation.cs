@@ -19,6 +19,9 @@ namespace BlImplementation;
 /// <method name="Delete">: if the task is deletebul then will delete it </method>
 internal class TaskImplementation : ITask
 {
+    private readonly IBl _bl;
+    internal TaskImplementation(IBl bl) => _bl = bl;
+
     private DalApi.IDal _dal = DalApi.Factory.Get;
     public List<BO.TaskInList> FindDependencies(DO.Task item) //finds the tasks this task is depended on
     {
@@ -84,11 +87,11 @@ internal class TaskImplementation : ITask
     {
         if (item.StartDate == null)
             return BO.Status.unscheduled;
-        if (item.StartDate.Value > DateTime.Now)
+        if (item.StartDate.Value > _bl.Clock)
             return  BO.Status.scheduled;
         if (item.CompleteDate==null)
             return BO.Status.onTrack;
-        if (item.CompleteDate <= DateTime.Now)
+        if (item.CompleteDate <= _bl.Clock)
             return BO.Status.Done;
         throw new WrongOrderOfDatesException("impossible order of dates");
     }
@@ -187,7 +190,7 @@ internal class TaskImplementation : ITask
                 CompleteDate = doTask.CompleteDate,
                 DeadLineDate = doTask.DeadLineDate,
                 StartDate = doTask.StartDate
-                //tYear = (BO.Year)(DateTime.Now.Year - doTask.RegistrationDate.Year)
+                //tYear = (BO.Year)( _bl.Clock.Year - doTask.RegistrationDate.Year)
             });
 
     }
