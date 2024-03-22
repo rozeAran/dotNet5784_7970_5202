@@ -9,7 +9,11 @@
     <Grid>
         <Button Content="ManagerWindow" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonManager_Click" Foreground="#FF161927"/>
         <Button Content="WorkerWindow" HorizontalAlignment="Left" Margin="85,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonWorker_Click" Foreground="#FF161927"/>
-        <Label Binding.SourceUpdated="CurrentTime"/>
+        <Label Binding.SourceUpdated="CurrentTime" Height="50" Width="150" Margin="312,88,338,296" />
+
+        <Button Content="add one hour"  Margin="439,165,261,219" Height="50" Width="100" Click="Button_ClickHour" />
+        <Button Content="add one day" Margin="322,165,378,219" Height="50" Width="100" Click="Button_ClickDay" />
+        <Button Content="add one year"  Margin="204,165,496,219" Height="50" Width="100" Click="Button_ClickYear"/>
 
 
     </Grid>

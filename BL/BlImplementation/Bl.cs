@@ -19,19 +19,19 @@ internal class Bl : IBl
 
     public void InitializeClock()
     {
-        
+        Clock = DateTime.Now;
     }
     public void AddYearClock()
     {
-
+        Clock.Year=Clock.Year+1;
     }
     public void AddDayClock()
     {
-
+        Clock.Day = Clock.Day + 1;
     }
     public void AddHourClock()
     {
-
+        Clock.Hour = Clock.Hour + 1;
     }
 
 
