@@ -21,6 +21,9 @@ namespace PL.Task
     public partial class TaskForListWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+        public BO.Status Status { get; set; } = BO.Status.Status;
+        public BO.EngineerExperience Experience { get; set; } = BO.EngineerExperience.Level;
+
         public static readonly DependencyProperty TaskListProperty =
             DependencyProperty.Register(nameof(TaskList), typeof(IEnumerable<BO.Task>), typeof(TaskForListWindow));
         public IEnumerable<BO.Task>? TaskList
@@ -33,6 +36,11 @@ namespace PL.Task
         {
             InitializeComponent();
             TaskList = s_bl?.Task.ReadAll()!;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

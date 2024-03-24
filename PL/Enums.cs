@@ -17,11 +17,28 @@ public enum Levels
     Expert,
     None
 }
+public enum Status
+{
+    Status,
+    None,
+    unscheduled,
+    scheduled,
+    onTrack,
+    Done
+}
 internal class EngineerExp : IEnumerable
 {
 
     static readonly IEnumerable<BO.EngineerExperience> s_enums =
     (Enum.GetValues(typeof(BO.EngineerExperience)) as IEnumerable<BO.EngineerExperience>)!;
+
+    public IEnumerator GetEnumerator() => s_enums.GetEnumerator();
+}
+internal class TaskStatus : IEnumerable
+{
+
+    static readonly IEnumerable<BO.Status> s_enums =
+    (Enum.GetValues(typeof(BO.Status)) as IEnumerable<BO.Status>)!;
 
     public IEnumerator GetEnumerator() => s_enums.GetEnumerator();
 }

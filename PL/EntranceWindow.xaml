@@ -10,7 +10,11 @@
         <Button Content="ManagerWindow" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonManager_Click" Foreground="#FF161927"/>
         <Button Content="WorkerWindow" HorizontalAlignment="Left" Margin="85,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonWorker_Click" Foreground="#FF161927"/>
         <Label Binding.SourceUpdated="CurrentTime"/>
-
+        <Label Content="Enter ID number: (maximum 9 digits)" Height="40" Width="366"
+            FontSize="20" FontWeight="Bold" Margin="45,64,381,65"/>
+        <TextBox PreviewKeyDown="TextBox_OnlyNumbers_PreviewKeyDown" MaxLength="9"
+            Height="40" TextWrapping="Wrap" Text="" Width="285"
+            FontSize="20" Margin="450,64,57,65" TextChanged="TextBox_TextChanged" />
 
     </Grid>
 </Window>
