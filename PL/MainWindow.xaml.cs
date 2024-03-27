@@ -12,56 +12,55 @@ using PL.Engineer;
 using PL.Task;
 using BO;
 
-namespace PL
+namespace PL;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+/// <method name="MainWindow">: the constracture of the window</method>
+/// <method name="ButtonEngineer_Click">: show the enginner window </method>
+/// <method name="ButtonInitialization_Click">: button to initialize the data</method>
+/// <method name="ButtonReset_Click">: button to reset the data</method>
+/// <method name="ButtonTaskForList_Click">: button to show the tasks</method>    
+/// <method name="ButtonGanttChart_Click">: button to show the grantt chart</method>
+/// <method name="ButtonCreateSchedule_Click">: button to create the schedule </method>
+
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// <method name="MainWindow">: the constracture of the window</method>
-    /// <method name="ButtonEngineer_Click">: show the enginner window </method>
-    /// <method name="ButtonInitialization_Click">: button to initialize the data</method>
-    /// <method name="ButtonReset_Click">: button to reset the data</method>
-    /// <method name="ButtonTaskForList_Click">: button to show the tasks</method>    
-    /// <method name="ButtonGanttChart_Click">: button to show the grantt chart</method>
-    /// <method name="ButtonCreateSchedule_Click">: button to create the schedule </method>
+    public MainWindow()
+    { 
+        InitializeComponent();
+    }
 
-    public partial class MainWindow : Window
+    private void ButtonEngineer_Click(object sender, RoutedEventArgs e)
     {
-        public MainWindow()
-        { 
-            InitializeComponent();
-        }
+        new EngineerWindow().Show();
+    }
 
-        private void ButtonEngineer_Click(object sender, RoutedEventArgs e)
-        {
-            new EngineerWindow().Show();
-        }
+    private void ButtonInitialization_Click(object sender, RoutedEventArgs e)
+    {
+        if (MessageBox.Show("Do you want to initialize?", "initialization", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            BlApi.IBl.s_bl.InitializeDB();
 
-        private void ButtonInitialization_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Do you want to initialize?", "initialization", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                BlApi.IBl.s_bl.InitializeDB();
+    }
 
-        }
+    private void ButtonReset_Click(object sender, RoutedEventArgs e)
+    {
+        BlApi.IBl.s_bl.ResetDB();
+    }
 
-        private void ButtonReset_Click(object sender, RoutedEventArgs e)
-        {
-            BlApi.IBl.s_bl.ResetDB();
-        }
+    private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
+    {
+        new TaskForListWindow().Show(); 
+    }
 
-        private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
-        {
-            new TaskForListWindow().Show(); 
-        }
+    private void ButtonGanttChart_Click(object sender, RoutedEventArgs e)
+    {
+        new GanttChartWindow().Show();  
+    }
 
-        private void ButtonGanttChart_Click(object sender, RoutedEventArgs e)
-        {
-            new GanttChartWindow().Show();  
-        }
-
-        private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
-        {
-            //fix
-        }
+    private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
+    {
+        //fix
     }
 }

@@ -23,16 +23,16 @@ namespace PL
             InitializeComponent();
         }
 
-        private void ButtonManager_Click(object sender, RoutedEventArgs e)
-        {
-            new MainWindow().Show();
-        }
+    private void ButtonManager_Click(object sender, RoutedEventArgs e)
+    {
+        new MainWindow().Show();
+    }
 
-        private void ButtonWorker_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Enter engineer Id:", "", MessageBoxButton.YesNo);//to fix
-                
-        }
+    private void ButtonWorker_Click(object sender, RoutedEventArgs e)
+    {
+        MessageBox.Show("Enter engineer Id:");//to fix
+
+    }
 
         private void Button_ClickHour(object sender, RoutedEventArgs e)
         {

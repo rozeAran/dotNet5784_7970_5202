@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Task;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL.Engineer
+namespace PL.Engineer;
+
+/// <summary>
+/// Interaction logic for WorkerWindow.xaml
+/// </summary>
+public partial class WorkerWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for WorkerWindow.xaml
-    /// </summary>
-    public partial class WorkerWindow : Window
+    public WorkerWindow()
     {
-        public WorkerWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
+
+    private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
+    {
+        new TaskForListWindow().Show();//סינון המשימות
     }
 }
