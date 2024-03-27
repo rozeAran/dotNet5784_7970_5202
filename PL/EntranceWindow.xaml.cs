@@ -36,15 +36,15 @@ namespace PL
 
         private void Button_ClickHour(object sender, RoutedEventArgs e)
         {
-
+            CurrentTime = s_bl?.AddHourClock();
         }
         private void Button_ClickDay(object sender, RoutedEventArgs e)
         {
-
+            CurrentTime = s_bl?.AddDayClock();
         }
         private void Button_ClickYear(object sender, RoutedEventArgs e)
         {
-            CurrentTime = s_bl.Clock.AddYearClock();
+            CurrentTime = s_bl?.AddYearClock();
         }
     }
 }

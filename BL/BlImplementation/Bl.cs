@@ -11,7 +11,6 @@ internal class Bl : IBl
     private static DateTime s_Clock = DateTime.Now.Date;
     public DateTime Clock { get { return s_Clock; } private set { s_Clock = value; } }
     public ITask Task => new TaskImplementation(this);
-
     public IEngineer Engineer => new EngineerImplementation(this);
 
     public void InitializeDB() => DalTest.Initialization.Do();
@@ -21,17 +20,22 @@ internal class Bl : IBl
     {
         Clock = DateTime.Now;
     }
-    public void AddYearClock()
+    public IEnumerable<DateTime>? AddYearClock()
     {
-        Clock.Year=Clock.Year+1;
+
+        Clock.AddYears(1);
+        return new DateTime[] { Clock };
+
     }
-    public void AddDayClock()
+    public IEnumerable<DateTime>? AddDayClock()
     {
-        Clock.Day = Clock.Day + 1;
+        Clock.AddDays(1);
+        return new DateTime[] { Clock };
     }
-    public void AddHourClock()
+    public IEnumerable<DateTime>? AddHourClock()
     {
-        Clock.Hour = Clock.Hour + 1;
+        Clock.AddHours(1);
+        return new DateTime[] { Clock };
     }
 
 
