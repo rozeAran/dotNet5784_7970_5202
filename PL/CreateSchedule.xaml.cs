@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Task;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,26 +13,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL.Task
+namespace PL
 {
     /// <summary>
-    /// Interaction logic for TaskWindow.xaml
+    /// Interaction logic for CreateSchedule.xaml
     /// </summary>
-    public partial class TaskWindow : Window
+    public partial class CreateSchedule : Window
     {
-        public TaskWindow()
+        public CreateSchedule()
         {
             InitializeComponent();
         }
 
-        private void Button_Click_List(object sender, RoutedEventArgs e)
+        private void ButtonAddTask_Click(object sender, RoutedEventArgs e)
         {
-            new TaskForListWindow().ShowDialog();
-        }
-
-        private void Button_Click_Add(object sender, RoutedEventArgs e)
-        {
-            //if not finished bulidlig schedule then add task
+            new TaskWindow().Show();
         }
     }
 }

@@ -61,6 +61,6 @@ public partial class MainWindow : Window
 
     private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
     {
-        //fix
+        new CreateSchedule().Show();
     }
 }

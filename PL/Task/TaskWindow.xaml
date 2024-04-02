@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:PL.Task"
         mc:Ignorable="d"
         Title="TaskWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="-758,0,0,-198">
+        <Button Content="whatch tasks list" HorizontalAlignment="Left" Margin="856,58,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List"/>
+        <Button Content="add task" HorizontalAlignment="Left" Margin="856,161,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add"/>
+       
     </Grid>
 </Window>
