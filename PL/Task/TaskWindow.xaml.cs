@@ -19,8 +19,10 @@ namespace PL.Task
     /// </summary>
     public partial class TaskWindow : Window
     {
-        public TaskWindow()
+        static int CreatingSchedule=-1;
+        public TaskWindow(int getCreatingSchedule=-1)
         {
+            CreatingSchedule=getCreatingSchedule;
             InitializeComponent();
         }
 
@@ -31,7 +33,27 @@ namespace PL.Task
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
+            if (CreatingSchedule == 0)
+            {
+                //fix
+            }
             //if not finished bulidlig schedule then add task
+            }
+
+        //info
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="CreateSchedule" Height="450" Width="800">
     <Grid>
-        <Button Content="add task" HorizontalAlignment="Left" Margin="344,50,0,0" VerticalAlignment="Top" Height="66" Width="170" Click="ButtonAddTask_Click"/>
+        <Button Content="add task" HorizontalAlignment="Left" Margin="93,151,0,0" VerticalAlignment="Top" Height="66" Width="170" Click="ButtonAddTask_Click"/>
+        <Button Content="finish creating" HorizontalAlignment="Left" Margin="93,50,0,0" VerticalAlignment="Top" Height="66" Width="166" Click="ButtonFinishCreating_Click"/>
 
     </Grid>
 </Window>

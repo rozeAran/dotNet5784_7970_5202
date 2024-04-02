@@ -30,7 +30,7 @@ namespace PL
 
     private void ButtonWorker_Click(object sender, RoutedEventArgs e)
     {
-        MessageBox.Show("Enter engineer Id:");//to fix
+        //fix
 
     }
 
@@ -45,6 +45,11 @@ namespace PL
         private void Button_ClickYear(object sender, RoutedEventArgs e)
         {
             CurrentTime = s_bl?.AddYearClock();
+        }
+
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            //fix
         }
     }
 }

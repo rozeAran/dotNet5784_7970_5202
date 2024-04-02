@@ -25,8 +25,10 @@ namespace PL;
 /// <method name="ButtonGanttChart_Click">: button to show the grantt chart</method>
 /// <method name="ButtonCreateSchedule_Click">: button to create the schedule </method>
 
+
 public partial class MainWindow : Window
 {
+    static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
     public MainWindow()
     { 
         InitializeComponent();
@@ -56,11 +58,21 @@ public partial class MainWindow : Window
 
     private void ButtonGanttChart_Click(object sender, RoutedEventArgs e)
     {
-        new GanttChartWindow().Show();  
+        try
+        {
+            if (CreatingSchedule == 1)
+                new GanttChartWindow().Show();
+
+        }
+        catch (BO.BlNotAPossabilityException ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
     }
 
     private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
     {
-        new CreateSchedule().Show();
+        CreatingSchedule = 0;
+        new CreateSchedule(CreatingSchedule).Show();
     }
 }

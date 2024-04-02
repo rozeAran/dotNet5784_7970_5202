@@ -20,14 +20,20 @@ namespace PL
     /// </summary>
     public partial class CreateSchedule : Window
     {
-        public CreateSchedule()
+        static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
+        public CreateSchedule(int getCreatingSchedule=-1)
         {
+            CreatingSchedule = getCreatingSchedule;
             InitializeComponent();
         }
-
         private void ButtonAddTask_Click(object sender, RoutedEventArgs e)
         {
-            new TaskWindow().Show();
+            new TaskWindow(CreatingSchedule).Show();
+        }
+
+        private void ButtonFinishCreating_Click(object sender, RoutedEventArgs e)
+        {
+            CreatingSchedule=1;
         }
     }
 }
