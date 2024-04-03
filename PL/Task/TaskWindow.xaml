@@ -8,8 +8,9 @@
         Title="TaskWindow" Height="450" Width="800">
     <Grid Margin="-384,10,-6,64">
         <Grid.RowDefinitions>
-            <RowDefinition Height="171*"/>
-            <RowDefinition Height="137*"/>
+            <RowDefinition Height="199*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="157*"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -18,11 +19,11 @@
             <ColumnDefinition Width="224*"/>
             <ColumnDefinition Width="498*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="whatch tasks list" HorizontalAlignment="Left" Margin="268,58,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List" Grid.Column="3"/>
-        <Button Content="add task" HorizontalAlignment="Left" Margin="268,161,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add" Grid.Column="3" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="247,58,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-        <TextBox Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="247,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>
-        <TextBox Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="247,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_2"/>
+        <Button Content="Tasks list" HorizontalAlignment="Left" Margin="268,58,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List" Grid.Column="3"/>
+        <Button Content="Add task" HorizontalAlignment="Left" Margin="268,161,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add" Grid.Column="3" Grid.RowSpan="3"/>
+        <TextBox Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="247,58,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Height="18"/>
+        <TextBox Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="247,101,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Height="18"/>
+        <TextBox Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="247,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_2" Height="18"/>
 
     </Grid>
 </Window>

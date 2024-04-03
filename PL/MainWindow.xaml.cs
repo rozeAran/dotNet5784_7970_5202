@@ -1,78 +1,55 @@
-﻿using System.Text;
+﻿using PL.Engineer;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using PL.Engineer;
-using PL.Task;
-using BO;
 
-namespace PL;
-
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-/// <method name="MainWindow">: the constracture of the window</method>
-/// <method name="ButtonEngineer_Click">: show the enginner window </method>
-/// <method name="ButtonInitialization_Click">: button to initialize the data</method>
-/// <method name="ButtonReset_Click">: button to reset the data</method>
-/// <method name="ButtonTaskForList_Click">: button to show the tasks</method>    
-/// <method name="ButtonGanttChart_Click">: button to show the grantt chart</method>
-/// <method name="ButtonCreateSchedule_Click">: button to create the schedule </method>
-
-
-public partial class MainWindow : Window
+namespace PL
 {
-    static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
-    public MainWindow()
-    { 
-        InitializeComponent();
-    }
-
-    private void ButtonEngineer_Click(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// Interaction logic for EntranceWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
-        new EngineerWindow().Show();
-    }
+        static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
-    private void ButtonInitialization_Click(object sender, RoutedEventArgs e)
-    {
-        if (MessageBox.Show("Do you want to initialize?", "initialization", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            BlApi.IBl.s_bl.InitializeDB();
-
-    }
-
-    private void ButtonReset_Click(object sender, RoutedEventArgs e)
-    {
-        BlApi.IBl.s_bl.ResetDB();
-    }
-
-    private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
-    {
-        new TaskForListWindow().Show(); 
-    }
-
-    private void ButtonGanttChart_Click(object sender, RoutedEventArgs e)
-    {
-        try
+        public readonly DependencyProperty CurrentTimeProperty =
+            DependencyProperty.Register(nameof(CurrentTime), typeof(IEnumerable<DateTime>), typeof(MainWindow));
+        public IEnumerable<DateTime>? CurrentTime
         {
-            if (CreatingSchedule == 1)
-                new GanttChartWindow().Show();
+            get => (IEnumerable<DateTime>)GetValue(CurrentTimeProperty);
+            set => SetValue(CurrentTimeProperty, value);
+        }
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void ButtonManager_Click(object sender, RoutedEventArgs e)
+        {
+            new ManagerWindow().Show();
+        }
+
+        private void ButtonWorker_Click(object sender, RoutedEventArgs e)
+        {
+            //fix
 
         }
-        catch (BO.BlNotAPossabilityException ex)
-        {
-            MessageBox.Show(ex.Message);
-        }
-    }
 
-    private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
-    {
-        CreatingSchedule = 0;
-        new CreateSchedule(CreatingSchedule).Show();
+        private void Button_ClickHour(object sender, RoutedEventArgs e)
+        {
+            CurrentTime = s_bl?.AddHourClock();
+        }
+        private void Button_ClickDay(object sender, RoutedEventArgs e)
+        {
+            CurrentTime = s_bl?.AddDayClock();
+        }
+        private void Button_ClickYear(object sender, RoutedEventArgs e)
+        {
+            CurrentTime = s_bl?.AddYearClock();
+        }
+
+        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            //fix
+        }
     }
 }
