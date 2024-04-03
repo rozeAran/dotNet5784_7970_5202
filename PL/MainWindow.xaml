@@ -7,20 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4DEBCF" Offset="1"/>
-                <GradientStop Color="#FFAA3E9E"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <!--takes care of engineer-->
-        <Button Content="HandelEngineer" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonEngineer_Click" Foreground="#FF161927"/>
-        <Button Content="Initialization" HorizontalAlignment="Left" Margin="208,262,0,0" VerticalAlignment="Top" Height="107" Width="192" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonInitialization_Click"/>
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="51,262,0,0" VerticalAlignment="Top" Height="107" Width="127" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonReset_Click"/>
-        <Button Content="TaskInList" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
-        <Button Content="GanttChart" HorizontalAlignment="Left" Margin="254,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonGanttChart_Click" Foreground="#FF161927"/>
-        <Button Content="CreateSchedule" HorizontalAlignment="Left" Margin="0,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonCreateSchedule_Click" Foreground="#FF161927"/>
+        <Button Content="ManagerWindow" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonManager_Click" Foreground="#FF161927"/>
+        <Button Content="WorkerWindow" HorizontalAlignment="Left" Margin="85,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonWorker_Click" Foreground="#FF161927"/>
+        <Label Binding.SourceUpdated="CurrentTime" Height="50" Width="150" Margin="312,88,338,296" />
 
+        <Button Content="add one hour"  Margin="439,165,261,219" Height="50" Width="100" Click="Button_ClickHour" />
+        <Button Content="add one day" Margin="322,165,378,219" Height="50" Width="100" Click="Button_ClickDay" />
+        <Button Content="add one year"  Margin="204,165,496,219" Height="50" Width="100" Click="Button_ClickYear"/>
+        <TextBox HorizontalAlignment="Left" Margin="288,77,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" />
+        <Label Content="enter ID:" HorizontalAlignment="Left" Margin="288,40,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
