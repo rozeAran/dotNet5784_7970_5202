@@ -26,14 +26,7 @@ public enum Status
     onTrack,
     Done
 }
-internal class EngineerExp : IEnumerable
-{
 
-    static readonly IEnumerable<BO.EngineerExperience> s_enums =
-    (Enum.GetValues(typeof(BO.EngineerExperience)) as IEnumerable<BO.EngineerExperience>)!;
-
-    public IEnumerator GetEnumerator() => s_enums.GetEnumerator();
-}
 internal class TaskStatus : IEnumerable
 {
 
@@ -42,6 +35,15 @@ internal class TaskStatus : IEnumerable
 
     public IEnumerator GetEnumerator() => s_enums.GetEnumerator();
 }
+internal class EngineerExp : IEnumerable
+{
+
+    static readonly IEnumerable<BO.EngineerExperience> s_enums =
+    (Enum.GetValues(typeof(BO.EngineerExperience)) as IEnumerable<BO.EngineerExperience>)!;
+
+    public IEnumerator GetEnumerator() => s_enums.GetEnumerator();
+}
+
 
 
 

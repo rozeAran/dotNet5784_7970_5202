@@ -5,6 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <local:EngineerExp x:Key="EngineerExpKey"/>
+        <local:TaskStatus x:Key="TaskStatusKey" />
         <local:ConvertIdToContent x:Key="ConvertIdToContentKey" />
     </Application.Resources>
 </Application>
