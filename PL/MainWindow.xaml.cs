@@ -52,7 +52,7 @@ namespace PL
         {
             try
             {
-                BO.Engineer eng = s_bl.Engineer.Read(workerID);
+                BO.Engineer eng = s_bl?.Engineer.Read(workerID)!;
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }

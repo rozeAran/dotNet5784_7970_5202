@@ -50,5 +50,11 @@ namespace PL.Task
             TaskList = (Status != BO.Status.Status) ?
                  s_bl?.Task.ReadAll(item => item.TaskStatus == Status) : s_bl?.Task.ReadAll();
         }
+
+        private void ListView_OpenTaskWindow(object sender, RoutedEventArgs e)
+        {
+            BO.TaskInEngineer? tsk = (sender as ListView)?.SelectedItem as BO.TaskInEngineer;
+            new TaskWindow(tsk.Id).ShowDialog();
+        }
     }
 }

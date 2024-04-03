@@ -35,7 +35,7 @@
         <ComboBox SelectedValue="{Binding Status, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource TaskStatusKey}}" SelectionChanged="ComboBoxStatus_SelectionChanged"  HorizontalAlignment="Left"   Width="153" Margin="637,356,0,39" FontSize="20" FontStretch="SemiCondensed"/>
 
         <!---list of tasks-->
-        <ListView Margin="0,0,173,20" ItemsSource="{Binding TaskList}" Background="#FFDF9EE2" MouseDoubleClick="ListView_OpenTaskWindow">
+        <ListView Margin="0,0,173,20" ItemsSource="{Binding TaskList}" Background="#FFDF9EE2" MouseDoubleClick="ListView_OpenTaskWindow" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel Orientation="Horizontal">

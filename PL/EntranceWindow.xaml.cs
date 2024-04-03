@@ -10,7 +10,7 @@ namespace PL
     public partial class EntranceWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-
+        private BO.Engineer? Eng;
         int id;
 
         public readonly DependencyProperty CurrentTimeProperty= 
@@ -31,13 +31,12 @@ namespace PL
         new MainWindow().Show();
     }
 
-    private void ButtonWorker_Click(object sender, RoutedEventArgs e)
-    {
-        //fix
-        //אם התז מתאים לתז של אחד המהנדסים אז נשלח אותו לחלון עובד עם התז הנ"ל ואחרת נזרוק שגיאה
-
-    }
-
+        private void ButtonWorker_Click(object sender, RoutedEventArgs e)
+        {
+            try { new WorkerWindow(id).Show(); }
+            catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+        }
         private void Button_ClickHour(object sender, RoutedEventArgs e)
         {
             CurrentTime = s_bl?.AddHourClock();
@@ -49,16 +48,6 @@ namespace PL
         private void Button_ClickYear(object sender, RoutedEventArgs e)
         {
             CurrentTime = s_bl?.AddYearClock();
-        }
-
-        private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-            try
-            {
-                id = e;
-            }
-            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); };
-
         }
     }
 }

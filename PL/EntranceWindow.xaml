@@ -13,9 +13,9 @@
         <Button Content="add one hour"  Margin="439,165,261,219" Height="50" Width="100" Click="Button_ClickHour" />
         <Button Content="add one day" Margin="322,165,378,219" Height="50" Width="100" Click="Button_ClickDay" />
         <Button Content="add one year"  Margin="204,165,496,219" Height="50" Width="100" Click="Button_ClickYear"/>
-        <TextBox HorizontalAlignment="Left" Margin="209,374,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="134" TextChanged="TextBox_TextChanged" Height="29" />
+        <TextBox  Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="209,374,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="134"  Height="29" />
         <Label Content="enter ID:" HorizontalAlignment="Left" Margin="131,376,0,0" VerticalAlignment="Top"/>
-
+           
 
     </Grid>
 </Window>
