@@ -8,7 +8,6 @@
         Title="WorkerWindow" Height="450" Width="800">
     <Grid>
         <Button Content="List Of Tasks" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
-        <Label HorizontalAlignment="Left" Margin="64,119,0,0" VerticalAlignment="Top" Height="86" Width="262" ContentStringFormat="LabelContent"/>
-
+       
     </Grid>
 </Window>

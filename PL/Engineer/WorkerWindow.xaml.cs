@@ -20,22 +20,19 @@ namespace PL.Engineer;
 /// </summary>
 public partial class WorkerWindow : Window
 {
-    public WorkerWindow()
+    int id = 0;
+    static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+    public WorkerWindow(int getid = 0)
     {
-        id = getId;
+        int id = getid;
         InitializeComponent();
-
+        BO.TaskInEngineer MyTask = s_bl?.Engineer.Read(id).Task;
+        //צריך להגדיר פה משתנים לכל הפרטים של המשימה ולהציג אותם בלייבלים
     }
 
     private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
     {
         new TaskForListWindow().Show();//סינון המשימות
-    }
-
-    private string LabelContent(object sender, RoutedEventArgs e) 
-    {
-        Task t=id.task;//הצגה של המשימה הנוכחית של העובד
-       
     }
 
 }
