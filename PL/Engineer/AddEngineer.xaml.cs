@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ public partial class AddEngineer : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
     private BO.Engineer? Eng;
-    public AddEngineer(int id=0)
+    public AddEngineer(int id = 0)
     {
         InitializeComponent();
         try
@@ -64,10 +65,9 @@ public partial class AddEngineer : Window
             }
         }
 
-        catch  (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
+        catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
     }
-
 }
