@@ -20,8 +20,9 @@ namespace PL.Engineer;
 /// </summary>
 public partial class WorkerWindow : Window
 {
-    public WorkerWindow(int id=0)
+    public WorkerWindow()
     {
+        id = getId;
         InitializeComponent();
 
     }
@@ -30,4 +31,11 @@ public partial class WorkerWindow : Window
     {
         new TaskForListWindow().Show();//סינון המשימות
     }
+
+    private string LabelContent(object sender, RoutedEventArgs e) 
+    {
+        Task t=id.task;//הצגה של המשימה הנוכחית של העובד
+       
+    }
+
 }
