@@ -1,4 +1,5 @@
-﻿using PL.Engineer;
+﻿using BO;
+using PL.Engineer;
 using System.Windows;
 
 namespace PL
@@ -9,6 +10,8 @@ namespace PL
     public partial class EntranceWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
+
+        int id;
 
         public readonly DependencyProperty CurrentTimeProperty= 
             DependencyProperty.Register(nameof(CurrentTime), typeof(IEnumerable<DateTime>), typeof(EntranceWindow));
@@ -31,6 +34,7 @@ namespace PL
     private void ButtonWorker_Click(object sender, RoutedEventArgs e)
     {
         //fix
+        //אם התז מתאים לתז של אחד המהנדסים אז נשלח אותו לחלון עובד עם התז הנ"ל ואחרת נזרוק שגיאה
 
     }
 
@@ -49,7 +53,12 @@ namespace PL
 
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            //fix
+            try
+            {
+                id = e;
+            }
+            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); };
+
         }
     }
 }
