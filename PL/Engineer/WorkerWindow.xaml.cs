@@ -20,9 +20,10 @@ namespace PL.Engineer;
 /// </summary>
 public partial class WorkerWindow : Window
 {
-    public WorkerWindow()
+    public WorkerWindow(int id=0)
     {
         InitializeComponent();
+
     }
 
     private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)

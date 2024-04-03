@@ -1,6 +1,7 @@
 ﻿using PL.Engineer;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,9 +39,16 @@ namespace PL.Task
             TaskList = s_bl?.Task.ReadAll()!;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBoxLevel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            TaskList = (Experience != BO.EngineerExperience.Level) ?
+                s_bl?.Task.ReadAll(item => item.Complexity == Experience) : s_bl?.Task.ReadAll();
+        }
 
+        private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TaskList = (Status != BO.Status.Status) ?
+                 s_bl?.Task.ReadAll(item => item.TaskStatus == Status) : s_bl?.Task.ReadAll();
         }
     }
 }

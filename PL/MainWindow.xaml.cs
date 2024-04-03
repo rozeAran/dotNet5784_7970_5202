@@ -17,6 +17,7 @@ namespace PL
             get => (IEnumerable<DateTime>)GetValue(CurrentTimeProperty);
             set => SetValue(CurrentTimeProperty, value);
         }
+        int workerID = 0;
 
         public MainWindow()
         {
@@ -30,7 +31,7 @@ namespace PL
 
         private void ButtonWorker_Click(object sender, RoutedEventArgs e)
         {
-            //fix
+            new WorkerWindow(workerID).Show();
 
         }
 
@@ -49,7 +50,14 @@ namespace PL
 
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            //fix
+            try
+            {
+                BO.Engineer eng = s_bl.Engineer.Read(workerID);
+            }
+            catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+
+
         }
     }
 }
