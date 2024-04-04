@@ -21,6 +21,7 @@ namespace PL
     {
         public GanttChartWindow()
         {
+
             InitializeComponent();
             
         }
