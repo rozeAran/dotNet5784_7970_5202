@@ -32,7 +32,6 @@ public class Task
     public List<BO.TaskInList>? Dependencies { get; set; }
     public BO.EngineerInTask? Engineer { get; set; }
     public string? Remarks { get; set; }
-    //public bool IsMilestone { get; init; }=false;
     public DateTime? ScheduledDate { get; set; } = null;
     public DateTime? CompleteDate { get; set; } = null;
     public DateTime? DeadLineDate { get; set; } = null;
