@@ -22,21 +22,6 @@ namespace PL.Task
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         static int CreatingSchedule=-1;
         private BO.Task? Tsk;
-        /*    public string? Alias { get; set; }
-    public string? Description { get; set; }
-    public DateTime CreatedAtDate { get; init; }
-    public TimeSpan RequiredEffortTime { get; set; }
-    public BO.EngineerExperience Complexity { get; set; }
-    public string? Deliverables { get; set; }
-    public int EngineerId { get; set; }
-    public BO.Status TaskStatus { get; set; }
-    public List<BO.TaskInList>? Dependencies { get; set; }
-    public BO.EngineerInTask? Engineer { get; set; }
-    public string? Remarks { get; set; }
-    public DateTime? ScheduledDate { get; set; } = null;
-    public DateTime? CompleteDate { get; set; } = null;
-    public DateTime? DeadLineDate { get; set; } = null;
-    public DateTime? StartDate { get; init; } = null;*/
         public TaskWindow(int id=0,int getCreatingSchedule=-1)
         {
             CreatingSchedule=getCreatingSchedule;
@@ -64,9 +49,7 @@ namespace PL.Task
                 else
                 {
                     if (id != 0)//in case of update
-                        Tsk = s_bl?.Task.Read(id)!;
-                    else//if he is tring to add a task and not dorin the schedule making
-                        MessageBox.Show("Cant add a task not doring the schedule creation \n");
+                        Tsk = s_bl?.Task.Read(id)!;                       
                 }
 
             }
@@ -82,27 +65,34 @@ namespace PL.Task
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
-            if (CreatingSchedule == 0)
+            try
             {
-                //fix
+                if (CreatingSchedule != 0)
+                {
+                    MessageBox.Show("Cant add a task not during the schedule creation \n");
+                }
+                else
+                {   //if not finished bulidlig schedule then add task
+                    s_bl.Task.Create(Tsk);
+                    MessageBox.Show("Task was succsesfuly created");
+                }
             }
-            //if not finished bulidlig schedule then add task
-            }
+            catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
+
+        }
 
         //info
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void Button_Click_Update(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
-
+            try
+            {
+                s_bl.Task.Update(Tsk);
+                MessageBox.Show("Task was succsesfuly updated");
+            }
+            catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
         }
     }
 }
