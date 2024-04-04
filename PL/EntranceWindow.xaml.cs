@@ -6,7 +6,8 @@ namespace PL
 {
     /// <summary>
     /// Interaction logic for EntranceWindow.xaml
-    /// </summary>
+    /// </summary> 
+    /// 
     public partial class EntranceWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
