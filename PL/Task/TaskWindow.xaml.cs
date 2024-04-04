@@ -60,7 +60,7 @@ namespace PL.Task
 
         private void Button_Click_List(object sender, RoutedEventArgs e)
         {
-            new TaskForListWindow().ShowDialog();
+            new TaskForListWindow().Show();
         }
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)

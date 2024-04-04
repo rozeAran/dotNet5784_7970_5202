@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:PL"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <local:EngineerExp x:Key="EngineerExpKey"/>
         <local:TaskStatus x:Key="TaskStatusKey" />
+        <local:EngineerExp x:Key="EngineerExpKey"/>
         <local:ConvertIdToContent x:Key="ConvertIdToContentKey" />
     </Application.Resources>
 </Application>
