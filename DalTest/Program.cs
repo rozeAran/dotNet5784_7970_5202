@@ -83,7 +83,7 @@ internal class Program
         Console.WriteLine("enter engineer email\n");
         string email = Console.ReadLine();
         Console.WriteLine("enter engineer level\n");
-        EngineerExperience level = SetEX(Convert.ToInt32(Console.ReadKey()));
+        EngineerExperience level = SetEX(int.Parse(Console.ReadLine()));
         Console.WriteLine("enter engineer cost for hour\n");
         double cost = double.Parse(Console.ReadLine());
         DO.Engineer item = new DO.Engineer(id, name, email, level, cost);
@@ -154,7 +154,7 @@ internal class Program
 
                     try
                     {
-                        int id = Convert.ToInt32(Console.ReadKey());
+                        int id = int.Parse(Console.ReadLine());
                         s_dal.Dependency.Delete(id);
                     }
                     catch (Exception ex)
@@ -212,7 +212,7 @@ internal class Program
 
                     try
                     {
-                        int id = Convert.ToInt32(Console.ReadKey());
+                        int id = int.Parse(Console.ReadLine());
                         s_dal.Engineer.Delete(id);
                     }
                     catch (Exception ex)
@@ -221,7 +221,8 @@ internal class Program
                     }
                     break;
                 case 3:///find a specific engineer
-                    int id2 = Convert.ToInt32(Console.ReadKey());
+                    Console.WriteLine("please enter engineer's id");
+                    int id2 = int.Parse(Console.ReadLine());
                     Console.Write(s_dal.Engineer.Read(id2));
                     break;
                 case 4:///find all engineers
@@ -244,7 +245,7 @@ internal class Program
                 default: throw new Exception("no suche possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new engineer \n 2 : delete a engineer \n 3 : find a specific engineer \n 4: find all engineers \n 5: update an engineer\n");
-            choice = Convert.ToInt32(Console.ReadKey());
+            choice = int.Parse(Console.ReadLine());
         }
     }
 
