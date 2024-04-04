@@ -21,9 +21,9 @@
             <ColumnDefinition Width="149*"/>
             <ColumnDefinition Width="340*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Tasks list" HorizontalAlignment="Left" Margin="170,23,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List" Grid.Column="3"/>
-        <Button Content="Add task" HorizontalAlignment="Left" Margin="170,130,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add" Grid.Column="3"/>
-        <Button Grid.Column="3" Content="Update task" HorizontalAlignment="Left" Margin="174,234,0,0" VerticalAlignment="Top" Width="136" Height="57" Click="Button_Click_Update" Grid.RowSpan="3"/>
+        <Button Content="Tasks list" HorizontalAlignment="Left" Margin="170,23,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List" Grid.Column="3" FontSize="25"/>
+        <Button Content="Add task" HorizontalAlignment="Left" Margin="170,130,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add" Grid.Column="3" FontSize="25"/>
+        <Button Grid.Column="3" Content="Update task" HorizontalAlignment="Left" Margin="174,234,0,0" VerticalAlignment="Top" Width="136" Height="57" Click="Button_Click_Update" Grid.RowSpan="3" FontSize="25"/>
         <TextBox 
               Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" 
               HorizontalAlignment="Left" Height="34" Margin="10,13,0,0"  VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.395,-8.003" Background="SeaShell" Grid.Column="1" />
