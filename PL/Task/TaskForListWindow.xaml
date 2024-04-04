@@ -38,18 +38,18 @@
         <ListView Margin="0,0,173,20" ItemsSource="{Binding TaskList}" MouseDoubleClick="ListView_OpenTaskWindow" >
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF010202" Offset="0.007"/>
-                    <GradientStop Color="#FF133939" Offset="0.167"/>
+                    <GradientStop Color="#FF9CBCBC" Offset="0.007"/>
+                    <GradientStop Color="#FF5AC6C6" Offset="0.27"/>
                     <GradientStop Color="#FF9CC0C0" Offset="0.59"/>
                     <GradientStop Color="#FF82A3A3" Offset="0.597"/>
                     <GradientStop Color="#FF354D4D" Offset="0.604"/>
-                    <GradientStop Color="#FF0A1D1D" Offset="0.611"/>
+                    <GradientStop Color="#FFA5C4C4" Offset="0.611"/>
                     <GradientStop Color="#FF0E2121" Offset="0.653"/>
                     <GradientStop Color="#FF548D8D" Offset="0.688"/>
                     <GradientStop Color="#FF518A8A" Offset="0.694"/>
-                    <GradientStop Color="#FF091717" Offset="0.729"/>
+                    <GradientStop Color="#FFC7F9F9" Offset="0.729"/>
                     <GradientStop Color="#FF388C8C" Offset="0.875"/>
-                    <GradientStop Color="#FF4B7070" Offset="0"/>
+                    <GradientStop Color="#FFC0DFDF" Offset="0"/>
                 </LinearGradientBrush>
             </ListView.Background>
             <ListView.ItemTemplate>

@@ -13,10 +13,13 @@
     <!--Extrnal Grid-->
     <Grid x:Name="list" Height="434" VerticalAlignment="Center" HorizontalAlignment="Left" Width="800">
         <Grid.Background>
-            <RadialGradientBrush>
-                <GradientStop Color="Beige"/>
-                <GradientStop Color="#FFF5A7DD" Offset="1"/>
-            </RadialGradientBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFDA9FB5"/>
+                <GradientStop Color="#FFE097AA" Offset="1"/>
+                <GradientStop Color="#FFDAABC9" Offset="0.867"/>
+                <GradientStop Color="#FFF0E3EA" Offset="0.59"/>
+                <GradientStop Color="#FFCE8EA8" Offset="0.259"/>
+            </LinearGradientBrush>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -45,7 +48,13 @@
         </Grid>
 
         <!---list of engineers-->
-        <ListView Grid.Row="1" Margin="0,10,173,10" ItemsSource="{Binding EngList}" Background="#FFDF9EE2" MouseDoubleClick="ListView_OpenEngineer">
+        <ListView Grid.Row="1" Margin="0,10,173,10" ItemsSource="{Binding EngList}" MouseDoubleClick="ListView_OpenEngineer">
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFC992A4"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ListView.Background>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel Orientation="Horizontal">
@@ -67,7 +76,7 @@
         </ListView>
 
         <!---add button-->
-        <Button Content="Add" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="665,246,0,43" FontSize="30" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
+        <Button Content="Add" FontFamily="Gill Sans MT Condensed" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="665,246,0,43" FontSize="40" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
 
     </Grid>
 

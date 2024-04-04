@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="CreateSchedule" Height="450" Width="800">
     <Grid>
-        <Button Content="add task" HorizontalAlignment="Left" Margin="93,151,0,0" VerticalAlignment="Top" Height="66" Width="170" Click="ButtonAddTask_Click"/>
-        <Button Content="finish creating" HorizontalAlignment="Left" Margin="93,50,0,0" VerticalAlignment="Top" Height="66" Width="166" Click="ButtonFinishCreating_Click"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/51BtgNwYEhL._AC_UF894,1000_QL80_.jpg"/>
+        </Grid.Background>
+        <Button Content="Add task" HorizontalAlignment="Left" Margin="93,151,0,0" VerticalAlignment="Top" Height="126" Width="234" FontSize="50"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed"/>
+        <Button Content="Finish schedule" HorizontalAlignment="Left" Margin="433,151,0,0" VerticalAlignment="Top" Height="126" Width="256" FontSize="50" Click="ButtonFinishCreating_Click" Background="SeaShell" FontFamily="Gill Sans MT Condensed"/>
+        <Image HorizontalAlignment="Right" Height="424" Margin="0,10,10,0" VerticalAlignment="Top" Width="795"/>
 
     </Grid>
 </Window>

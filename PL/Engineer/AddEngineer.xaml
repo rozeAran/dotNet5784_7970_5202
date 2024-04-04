@@ -9,10 +9,14 @@
         DataContext="{Binding Eng, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4DEBCF" Offset="1"/>
-                <GradientStop Color="#FFAA3E9E"/>
+                <GradientStop Color="#FFF9F2F6" Offset="0.993"/>
+                <GradientStop Color="#FFEA95B1"/>
             </LinearGradientBrush>
         </Grid.Background>
         <Button Grid.Column="0" 
@@ -38,8 +42,8 @@
         <TextBox 
               Text="{Binding Tasks, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Center" Height="28" Margin="0,372,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" />
-        <Label Content="Id:" HorizontalAlignment="Left" Margin="95,54,0,0" VerticalAlignment="Top" FontSize="30"/>
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="98,111,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <Label Content="Id:" HorizontalAlignment="Left" Margin="95,54,0,0" VerticalAlignment="Top" FontSize="30" Height="50" Width="42"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="98,111,0,0" VerticalAlignment="Top" FontSize="30" Height="50" Width="96"/>
         <Label Content="Email:" HorizontalAlignment="Left" Height="57" Margin="92,172,0,0" VerticalAlignment="Top" Width="91" FontSize="30" RenderTransformOrigin="-0.155,0.206" />
         <Label Content="Experience:" HorizontalAlignment="Left" Height="73" Margin="87,234,0,0" VerticalAlignment="Top" Width="167" FontSize="30" />
         <Label Content="Cost:" HorizontalAlignment="Left" Height="69" Margin="92,290,0,0" VerticalAlignment="Top" Width="78" FontSize="30"/>

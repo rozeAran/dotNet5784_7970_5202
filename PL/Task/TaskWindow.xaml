@@ -8,6 +8,13 @@
         Title="TaskWindow" Height="450" Width="800"
         DataContext="{Binding Tsk, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
     <Grid Margin="0,10,-6,-6">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF8ABC92"/>
+                <GradientStop Color="#FFC7DEE0" Offset="0.987"/>
+                <GradientStop Color="#FF8BD5D2" Offset="0.491"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="203*"/>
             <RowDefinition/>
@@ -21,9 +28,9 @@
             <ColumnDefinition Width="149*"/>
             <ColumnDefinition Width="340*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Tasks list" HorizontalAlignment="Left" Margin="170,23,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List" Grid.Column="3" FontSize="25"/>
-        <Button Content="Add task" HorizontalAlignment="Left" Margin="170,130,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add" Grid.Column="3" FontSize="25"/>
-        <Button Grid.Column="3" Content="Update task" HorizontalAlignment="Left" Margin="174,234,0,0" VerticalAlignment="Top" Width="136" Height="57" Click="Button_Click_Update" Grid.RowSpan="3" FontSize="25"/>
+        <Button Content="Tasks list" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="170,23,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List" Grid.Column="3" FontSize="25"/>
+        <Button Content="Add task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="170,130,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add" Grid.Column="3" FontSize="25"/>
+        <Button Grid.Column="3" Background="SeaShell" FontFamily="Gill Sans MT Condensed" Content="Update task" HorizontalAlignment="Left" Margin="174,234,0,0" VerticalAlignment="Top" Width="136" Height="57" Click="Button_Click_Update" Grid.RowSpan="3" FontSize="25"/>
         <TextBox 
               Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" 
               HorizontalAlignment="Left" Height="34" Margin="10,13,0,0"  VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.395,-8.003" Background="SeaShell" Grid.Column="1" />
@@ -65,7 +72,7 @@
         <TextBox 
              Text="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
              HorizontalAlignment="Left" Height="28" Margin="1,126,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3" />
-        <Label Content="Id:" HorizontalAlignment="Left" Margin="27,13,0,0" VerticalAlignment="Top" FontSize="20" Height="50" Width="42"/>
+        <Label Content="Id:"  HorizontalAlignment="Left" Margin="27,13,0,0" VerticalAlignment="Top" FontSize="20" Height="50" Width="42"/>
         <Label Content="Required&#xD;&#xA; Effort Time:" HorizontalAlignment="Left" Margin="16,0,0,0" VerticalAlignment="Center" FontSize="20" Height="69" Width="142" Grid.ColumnSpan="2" Grid.Row="2"/>
         <Label Content="Alias" HorizontalAlignment="Left" Height="57" Margin="16,63,0,0" VerticalAlignment="Top" Width="91" FontSize="20" RenderTransformOrigin="-0.155,0.206" />
         <Label Content="Description:" HorizontalAlignment="Left" Height="73" Margin="10,116,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Grid.ColumnSpan="2" />

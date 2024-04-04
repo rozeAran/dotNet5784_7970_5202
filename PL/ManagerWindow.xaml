@@ -9,17 +9,20 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF4DEBCF" Offset="1"/>
-                <GradientStop Color="#FFAA3E9E"/>
+                <GradientStop Color="#FFC5E6E1" Offset="0.995"/>
+                <GradientStop Color="#FF111B54"/>
+                <GradientStop Color="#FF5494AE" Offset="0.595"/>
+                <GradientStop Color="#FF124D67"/>
+                <GradientStop Color="#FF207297" Offset="0.371"/>
             </LinearGradientBrush>
         </Grid.Background>
         <!--takes care of engineer-->
-        <Button Content="Engineer List" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonEngineer_Click" Foreground="#FF161927"/>
-        <Button Content="Initialization" HorizontalAlignment="Left" Margin="208,262,0,0" VerticalAlignment="Top" Height="107" Width="192" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonInitialization_Click"/>
-        <Button Content="Reset" HorizontalAlignment="Left" Margin="51,262,0,0" VerticalAlignment="Top" Height="107" Width="127" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonReset_Click"/>
-        <Button Content="Task List" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
-        <Button Content="Gantt Chart" HorizontalAlignment="Left" Margin="254,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonGanttChart_Click" Foreground="#FF161927"/>
-        <Button Content="Create chedule" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="30" Background="SeaShell" FontWeight="DemiBold" Click="ButtonCreateSchedule_Click" Foreground="#FF161927"/>
+        <Button Content="Engineer List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonEngineer_Click" Foreground="#FF161927"/>
+        <Button Content="Initialization" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="208,262,0,0" VerticalAlignment="Top" Height="107" Width="192" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonInitialization_Click"/>
+        <Button Content="Reset" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="51,262,0,0" VerticalAlignment="Top" Height="107" Width="127" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonReset_Click"/>
+        <Button Content="Task List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
+        <Button Content="Gantt Chart" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="282,98,0,0" VerticalAlignment="Top" Height="107" Width="193" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonGanttChart_Click" Foreground="#FF161927"/>
+        <Button Content="Create Schedule" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Height="107" Width="239" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonCreateSchedule_Click" Foreground="#FF161927"/>
 
 
 
