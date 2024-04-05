@@ -9,10 +9,9 @@
         Title="GanttChartWindow" Height="450" Width="800">
 
     <Grid>
-        <ListView Grid.Row="1" 
-                  ItemsSource="{Binding TaskListingGantt, UpdateSourceTrigger=PropertyChanged}" 
+        <ListView 
+                  ItemsSource="{Binding TaskListingGantt}" 
                   ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                  ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
-    </ListView>
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontWeight="Bold" FontStyle="Italic" />
     </Grid>
 </Window>

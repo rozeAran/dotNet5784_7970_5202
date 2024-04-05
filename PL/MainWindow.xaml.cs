@@ -18,10 +18,10 @@ namespace PL
             set => SetValue(CurrentTimeProperty, value);
         }
         int workerID = 0;
-
+       
         public MainWindow()
         {
-            CurrentTime = s_bl?.currentClock();
+            CurrentTime = s_bl.currentClock();
             InitializeComponent();
         }
 

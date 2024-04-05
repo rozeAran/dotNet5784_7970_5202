@@ -15,7 +15,7 @@
         </Grid.Background>
         <Button Content="Manager Window"  FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonManager_Click" Foreground="#FF161927"/>
         <Button Content="Worker Window" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="85,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonWorker_Click" Foreground="#FF161927"/>
-        <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"   Height="50" Width="150" Margin="312,88,338,296" />
+        <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"   Height="50" Width="150" Margin="297,100,353,284" />
 
         <Button Content="Add one hour" Background="SeaShell" Margin="439,165,261,219" Height="50" Width="100" Click="Button_ClickHour" />
         <Button Content="Add one day" Background="SeaShell" Margin="322,165,378,219" Height="50" Width="100" Click="Button_ClickDay" />

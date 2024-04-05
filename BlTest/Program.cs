@@ -38,13 +38,13 @@ internal class Program
          DateTime createdAtDate = DateTime.Parse(Console.ReadLine());
          Console.WriteLine("enter tasks required Effort Time\n");
          int days = int.Parse(Console.ReadLine());
-         Console.ReadKey();
+         Console.ReadLine();
          int hours = int.Parse(Console.ReadLine());
-         Console.ReadKey();
+         Console.ReadLine();
+         int minuts = int.Parse(Console.ReadLine());
+         Console.ReadLine();
          int sec = int.Parse(Console.ReadLine());
-         Console.ReadKey();
-         int minutes = int.Parse(Console.ReadLine());
-         TimeSpan requiredEffortTime = new TimeSpan(days, hours, sec, minutes);
+         TimeSpan requiredEffortTime = new TimeSpan(days, hours, minuts, sec);
          Console.WriteLine("enter task complexity\n");
          int temp = int.Parse(Console.ReadLine());
          BO.EngineerExperience complexity = SetEX(int.Parse(Console.ReadLine()));
