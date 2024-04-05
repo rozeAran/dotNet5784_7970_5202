@@ -27,12 +27,12 @@ namespace PL.Task
 
         public static readonly DependencyProperty TaskListProperty =
             DependencyProperty.Register(nameof(TaskList), typeof(IEnumerable<BO.Task>), typeof(TaskForListWindow));
-        public IEnumerable<BO.Task>? TaskList
+        public IEnumerable<BO.Task?>? TaskList
         {
             get => (IEnumerable<BO.Task>)GetValue(TaskListProperty);
             set => SetValue(TaskListProperty, value);
         }
-
+       
         public TaskForListWindow()
         {
             InitializeComponent();
@@ -53,8 +53,14 @@ namespace PL.Task
 
         private void ListView_OpenTaskWindow(object sender, RoutedEventArgs e)
         {
-            BO.TaskInEngineer? tsk = (sender as ListView)?.SelectedItem as BO.TaskInEngineer;
+            BO.Task? tsk = (sender as ListView)?.SelectedItem as BO.Task;
             new TaskWindow(tsk.Id).ShowDialog();
+
+        }
+
+        private void Button_Click_Add_Task(object sender, RoutedEventArgs e)
+        {
+            new TaskWindow().ShowDialog();
         }
     }
 }

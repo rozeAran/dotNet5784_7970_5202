@@ -23,24 +23,25 @@
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="141*"/>
-            <ColumnDefinition Width="176*"/>
-            <ColumnDefinition Width="149*"/>
-            <ColumnDefinition Width="340*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="129*"/>
+            <ColumnDefinition Width="369*"/>
+            <ColumnDefinition Width="48*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Tasks list" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="170,23,0,0" VerticalAlignment="Top" Height="61" Width="145" Click="Button_Click_List" Grid.Column="3" FontSize="25"/>
-        <Button Content="Add task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="170,130,0,0" VerticalAlignment="Top" Height="62" Width="145" Click="Button_Click_Add" Grid.Column="3" FontSize="25"/>
-        <Button Grid.Column="3" Background="SeaShell" FontFamily="Gill Sans MT Condensed" Content="Update task" HorizontalAlignment="Left" Margin="174,234,0,0" VerticalAlignment="Top" Width="136" Height="57" Click="Button_Click_Update" Grid.RowSpan="3" FontSize="25"/>
+        <Button Content="Add dependency" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="174,65,0,0" VerticalAlignment="Top" Height="57" Width="137" Click="Button_Click_Add_Dependency" Grid.Column="3" FontSize="25" Grid.Row="3"/>
+        <Button Content="Add task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="22,61,0,0" VerticalAlignment="Top" Height="54" Width="103" Click="Button_Click_Add" Grid.Column="3" FontSize="25" Grid.Row="3"/>
+        <Button Grid.Column="2" Background="SeaShell" FontFamily="Gill Sans MT Condensed" Content="Update task" HorizontalAlignment="Left" Margin="8,58,0,0" VerticalAlignment="Top" Width="110" Height="57" Click="Button_Click_Update" FontSize="25" Grid.Row="3"/>
         <TextBox 
               Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" 
-              HorizontalAlignment="Left" Height="34" Margin="10,13,0,0"  VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.395,-8.003" Background="SeaShell" Grid.Column="1" />
+              HorizontalAlignment="Center" Height="34" Margin="0,13,0,0"  VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.395,-8.003" Background="SeaShell" Grid.Column="1" />
         <TextBox 
               Text="{Binding Alias, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Center" Height="34" Margin="0,58,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1"/>
         <TextBox 
               Text="{Binding Description, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Center" Height="38" Margin="0,115,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" />
-        <ComboBox HorizontalAlignment="Left" Height="36" Margin="10,58,0,0"
+        <ComboBox HorizontalAlignment="Center" Height="36" Margin="0,58,0,0"
             ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" 
             SelectedValue="{Binding Complexity, Mode=TwoWay, NotifyOnValidationError=true, 
             ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" />
@@ -49,10 +50,10 @@
               HorizontalAlignment="Center" Height="34" Margin="0,172,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" />
         <TextBox 
               Text="{Binding RequiredEffortTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
-              HorizontalAlignment="Left" Height="28"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" Grid.Row="2" Margin="10,10,0,0" />
+              HorizontalAlignment="Center" Height="28"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" />
         <TextBox 
               Text="{Binding EngineerId, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
-              HorizontalAlignment="Left" Height="28" Margin="10,0,0,0"  VerticalAlignment="Center" Width="148" Background="SeaShell" Grid.Column="1" Grid.Row="3" />
+              HorizontalAlignment="Center" Height="28"  VerticalAlignment="Center" Width="148" Background="SeaShell" Grid.Column="1" Grid.Row="3" />
         <TextBox 
               Text="{Binding Remarks, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Left" Height="28" Margin="1,19,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3" />
@@ -72,19 +73,43 @@
         <TextBox 
              Text="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
              HorizontalAlignment="Left" Height="28" Margin="1,126,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3" />
-        <Label Content="Id:"  HorizontalAlignment="Left" Margin="27,13,0,0" VerticalAlignment="Top" FontSize="20" Height="50" Width="42"/>
-        <Label Content="Required&#xD;&#xA; Effort Time:" HorizontalAlignment="Left" Margin="16,0,0,0" VerticalAlignment="Center" FontSize="20" Height="69" Width="142" Grid.ColumnSpan="2" Grid.Row="2"/>
-        <Label Content="Alias" HorizontalAlignment="Left" Height="57" Margin="16,63,0,0" VerticalAlignment="Top" Width="91" FontSize="20" RenderTransformOrigin="-0.155,0.206" />
+        <Label Content="Id:"  HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="34"/>
+        <Label Content="Required&#xD;&#xA; Effort Time:" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" FontSize="20" Height="69" Width="142" Grid.ColumnSpan="2" Grid.Row="2"/>
+        <Label Content="Alias" HorizontalAlignment="Left" Height="57" Margin="16,63,0,0" VerticalAlignment="Top" Width="91" FontSize="20" RenderTransformOrigin="-0.155,0.206" Grid.ColumnSpan="2" />
         <Label Content="Description:" HorizontalAlignment="Left" Height="73" Margin="10,116,0,0" VerticalAlignment="Top" Width="167" FontSize="20" Grid.ColumnSpan="2" />
-        <Label Content="Deliverables:" HorizontalAlignment="Left" Height="68" Margin="10,172,0,0" VerticalAlignment="Top" Width="118" FontSize="20" Grid.RowSpan="3"/>
-        <Label Content="Complexity" HorizontalAlignment="Left" Margin="16,0,0,0" Grid.Row="3" VerticalAlignment="Top" Height="43" Width="114" FontSize="20"/>
-        <Label Content="Engineer Id" HorizontalAlignment="Left" Height="58" Margin="21,44,0,0" Grid.Row="3" VerticalAlignment="Top" Width="109" FontSize="20"/>
+        <Label Content="Deliverables:" HorizontalAlignment="Center" Height="68" Margin="0,172,0,0" VerticalAlignment="Top" Width="118" FontSize="20" Grid.RowSpan="3"/>
+        <Label Content="Complexity" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Height="43" Width="114" FontSize="20" Grid.ColumnSpan="2"/>
+        <Label Content="Engineer Id" HorizontalAlignment="Left" Height="58" Margin="0,48,0,0" Grid.Row="3" VerticalAlignment="Top" Width="109" FontSize="20" Grid.ColumnSpan="2"/>
         <Label Grid.Column="2" Content="Remarks" HorizontalAlignment="Center" Height="41" Margin="0,13,0,0" VerticalAlignment="Top" Width="106" FontSize="20"/>
         <Label Grid.Column="2" Content="Task Status" HorizontalAlignment="Center" Height="36" Margin="0,72,0,0" VerticalAlignment="Top" Width="106" FontSize="20"/>
         <Label Grid.Column="2" Content="Start Date" HorizontalAlignment="Center" Height="37" Margin="0,126,0,0" VerticalAlignment="Top" Width="106" FontSize="20"/>
         <Label Grid.Column="2" Content="DeadLine Date" HorizontalAlignment="Center" Height="64" Margin="0,174,0,0" VerticalAlignment="Top" Width="140" FontSize="20" Grid.RowSpan="3"/>
         <Label Grid.Column="2" Content="Complete Date" HorizontalAlignment="Center" Height="53" Grid.RowSpan="2" Grid.Row="1" VerticalAlignment="Top" Width="142" FontSize="20"/>
         <Label Grid.Column="2" Content="Scheduled Date" HorizontalAlignment="Left" Height="61" Grid.Row="3" VerticalAlignment="Top" Width="160" FontSize="20" Grid.ColumnSpan="2"/>
+        <ListView Grid.Column="3"  HorizontalAlignment="Left" Height="312" Margin="174,38,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="219" ItemsSource="{Binding DependencyList}" SelectionChanged="ListView_SelectionChanged" Grid.ColumnSpan="2">
+            <ListView.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF8AEBE4"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ListView.Background>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel Orientation="Horizontal">
+                        <Label Content="Id:" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Id}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Description:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Description}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Alias:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Alias}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Status:" FontSize="15" FontStyle="Oblique"/>
+                        <TextBlock Text="{Binding Status}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Grid.Column="3" Content="Dependency List:" FontSize="20" HorizontalAlignment="Left" Height="62" Margin="174,0,0,0" VerticalAlignment="Top" Width="167"/>
+        <TextBox Name="depndencyId" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="35" Margin="316,86,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Enter Id of the task:" VerticalAlignment="Top" Width="77" TextChanged="TextBox_TextChanged"/>
 
     </Grid>
 </Window>

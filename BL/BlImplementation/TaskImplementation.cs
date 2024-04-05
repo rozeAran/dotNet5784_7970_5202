@@ -59,7 +59,7 @@ internal class TaskImplementation : ITask
             taskInList = listDep.ElementAt(i);
             task =_dal.Task.Read(taskInList.Id);
             if (task.ScheduledDate == null)
-                throw new BO.WrongOrderOfDatesException($"task with id:{taskInList.Id} doesnt have scedualed date");
+                throw new BO.WrongOrderOfDatesException($"task with id:{taskInList.Id} doesnt have scheduled date");
             if(task.ScheduledDate>= begin)
                 throw new BO.WrongOrderOfDatesException("order of dates is impossible");
             i--;
@@ -190,7 +190,6 @@ internal class TaskImplementation : ITask
                 CompleteDate = doTask.CompleteDate,
                 DeadLineDate = doTask.DeadLineDate,
                 StartDate = doTask.StartDate
-                //tYear = (BO.Year)( _bl.Clock.Year - doTask.RegistrationDate.Year)
             });
 
     }

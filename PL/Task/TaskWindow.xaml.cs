@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,14 @@ namespace PL.Task
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         static int CreatingSchedule=-1;
         private BO.Task? Tsk;
+        int depId = 0;
+        public static readonly DependencyProperty DependencyListProperty =
+            DependencyProperty.Register(nameof(DependencyList), typeof(IEnumerable<BO.TaskInList>), typeof(TaskWindow));
+        public IEnumerable<BO.TaskInList>? DependencyList
+        {
+            get => (IEnumerable<BO.TaskInList>)GetValue(DependencyListProperty);
+            set => SetValue(DependencyListProperty, value);
+        }
         public TaskWindow(int id=0,int getCreatingSchedule=-1)
         {
             CreatingSchedule=getCreatingSchedule;
@@ -58,10 +67,7 @@ namespace PL.Task
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void Button_Click_List(object sender, RoutedEventArgs e)
-        {
-            new TaskForListWindow().Show();
-        }
+
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
@@ -93,6 +99,45 @@ namespace PL.Task
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
+        }
+
+
+        private void Button_Click_Add_Dependency(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (CreatingSchedule == -1)
+                {
+                    BO.Task? dTask = s_bl.Task.Read(depId);
+                    if (dTask != null)
+                    {
+                        MessageBox.Show("Task was not found \n");
+                    }
+                    BO.TaskInList dep = new BO.TaskInList
+                    {
+                        Id = depId,
+                        Alias = dTask.Alias,
+                        Description = dTask.Description,
+                        Status = dTask.TaskStatus
+                    };
+                    Tsk.Dependencies.Add(dep);
+                }
+                else
+                {
+                    MessageBox.Show("cant add a dependency after schedule was created \n");
+                }
+            }
+            catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+
+        }
+       
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string s = depndencyId.Text;
+
+            depId = int.Parse(s);
         }
     }
 }

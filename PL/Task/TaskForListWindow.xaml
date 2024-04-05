@@ -30,9 +30,9 @@
             </ComboBox.RenderTransform>
         </ComboBox>
 
-        <Label Content="Task Status:" VerticalAlignment="Top" Height="45" Margin="637,293,10,0" FontSize="30" FontWeight="Light" FontStretch="SemiExpanded"/>
+        <Label Content="Task Status:" VerticalAlignment="Top" Height="45" Margin="637,142,10,0" FontSize="30" FontWeight="Light" FontStretch="SemiExpanded"/>
         <!--combobox to chose the status of the task-->
-        <ComboBox SelectedValue="{Binding Status, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource TaskStatusKey}}" SelectionChanged="ComboBoxStatus_SelectionChanged"  HorizontalAlignment="Left"   Width="153" Margin="637,356,0,39" FontSize="20" FontStretch="SemiCondensed"/>
+        <ComboBox SelectedValue="{Binding Status, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource TaskStatusKey}}" SelectionChanged="ComboBoxStatus_SelectionChanged"  HorizontalAlignment="Left"   Width="153" Margin="637,207,0,187" FontSize="20" FontStretch="SemiCondensed"/>
 
         <!---list of tasks-->
         <ListView Margin="0,0,173,20" ItemsSource="{Binding TaskList}" MouseDoubleClick="ListView_OpenTaskWindow" >
@@ -42,9 +42,7 @@
                     <GradientStop Color="#FF5AC6C6" Offset="0.27"/>
                     <GradientStop Color="#FF9CC0C0" Offset="0.59"/>
                     <GradientStop Color="#FF82A3A3" Offset="0.597"/>
-                    <GradientStop Color="#FF354D4D" Offset="0.604"/>
                     <GradientStop Color="#FFA5C4C4" Offset="0.611"/>
-                    <GradientStop Color="#FF0E2121" Offset="0.653"/>
                     <GradientStop Color="#FF548D8D" Offset="0.688"/>
                     <GradientStop Color="#FF518A8A" Offset="0.694"/>
                     <GradientStop Color="#FFC7F9F9" Offset="0.729"/>
@@ -67,5 +65,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Content="Add Task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontSize="30" HorizontalAlignment="Left" Height="47" Margin="637,268,0,0" VerticalAlignment="Top" Width="140" Click="Button_Click_Add_Task"/>
     </Grid>
 </Window>
