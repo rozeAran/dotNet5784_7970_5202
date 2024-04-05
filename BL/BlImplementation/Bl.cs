@@ -8,8 +8,11 @@ namespace BlImplementation;
 using BlApi;
 internal class Bl : IBl
 {
+    
     private static DateTime s_Clock = DateTime.Now.Date;
     public DateTime Clock { get { return s_Clock; } private set { s_Clock = value; } }
+
+   // public int schedule = -1;
     public ITask Task => new TaskImplementation(this);
     public IEngineer Engineer => new EngineerImplementation(this);
 
@@ -19,6 +22,10 @@ internal class Bl : IBl
     public void InitializeClock()
     {
         Clock = DateTime.Now;
+    }
+    public IEnumerable<DateTime>? currentClock()
+    {
+        return new DateTime[] { Clock };
     }
     public IEnumerable<DateTime>? AddYearClock()
     {

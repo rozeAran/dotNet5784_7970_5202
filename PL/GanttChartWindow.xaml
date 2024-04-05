@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
         Title="GanttChartWindow" Height="450" Width="800">
-    
-    <Grid/>
+
+    <Grid>
+        <ListView Grid.Row="1" 
+                  ItemsSource="{Binding TaskListingGantt, UpdateSourceTrigger=PropertyChanged}" 
+                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
+    </ListView>
+    </Grid>
 </Window>

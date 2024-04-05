@@ -19,11 +19,22 @@ namespace PL
     /// </summary>
     public partial class GanttChartWindow : Window
     {
+        static readonly BlApi.IBl? s_bl = BlApi.Factory.Get();
+
+        public IEnumerable<BO.Task?> TaskListingGantt
+        {
+            get { return (IEnumerable<BO.Task?>)GetValue(TaskListingGanttProperty); }
+            set { SetValue(TaskListingGanttProperty, value); }
+        }
+
+        
+        public static readonly DependencyProperty TaskListingGanttProperty =
+            DependencyProperty.Register("TaskListingGantt", typeof(IEnumerable<BO.Task?>), typeof(GanttChartWindow), new PropertyMetadata(null));
         public GanttChartWindow()
         {
-
+            TaskListingGantt = s_bl?.Task.ReadAll()!;
+            TaskListingGantt = TaskListingGantt.OrderBy(Task => Task.StartDate);
             InitializeComponent();
-            
         }
     }
 }

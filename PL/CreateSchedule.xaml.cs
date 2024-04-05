@@ -21,7 +21,7 @@ namespace PL
     public partial class CreateSchedule : Window
     {
         static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
-        public CreateSchedule(int getCreatingSchedule=-1)
+        public CreateSchedule(int getCreatingSchedule=0)
         {
             CreatingSchedule = getCreatingSchedule;
             InitializeComponent();

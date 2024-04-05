@@ -74,5 +74,6 @@ public partial class ManagerWindow : Window
     {
         CreatingSchedule = 0;
         new CreateSchedule(CreatingSchedule).Show();
+        CreatingSchedule = 1;//לא בטוח שזה המקום לעדכן
     }
 }

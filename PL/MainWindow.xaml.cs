@@ -21,6 +21,7 @@ namespace PL
 
         public MainWindow()
         {
+            CurrentTime = s_bl?.currentClock();
             InitializeComponent();
         }
 
