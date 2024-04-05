@@ -29,7 +29,7 @@
             <ColumnDefinition Width="369*"/>
             <ColumnDefinition Width="48*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Add dependency" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="215,65,0,0" VerticalAlignment="Top" Height="57" Width="137" Click="Button_Click_Add_Dependency" Grid.Column="3" FontSize="25" Grid.Row="3"/>
+        <Button Content="Add dependency" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="174,65,0,0" VerticalAlignment="Top" Height="57" Width="137" Click="Button_Click_Add_Dependency" Grid.Column="3" FontSize="25" Grid.Row="3"/>
         <Button Content="Add task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="22,61,0,0" VerticalAlignment="Top" Height="54" Width="103" Click="Button_Click_Add" Grid.Column="3" FontSize="25" Grid.Row="3"/>
         <Button Grid.Column="2" Background="SeaShell" FontFamily="Gill Sans MT Condensed" Content="Update task" HorizontalAlignment="Left" Margin="8,58,0,0" VerticalAlignment="Top" Width="110" Height="57" Click="Button_Click_Update" FontSize="25" Grid.Row="3"/>
         <TextBox 
@@ -109,6 +109,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <Label Grid.Column="3" Content="Dependency List:" FontSize="20" HorizontalAlignment="Left" Height="62" Margin="174,0,0,0" VerticalAlignment="Top" Width="167"/>
+        <TextBox Name="depndencyId" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="35" Margin="316,86,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Enter Id of the task:" VerticalAlignment="Top" Width="77" TextChanged="TextBox_TextChanged"/>
 
     </Grid>
 </Window>
