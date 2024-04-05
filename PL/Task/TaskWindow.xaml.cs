@@ -22,6 +22,13 @@ namespace PL.Task
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         static int CreatingSchedule=-1;
         private BO.Task? Tsk;
+        public static readonly DependencyProperty DependencyListProperty =
+            DependencyProperty.Register(nameof(DependencyList), typeof(IEnumerable<BO.TaskInList>), typeof(TaskWindow));
+        public IEnumerable<BO.TaskInList>? DependencyList
+        {
+            get => (IEnumerable<BO.TaskInList>)GetValue(DependencyListProperty);
+            set => SetValue(DependencyListProperty, value);
+        }
         public TaskWindow(int id=0,int getCreatingSchedule=-1)
         {
             CreatingSchedule=getCreatingSchedule;
@@ -58,10 +65,7 @@ namespace PL.Task
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void Button_Click_List(object sender, RoutedEventArgs e)
-        {
-            new TaskForListWindow().Show();
-        }
+
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
@@ -93,6 +97,16 @@ namespace PL.Task
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_Add_Dependency(object sender, RoutedEventArgs e)
+        {
+            //fix
         }
     }
 }

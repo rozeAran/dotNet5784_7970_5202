@@ -30,9 +30,9 @@
             </ComboBox.RenderTransform>
         </ComboBox>
 
-        <Label Content="Task Status:" VerticalAlignment="Top" Height="45" Margin="637,293,10,0" FontSize="30" FontWeight="Light" FontStretch="SemiExpanded"/>
+        <Label Content="Task Status:" VerticalAlignment="Top" Height="45" Margin="637,142,10,0" FontSize="30" FontWeight="Light" FontStretch="SemiExpanded"/>
         <!--combobox to chose the status of the task-->
-        <ComboBox SelectedValue="{Binding Status, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource TaskStatusKey}}" SelectionChanged="ComboBoxStatus_SelectionChanged"  HorizontalAlignment="Left"   Width="153" Margin="637,356,0,39" FontSize="20" FontStretch="SemiCondensed"/>
+        <ComboBox SelectedValue="{Binding Status, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource TaskStatusKey}}" SelectionChanged="ComboBoxStatus_SelectionChanged"  HorizontalAlignment="Left"   Width="153" Margin="637,197,0,197" FontSize="20" FontStretch="SemiCondensed"/>
 
         <!---list of tasks-->
         <ListView Margin="0,0,173,20" ItemsSource="{Binding TaskList}" MouseDoubleClick="ListView_OpenTaskWindow" >
@@ -67,5 +67,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Content="Add Task" HorizontalAlignment="Left" Height="47" Margin="637,268,0,0" VerticalAlignment="Top" Width="140" Click="Button_Click_Add_Task"/>
     </Grid>
 </Window>
