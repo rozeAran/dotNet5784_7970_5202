@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace PL.Engineer;
 
 /// <summary>
-/// Interaction logic for EngineerWindow.xaml
+/// a window that shos you the list of all the engineers 
 /// </summary>
 /// <method name="EngineerWindow">: constractor of the window </method>
 /// <parameter name="EngList">: a list of all the enginners </parameter>

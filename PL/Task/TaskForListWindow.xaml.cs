@@ -19,6 +19,12 @@ namespace PL.Task
     /// <summary>
     /// Interaction logic for TaskForListWindow.xaml
     /// </summary>
+    /// <method name="TaskForListWindow"> Initialize all Components and reads all the taskes to TaskList</method>
+    /// <method name="ComboBoxLevel_SelectionChanged"> shows in the list only the tasks in a specific level</method>
+    /// <method name="ComboBoxStatus_SelectionChanged"> shows in the list only the tasks in a specific status </method>
+    /// <method name="ListView_OpenTaskWindow"> : if the user wants to update a task it opens the task window</method>
+    /// <method name="Button_Click_Add_Task"> if the user wants to add a task it opens the task window</method>
+
     public partial class TaskForListWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();

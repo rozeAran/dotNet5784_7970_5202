@@ -15,13 +15,13 @@ using BO;
 namespace PL;
 
 /// <summary>
-/// Interaction logic for MainWindow.xaml
+/// the window for the manager 
 /// </summary>
 /// <method name="ManagerWindow">: the constracture of the window</method>
 /// <method name="ButtonEngineer_Click">: show the enginner window </method>
 /// <method name="ButtonInitialization_Click">: button to initialize the data</method>
 /// <method name="ButtonReset_Click">: button to reset the data</method>
-/// <method name="ButtonTaskForList_Click">: button to show the tasks</method>    
+/// <method name="ButtonTaskForList_Click">: button to show the list of tasks</method>    
 /// <method name="ButtonGanttChart_Click">: button to show the grantt chart</method>
 /// <method name="ButtonCreateSchedule_Click">: button to create the schedule </method>
 

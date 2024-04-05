@@ -16,8 +16,12 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for CreateSchedule.xaml
+    /// a window for creating the schedule
     /// </summary>
+    /// <parameter name="CreatingSchedule">  -1: before starting the schedule, 0: while building, 1: finished </parameter>
+    /// <method name="CreateSchedule"> initialize everything</method>
+    /// <method name="ButtonAddTask_Click">  if we want to add a task  </method>
+    /// <method name="ButtonFinishCreating_Click"> : if the schedules building is finished</method>
     public partial class CreateSchedule : Window
     {
         static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished

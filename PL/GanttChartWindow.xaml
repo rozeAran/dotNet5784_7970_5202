@@ -14,4 +14,5 @@
                   ScrollViewer.VerticalScrollBarVisibility="Hidden"
                   ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" FontWeight="Bold" FontStyle="Italic" />
     </Grid>
+    
 </Window>

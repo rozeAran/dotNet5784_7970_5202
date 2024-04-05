@@ -16,14 +16,22 @@ using System.Windows.Shapes;
 namespace PL.Task
 {
     /// <summary>
-    /// Interaction logic for TaskWindow.xaml
+    /// a window to add a task or update a task and to add a dependency
     /// </summary>
+    /// <parameter name="Tsk">: a parameter that keeps the information about this task </parameter>
+    /// <parameter name="depId">: a parameter that keeps the id of the task we want to add the dependency list </parameter>
+    /// <method name="TaskWindow">: initilize Tsk and every thing else </method>
+    /// <method name="Button_Click_Add">: in case we want to add a task </method>
+    /// <method name="Button_Click_Update">: in case we want to update an existing task </method>
+    /// <method name="Button_Click_Add_Dependency">: if we want to add a dependency </method>
+    /// <method name="TextBox_TextChanged">: takes the task id that we got from the user and keeps it in depId </method>
     public partial class TaskWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         static int CreatingSchedule=-1;
         private BO.Task? Tsk;
         int depId = 0;
+        bool flagUA= true;//if the flag=true its Add, if the flag = false than its Update
         public static readonly DependencyProperty DependencyListProperty =
             DependencyProperty.Register(nameof(DependencyList), typeof(IEnumerable<BO.TaskInList>), typeof(TaskWindow));
         public IEnumerable<BO.TaskInList>? DependencyList
@@ -58,13 +66,21 @@ namespace PL.Task
                 else
                 {
                     if (id != 0)//in case of update
-                        Tsk = s_bl?.Task.Read(id)!;                       
+                    {
+                        Tsk = s_bl?.Task.Read(id)!;
+                        DependencyList = Tsk.Dependencies.ToList();
+                        flagUA=false;
+                    }
+                        
+                    
                 }
 
             }
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+            
+
         }
 
 
@@ -87,7 +103,6 @@ namespace PL.Task
 
         }
 
-        //info
 
         private void Button_Click_Update(object sender, RoutedEventArgs e)
         {

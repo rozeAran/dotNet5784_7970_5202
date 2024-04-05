@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace PL.Engineer;
 
 /// <summary>
-/// Interaction logic for AddEngineer.xaml
+/// a window to add or update an engineer
 /// </summary>
 /// <parameter name="Eng">: the engineer that i get from the engineer window </parameter>
 /// <method name="AddEngineer">: constractor of the window </method>

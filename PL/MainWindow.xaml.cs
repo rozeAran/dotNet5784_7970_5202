@@ -6,6 +6,15 @@ namespace PL
     /// <summary>
     /// Interaction logic for EntranceWindow.xaml
     /// </summary>
+    /// <parameter name="CurrentTime">: shows us the running hour </parameter>
+    /// <parameter name="workerID">: in case we want to go to the worker window we need the workers id </parameter>
+    /// <method name="MainWindow">: initilize the clock and every thing else </method>
+    /// <method name="ButtonManager_Click">: in case we want to go the manager window </method>
+    /// <method name="ButtonWorker_Click">: in case we want to go to the worker window </method>
+    /// <method name="Button_ClickHour">: if we want to add a one hour to the time </method>
+    /// <method name="Button_ClickDay">: if we want to add a one day to the time </method>
+    /// <method name="Button_ClickYear">: if we want to add a one year to the time </method>
+    /// <method name="TextBox_TextChanged">: findes the worker with this id </method>
     public partial class MainWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
