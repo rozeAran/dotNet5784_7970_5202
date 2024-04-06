@@ -25,9 +25,13 @@ public partial class WorkerWindow : Window
     public WorkerWindow(int getid = 0)
     {
         int id = getid;
+        BO.Engineer eng=s_bl.Engineer.Read(id);
+        if(eng != null)
+            if(eng.Task != null)
+                new TaskWindow(eng.Task.Id).Show();
         InitializeComponent();
-        BO.TaskInEngineer MyTask = s_bl?.Engineer.Read(id).Task;
-        //צריך להגדיר פה משתנים לכל הפרטים של המשימה ולהציג אותם בלייבלים
+       // BO.TaskInEngineer MyTask = s_bl?.Engineer.Read(id).Task;
+
     }
 
     private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
@@ -35,4 +39,8 @@ public partial class WorkerWindow : Window
         new TaskForListWindow().Show();//סינון המשימות
     }
 
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
 }

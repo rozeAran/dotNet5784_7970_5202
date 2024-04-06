@@ -8,6 +8,7 @@
         Title="WorkerWindow" Height="450" Width="800">
     <Grid>
         <Button Content="List Of Tasks" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
-       
+        <Button Content="Finished Task" FontSize="40" Background="SeaShell" FontWeight="DemiBold" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Height="96" Margin="514,275,0,0" VerticalAlignment="Top" Width="206" Click="Button_Click"/>
+
     </Grid>
 </Window>

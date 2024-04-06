@@ -31,7 +31,7 @@ namespace PL.Task
         static int CreatingSchedule=-1;
         private BO.Task? Tsk;
         int depId = 0;
-        bool flagUA= true;//if the flag=true its Add, if the flag = false than its Update
+        bool flagWorker= false;//if the flag=true the window was oppend from a worker, if the flag = false than from manager
         public static readonly DependencyProperty DependencyListProperty =
             DependencyProperty.Register(nameof(DependencyList), typeof(IEnumerable<BO.TaskInList>), typeof(TaskWindow));
         public IEnumerable<BO.TaskInList>? DependencyList
@@ -39,7 +39,7 @@ namespace PL.Task
             get => (IEnumerable<BO.TaskInList>)GetValue(DependencyListProperty);
             set => SetValue(DependencyListProperty, value);
         }
-        public TaskWindow(int id=0,int getCreatingSchedule=-1)
+        public TaskWindow(bool fworker, int id=0,int getCreatingSchedule=-1)
         {
             CreatingSchedule=getCreatingSchedule;
             InitializeComponent();
@@ -69,7 +69,6 @@ namespace PL.Task
                     {
                         Tsk = s_bl?.Task.Read(id)!;
                         DependencyList = Tsk.Dependencies.ToList();
-                        flagUA=false;
                     }
                         
                     
@@ -153,6 +152,11 @@ namespace PL.Task
             string s = depndencyId.Text;
 
             depId = int.Parse(s);
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
