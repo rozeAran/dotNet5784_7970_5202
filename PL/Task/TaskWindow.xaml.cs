@@ -39,9 +39,10 @@ namespace PL.Task
             get => (IEnumerable<BO.TaskInList>)GetValue(DependencyListProperty);
             set => SetValue(DependencyListProperty, value);
         }
-        public TaskWindow(bool fworker, int id=0,int getCreatingSchedule=-1)
+        public TaskWindow(int id=0, bool fworker=false,int getCreatingSchedule=-1)
         {
-            CreatingSchedule=getCreatingSchedule;
+            if(getCreatingSchedule!=-1)
+                CreatingSchedule=getCreatingSchedule;
             InitializeComponent();
             try
             {
@@ -88,15 +89,24 @@ namespace PL.Task
         {
             try
             {
-                if (CreatingSchedule != 0)
+                if(flagWorker)
                 {
-                    MessageBox.Show("Cant add a task not during the schedule creation \n");
+                    MessageBox.Show("You do not have permission for this action \n");
                 }
                 else
-                {   //if not finished bulidlig schedule then add task
-                    s_bl.Task.Create(Tsk);
-                    MessageBox.Show("Task was succsesfuly created");
+                {
+                    if (CreatingSchedule != 0)
+                    {
+                        MessageBox.Show("Cant add a task not during the schedule creation \n");
+                    }
+                    else
+                    {   //if not finished bulidlig schedule then add task
+                        s_bl.Task.Create(Tsk);
+                        MessageBox.Show("Task was succsesfuly created");
+                    }
+
                 }
+
             }
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
 
@@ -154,9 +164,35 @@ namespace PL.Task
             depId = int.Parse(s);
         }
 
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (flagWorker == true)
+                {
+                    Tsk.CompleteDate = DateTime.Now;
+                }
+                else
+                {
+                    MessageBox.Show("You do not have permission for this action \n");
+                }
+            }
+            catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+
+        }
+
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
+            if (flagWorker != true)
+                MessageBox.Show("You do not have permission for this action \n");
+        }
 
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+            if (flagWorker != true)
+                MessageBox.Show("You do not have permission for this action \n");
         }
     }
 }

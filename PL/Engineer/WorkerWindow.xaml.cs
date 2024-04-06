@@ -28,7 +28,7 @@ public partial class WorkerWindow : Window
         BO.Engineer eng=s_bl.Engineer.Read(id);
         if(eng != null)
             if(eng.Task != null)
-                new TaskWindow(eng.Task.Id).Show();
+                new TaskWindow(eng.Task.Id,true).Show();
         InitializeComponent();
        // BO.TaskInEngineer MyTask = s_bl?.Engineer.Read(id).Task;
 
