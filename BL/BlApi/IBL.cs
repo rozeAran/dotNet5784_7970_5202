@@ -12,10 +12,14 @@ public interface IBl
     public void InitializeDB()=>DalTest.Initialization.Do();
     public void ResetDB() => DalTest.Initialization.Reset();
     public void InitializeClock();
-    public IEnumerable<DateTime>? currentClock();
-    public IEnumerable<DateTime>? AddYearClock();
-    public IEnumerable<DateTime>? AddDayClock();
-    public IEnumerable<DateTime>? AddHourClock();
+    /* public IEnumerable<DateTime>? currentClock();
+     public IEnumerable<DateTime>? AddYearClock();
+     public IEnumerable<DateTime>? AddDayClock();
+     public IEnumerable<DateTime>? AddHourClock();*/
+    public DateTime? currentClock();
+    public DateTime? AddYearClock();
+    public DateTime? AddDayClock();
+    public DateTime? AddHourClock();
 
 
 

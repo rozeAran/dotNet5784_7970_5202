@@ -23,7 +23,7 @@ internal class Bl : IBl
     {
         Clock = DateTime.Now;
     }
-    public IEnumerable<DateTime>? currentClock()
+    /*public IEnumerable<DateTime>? currentClock()
     {
         return new DateTime[] { Clock };
     }
@@ -43,6 +43,27 @@ internal class Bl : IBl
     {
         Clock.AddHours(1);
         return new DateTime[] { Clock };
+    }*/
+    public DateTime? currentClock()
+    {
+        return Clock;
+    }
+    public DateTime? AddYearClock()
+    {
+
+        Clock.AddYears(1);
+        return Clock;
+
+    }
+    public DateTime? AddDayClock()
+    {
+        Clock.AddDays(1);
+        return Clock;
+    }
+    public DateTime? AddHourClock()
+    {
+        Clock.AddHours(1);
+        return  Clock ;
     }
 
 

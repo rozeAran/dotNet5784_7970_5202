@@ -19,18 +19,19 @@ namespace PL
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
-        public readonly DependencyProperty CurrentTimeProperty =
-            DependencyProperty.Register(nameof(CurrentTime), typeof(IEnumerable<DateTime>), typeof(MainWindow));
-        public IEnumerable<DateTime>? CurrentTime
-        {
-            get => (IEnumerable<DateTime>)GetValue(CurrentTimeProperty);
-            set => SetValue(CurrentTimeProperty, value);
-        }
+        /* public readonly DependencyProperty CurrentTimeProperty =
+             DependencyProperty.Register(nameof(CurrentTime), typeof(IEnumerable<DateTime>), typeof(MainWindow));
+         public IEnumerable<DateTime>? CurrentTime
+         {
+             get => (IEnumerable<DateTime>)GetValue(CurrentTimeProperty);
+             set => SetValue(CurrentTimeProperty, value);
+         }*/
+        public DateTime? CurrentTime { get; set; }
         int workerID = 0;
        
         public MainWindow()
         {
-            CurrentTime = s_bl.currentClock();
+            CurrentTime = s_bl.Clock;
             InitializeComponent();
         }
 
