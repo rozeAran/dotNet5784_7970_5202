@@ -45,19 +45,17 @@ internal class Bl : IBl
     public DateTime? AddYearClock()
     {
 
-        Clock.AddYears(1);
-        return Clock;
+        return Clock.AddYears(1);
 
     }
     public DateTime? AddDayClock()
     {
-        Clock.AddDays(1);
-        return Clock;
+        
+        return Clock.AddDays(1);
     }
     public DateTime? AddHourClock()
     {
-        Clock.AddHours(1);
-        return  Clock ;
+        return Clock.AddHours(1);
     }
 
 

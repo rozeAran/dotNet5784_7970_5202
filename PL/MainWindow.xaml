@@ -19,9 +19,9 @@
         <Button Content="Worker Window" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="85,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonWorker_Click" Foreground="#FF161927"/>
         <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"   Height="50" Width="150" Margin="297,100,353,284" />
 
-        <Button Content="Add one hour" Background="SeaShell" Margin="438,185,262,199" Height="50" Width="100" Click="Button_ClickHour" />
-        <Button Content="Add one day" Background="SeaShell" Margin="322,187,378,197" Height="50" Width="100" Click="Button_ClickDay" />
-        <Button Content="Add one year" Background="SeaShell" Margin="205,187,495,197" Height="50" Width="100" Click="Button_ClickYear"/>
+        <Button Content="Add one hour" Background="SeaShell" Margin="10,167,690,217" Height="50" Width="100" Click="Button_ClickHour" />
+        <Button Content="Add one day" Background="SeaShell" Margin="10,100,690,284" Height="50" Width="100" Click="Button_ClickDay"  RenderTransformOrigin="-1.756,-0.219" />
+        <Button Content="Add one year" Background="SeaShell" Margin="10,25,690,359" Height="50" Width="100" Click="Button_ClickYear"/>
 
 
 
