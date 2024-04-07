@@ -29,7 +29,18 @@ namespace PL.Task
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         static int CreatingSchedule=-1;
-        private BO.Task? Tsk;
+
+
+        public BO.Task Task
+        {
+            get { return (BO.Task)GetValue(TaskProperty); }
+            set { SetValue(TaskProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Task.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TaskProperty =
+            DependencyProperty.Register("Task", typeof(BO.Task), typeof(TaskWindow));
+
         int depId = 0;
         bool flagWorker= false;//if the flag=true the window was oppend from a worker, if the flag = false than from manager
         public static readonly DependencyProperty DependencyListProperty =
@@ -47,7 +58,7 @@ namespace PL.Task
             try
             {
                 if (id == 0 && getCreatingSchedule == 0)//in case of add only if the schedule is not finished yet
-                    Tsk = new BO.Task()
+                    Task = new BO.Task()
                     {
                         Id = id,
                         Alias = "",
@@ -68,8 +79,8 @@ namespace PL.Task
                 {
                     if (id != 0)//in case of update
                     {
-                        Tsk = s_bl?.Task.Read(id)!;
-                        DependencyList = Tsk.Dependencies.ToList();
+                        Task = s_bl?.Task.Read(id)!;
+                        DependencyList = Task.Dependencies.ToList();
                     }
                         
                     
@@ -101,7 +112,7 @@ namespace PL.Task
                     }
                     else
                     {   //if not finished bulidlig schedule then add task
-                        s_bl.Task.Create(Tsk);
+                        s_bl.Task.Create(Task);
                         MessageBox.Show("Task was succsesfuly created");
                     }
 
@@ -117,7 +128,7 @@ namespace PL.Task
         {
             try
             {
-                s_bl.Task.Update(Tsk);
+                s_bl.Task.Update(Task);
                 MessageBox.Show("Task was succsesfuly updated");
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
@@ -144,7 +155,7 @@ namespace PL.Task
                         Description = dTask.Description,
                         Status = dTask.TaskStatus
                     };
-                    Tsk.Dependencies.Add(dep);
+                    Task.Dependencies.Add(dep);
                 }
                 else
                 {
@@ -159,9 +170,11 @@ namespace PL.Task
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string s = depndencyId.Text;
+            //  e.Changes.Last()
 
-            depId = int.Parse(s);
+            var text = (sender as TextBox)!.Text;
+
+            depId = int.Parse(text);
         }
 
 
@@ -171,7 +184,7 @@ namespace PL.Task
             {
                 if (flagWorker == true)
                 {
-                    Tsk.CompleteDate = DateTime.Now;
+                    Task.CompleteDate = DateTime.Now;
                 }
                 else
                 {
@@ -193,6 +206,11 @@ namespace PL.Task
         {
             if (flagWorker != true)
                 MessageBox.Show("You do not have permission for this action \n");
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

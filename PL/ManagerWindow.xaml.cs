@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using PL.Engineer;
 using PL.Task;
 using BO;
+using PL.Gantt;
 
 namespace PL;
 
@@ -61,7 +62,7 @@ public partial class ManagerWindow : Window
         try
         {
             if (CreatingSchedule == 1)
-                new GanttChartWindow().Show();
+                new GanttWindow().Show();
 
         }
         catch (BO.BlNotAPossabilityException ex)

@@ -37,6 +37,49 @@ internal class TaskImplementation : ITask
                                         
                                     }));
     }
+
+    private bool hasCircle(int dependentTask, int dependOnTask)
+    {
+        if (dependentTask == dependOnTask) return true;
+
+        var hasCircleRes = false;
+        var dependecies = _dal.Dependency.ReadAll(dependence => dependence.DependentTask == dependOnTask);
+        if (dependecies.Any())
+        {
+            foreach (var dependence in dependecies)
+            {
+                hasCircleRes = hasCircle(dependentTask, dependence.DependOnTask);
+                if (hasCircleRes) return hasCircleRes;
+            }
+        }
+
+        return hasCircleRes;
+    }
+
+    public void AddStartDates()
+    {
+        if (_dal.StartProjectDate is not null)
+        {
+            var tasks = _dal.Task.ReadAll().ToDictionary(t => t.Id);
+            var dependencies = _dal.Dependence.ReadAll();
+
+            foreach (var task in tasks.Values)
+            {
+                var dependencies1 = dependencies.Where(d => d.DependentTask == task.Id);
+
+                var dependenciesTasks = dependencies1.Select(t => _dal.Task.Read(t.DependsOnTask!)).ToList();
+
+                var startDate = dependenciesTasks switch
+                {
+                    { Count: 0 } => _dal.StartProjectDate,
+                    var d when d.Any(t => t!.StartTime is null) => throw new StartTimeOfDependenceTaskNotExist(),
+                    _ => getTaskEnd(dependenciesTasks.MaxBy(t => getTaskEnd(t!))!)?.AddDays(new Random().Next(2, 4))
+                };
+
+                _dal.Task.Update(task with { StartTime = startDate });
+            }
+        }
+    }
     public BO.EngineerInTask FindEngineer(DO.Task item)//finds the engineer this task is asigned to
     {
         return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()
