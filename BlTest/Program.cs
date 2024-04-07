@@ -218,7 +218,7 @@ internal class Program
                     {
                         try
                         {
-                            int id2 = int.Parse(Console.ReadLine());
+                            int.TryParse(Console.ReadLine(), out int id2);
                             s_bl.Task.Delete(id2);
                         }
                         catch (Exception ex)
@@ -231,7 +231,7 @@ internal class Program
                     {
                         try
                         {
-                            int id = int.Parse(Console.ReadLine());
+                            int.TryParse(Console.ReadLine(), out int id);
                             Console.Write(s_bl.Task.Read(id));
                         }
                         catch (Exception ex)
@@ -292,7 +292,7 @@ internal class Program
                 case 2:///delete a engineer
                     try
                     {
-                        int id = Convert.ToInt32(Console.ReadKey());
+                        int.TryParse(Console.ReadLine(), out int id);
                         s_bl.Engineer.Delete(id);
                     }
                     catch (Exception ex)
@@ -301,7 +301,7 @@ internal class Program
                     }
                     break;
                 case 3:///find a specific engineer
-                    int id2 = Convert.ToInt32(Console.ReadKey());
+                    int.TryParse(Console.ReadLine(), out int id2);
                     Console.Write(s_bl.Engineer.Read(id2));
                     break;
                 case 4:///find all engineers
@@ -321,7 +321,7 @@ internal class Program
                         Console.WriteLine(ex);
                     }
                     break;
-                default: throw new Exception("no suche possibility");
+                default: throw new Exception("no such possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new engineer \n 2 : delete a engineer \n 3 : find a specific engineer \n 4: find all engineers \n 5: update an engineer\n");
             int.TryParse(Console.ReadLine(), out choice);
