@@ -38,6 +38,7 @@ namespace PL
         private void ButtonFinishCreating_Click(object sender, RoutedEventArgs e)
         {
             CreatingSchedule=1;
+            new ManagerWindow().Show();
         }
     }
 }
