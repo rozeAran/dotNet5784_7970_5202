@@ -16,54 +16,122 @@ internal class Program
 
      public static BO.EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
      {
-         switch (num)
-         {
-             case 0: return BO.EngineerExperience.Beginner;
-             case 1: return BO.EngineerExperience.AdvancedBeginner;
-             case 2: return BO.EngineerExperience.Intermediate;
-             case 3: return BO.EngineerExperience.Advanced;
-             case 4: return BO.EngineerExperience.Expert;
-             default:
-                 throw new Exception("no such level");
-         }
-     }
+        return num switch
+        {
+            0 => BO.EngineerExperience.Beginner,
+            1 => BO.EngineerExperience.AdvancedBeginner,
+            2 => BO.EngineerExperience.Intermediate,
+            3 => BO.EngineerExperience.Advanced,
+            4 => BO.EngineerExperience.Expert,
+            _ => throw new Exception("no such level"),
+        };
+    }
 
      public static BO.Task CreateT()//creates a new task
      {
+        bool flag;
          Console.WriteLine("enter task alias\n");
          string alias = Console.ReadLine();
-         Console.WriteLine("enter task description\n");
+         
+        Console.WriteLine("enter task description\n");
          string description = Console.ReadLine();
-         Console.WriteLine("enter task createdAtDate\n");
-         DateTime createdAtDate = DateTime.Parse(Console.ReadLine());
-         Console.WriteLine("enter tasks required Effort Time\n");
-         int days = int.Parse(Console.ReadLine());
-         Console.ReadLine();
-         int hours = int.Parse(Console.ReadLine());
-         Console.ReadLine();
-         int minuts = int.Parse(Console.ReadLine());
-         Console.ReadLine();
-         int sec = int.Parse(Console.ReadLine());
-         TimeSpan requiredEffortTime = new TimeSpan(days, hours, minuts, sec);
-         Console.WriteLine("enter task complexity\n");
-         int temp = int.Parse(Console.ReadLine());
+         
+        Console.WriteLine("enter task createdAtDate\n");
+         flag = DateTime.TryParse(Console.ReadLine(), out DateTime createdAtDate);
+         while (flag==false) 
+         { 
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task createdAtDate\n");
+            flag = DateTime.TryParse(Console.ReadLine(), out createdAtDate);
+        }
+
+        Console.WriteLine("enter tasks required Effort Time\n");
+         flag = int.TryParse(Console.ReadLine(), out int days);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task days\n");
+            flag = int.TryParse(Console.ReadLine(), out days);
+        }
+        Console.ReadLine();
+        flag = int.TryParse(Console.ReadLine(), out int hours);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task hours\n");
+            flag = int.TryParse(Console.ReadLine(), out hours);
+        }
+        Console.ReadLine();
+        flag = int.TryParse(Console.ReadLine(), out int minuts);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task minuts\n");
+            flag = int.TryParse(Console.ReadLine(), out minuts);
+        }
+        Console.ReadLine();
+        flag = int.TryParse(Console.ReadLine(), out int sec);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task sec\n");
+            flag = int.TryParse(Console.ReadLine(), out sec);
+        }
+        TimeSpan requiredEffortTime = new TimeSpan(days, hours, minuts, sec);
+         
+        Console.WriteLine("enter task complexity\n");
          BO.EngineerExperience complexity = SetEX(int.Parse(Console.ReadLine()));
-         Console.WriteLine("enter task deliverables\n");
-         string deliverables = Console.ReadLine();
-         Console.WriteLine("enter engineer Id\n");
-         int engineerId = Console.Read();
-         Console.WriteLine("enter tasks remarks\n");
+
+        Console.WriteLine("enter task deliverables\n");
+        string deliverables = Console.ReadLine();
+
+        Console.WriteLine("enter engineer Id\n");
+        flag = int.TryParse(Console.ReadLine(), out int engineerId);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task engineerId\n");
+            flag = int.TryParse(Console.ReadLine(), out engineerId);
+        }
+
+        Console.WriteLine("enter tasks remarks\n");
          string? remarks = Console.ReadLine();
-         Console.WriteLine("enter tasks scheduledDate\n");
-         DateTime? scheduledDate = DateTime.Parse(Console.ReadLine());
-         Console.WriteLine("enter tasks completeDate\n");
-         DateTime? completeDate = DateTime.Parse(Console.ReadLine());
-         Console.WriteLine("enter tasks deadLineDate\n");
-         DateTime? deadLineDate = DateTime.Parse(Console.ReadLine());
-         //Console.WriteLine("enter if the task is a mile stone\n");
-         //bool isMilestone = bool.Parse(Console.ReadLine());
-         Console.WriteLine("enter task startDate\n");
-         DateTime? startDate = DateTime.Parse(Console.ReadLine());
+
+        Console.WriteLine("enter tasks scheduledDate\n");
+        flag = DateTime.TryParse(Console.ReadLine(), out DateTime scheduledDate);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task scheduledDate\n");
+            flag = DateTime.TryParse(Console.ReadLine(), out scheduledDate);
+        }
+
+        Console.WriteLine("enter tasks completeDate\n");
+        flag = DateTime.TryParse(Console.ReadLine(), out DateTime completeDate);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task completeDate\n");
+            flag = DateTime.TryParse(Console.ReadLine(), out completeDate);
+        }
+
+        Console.WriteLine("enter tasks deadLineDate\n");
+        flag = DateTime.TryParse(Console.ReadLine(), out DateTime deadLineDate);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task deadLineDate\n");
+            flag = DateTime.TryParse(Console.ReadLine(), out deadLineDate);
+        }
+
+        Console.WriteLine("enter task startDate\n");
+        flag = DateTime.TryParse(Console.ReadLine(), out DateTime startDate);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter task startDate\n");
+            flag = DateTime.TryParse(Console.ReadLine(), out startDate);
+        }
         BO.Task item = new BO.Task
         {
             Alias = alias,
@@ -85,17 +153,34 @@ internal class Program
      }
      public static BO.Engineer CreateE()//creates a new engineer 
      {
-        
+        bool flag;
          Console.WriteLine("enter engineer id\n");
-         int id = int.Parse(Console.ReadLine());
-         Console.WriteLine("enter engineer name\n");
+        flag = int.TryParse(Console.ReadLine(), out int id);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter engineer id\n");
+            flag = int.TryParse(Console.ReadLine(), out id);
+        }
+
+        Console.WriteLine("enter engineer name\n");
          string name = Console.ReadLine();
+
          Console.WriteLine("enter engineer email\n");
          string email = Console.ReadLine();
+
          Console.WriteLine("enter engineer level\n");
          BO.EngineerExperience level = SetEX(Convert.ToInt32(Console.ReadKey()));
+
          Console.WriteLine("enter engineer cost for hour\n");
-         double cost = double.Parse(Console.ReadLine());
+        flag = double.TryParse(Console.ReadLine(), out double cost);
+        while (flag == false)
+        {
+            Console.WriteLine("Error, incompetible type was entered \n");
+            Console.WriteLine("Enter engineer cost\n");
+            flag = double.TryParse(Console.ReadLine(), out cost);
+        }
+
         BO.Engineer item = new BO.Engineer()
         {
             Id = id,
@@ -111,7 +196,7 @@ internal class Program
     public static void TaskImp()//task menu
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : print a specific task \n 4: print all tasks \n 5: update a task\n");
-        int choice = int.Parse(Console.ReadLine());
+        int.TryParse(Console.ReadLine(), out int choice);
         while (choice != 0)
         {
             switch (choice)
@@ -182,13 +267,13 @@ internal class Program
                 default: throw new BlNotAPossabilityException("no such possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new task \n 2 : delete a task \n 3 : find a specific task \n 4: find all tasks \n 5: update a task\n");
-            choice = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out  choice);
         }
     }
     public static void EngineerImp()//engineer menu
     {
         Console.WriteLine("0 : Exit task menu \n 1 : create a new engineer \n 2 : delete a engineer \n 3 : find a specific engineer \n 4: find all engineers \n 5: update an engineer\n");
-        int choice = int.Parse(Console.ReadLine());
+        int.TryParse(Console.ReadLine(), out int choice);
         while (choice != 0)
         {
             switch (choice)
@@ -239,14 +324,14 @@ internal class Program
                 default: throw new Exception("no suche possibility");
             }
             Console.WriteLine("0 : Exit task menu \n 1 : create a new engineer \n 2 : delete a engineer \n 3 : find a specific engineer \n 4: find all engineers \n 5: update an engineer\n");
-            choice = Convert.ToInt32(Console.ReadKey());
+            int.TryParse(Console.ReadLine(), out choice);
         }
     }
 
     static void MainMenu()//menu
     {
         Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
-        int choice = int.Parse(Console.ReadLine());
+        int.TryParse(Console.ReadLine(), out int choice);
         while (choice != 0)
         {
             switch (choice)
@@ -264,7 +349,7 @@ internal class Program
                 default: throw new Exception("no such possibility");
             }
             Console.WriteLine("0 : Exit main menu \n 1 : TaskImplementation \n 2 : EngineerImplementation \n 3 : DependencyImplementation\n");
-            choice = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out choice);
         }
 
     }

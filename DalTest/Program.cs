@@ -67,7 +67,6 @@ internal class Program
     public static Dependency CreateD()//creates a new dependency
     {
         Console.WriteLine("enter dependentTask \n ");
-        ///int id= int.Parse(Console.ReadLine());
         int dependentTask= int.Parse(Console.ReadLine());
         Console.WriteLine("enter dependOnTask \n ");
         int dependOnTask= int.Parse(Console.ReadLine());
