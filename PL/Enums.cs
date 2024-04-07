@@ -21,9 +21,9 @@ public enum Status
 {
     Status,
     None,
-    unscheduled,
-    scheduled,
-    onTrack,
+    Unscheduled,
+    Scheduled,
+    OnTrack,
     Done
 }
 

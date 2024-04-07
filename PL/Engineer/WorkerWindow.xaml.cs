@@ -24,23 +24,25 @@ public partial class WorkerWindow : Window
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
     public WorkerWindow(int getid = 0)
     {
+        InitializeComponent();
         int id = getid;
         BO.Engineer eng=s_bl.Engineer.Read(id);
         if(eng != null)
             if(eng.Task != null)
                 new TaskWindow(eng.Task.Id,true).Show();
-        InitializeComponent();
+        else
+        {
+            MessageBox.Show("Engineer with this id was not found \n");
+        }
+
        // BO.TaskInEngineer MyTask = s_bl?.Engineer.Read(id).Task;
 
     }
 
     private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
     {
-        new TaskForListWindow().Show();//סינון המשימות
+        new TaskForListWindow(s_bl.Engineer.Read(id).Level).Show();//סינון המשימות
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
 
-    }
 }

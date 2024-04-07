@@ -141,6 +141,10 @@ namespace PL.Task
         {
             try
             {
+                if(flagWorker) //if this is a worker
+                {
+                    MessageBox.Show("You do not have permission for this action \n");
+                }
                 if (CreatingSchedule == -1)
                 {
                     BO.Task? dTask = s_bl.Task.Read(depId);
@@ -159,7 +163,7 @@ namespace PL.Task
                 }
                 else
                 {
-                    MessageBox.Show("cant add a dependency after schedule was created \n");
+                    MessageBox.Show("Cant add a dependency after schedule was created \n");
                 }
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
@@ -178,13 +182,14 @@ namespace PL.Task
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_FinishTask(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (flagWorker == true)
                 {
                     Task.CompleteDate = DateTime.Now;
+                    MessageBox.Show("Task was secsesfully finished \n");
                 }
                 else
                 {
@@ -196,21 +201,18 @@ namespace PL.Task
 
         }
 
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged_StartDate(object sender, TextChangedEventArgs e)
         {
             if (flagWorker != true)
                 MessageBox.Show("You do not have permission for this action \n");
         }
 
-        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        private void TextBox_TextChanged_EngId(object sender, TextChangedEventArgs e)
         {
             if (flagWorker != true)
                 MessageBox.Show("You do not have permission for this action \n");
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
     }
 }

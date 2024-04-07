@@ -30,6 +30,7 @@ namespace PL.Task
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
         public BO.Status Status { get; set; } = BO.Status.Status;
         public BO.EngineerExperience Experience { get; set; } = BO.EngineerExperience.Level;
+        bool flagWorker=false;
 
         public static readonly DependencyProperty TaskListProperty =
             DependencyProperty.Register(nameof(TaskList), typeof(IEnumerable<BO.Task>), typeof(TaskForListWindow));
@@ -39,10 +40,22 @@ namespace PL.Task
             set => SetValue(TaskListProperty, value);
         }
        
-        public TaskForListWindow()
+        public TaskForListWindow( BO.EngineerExperience? workerExperience=null)
         {
             InitializeComponent();
-            TaskList = s_bl?.Task.ReadAll()!;
+            if (workerExperience == null) 
+            { 
+                TaskList = s_bl?.Task.ReadAll()!;
+            }
+            else 
+            {
+                flagWorker = true;
+                TaskList = s_bl?.Task.ReadAll(item => item.TaskStatus == BO.Status.Unscheduled );//myby not true
+                TaskList = s_bl?.Task.ReadAll( item => item.Complexity <= workerExperience);
+                TaskList = s_bl?.Task.ReadAll(item => item.Dependencies ==null);
+            }
+       
+            
         }
 
         private void ComboBoxLevel_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -60,13 +73,16 @@ namespace PL.Task
         private void ListView_OpenTaskWindow(object sender, RoutedEventArgs e)
         {
             BO.Task? tsk = (sender as ListView)?.SelectedItem as BO.Task;
-            new TaskWindow(tsk.Id).ShowDialog();
+            new TaskWindow(tsk.Id, flagWorker).ShowDialog();
 
         }
 
         private void Button_Click_Add_Task(object sender, RoutedEventArgs e)
         {
-            new TaskWindow().ShowDialog();
+            if(flagWorker==false)
+                new TaskWindow().ShowDialog();
+            else
+                MessageBox.Show("You do not have permission for this action \n");
         }
     }
 }

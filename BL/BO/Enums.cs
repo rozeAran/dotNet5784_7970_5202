@@ -18,9 +18,9 @@ public enum EngineerExperience
 public enum Status
 {
     Status,
-    unscheduled,
-    scheduled,
-    onTrack,
+    Unscheduled,
+    Scheduled,
+    OnTrack,
     Done
 }
 
