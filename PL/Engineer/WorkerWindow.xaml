@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="WorkerWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF179BC0"/>
+                <GradientStop Color="#FF9FDCD7" Offset="1"/>
+                <GradientStop Color="#FFC1BEE3" Offset="0.374"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Button Content="List Of Tasks" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
 
 
