@@ -14,14 +14,75 @@
                 <GradientStop Color="#FF4599D1" Offset="0.793"/>
             </LinearGradientBrush>
         </Grid.Background>
-        
-        <Button Content="Manager Window"  FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonManager_Click" Foreground="#FF161927"/>
-        <Button Content="Worker Window" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="85,262,0,0" VerticalAlignment="Top" Height="107" Width="272" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonWorker_Click" Foreground="#FF161927"/>
-        <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"   Height="50" Width="150" Margin="297,100,353,284" />
 
-        <Button Content="Add one hour" Background="SeaShell" Margin="438,185,262,199" Height="50" Width="100" Click="Button_ClickHour" />
-        <Button Content="Add one day" Background="SeaShell" Margin="322,187,378,197" Height="50" Width="100" Click="Button_ClickDay" />
-        <Button Content="Add one year" Background="SeaShell" Margin="205,187,495,197" Height="50" Width="100" Click="Button_ClickYear"/>
+        <Button Content="Manager Window" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold" Click="ButtonManager_Click" FontSize="30" Margin="463,248,155,10">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE8EADE"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+                       StrokeThickness="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Offset="0"  
+                                        Color="Gray" />
+                                    <GradientStop Offset="1"  
+                                        Color="Gray" />
+                                    <GradientStop Offset="1"  
+                                        Color="DarkGray" />
+                                    <RadialGradientBrush.Transform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="0.65" />
+                                        </TransformGroup>
+                                    </RadialGradientBrush.Transform>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                                VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold" Click="ButtonWorker_Click" FontSize="30" Content="Worker Window" Margin="147,248,476,10">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse Stroke="Black"  
+                       StrokeThickness="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Offset="0"  
+                                        Color="Gray" />
+                                    <GradientStop Offset="1"  
+                                        Color="Gray" />
+                                    <GradientStop Offset="1"  
+                                        Color="DarkGray" />
+                                    <RadialGradientBrush.Transform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleY="0.65" />
+                                        </TransformGroup>
+                                    </RadialGradientBrush.Transform>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"  
+                        VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="297,73,314,284" />
+
+        <Button Content="Add one hour" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="479,155,180,217" Click="Button_ClickHour" />
+        <Button Content="Add one day" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="322,155,346,217" Click="Button_ClickDay" />
+        <Button Content="Add one year" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="162,157,497,217" Click="Button_ClickYear"/>
 
 
 
