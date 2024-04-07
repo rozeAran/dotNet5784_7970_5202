@@ -73,7 +73,7 @@ namespace PL.Task
         private void ListView_OpenTaskWindow(object sender, RoutedEventArgs e)
         {
             BO.Task? tsk = (sender as ListView)?.SelectedItem as BO.Task;
-            new TaskWindow(tsk.Id, flagWorker).ShowDialog();
+            new TaskWindow(tsk.Id, flagWorker).Show();
 
         }
 

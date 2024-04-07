@@ -57,7 +57,7 @@ namespace PL
                     new WorkerWindow(workerID).Show();
                 }
             }
-            //catch (BO.BlDoesNotExistException ex) { MessageBox.Show("The worker's Id doesn't match any worker"); }
+            catch (BO.BlDoesNotExistException ex) { MessageBox.Show("The worker's Id doesn't match any worker"); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
 
         }

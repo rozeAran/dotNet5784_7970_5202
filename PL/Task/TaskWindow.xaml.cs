@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -145,26 +146,31 @@ namespace PL.Task
                 {
                     MessageBox.Show("You do not have permission for this action \n");
                 }
-                if (CreatingSchedule == -1)
-                {
-                    BO.Task? dTask = s_bl.Task.Read(depId);
-                    if (dTask != null)
-                    {
-                        MessageBox.Show("Task was not found \n");
-                    }
-                    BO.TaskInList dep = new BO.TaskInList
-                    {
-                        Id = depId,
-                        Alias = dTask.Alias,
-                        Description = dTask.Description,
-                        Status = dTask.TaskStatus
-                    };
-                    Task.Dependencies.Add(dep);
-                }
                 else
                 {
-                    MessageBox.Show("Cant add a dependency after schedule was created \n");
+                    if (CreatingSchedule == -1)
+                    {
+                        int depId = int.Parse(Interaction.InputBox("Enter task Id", "Hi", "0"));
+                        BO.Task? dTask = s_bl.Task.Read(depId);
+                        if (dTask != null)
+                        {
+                            MessageBox.Show("Task was not found \n");
+                        }
+                        BO.TaskInList dep = new BO.TaskInList
+                        {
+                            Id = depId,
+                            Alias = dTask.Alias,
+                            Description = dTask.Description,
+                            Status = dTask.TaskStatus
+                        };
+                        Task.Dependencies.Add(dep);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cant add a dependency after schedule was created \n");
+                    }
                 }
+
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
@@ -172,14 +178,14 @@ namespace PL.Task
         }
        
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+       /* private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             //  e.Changes.Last()
 
-            var text = (sender as TextBox)!.Text;
+            //var text = (sender as TextBox)!.Text;
 
-            depId = int.Parse(text);
-        }
+            //depId = int.Parse(text);
+        }*/
 
 
         private void Button_Click_FinishTask(object sender, RoutedEventArgs e)

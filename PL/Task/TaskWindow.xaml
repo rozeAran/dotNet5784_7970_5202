@@ -106,7 +106,5 @@
             </ListView.ItemTemplate>
         </ListView>
         <Label Grid.Column="3" Content="Dependency List:" FontSize="20" HorizontalAlignment="Left" Height="62" Margin="174,0,0,0" VerticalAlignment="Top" Width="167"/>
-        <TextBox Name="depndencyId" Grid.Column="3" HorizontalAlignment="Left" Height="35" Margin="204,80,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Enter Id of the task:" VerticalAlignment="Top" Width="137" TextChanged="TextBox_TextChanged"/>
-
     </Grid>
 </Window>
