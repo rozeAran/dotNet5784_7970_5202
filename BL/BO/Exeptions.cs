@@ -64,3 +64,9 @@ public class BlNullPropertyException : Exception//this item is null therfor the 
     public BlNullPropertyException(string? message) : base(message) { }
 }
 
+[Serializable]
+public class StartTimeOfDependenceTaskNotExist : Exception//There is no start date to the dependent task
+{
+    public StartTimeOfDependenceTaskNotExist(string? message) : base(message) { }
+}
+

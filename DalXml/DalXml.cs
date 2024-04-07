@@ -18,7 +18,21 @@ sealed internal class DalXml : IDal
     public IEngineer Engineer => new EngineerImplementation();
     public ITask Task => new TaskImplementation();
     public IDependency Dependency => new DependencyImplementation();
+    public DateTime? StartProjectDate
+    {
 
+        get { return Config.StartProjectDate; }
+
+        set { Config.StartProjectDate = value; }
+
+    }
+    public DateTime? EndProjectDate
+    {
+
+        get { return Config.EndProjectDate; }
+
+        set { Config.EndProjectDate = value; }
+    }
 }
 
 

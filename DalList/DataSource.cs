@@ -21,6 +21,8 @@ static class DataSource
         internal const int startTaskId = 1;
         private static int nextTaskId = startTaskId;
         internal static int NextTaskId { get => nextTaskId++; }
+        internal static DateTime? StartProjectDate { get; set; }
+        internal static DateTime? EndProjectDate { get; set; }
     }
 
 }

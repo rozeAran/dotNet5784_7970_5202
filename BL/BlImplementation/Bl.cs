@@ -6,11 +6,23 @@ using System.Threading.Tasks;
 
 namespace BlImplementation;
 using BlApi;
+
 internal class Bl : IBl
 {
     
     private static DateTime s_Clock = DateTime.Now.Date;
-    public DateTime? StartProjectDate { get; set; }
+    private DalApi.IDal s_dal = DalApi.Factory.Get;
+
+    public DateTime? StartProjectDate
+    {
+        get => s_dal.StartProjectDate;
+        set => s_dal.StartProjectDate = value;
+    }
+    public DateTime? EndProjectDate
+    {
+        get => s_dal.EndProjectDate;
+        set => s_dal.EndProjectDate = value;
+    }
     public DateTime Clock { get { return s_Clock; } private set { s_Clock = value; } }
 
    // public int schedule = -1;
@@ -26,7 +38,7 @@ internal class Bl : IBl
         Clock = DateTime.Now;
     }
 
-    public DateTime? currentClock()
+    public DateTime? CurrentClock()
     {
         return Clock;
     }

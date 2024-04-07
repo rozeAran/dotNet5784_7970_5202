@@ -61,22 +61,22 @@ internal class TaskImplementation : ITask
         if (_dal.StartProjectDate is not null)
         {
             var tasks = _dal.Task.ReadAll().ToDictionary(t => t.Id);
-            var dependencies = _dal.Dependence.ReadAll();
+            var dependencies = _dal.Dependency.ReadAll();
 
             foreach (var task in tasks.Values)
             {
                 var dependencies1 = dependencies.Where(d => d.DependentTask == task.Id);
 
-                var dependenciesTasks = dependencies1.Select(t => _dal.Task.Read(t.DependsOnTask!)).ToList();
+                var dependenciesTasks = dependencies1.Select(t => _dal.Task.Read(t.DependOnTask!)).ToList();
 
                 var startDate = dependenciesTasks switch
                 {
                     { Count: 0 } => _dal.StartProjectDate,
-                    var d when d.Any(t => t!.StartTime is null) => throw new StartTimeOfDependenceTaskNotExist(),
+                    var d when d.Any(t => t!.StartDate is null) => throw new BO.StartTimeOfDependenceTaskNotExist("There is no start date to the dependent task\n"),
                     _ => getTaskEnd(dependenciesTasks.MaxBy(t => getTaskEnd(t!))!)?.AddDays(new Random().Next(2, 4))
                 };
 
-                _dal.Task.Update(task with { StartTime = startDate });
+                _dal.Task.Update(task with { StartDate = startDate });
             }
         }
     }
@@ -129,11 +129,11 @@ internal class TaskImplementation : ITask
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
         if (item.StartDate == null)
-            return BO.Status.unscheduled;
+            return BO.Status.Unscheduled;
         if (item.StartDate.Value > _bl.Clock)
-            return  BO.Status.scheduled;
+            return  BO.Status.Scheduled;
         if (item.CompleteDate==null)
-            return BO.Status.onTrack;
+            return BO.Status.OnTrack;
         if (item.CompleteDate <= _bl.Clock)
             return BO.Status.Done;
         throw new WrongOrderOfDatesException("impossible order of dates");
