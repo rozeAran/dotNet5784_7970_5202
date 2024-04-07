@@ -80,6 +80,12 @@ internal class TaskImplementation : ITask
             }
         }
     }
+
+    private DateTime? getTaskEnd(DO.Task item)
+    {
+        return item.CompleteDate; //fix
+    }
+
     public BO.EngineerInTask FindEngineer(DO.Task item)//finds the engineer this task is asigned to
     {
         return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()

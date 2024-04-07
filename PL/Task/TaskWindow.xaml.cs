@@ -213,6 +213,9 @@ namespace PL.Task
                 MessageBox.Show("You do not have permission for this action \n");
         }
 
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
     }
 }
