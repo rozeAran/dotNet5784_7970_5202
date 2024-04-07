@@ -13,8 +13,16 @@ namespace Dal;
 //stage 3
 sealed internal class DalXml : IDal
 {
-    public static IDal Instance { get; } = new DalXml();
+    private static readonly DalXml instance  = new DalXml();
     private DalXml() { }
+    static DalXml() { }
+    public static DalXml Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
     public IEngineer Engineer => new EngineerImplementation();
     public ITask Task => new TaskImplementation();
     public IDependency Dependency => new DependencyImplementation();

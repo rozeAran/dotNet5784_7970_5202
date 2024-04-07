@@ -9,8 +9,17 @@ namespace Dal;
 
 sealed internal class DalList : IDal
 {
-    public static IDal Instance { get; } = new DalList();
+    private static readonly DalList instance  = new DalList();
+
+    static DalList() { }
     private DalList() { }
+    public static DalList Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
     public ITask Task => new TaskImplementation();
 
     public IEngineer Engineer => new EngineerImplementation();
