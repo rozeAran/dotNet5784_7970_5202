@@ -1,4 +1,5 @@
-﻿using PL.Engineer;
+﻿using Microsoft.VisualBasic;
+using PL.Engineer;
 using System.Windows;
 
 namespace PL
@@ -27,7 +28,7 @@ namespace PL
              set => SetValue(CurrentTimeProperty, value);
          }*/
         public DateTime? CurrentTime { get; set; }
-        int workerID = 0;
+        //int workerID = 0;
        
         public MainWindow()
         {
@@ -42,7 +43,22 @@ namespace PL
 
         private void ButtonWorker_Click(object sender, RoutedEventArgs e)
         {
-            new WorkerWindow(workerID).Show();
+
+            try
+            {
+                int workerID = int.Parse(Interaction.InputBox("Enter you Id", "Hi", "0"));
+                if (workerID == 0)
+                {
+                    MessageBox.Show("Error, enter the worker's Id \n");
+                }
+                else
+                {
+                    BO.Engineer eng = s_bl?.Engineer.Read(workerID)!;
+                    new WorkerWindow(workerID).Show();
+                }
+            }
+            //catch (BO.BlDoesNotExistException ex) { MessageBox.Show("The worker's Id doesn't match any worker"); }
+            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
 
         }
 
@@ -61,12 +77,7 @@ namespace PL
 
         private void TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            try
-            {
-                BO.Engineer eng = s_bl?.Engineer.Read(workerID)!;
-            }
-            catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
-            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+
 
 
         }

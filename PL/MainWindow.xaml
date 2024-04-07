@@ -22,8 +22,7 @@
         <Button Content="Add one hour" Background="SeaShell" Margin="438,185,262,199" Height="50" Width="100" Click="Button_ClickHour" />
         <Button Content="Add one day" Background="SeaShell" Margin="322,187,378,197" Height="50" Width="100" Click="Button_ClickDay" />
         <Button Content="Add one year" Background="SeaShell" Margin="205,187,495,197" Height="50" Width="100" Click="Button_ClickYear"/>
-        <TextBox HorizontalAlignment="Left" Margin="288,77,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" MaxLength="9" Text="{Binding workerID, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" />
-        <Label Content="Enter Worker ID:" HorizontalAlignment="Left" Margin="288,40,0,0" VerticalAlignment="Top"/>
+
 
 
     </Grid>

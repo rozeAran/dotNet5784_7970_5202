@@ -28,8 +28,10 @@ public partial class WorkerWindow : Window
         int id = getid;
         BO.Engineer eng=s_bl.Engineer.Read(id);
         if(eng != null)
-            if(eng.Task != null)
-                new TaskWindow(eng.Task.Id,true).Show();
+        {
+            if (eng.Task != null)
+                new TaskWindow(eng.Task.Id, true).Show();
+        }
         else
         {
             MessageBox.Show("Engineer with this id was not found \n");
