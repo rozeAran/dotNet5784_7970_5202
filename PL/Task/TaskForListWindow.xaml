@@ -55,16 +55,43 @@
                     <WrapPanel Orientation="Horizontal">
                         <Label Content="Id:" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
                         <TextBlock Text="{Binding Id}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Description:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Description:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Description}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Alias:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Alias:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Alias}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Status:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Status:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Status}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Complexity:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding Complexity}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="EngineerId:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding EngineerId}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="RequiredEffortTime:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding RequiredEffortTime}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Remarks:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding Remarks}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Scheduled Date:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding ScheduledDate}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Complete Date:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding CompleteDate}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="DeadLine Date:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding DeadLineDate}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Start Date:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding StartDate}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <Label Content="Created At Date:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
+                        <TextBlock Text="{Binding CreatedAtDate}" Margin="5" FontSize="15" FontStyle="Italic"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Add Task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontSize="30" HorizontalAlignment="Left" Height="47" Margin="637,268,0,0" VerticalAlignment="Top" Width="140" Click="Button_Click_Add_Task"/>
+        <Button Content="Add Task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontSize="30" HorizontalAlignment="Left" Height="66" Margin="654,324,0,0" VerticalAlignment="Top" Width="104" Click="Button_Click_Add_Task" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.833" ScaleY="1.2"/>
+                    <SkewTransform AngleY="35"/>
+                    <RotateTransform Angle="-18"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
     </Grid>
 </Window>

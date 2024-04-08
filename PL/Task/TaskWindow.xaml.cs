@@ -45,10 +45,10 @@ namespace PL.Task
         int depId = 0;
         bool flagWorker= false;//if the flag=true the window was oppend from a worker, if the flag = false than from manager
         public static readonly DependencyProperty DependencyListProperty =
-            DependencyProperty.Register(nameof(DependencyList), typeof(IEnumerable<BO.TaskInList>), typeof(TaskWindow));
-        public IEnumerable<BO.TaskInList>? DependencyList
+            DependencyProperty.Register(nameof(DependencyList), typeof(List<BO.TaskInList>), typeof(TaskWindow));
+        public List<BO.TaskInList>? DependencyList
         {
-            get => (IEnumerable<BO.TaskInList>)GetValue(DependencyListProperty);
+            get => (List<BO.TaskInList>)GetValue(DependencyListProperty);
             set => SetValue(DependencyListProperty, value);
         }
         public TaskWindow(int id=0, bool fworker=false,int getCreatingSchedule=-1)
@@ -81,7 +81,7 @@ namespace PL.Task
                     if (id != 0)//in case of update
                     {
                         Task = s_bl?.Task.Read(id)!;
-                        DependencyList = Task.Dependencies.ToList();
+                        DependencyList = Task.Dependencies;
                     }
                         
                     

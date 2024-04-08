@@ -28,8 +28,9 @@ namespace PL
        
         public MainWindow()
         {
-            InitializeComponent();
             CurrentTime = s_bl.Clock;
+            InitializeComponent();
+           
             
         }
 

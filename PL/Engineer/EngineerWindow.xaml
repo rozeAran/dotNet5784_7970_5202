@@ -60,15 +60,15 @@
                     <WrapPanel Orientation="Horizontal">
                         <Label Content="Id:" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
                         <TextBlock Text="{Binding Id}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Name:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Name:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Name}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Email:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Email:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Email}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Level:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Level:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Level}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Cost:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Cost:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Cost}" Margin="5" FontSize="15" FontStyle="Italic"/>
-                        <Label Content="Task:" FontSize="15" FontStyle="Oblique"/>
+                        <Label Content="Task:" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"/>
                         <TextBlock Text="{Binding Tasks}" Margin="5" FontSize="15" FontStyle="Italic"/>
                     </WrapPanel>
                 </DataTemplate>
