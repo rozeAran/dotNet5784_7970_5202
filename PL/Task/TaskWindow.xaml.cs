@@ -43,7 +43,8 @@ namespace PL.Task
         public static readonly DependencyProperty TaskProperty =
             DependencyProperty.Register("Tsk", typeof(BO.Task), typeof(TaskWindow));
 
-        int depId = 0;
+        int engId = 0;
+        DateTime? start;
         bool flagWorker= false;//if the flag=true the window was oppend from a worker, if the flag = false than from manager
         public static readonly DependencyProperty DependencyListProperty =
             DependencyProperty.Register(nameof(DependencyList), typeof(List<BO.TaskInList>), typeof(TaskWindow));
@@ -83,6 +84,8 @@ namespace PL.Task
                     {
                         Tsk = s_bl?.Task.Read(id)!;
                         DependencyList = Tsk.Dependencies;
+                        engId = Tsk.EngineerId;
+                        start = Tsk.StartDate;
                     }
                         
                     
