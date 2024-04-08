@@ -1,6 +1,7 @@
 ﻿using BlApi;
 using BO;
 using DO;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace BlImplementation;
@@ -113,42 +114,22 @@ internal class EngineerImplementation : IEngineer
 
     }
 
-    public void Update(BO.Engineer item)//updates an engineer
+    public void Update(BO.Engineer boEngineer)//updates an engineer
     {
-        DO.Engineer? doEngineer = _dal.Engineer.Read(item.Id);
+        DO.Engineer? doEngineer = _dal.Engineer.Read(boEngineer.Id);
         if (doEngineer == null)
-            throw new BO.BlDoesNotExistException($"Engineer with ID={item.Id} does Not exist");
-        if ((int)item.Level < (int)doEngineer.Level)
+            throw new BO.BlDoesNotExistException($"Engineer with ID={boEngineer.Id} does Not exist");
+
+        if ((int)boEngineer.Level < (int)doEngineer.Level)
         {
-            throw new BlCantBeUpdetedException($"Engineer with ID={item.Id} cant be updated");
+            throw new BlCantBeUpdetedException($"Engineer with ID={boEngineer.Id} cant be updated");
         }
-        if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || item.Email.Contains(" ") || !(item.Email.Contains("@") || item.Email.Contains(".co")))
+
+        if (boEngineer.Id <= 0 || boEngineer.Name == "" || boEngineer.Cost <= 0 || !new EmailAddressAttribute().IsValid(boEngineer.Email))
         {
             throw new BlDataNotValidException("data is not valid\n");
         }
-        BO.Engineer? boEngineer = Read(item.Id);
-        if (item.Task != boEngineer.Task)
-        {
-            DO.Task newTask= _dal.Task.Read(item.Task.Id);
-            DO.Task temp = new DO.Task
-            {
-                Id = newTask.Id,
-                Alias = newTask.Alias,
-                Description = newTask.Description,
-                CreatedAtDate = newTask.CreatedAtDate,
-                RequiredEffortTime = newTask.RequiredEffortTime,
-                Complexity = newTask.Complexity,
-                Deliverables = newTask.Deliverables,
-                EngineerId = item.Id,
-                Remarks = newTask.Remarks,
-                ScheduledDate = newTask.ScheduledDate,
-                CompleteDate = newTask.CompleteDate,
-                DeadLineDate = newTask.DeadLineDate,
-                StartDate = newTask.StartDate
-            };
-            _dal.Task.Update(temp);
-            //updet in engineer in task
-        }
+        doEngineer = new(boEngineer.Id, boEngineer.Name, boEngineer.Email, (DO.EngineerExperience)boEngineer.Level, boEngineer.Cost);
         _dal.Engineer.Update(doEngineer);
     }
 

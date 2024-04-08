@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlImplementation;
 using BlApi;
+using BO;
+
 
 internal class Bl : IBl
 {
     
     private static DateTime s_Clock = DateTime.Now.Date;
-    private DalApi.IDal s_dal = DalApi.Factory.Get;
+    private static DalApi.IDal s_dal = DalApi.Factory.Get;
 
     public DateTime? StartProjectDate
     {
@@ -44,9 +42,7 @@ internal class Bl : IBl
     }
     public DateTime? AddYearClock()
     {
-
         return Clock.AddYears(1);
-
     }
     public DateTime? AddDayClock()
     {
@@ -58,6 +54,13 @@ internal class Bl : IBl
         return Clock.AddHours(1);
     }
 
+    public static Status GetProjectStatus()
+    {
+        if (s_dal.StartProjectDate is null) return Status.Unscheduled;
+        if (s_dal.Task!.ReadAll().All(t => t.ScheduledDate is not null)) return Status.Scheduled;
+        if(s_dal.Task!.ReadAll().Take(3).All(t => t.StartDate is not null)) return Status.OnTrack;
+        throw new ProjectStatusWrong("Wrong Project Status");
+    }
 
 }
 

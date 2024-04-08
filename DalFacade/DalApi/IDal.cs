@@ -10,9 +10,9 @@ namespace DalApi;
 /// </summary>
 public interface IDal
 {
-    ITask? Task { get; }
-    IEngineer? Engineer { get; }
-    IDependency? Dependency { get; }
+    ITask Task { get; }
+    IEngineer Engineer { get; }
+    IDependency Dependency { get; }
      DateTime? StartProjectDate { get; set; }
      DateTime? EndProjectDate { get; set; }
 }

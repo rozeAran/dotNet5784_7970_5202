@@ -20,10 +20,10 @@ namespace PL.Engineer;
 /// a window to add or update an engineer
 /// </summary>
 /// <parameter name="Eng">: the engineer that i get from the engineer window </parameter>
-/// <method name="AddEngineer">: constractor of the window </method>
+/// <method name="AddOrUpdateEngineer">: constractor of the window </method>
 /// <method name="BtnAddUpdate_Click">: the button of the add or the update </method>
 
-public partial class AddEngineer : Window
+public partial class AddOrUpdateEngineer : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
@@ -35,9 +35,10 @@ public partial class AddEngineer : Window
 
     // Using a DependencyProperty as the backing store for Task.  This enables animation, styling, binding, etc...
     public static readonly DependencyProperty EngProperty =
-        DependencyProperty.Register("Eng", typeof(BO.Engineer), typeof(AddEngineer));
+        DependencyProperty.Register("Eng", typeof(BO.Engineer), typeof(AddOrUpdateEngineer));
+
     bool add = false;
-    public AddEngineer(int id = 0)
+    public AddOrUpdateEngineer(int id = 0)
     {
         InitializeComponent();
         try

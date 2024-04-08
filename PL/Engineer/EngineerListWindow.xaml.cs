@@ -6,26 +6,26 @@ namespace PL.Engineer;
 /// <summary>
 /// a window that shos you the list of all the engineers 
 /// </summary>
-/// <method name="EngineerWindow">: constractor of the window </method>
+/// <method name="EngineerListWindow">: constractor of the window </method>
 /// <parameter name="EngList">: a list of all the enginners </parameter>
 /// <method name="ComboBox_SelectionChanged">: select all the engineers with a specipic experiance </method>
 /// <method name="ButtonAddEngineer_Click">: open the window of add engineer and addes a engineer</method>
 /// <method name="ListView_OpenEngineer">: open the window of add engineer and updet an engineer</method>
 
-public partial class EngineerWindow : Window
+public partial class EngineerListWindow : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
     public BO.EngineerExperience Experience { get; set; } = BO.EngineerExperience.Level;
 
     public static readonly DependencyProperty EngListProperty =
-        DependencyProperty.Register(nameof(EngList), typeof(IEnumerable<BO.Engineer>), typeof(EngineerWindow));
+        DependencyProperty.Register(nameof(EngList), typeof(IEnumerable<BO.Engineer>), typeof(EngineerListWindow));
     public IEnumerable<BO.Engineer>? EngList
     {
         get => (IEnumerable<BO.Engineer>)GetValue(EngListProperty);
         set => SetValue(EngListProperty, value);
     }
 
-    public EngineerWindow()
+    public EngineerListWindow()
     {
         InitializeComponent();
     }
@@ -38,14 +38,14 @@ public partial class EngineerWindow : Window
 
     private void ButtonAddEngineer_Click(object sender, RoutedEventArgs e)
     {
-        new AddEngineer().ShowDialog();
+        new AddOrUpdateEngineer().ShowDialog();
         EngList = s_bl?.Engineer.ReadAllEngineers();
     }
     
     private void ListView_OpenEngineer(object sender, RoutedEventArgs e)
     {
         BO.Engineer? eng = (sender as ListView)?.SelectedItem as BO.Engineer;
-        new AddEngineer(eng.Id).ShowDialog();
+        new AddOrUpdateEngineer(eng.Id).ShowDialog();
         EngList = s_bl?.Engineer.ReadAllEngineers();
     }
 

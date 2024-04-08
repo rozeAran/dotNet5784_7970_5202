@@ -37,7 +37,7 @@ public partial class ManagerWindow : Window
 
     private void ButtonEngineer_Click(object sender, RoutedEventArgs e)
     {
-        new EngineerWindow().Show();
+        new EngineerListWindow().Show();
     }
 
     private void ButtonInitialization_Click(object sender, RoutedEventArgs e)
@@ -59,10 +59,11 @@ public partial class ManagerWindow : Window
 
     private void ButtonGanttChart_Click(object sender, RoutedEventArgs e)
     {
+        new GanttWindow().Show();
         try
         {
-            if (CreatingSchedule == 1)
-                new GanttWindow().Show();
+            //if (CreatingSchedule == 1)
+                //new GanttWindow().Show();
 
         }
         catch (BO.BlNotAPossabilityException ex)

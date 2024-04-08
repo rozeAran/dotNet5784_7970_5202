@@ -30,7 +30,7 @@ namespace PL
 
         static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
 
-        static DateTime? CreatingDate=null;
+        static DateTime? StartProjectDate=null;
 
         public static readonly DependencyProperty TaskListProperty =
             DependencyProperty.Register(nameof(TaskList), typeof(IEnumerable<BO.Task>), typeof(CreateSchedule));
@@ -55,15 +55,10 @@ namespace PL
         private void ButtonFinishCreating_Click(object sender, RoutedEventArgs e)
         {
             CreatingSchedule=1;
-            if (CreatingDate == null)
+            if (StartProjectDate == null)
             {
-                TaskList = s_bl?.Task.ReadAll()!;
-                foreach( BO.Task task in TaskList)
-                {
-                    s_bl?.Task.AddBeginingDateBO(task, CreatingDate);
-                }
-                s_bl?.Task.AddStartDates();
-
+                s_bl.StartProjectDate = StartProjectDate;
+                s_bl.Task.AddScheduledDates();
             }
             else
             {

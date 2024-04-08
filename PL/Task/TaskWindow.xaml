@@ -83,24 +83,25 @@
         <Label Grid.Column="2" Content="Start Date" HorizontalAlignment="Center" Height="37" Margin="0,126,0,0" VerticalAlignment="Top" Width="106" FontSize="20"/>
         <Label Grid.Column="2" Content="DeadLine Date" HorizontalAlignment="Center" Height="64" Margin="0,174,0,0" VerticalAlignment="Top" Width="140" FontSize="20" Grid.RowSpan="3"/>
         <Label Grid.Column="2" Content="Scheduled Date" HorizontalAlignment="Center" Height="40" VerticalAlignment="Top" Width="140" FontSize="20" Margin="0,221,0,0" Grid.RowSpan="3"/>
-        <ListView Grid.Column="3"  HorizontalAlignment="Left" Height="251" Margin="174,38,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="219" ItemsSource="{Binding DependencyList}" SelectionChanged="ListView_SelectionChanged" Grid.ColumnSpan="2">
+        <ListView Grid.Column="3"  HorizontalAlignment="Left" Height="251" Margin="174,38,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="219" ItemsSource="{Binding Tsk.Dependencies}" SelectionChanged="ListView_SelectionChanged" Grid.ColumnSpan="2">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF8AEBE4"/>
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </ListView.Background>
+        
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel Orientation="Horizontal">
                         <Label Content="Id:" FontSize="15" FontStyle="Italic" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding DependencyList.Id}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <TextBlock Text="{Binding Id}" Margin="5" FontSize="15" FontStyle="Italic"/>
                         <Label Content="Description:" FontSize="15" FontStyle="Oblique" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding DependencyList.Description}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <TextBlock Text="{Binding Description}" Margin="5" FontSize="15" FontStyle="Italic"/>
                         <Label Content="Alias:" FontSize="15" FontStyle="Oblique" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding DependencyList.Alias}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <TextBlock Text="{Binding Alias}" Margin="5" FontSize="15" FontStyle="Italic"/>
                         <Label Content="Status:" FontSize="15" FontStyle="Oblique" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding DependencyList.Status}" Margin="5" FontSize="15" FontStyle="Italic"/>
+                        <TextBlock Text="{Binding Status}" Margin="5" FontSize="15" FontStyle="Italic"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

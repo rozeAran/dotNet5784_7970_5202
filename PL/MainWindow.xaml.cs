@@ -24,16 +24,15 @@ namespace PL
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
-        public DateTime? CurrentTime { get; set; }
-        /*public DateTime? CurrentTime
+        public DateTime? CurrentTime
         {
             get { return (DateTime)GetValue(CurrentTimeProperty); }
             set { SetValue(CurrentTimeProperty, value); }
-        }*/
+        }
 
         // Using a DependencyProperty as the backing store for Task.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty CurrentTimeProperty =
-            //DependencyProperty.Register("CurrentTime", typeof(DateTime), typeof(MainWindow));
+        public static readonly DependencyProperty CurrentTimeProperty =
+            DependencyProperty.Register("CurrentTime", typeof(DateTime), typeof(MainWindow));
         public MainWindow()
         {
             CurrentTime = s_bl.Clock;
