@@ -44,7 +44,8 @@
         <Label Content="Email:" HorizontalAlignment="Left" Height="57" Margin="92,172,0,0" VerticalAlignment="Top" Width="91" FontSize="30" RenderTransformOrigin="-0.155,0.206" />
         <Label Content="Experience:" HorizontalAlignment="Left" Height="73" Margin="87,234,0,0" VerticalAlignment="Top" Width="167" FontSize="30" />
         <Label Content="Cost:" HorizontalAlignment="Left" Height="69" Margin="92,290,0,0" VerticalAlignment="Top" Width="78" FontSize="30"/>
-        <Label Content="Add/Update" FontSize="30" HorizontalAlignment="Left" Height="108" Margin="564,450,0,0" VerticalAlignment="Top" Width="183"/>
+        <Button Content="Add" FontFamily="Gill Sans MT Condensed" FontSize="40" Background="SeaShell" HorizontalAlignment="Left" Height="97" Margin="326,450,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_Add"/>
+        <Button Content="Update" FontFamily="Gill Sans MT Condensed" FontSize="40" Background="SeaShell"  HorizontalAlignment="Left" Height="124" Margin="601,270,0,0" VerticalAlignment="Top" Width="136" Click="Button_Click_Update"/>
 
     </Grid>
 </Window>
