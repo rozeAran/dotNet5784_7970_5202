@@ -15,7 +15,7 @@ namespace BlImplementation;
 /// <method name="ReadAll">: returns the list of tasks </method>
 /// <method name="ReadAll">: returns a list of tasks that matches the function </method>
 /// <method name="Update">: if the data is valid, will try to update the task in the data layer </method>
-/// <method name="AddBeginingDate">: adding to the task a begining date </method>
+/// <method name="AddbeginingDate">: adding to the task a begining date </method>
 /// <method name="Delete">: if the task is deletebul then will delete it </method>
 internal class TaskImplementation : ITask
 {

@@ -12,7 +12,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <!--<Grid.Background>
-            --><!--<ImageBrush ImageSource="/schedulePicture.jpg"/>--><!--
+            -->
+        <!--<ImageBrush ImageSource="/schedulePicture.jpg"/>-->
+        <!--
         </Grid.Background>-->
         <Button Content="Add task" HorizontalAlignment="Left" Margin="116,92,0,0" VerticalAlignment="Top" Height="126" 
                 Width="234" FontSize="50"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
@@ -39,6 +41,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        <TextBox Text="{Binding CreatingDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Margin="544,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="46" />
+        <Label Content="start project date:" HorizontalAlignment="Left" Margin="554,24,0,0" VerticalAlignment="Top" Width="148"/>
 
     </Grid>
 </Window>
