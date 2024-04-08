@@ -117,7 +117,7 @@ namespace PL.Task
                     else
                     {   //if not finished bulidlig schedule then add task
                         s_bl.Task.Create(Tsk);
-                        MessageBox.Show("Task was succsesfuly created");
+                        MessageBox.Show("Task was successfully created");
                         this.Close();
                     }
 
@@ -147,7 +147,7 @@ namespace PL.Task
                     }
                 }
                 s_bl.Task.Update(Tsk);
-                MessageBox.Show("Task was succsesfuly updated");
+                MessageBox.Show("Task was successfully updated");
                 this.Close();
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
@@ -171,18 +171,23 @@ namespace PL.Task
                     {
                         int depId = int.Parse(Interaction.InputBox("Enter task Id", "Hi", "0"));
                         BO.Task? dTask = s_bl.Task.Read(depId);
-                        if (dTask != null)
+                        if (dTask == null)
                         {
                             MessageBox.Show("Task was not found \n");
                         }
-                        BO.TaskInList dep = new BO.TaskInList
+                        else
                         {
-                            Id = depId,
-                            Alias = dTask.Alias,
-                            Description = dTask.Description,
-                            Status = dTask.TaskStatus
-                        };
-                        Tsk.Dependencies.Add(dep);
+                            BO.TaskInList dep = new BO.TaskInList
+                            {
+                                Id = depId,
+                                Alias = dTask.Alias,
+                                Description = dTask.Description,
+                                Status = dTask.TaskStatus
+                            };
+                            Tsk.Dependencies.Add(dep);
+                            MessageBox.Show("Dependency was successfully created \n");
+                        }
+
                     }
                     else
                     {
@@ -205,7 +210,7 @@ namespace PL.Task
                 if (flagWorker == true)
                 {
                     Tsk.CompleteDate = DateTime.Now;
-                    MessageBox.Show("Task was secsesfully finished \n");
+                    MessageBox.Show("Task was successfully finished \n");
                 }
                 else
                 {
@@ -216,6 +221,10 @@ namespace PL.Task
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-     
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

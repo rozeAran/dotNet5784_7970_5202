@@ -41,7 +41,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox Text="{Binding CreatingDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Margin="544,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="46" />
+        <TextBox Text="{Binding CreatingDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Margin="544,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="46" TextChanged="TextBox_TextChanged" />
         <Label Content="start project date:" HorizontalAlignment="Left" Margin="554,24,0,0" VerticalAlignment="Top" Width="148"/>
 
     </Grid>
