@@ -18,7 +18,9 @@ public interface ITask
     public IEnumerable<BO.Task?> ReadAll(Func<BO.Task, bool>? filter = null);
     public void Update(BO.Task item);
     public void Delete(int id);
-    public void AddBeginingDate(DO.Task item, DateTime begin);
+    public void AddStartDates();
+    public void AddBeginingDateBO(BO.Task item, DateTime? begin);
+    public void AddBeginingDate(DO.Task item, DateTime? begin);
     public List<BO.TaskInList> FindDependencies(DO.Task item);
     public BO.EngineerInTask FindEngineer(DO.Task item);
     public BO.Status FindStatus(DO.Task item);

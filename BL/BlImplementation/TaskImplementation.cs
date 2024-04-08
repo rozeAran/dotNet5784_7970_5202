@@ -16,7 +16,7 @@ namespace BlImplementation;
 /// <method name="ReadAll">: returns the list of tasks </method>
 /// <method name="ReadAll">: returns a list of tasks that matches the function </method>
 /// <method name="Update">: if the data is valid, will try to update the task in the data layer </method>
-/// <method name="AddBeginingDate">: adding to the task a begining date </method>
+/// <method name="AddbeginingDate">: adding to the task a begining date </method>
 /// <method name="Delete">: if the task is deletebul then will delete it </method>
 internal class TaskImplementation : ITask
 {
@@ -79,7 +79,7 @@ internal class TaskImplementation : ITask
 
             foreach (var task in tasks.Values)
             {
-                var dependencies1 = dependencies.Where(d => d.DependentTask == task.Id);
+                var dependencies1 = dependencies.Where(d => d.DependentTask == task.Id);//מה שתלוי בטסק
 
                 var dependenciesTasks = dependencies1.Select(t => _dal.Task.Read(t.DependOnTask!)).ToList();
 
@@ -121,7 +121,11 @@ internal class TaskImplementation : ITask
        BO.EngineerInTask tempE= temp.First();
         return tempE;
     }
-    public void AddBeginingDate(DO.Task item, DateTime begin)//adds a start date
+    public void AddBeginingDateBO(BO.Task item, DateTime? begin)
+    {
+        AddBeginingDate(_dal.Task.Read(item.Id), begin);
+    }
+    public void AddBeginingDate(DO.Task item, DateTime? begin)//adds a start date
     {
         List<BO.TaskInList> listDep = FindDependencies(item);
         bool theDependencies= listDep.Any<BO.TaskInList>();

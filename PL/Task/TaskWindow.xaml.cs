@@ -22,7 +22,7 @@ namespace PL.Task
     /// </summary>
     /// <parameter name="Tsk">: a parameter that keeps the information about this task </parameter>
     /// <parameter name="depId">: a parameter that keeps the id of the task we want to add the dependency list </parameter>
-    /// <method name="TaskWindow">: initilize Tsk and every thing else </method>
+    /// <method name="TaskWindow">: initialize Tsk and every thing else </method>
     /// <method name="Button_Click_Add">: in case we want to add a task </method>
     /// <method name="Button_Click_Update">: in case we want to update an existing task </method>
     /// <method name="Button_Click_Add_Dependency">: if we want to add a dependency </method>
@@ -213,9 +213,6 @@ namespace PL.Task
                 //MessageBox.Show("You do not have permission for this action \n");
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+     
     }
 }
