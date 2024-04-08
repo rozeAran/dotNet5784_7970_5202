@@ -47,10 +47,10 @@ public partial class AddEngineer : Window
                 Eng = new BO.Engineer()
                 {
                     Id = id,
-                    Name = "rose",
-                    Email = "tit@gmail.com",
+                    Name = "",
+                    Email = "@gmail.com",
                     Level = BO.EngineerExperience.Beginner,
-                    Cost = 39.5,
+                    Cost = 0,
                     Task = null//adding the current task that the engineer is workng on
                 };
                 add = true;
