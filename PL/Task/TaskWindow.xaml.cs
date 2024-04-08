@@ -206,8 +206,8 @@ namespace PL.Task
 
         private void TextBox_TextChanged_EngId(object sender, TextChangedEventArgs e)
         {
-            if (flagWorker != true)
-                MessageBox.Show("You do not have permission for this action \n");
+            //if (flagWorker != true)
+                //MessageBox.Show("You do not have permission for this action \n");
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
