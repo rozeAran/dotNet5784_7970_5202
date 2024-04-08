@@ -57,7 +57,7 @@ namespace PL
             }
             catch (BO.BlDoesNotExistException) { MessageBox.Show("The worker's Id doesn't match any worker"); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void Button_ClickHour(object sender, RoutedEventArgs e)

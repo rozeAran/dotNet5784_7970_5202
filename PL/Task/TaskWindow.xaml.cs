@@ -91,7 +91,7 @@ namespace PL.Task
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-            
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
 
@@ -121,7 +121,7 @@ namespace PL.Task
 
             }
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
-
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
 
@@ -135,6 +135,7 @@ namespace PL.Task
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
 
@@ -174,18 +175,9 @@ namespace PL.Task
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
        
-
-       /* private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //  e.Changes.Last()
-
-            //var text = (sender as TextBox)!.Text;
-
-            //depId = int.Parse(text);
-        }*/
 
 
         private void Button_Click_FinishTask(object sender, RoutedEventArgs e)
@@ -204,7 +196,7 @@ namespace PL.Task
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void TextBox_TextChanged_StartDate(object sender, TextChangedEventArgs e)

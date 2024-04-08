@@ -43,31 +43,46 @@ namespace PL.Task
         public TaskForListWindow( BO.EngineerExperience? workerExperience=null)
         {
             InitializeComponent();
-            if (workerExperience == null) 
-            { 
-                TaskList = s_bl?.Task.ReadAll()!;
-            }
-            else 
+            try
             {
-                flagWorker = true;
-                TaskList = s_bl?.Task.ReadAll(item => item.TaskStatus == BO.Status.Unscheduled );//myby not true
-                TaskList = s_bl?.Task.ReadAll( item => item.Complexity <= workerExperience);
-                TaskList = s_bl?.Task.ReadAll(item => item.Dependencies ==null);
+                if (workerExperience == null)
+                {
+                    TaskList = s_bl?.Task.ReadAll()!;
+                }
+                else
+                {
+                    flagWorker = true;
+                    TaskList = s_bl?.Task.ReadAll(item => item.TaskStatus == BO.Status.Unscheduled);//myby not true
+                    TaskList = s_bl?.Task.ReadAll(item => item.Complexity <= workerExperience);
+                    TaskList = s_bl?.Task.ReadAll(item => item.Dependencies == null);
+                }
             }
-       
-            
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+
+
         }
 
         private void ComboBoxLevel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TaskList = (Experience != BO.EngineerExperience.Level) ?
-                s_bl?.Task.ReadAll(item => item.Complexity == Experience) : s_bl?.Task.ReadAll();
+            try
+            {
+                TaskList = (Experience != BO.EngineerExperience.Level) ?
+                    s_bl?.Task.ReadAll(item => item.Complexity == Experience) : s_bl?.Task.ReadAll();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            
+
         }
 
         private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            TaskList = (Status != BO.Status.Status) ?
-                 s_bl?.Task.ReadAll(item => item.TaskStatus == Status) : s_bl?.Task.ReadAll();
+            try
+            {
+                TaskList = (Status != BO.Status.Status) ?
+                     s_bl?.Task.ReadAll(item => item.TaskStatus == Status) : s_bl?.Task.ReadAll();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void ListView_OpenTaskWindow(object sender, RoutedEventArgs e)

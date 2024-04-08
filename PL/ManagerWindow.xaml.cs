@@ -69,12 +69,13 @@ public partial class ManagerWindow : Window
         {
             MessageBox.Show(ex.Message);
         }
+        catch (Exception ex) { MessageBox.Show(ex.Message); }
     }
 
     private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
     {
         CreatingSchedule = 0;
         new CreateSchedule(CreatingSchedule).Show();
-        CreatingSchedule = 1;//לא בטוח שזה המקום לעדכן
+
     }
 }
