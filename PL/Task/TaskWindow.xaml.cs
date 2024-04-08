@@ -26,7 +26,6 @@ namespace PL.Task
     /// <method name="Button_Click_Add">: in case we want to add a task </method>
     /// <method name="Button_Click_Update">: in case we want to update an existing task </method>
     /// <method name="Button_Click_Add_Dependency">: if we want to add a dependency </method>
-    /// <method name="TextBox_TextChanged">: takes the task id that we got from the user and keeps it in depId </method>
     public partial class TaskWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
@@ -123,7 +122,7 @@ namespace PL.Task
                     }
 
                 }
-
+                this.Close();
             }
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -134,6 +133,19 @@ namespace PL.Task
         {
             try
             {
+                if (flagWorker==false) 
+                {
+                    if(Tsk.EngineerId!=engId)
+                    {
+                        MessageBox.Show("A manager can't choose a task for the engineer \n");
+                        this.Close();
+                    }
+                    if(Tsk.StartDate!=start)
+                    {
+                        MessageBox.Show("A manager can't choose the start date of the task\n");
+                        this.Close();
+                    }
+                }
                 s_bl.Task.Update(Tsk);
                 MessageBox.Show("Task was succsesfuly updated");
                 this.Close();
@@ -204,15 +216,6 @@ namespace PL.Task
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-
-
-
-        private void TextBox_TextChanged_EngId(object sender, TextChangedEventArgs e)
-        {
-            //if (flagWorker != true)
-                //MessageBox.Show("You do not have permission for this action \n");
-        }
-
      
     }
 }
