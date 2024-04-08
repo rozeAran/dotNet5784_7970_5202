@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PL
 {
@@ -57,6 +58,11 @@ namespace PL
             if (CreatingDate == null)
             {
                 TaskList = s_bl?.Task.ReadAll()!;
+                foreach( BO.Task task in TaskList)
+                {
+                    s_bl?.Task.AddBeginingDateBO(task, CreatingDate);
+                }
+                s_bl?.Task.AddStartDates();
 
             }
             else
