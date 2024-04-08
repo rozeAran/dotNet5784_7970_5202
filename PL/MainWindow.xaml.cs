@@ -28,8 +28,9 @@ namespace PL
        
         public MainWindow()
         {
-            CurrentTime = s_bl.Clock;
             InitializeComponent();
+            CurrentTime = s_bl.Clock;
+            
         }
 
         private void ButtonManager_Click(object sender, RoutedEventArgs e)

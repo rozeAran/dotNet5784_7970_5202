@@ -39,7 +39,7 @@
                 <ColumnDefinition Width="129*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Engineer level:" VerticalAlignment="Top" Height="86" Margin="41,10,10,0" FontSize="30" Grid.ColumnSpan="4" FontWeight="Light" FontStretch="SemiExpanded"/>
+            <Label Content="Engineer level:" VerticalAlignment="Top" Height="86" FontFamily="Gill Sans MT Condensed" Margin="41,-9,10,0" FontSize="50" Grid.ColumnSpan="4" FontWeight="Light" FontStretch="SemiExpanded"/>
 
 
             <!--combobox to chose a level of engineer-->
@@ -76,7 +76,16 @@
         </ListView>
 
         <!---add button-->
-        <Button Content="Add" FontFamily="Gill Sans MT Condensed" Grid.Row="1" HorizontalAlignment="Left" Width="100" Margin="665,246,0,43" FontSize="40" Background="SeaShell" Click="ButtonAddEngineer_Click"/>
+        <Button Content="Add" FontFamily="Gill Sans MT Condensed" Grid.Row="1" HorizontalAlignment="Left" Width="112" Margin="658,213,0,52" FontSize="40" Background="SeaShell" Click="ButtonAddEngineer_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.024" ScaleY="0.976"/>
+                    <SkewTransform AngleX="35.587598260782151"/>
+                    <RotateTransform Angle="21.286"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 

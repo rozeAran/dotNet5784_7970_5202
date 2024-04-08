@@ -14,8 +14,31 @@
         <!--<Grid.Background>
             --><!--<ImageBrush ImageSource="/schedulePicture.jpg"/>--><!--
         </Grid.Background>-->
-        <Button Content="Add task" HorizontalAlignment="Left" Margin="93,151,0,0" VerticalAlignment="Top" Height="126" Width="234" FontSize="50"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed"/>
-        <Button Content="Finish schedule" HorizontalAlignment="Left" Margin="433,151,0,0" VerticalAlignment="Top" Height="126" Width="256" FontSize="50" Click="ButtonFinishCreating_Click" Background="SeaShell" FontFamily="Gill Sans MT Condensed"/>
+        <Button Content="Add task" HorizontalAlignment="Left" Margin="116,92,0,0" VerticalAlignment="Top" Height="126" 
+                Width="234" FontSize="50"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-21.312"/>
+                    <ScaleTransform ScaleX="1.5"
+                        ScaleY="1" />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Finish schedule" HorizontalAlignment="Left" Margin="409,230,0,0" VerticalAlignment="Top" Height="126" Width="256" FontSize="50" Click="ButtonFinishCreating_Click" Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-19.293"/>
+                    <ScaleTransform ScaleX="1.5"
+                        ScaleY="1" />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 </Window>

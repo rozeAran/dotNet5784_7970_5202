@@ -14,7 +14,16 @@
                 <GradientStop Color="#FFC1BEE3" Offset="0.374"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Content="List Of Tasks" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
+        <Button Content="List Of Tasks" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="314,172,0,0" VerticalAlignment="Top" Height="119" Width="247" FontSize="50" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.0839998615896627" ScaleY="0.922509342882684"/>
+                    <SkewTransform AngleX="31.000254032105353"/>
+                    <RotateTransform Angle="-0.411"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
 
     </Grid>

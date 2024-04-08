@@ -17,12 +17,76 @@
             </LinearGradientBrush>
         </Grid.Background>
         <!--takes care of engineer-->
-        <Button Content="Engineer List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="438,262,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonEngineer_Click" Foreground="#FF161927"/>
-        <Button Content="Initialization" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="208,262,0,0" VerticalAlignment="Top" Height="107" Width="192" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonInitialization_Click"/>
-        <Button Content="Reset" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="51,262,0,0" VerticalAlignment="Top" Height="107" Width="127" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonReset_Click"/>
-        <Button Content="Task List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="514,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927"/>
-        <Button Content="Gantt Chart" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="282,98,0,0" VerticalAlignment="Top" Height="107" Width="193" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonGanttChart_Click" Foreground="#FF161927"/>
-        <Button Content="Create Schedule" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Height="107" Width="239" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonCreateSchedule_Click" Foreground="#FF161927"/>
+        <Button Content="Engineer List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="490,272,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonEngineer_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.5"/>
+                    <SkewTransform AngleX="25"
+                       AngleY="0" />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Initialization" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="260,272,0,0" VerticalAlignment="Top" Height="107" Width="192" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonInitialization_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.5"/>
+                    <SkewTransform AngleX="25"
+                       AngleY="0" />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Reset" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="52,263,0,0" VerticalAlignment="Top" Height="109" Width="173" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonReset_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.012" ScaleY="0.988"/>
+                    <SkewTransform AngleX="25.237250918689881"/>
+                    <RotateTransform Angle="1.4819130280694019"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Task List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="524,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.5"/>
+                    <SkewTransform AngleX="25"
+                       AngleY="0" />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Gantt Chart" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="292,98,0,0" VerticalAlignment="Top" Height="107" Width="193" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonGanttChart_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.5"/>
+                    <SkewTransform AngleX="25"
+                       AngleY="0" />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Create Schedule" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="20,98,0,0" VerticalAlignment="Top" Height="107" Width="239" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonCreateSchedule_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="1.5"/>
+                    <SkewTransform AngleX="25"
+                       AngleY="0" />
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
 
 

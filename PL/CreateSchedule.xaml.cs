@@ -27,8 +27,9 @@ namespace PL
         static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
         public CreateSchedule(int getCreatingSchedule=0)
         {
-            CreatingSchedule = getCreatingSchedule;
             InitializeComponent();
+            CreatingSchedule = getCreatingSchedule;
+            
         }
         private void ButtonAddTask_Click(object sender, RoutedEventArgs e)
         {
