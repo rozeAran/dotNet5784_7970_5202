@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PL.Task"
         mc:Ignorable="d"
         Title="TaskWindow" Height="450" Width="800"
-        DataContext="{Binding Task, RelativeSource={RelativeSource Self}, Mode=TwoWay}">
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
     <Grid Margin="0,10,-6,-6">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -34,7 +34,7 @@
         <Button Content="Add task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="22,61,0,0" VerticalAlignment="Top" Height="54" Width="103" Click="Button_Click_Add" Grid.Column="3" FontSize="25" Grid.Row="3"/>
         <Button Grid.Column="2" Background="SeaShell" FontFamily="Gill Sans MT Condensed" Content="Update task" HorizontalAlignment="Left" Margin="8,58,0,0" VerticalAlignment="Top" Width="110" Height="57" Click="Button_Click_Update" FontSize="25" Grid.Row="3"/>
         <TextBox 
-              Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" 
+              Text="{Binding Tsk.Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}" 
               HorizontalAlignment="Center" Height="34" Margin="0,13,0,0"  VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.395,-8.003" Background="SeaShell" Grid.Column="1" />
         <TextBox 
               Text="{Binding Alias, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
@@ -44,12 +44,12 @@
               HorizontalAlignment="Center" Height="38" Margin="0,115,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" />
         <ComboBox HorizontalAlignment="Center" Height="36" Margin="0,58,0,0"
             ItemsSource="{Binding Source={StaticResource EngineerExpKey}}" 
-            SelectedValue="{Binding Complexity, Mode=TwoWay, NotifyOnValidationError=true, 
+            SelectedValue="{Binding Task.Complexity, Mode=TwoWay, NotifyOnValidationError=true, 
             ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" />
         <TextBox 
               Text="{Binding Deliverables, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Center" Height="34" Margin="0,172,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" />
-        <TextBox 
+        <DatePicker 
               Text="{Binding RequiredEffortTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Center" Height="28"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="1" Grid.Row="2" Margin="0,10,0,0" />
         <TextBox 
@@ -62,15 +62,15 @@
             ItemsSource="{Binding Source={StaticResource TaskStatusKey}}" 
             SelectedValue="{Binding TaskStatus, Mode=TwoWay, NotifyOnValidationError=true, 
             ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3" />
-        <TextBox 
+        <DatePicker 
               Text="{Binding ScheduledDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Left" Height="28" Margin="0,227,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3" Grid.RowSpan="3" />
-        <TextBox 
+        <DatePicker 
              Text="{Binding DeadLineDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
              HorizontalAlignment="Left" Height="28" Margin="1,175,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3" />
-        <TextBox 
+        <DatePicker 
              Text="{Binding StartDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
-             HorizontalAlignment="Left" Height="28" Margin="1,126,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3" TextChanged="TextBox_TextChanged_StartDate" />
+             HorizontalAlignment="Left" Height="28" Margin="1,126,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" Grid.Column="3"  />
         <Label Content="Id:"  HorizontalAlignment="Center" Margin="0,13,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="34"/>
         <Label Content="Required&#xD;&#xA; Effort Time:" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Center" FontSize="20" Height="69" Width="142" Grid.ColumnSpan="2" Grid.Row="2"/>
         <Label Content="Alias" HorizontalAlignment="Left" Height="57" Margin="16,63,0,0" VerticalAlignment="Top" Width="91" FontSize="20" RenderTransformOrigin="-0.155,0.206" Grid.ColumnSpan="2" />

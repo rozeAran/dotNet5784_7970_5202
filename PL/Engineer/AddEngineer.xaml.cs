@@ -1,4 +1,5 @@
 ﻿using BO;
+using PL.Task;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,16 @@ namespace PL.Engineer;
 public partial class AddEngineer : Window
 {
     static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-    private BO.Engineer? Eng;
+
+    public BO.Engineer Eng
+    {
+        get { return (BO.Engineer)GetValue(EngProperty); }
+        set { SetValue(EngProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for Task.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty EngProperty =
+        DependencyProperty.Register("Eng", typeof(BO.Engineer), typeof(AddEngineer));
     bool add = false;
     public AddEngineer(int id = 0)
     {
@@ -56,7 +66,16 @@ public partial class AddEngineer : Window
         catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-        catch (Exception ex) { MessageBox.Show(ex.Message); }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+        }
+    
     }
 
     private void BtnAddUpdate_Click(object sender, RoutedEventArgs e)
@@ -67,6 +86,7 @@ public partial class AddEngineer : Window
             {
                 s_bl.Engineer.Create(Eng);
                 MessageBox.Show("engineer was succsesfuly created");
+                this.Close();
             }
             else//in case of update
             {
@@ -79,7 +99,15 @@ public partial class AddEngineer : Window
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
-        catch(Exception ex) { MessageBox.Show(ex.Message); }
+        catch(Exception ex)
+        {
+            MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+        }
     }
 
     private void Button_Click_Add(object sender, RoutedEventArgs e)
@@ -90,6 +118,8 @@ public partial class AddEngineer : Window
             {
                 s_bl.Engineer.Create(Eng);
                 MessageBox.Show("engineer was succsesfuly created");
+                this.Close();
+
             }
             else//in case of update
             {
@@ -101,7 +131,15 @@ public partial class AddEngineer : Window
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
-        catch (Exception ex) { MessageBox.Show(ex.Message); }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+        }
     }
 
     private void Button_Click_Update(object sender, RoutedEventArgs e)
@@ -116,6 +154,7 @@ public partial class AddEngineer : Window
             {
                 s_bl.Engineer.Update(Eng);
                 MessageBox.Show("engineer was succsesfuly updated");
+                this.Close();
             }
         }
 
@@ -123,6 +162,14 @@ public partial class AddEngineer : Window
         catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
         catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
-        catch (Exception ex) { MessageBox.Show(ex.Message); }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+        }
     }
 }
