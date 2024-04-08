@@ -25,7 +25,7 @@ internal class EngineerImplementation : IEngineer
 
         try
         {
-            if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || !(item.Email.Contains(" ")) || item.Email.Contains("@") || item.Email.Contains(".co"))
+            if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || item.Email.Contains(" ") || !(item.Email.Contains("@") || item.Email.Contains(".co")))
             {
                 throw new BlDataNotValidException("data is not valid\n");
             }
@@ -37,6 +37,7 @@ internal class EngineerImplementation : IEngineer
         {
             throw new BO.BlAlreadyExistsException($"Student with ID={item.Id} already exists", ex);
         }
+        catch(BlDataNotValidException ex) { throw ex; }
 
     }
 
@@ -121,7 +122,7 @@ internal class EngineerImplementation : IEngineer
         {
             throw new BlCantBeUpdetedException($"Engineer with ID={item.Id} cant be updated");
         }
-        if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || !(item.Email.Contains(" ")) || item.Email.Contains("@") || item.Email.Contains(".co"))
+        if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || item.Email.Contains(" ") || !(item.Email.Contains("@") || item.Email.Contains(".co")))
         {
             throw new BlDataNotValidException("data is not valid\n");
         }

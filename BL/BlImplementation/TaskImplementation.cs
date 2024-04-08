@@ -2,6 +2,7 @@
 using BO;
 using DO;
 using System.Data.Common;
+using System.Text.RegularExpressions;
 
 namespace BlImplementation;
 /// <summary>
@@ -25,7 +26,7 @@ internal class TaskImplementation : ITask
     private DalApi.IDal _dal = DalApi.Factory.Get;
     public List<BO.TaskInList>? FindDependencies(DO.Task item) //finds the tasks this task is depended on
     {
-        return ((List<BO.TaskInList>)(from DO.Dependency dep in _dal.Dependency.ReadAll()
+        /*return ((List<BO.TaskInList>)(from DO.Dependency dep in _dal.Dependency.ReadAll()
                                     where dep.DependOnTask == item.Id//task is depended on this task
                                     select new BO.TaskInList
                                     {
@@ -35,7 +36,20 @@ internal class TaskImplementation : ITask
                                         Alias= _dal.Task.Read(dep.DependOnTask).Alias,
                                         Status=FindStatus(_dal.Task.Read(dep.DependOnTask))
                                         
-                                    }));
+                                    }));*/
+        var temp= (from DO.Dependency dep in _dal.Dependency.ReadAll()
+                   where dep.DependOnTask == item.Id//task is depended on this task
+                   select new BO.TaskInList
+                   {
+                       //a list of all the task this task is depended on
+                       Id = dep.DependentTask,
+                       Description = _dal.Task.Read(dep.DependOnTask).Description,
+                       Alias = _dal.Task.Read(dep.DependOnTask).Alias,
+                       Status = FindStatus(_dal.Task.Read(dep.DependOnTask))
+
+                   });
+        List<BO.TaskInList> lst=temp.ToList();
+        return lst;
     }
 
     private bool hasCircle(int dependentTask, int dependOnTask)
@@ -88,13 +102,24 @@ internal class TaskImplementation : ITask
 
     public BO.EngineerInTask FindEngineer(DO.Task item)//finds the engineer this task is asigned to
     {
-        return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()
-                                 where eng.Id == item.EngineerId
-                                 select new BO.EngineerInTask
-                                 {
-                                     Id = eng.Id,
-                                     Name = eng.Name,
-                                 }));
+        /* return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()
+                                  where eng.Id == item.EngineerId
+                                  select new BO.EngineerInTask
+                                  {
+                                      Id = eng.Id,
+                                      Name = eng.Name,
+                                  }));*/
+        if (item.EngineerId == 0)
+            return null;
+       var temp= (from DO.Engineer eng in _dal.Task.ReadAll()
+                  where eng.Id == item.EngineerId
+                  select new BO.EngineerInTask
+                  {
+                      Id = eng.Id,
+                      Name = eng.Name,
+                  });
+       BO.EngineerInTask tempE= temp.First();
+        return tempE;
     }
     public void AddBeginingDate(DO.Task item, DateTime begin)//adds a start date
     {
