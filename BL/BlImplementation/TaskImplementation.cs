@@ -104,7 +104,7 @@ internal class TaskImplementation : ITask
 
     private DateTime? getTaskEnd(DO.Task item)
     {
-        return item.CompleteDate; //fix
+        return item.CompleteDate; 
     }
 
     public BO.EngineerInTask FindEngineer(DO.Task item)//finds the engineer this task is asigned to
@@ -123,7 +123,7 @@ internal class TaskImplementation : ITask
         return tempE;
     }
 
-    public void AddBeginingDateBO(BO.Task item, DateTime? begin)
+    /*public void AddBeginingDateBO(BO.Task item, DateTime? begin)
     {
         AddBeginingDate(_dal.Task.Read(item.Id), begin);
     }
@@ -163,7 +163,7 @@ internal class TaskImplementation : ITask
             StartDate = item.StartDate
         };
         _dal.Task.Update(temp);
-    }
+    }*/
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
         if (item.StartDate == null)
@@ -342,7 +342,7 @@ internal class TaskImplementation : ITask
 
         }
     }
-    private void AddOrUpdateDependencies(BO.Task task)
+    /*private void AddOrUpdateDependencies(BO.Task task)
     {
         if (task.Dependencies is not null && task.Dependencies.Any())
         {
@@ -351,7 +351,7 @@ internal class TaskImplementation : ITask
                 _dal.Dependency!.Create(new Dependency(0, task.Id, dependency.Id));
             }
         }
-    }
+    }*/
     
     public void Update(BO.Task task)// updates a task
     {
@@ -363,9 +363,10 @@ internal class TaskImplementation : ITask
         if (Bl.GetProjectStatus() != Status.OnTrack && task.EngineerId!=0)
             throw new ProjectStatusWrong("Cant assign an engineer to a task untill the schedule is finished\n");
 
-        if (task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null)
+        if ((task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null))
         {
-            throw new BlDataNotValidException("you can't add dates to the task untill the schedule is finished. the system will add the new task without the dates\n");
+            if((Bl.GetProjectStatus() != Status.Scheduled))
+                throw new BlDataNotValidException("you can't add dates to the task untill the schedule is finished. the system will add the new task without the dates\n");
         }
 
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate, task.RequiredEffortTime,

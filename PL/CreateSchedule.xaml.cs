@@ -15,24 +15,22 @@ namespace PL
     /// <method name="ButtonFinishCreating_Click"> : if the schedules building is finished</method>
     public partial class CreateSchedule : Window
     {
-        //public System.Windows.Media.Brush OpacityMask { get; set; }
-
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
         //static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
 
         static DateTime? StartProjectDate=null;
 
-        public static readonly DependencyProperty TaskListProperty =
+       /* public static readonly DependencyProperty TaskListProperty =
             DependencyProperty.Register(nameof(TaskList), typeof(IEnumerable<BO.Task>), typeof(CreateSchedule));
        
         public IEnumerable<BO.Task?>? TaskList
         {
             get => (IEnumerable<BO.Task>)GetValue(TaskListProperty);
             set => SetValue(TaskListProperty, value);
-        }
+        }*/
 
-        public CreateSchedule()//int getCreatingSchedule=0)
+        public CreateSchedule()
         {
             InitializeComponent();
             //CreatingSchedule = getCreatingSchedule;
@@ -56,9 +54,6 @@ namespace PL
                 MessageBox.Show("You must enter start project date to continue");
             }
 
-
-
-            //new ManagerWindow().Show();
         }
 
 

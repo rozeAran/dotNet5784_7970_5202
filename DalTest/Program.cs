@@ -12,16 +12,15 @@ internal class Program
   
     public static EngineerExperience SetEX(int num)//sets EngineerExperience (Enum) 
     {
-        switch(num) 
+        return num switch
         {
-            case 0: return EngineerExperience.Beginner;
-            case 1: return EngineerExperience.AdvancedBeginner;
-            case 2: return EngineerExperience.Intermediate;
-            case 3: return EngineerExperience.Advanced;
-            case 4: return EngineerExperience.Expert;
-            default:
-                throw new Exception("no such level");
-        }
+            0 => EngineerExperience.Beginner,
+            1 => EngineerExperience.AdvancedBeginner,
+            2 => EngineerExperience.Intermediate,
+            3 => EngineerExperience.Advanced,
+            4 => EngineerExperience.Expert,
+            _ => throw new Exception("no such level"),
+        };
     }
 
     public static Task CreateT()//creates a new task

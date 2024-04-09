@@ -87,7 +87,7 @@ internal class EngineerImplementation : IEngineer
 
 
 
-    public IEnumerable<EngineerInTask> ReadAll(Func<BO.Engineer, bool>? filter = null)// returns a list of Engineers that matches the function
+    public IEnumerable<EngineerInTask> ReadAll()// returns a list of Engineers 
     {
         return (from DO.Engineer doEngineer in _dal.Engineer.ReadAll()
                 select new BO.EngineerInTask
@@ -97,7 +97,7 @@ internal class EngineerImplementation : IEngineer
                 });
     }
 
-    public IEnumerable<BO.Engineer> ReadAllEngineers(Func<BO.Engineer, bool>? filter = null)
+    public IEnumerable<BO.Engineer> ReadAllEngineers(Func<BO.Engineer, bool>? filter = null)//read all engineers that match the filter
     {
        if(filter != null)
         {

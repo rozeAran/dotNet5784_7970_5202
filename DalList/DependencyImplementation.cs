@@ -17,7 +17,7 @@ internal class DependencyImplementation : IDependency
     {
         if (DataSource.Dependencies.Any(x => x.Id == id))
         {
-            DataSource.Dependencies.RemoveAll(x => x.Id == id);//is ok???
+            DataSource.Dependencies.RemoveAll(x => x.Id == id);
         }
         else
         {
