@@ -11,5 +11,6 @@ Additions:
 * ToStringProperty -BO.TOOLS
 * TryParse -BlTest, DalTest
 * Shape -MainWindow 
+* Triggers Property-MainWindow
 
 

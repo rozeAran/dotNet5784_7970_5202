@@ -82,9 +82,39 @@
         </Button>
         <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="236,73,250,284" />
 
-        <Button Content="Add one hour" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="479,155,180,217" Click="Button_ClickHour" />
-        <Button Content="Add one day" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="322,155,346,217" Click="Button_ClickDay" />
-        <Button Content="Add one year" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="162,157,497,217" Click="Button_ClickYear"/>
+        <Button Content="Add one hour" Click="Button_ClickHour" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="479,155,180,217">
+            <Button.Style>
+                <Style  TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property = "Foreground" Value="Orange"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Add one day" Margin="322,155,346,217" Click="Button_ClickDay" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" >
+            <Button.Style>
+                <Style  TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property = "Foreground" Value="Orange"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Content="Add one year" Margin="162,157,497,217" Click="Button_ClickYear" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" >
+            <Button.Style>
+                <Style  TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property = "Foreground" Value="Orange"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
 
 

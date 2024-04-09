@@ -56,8 +56,8 @@ public partial class ManagerWindow : Window
     {
         try
         {
-            if (CreatingSchedule == 1)
-                new GanttWindow().Show();
+            //if (CreatingSchedule == 1)
+             new GanttWindow().Show();
 
         }
         catch (BO.BlNotAPossabilityException ex)
@@ -77,7 +77,7 @@ public partial class ManagerWindow : Window
 
     private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
     {
-        CreatingSchedule = 0;
+       // CreatingSchedule = 0;
         new CreateSchedule().Show();
 
     }
