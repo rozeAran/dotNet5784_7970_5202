@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.Gantt"
         mc:Ignorable="d"
+        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\ganttPictuer.jpg"
     DataContext="{Binding RelativeSource={RelativeSource self}}"
     Title="GanttWindow" Height="450" Width="800"
         WindowState="Maximized"
