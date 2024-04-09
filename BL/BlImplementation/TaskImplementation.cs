@@ -27,17 +27,6 @@ internal class TaskImplementation : ITask
     private DalApi.IDal _dal = DalApi.Factory.Get;
     public List<BO.TaskInList>? FindDependencies(DO.Task item) //finds the tasks this task is depended on
     {
-        /*return ((List<BO.TaskInList>)(from DO.Dependency dep in _dal.Dependency.ReadAll()
-                                    where dep.DependOnTask == item.Id//task is depended on this task
-                                    select new BO.TaskInList
-                                    {
-                                        //a list of all the task this task is depended on
-                                        Id = dep.DependentTask,
-                                        Description= _dal.Task.Read(dep.DependOnTask).Description,
-                                        Alias= _dal.Task.Read(dep.DependOnTask).Alias,
-                                        Status=FindStatus(_dal.Task.Read(dep.DependOnTask))
-                                        
-                                    }));*/
         var temp= (from DO.Dependency dep in _dal.Dependency.ReadAll()
                    where dep.DependOnTask == item.Id//task is depended on this task
                    select new BO.TaskInList
@@ -213,7 +202,7 @@ internal class TaskImplementation : ITask
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate,
             task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables, 0,
             task.Remarks, null, null, null, false, null);
-         try
+        try
         {
             int idTask = _dal.Task.Create(doTask);
             AddOrUpdateDependencies(task);
