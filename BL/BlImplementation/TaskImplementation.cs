@@ -187,15 +187,15 @@ internal class TaskImplementation : ITask
             throw  new ProjectStatusWrong("Cant add a task not during the schedule creation \n");
         if (task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null)
         {
-            throw new BlDataNotValidException("you can't add dates to the new task. the system will add the new task without the dates\n");
+            throw new BlDataNotValidException("you can't add dates to the new task untill the schedule is finished. the system will add the new task without the dates\n");
         }
         if (task.Id != 0)
         {
-            throw new BlDataNotValidException("you can't add task's ID. the system will add the new task with otomatic ID\n");
+            throw new BlDataNotValidException("you can't add task's ID  the system will add the new task with otomatic ID\n");
         }
         if (task.EngineerId != 0)
         {
-            throw new BlDataNotValidException("you can't add engineer to the new task at this point. the system will add the new task without asigning it to the engineer\n");
+            throw new BlDataNotValidException("you can't add engineer to the new task untill the schedule is finished. the system will add the new task without asigning it to the engineer\n");
         }
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate,
             task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables, 0,
@@ -354,6 +354,11 @@ internal class TaskImplementation : ITask
             ?task.Engineer.Id : oldTask.EngineerId;
         if (Bl.GetProjectStatus() != Status.OnTrack && task.EngineerId!=0)
             throw new ProjectStatusWrong("Cant assign an engineer to a task untill the schedule is finished\n");
+
+        if (task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null)
+        {
+            throw new BlDataNotValidException("you can't add dates to the task untill the schedule is finished. the system will add the new task without the dates\n");
+        }
 
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate, task.RequiredEffortTime,
             (DO.EngineerExperience)task.Complexity, task.Deliverables, engineerId, task.Remarks, 
