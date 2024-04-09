@@ -113,8 +113,8 @@ namespace PL.Task
                 else
                 {
                     {   //if not finished bulidlig schedule then add task
-                       s_bl.Task.Create(Tsk);
-                        MessageBox.Show("Task was successfully created");
+                        int id=s_bl.Task.Create(Tsk);
+                        MessageBox.Show($"Task was successfully created, task's ID is: {id}");
                         this.Close();
 
                     }
@@ -182,7 +182,7 @@ namespace PL.Task
                 else
                 {
                     int depId = int.Parse(Interaction.InputBox("Enter task Id", "Hi", "0"));//reciving the id of tha depend on task
-                    s_bl.Task.AddDependency(Tsk, depId);//ading the dependency
+                    s_bl.Task.AddDependency(Tsk, depId);//adding the dependency
                     MessageBox.Show("Dependency was successfully created \n");
                 }
 

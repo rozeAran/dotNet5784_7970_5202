@@ -20,7 +20,6 @@
 /// <param name="Engineer"> engineer this task asigned to</param>
 public class Task
 {
-    public int Id { get; init; }
     public string? Alias { get; set; }
     public string? Description { get; set; }
     public DateTime CreatedAtDate { get; init; }
@@ -28,9 +27,11 @@ public class Task
     public BO.EngineerExperience Complexity { get; set; }
     public string? Deliverables { get; set; }
     public BO.Status TaskStatus { get; set; }
-    public List<BO.TaskInList>? Dependencies { get; set; }
+    
     public BO.EngineerInTask? Engineer { get; set; }
     public string? Remarks { get; set; }
+    public List<BO.TaskInList>? Dependencies { get; set; } = new List<BO.TaskInList>();
+    public int Id { get; init; } = 0;
     public int EngineerId { get; set; } = 0;
     public DateTime? ScheduledDate { get; set; } = null;
     public DateTime? CompleteDate { get; set; } = null;

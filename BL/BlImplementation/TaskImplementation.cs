@@ -206,6 +206,10 @@ internal class TaskImplementation : ITask
         {
             throw new BlDataNotValidException("you can't add dates to the new task. the system will add the new task without the dates\n");
         }
+        if (task.Id != 0)
+        {
+            throw new BlDataNotValidException("you can't add task's ID. the system will add the new task with otomatic ID\n");
+        }
         if (task.EngineerId != 0)
         {
             throw new BlDataNotValidException("you can't add engineer to the new task at this point. the system will add the new task without asigning it to the engineer\n");
@@ -343,7 +347,7 @@ internal class TaskImplementation : ITask
                 Description = dTask.Description,
                 Status = dTask.TaskStatus
             };
-            task.Dependencies.Add(taskDep);
+            task.Dependencies!.Add(taskDep);
 
         }
     }
@@ -365,7 +369,7 @@ internal class TaskImplementation : ITask
 
         int engineerId = task.Engineer is not null && Bl.GetProjectStatus() is Status.OnTrack && IsTaskCanBeAssigntToWorker(_bl.Engineer.Read(task.Engineer.Id)!, task)
             ?task.Engineer.Id : oldTask.EngineerId;
-        if (Bl.GetProjectStatus() != Status.OnTrack)
+        if (Bl.GetProjectStatus() != Status.OnTrack && task.EngineerId!=0)
             throw new ProjectStatusWrong("Cant assign an engineer to a task untill the schedule is finished\n");
 
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate, task.RequiredEffortTime,
