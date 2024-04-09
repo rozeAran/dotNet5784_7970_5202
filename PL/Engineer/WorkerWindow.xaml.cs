@@ -25,7 +25,7 @@ public partial class WorkerWindow : Window
     public WorkerWindow(int getid = 0)
     {
         InitializeComponent();
-        int id = getid;
+         id = getid;
         BO.Engineer eng=s_bl.Engineer.Read(id);
         if(eng != null)
         {
@@ -37,7 +37,6 @@ public partial class WorkerWindow : Window
             MessageBox.Show("Engineer with this id was not found \n");
         }
 
-       // BO.TaskInEngineer MyTask = s_bl?.Engineer.Read(id).Task;
 
     }
 

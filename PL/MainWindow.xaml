@@ -78,7 +78,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="297,73,314,284" />
+        <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="236,73,250,284" />
 
         <Button Content="Add one hour" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="479,155,180,217" Click="Button_ClickHour" />
         <Button Content="Add one day" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="322,155,346,217" Click="Button_ClickDay" />

@@ -1,10 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using PL.Engineer;
-using System;
-using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Threading;
+
 
 namespace PL
 {
@@ -30,7 +27,7 @@ namespace PL
             set { SetValue(CurrentTimeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Task.  This enables animation, styling, binding, etc...
+     
         public static readonly DependencyProperty CurrentTimeProperty =
             DependencyProperty.Register("CurrentTime", typeof(DateTime), typeof(MainWindow));
         public MainWindow()
@@ -51,20 +48,26 @@ namespace PL
 
             try
             {
-                int workerID = int.Parse(Interaction.InputBox("Enter you Id", "Hi", "0"));
+                int workerID = int.Parse(Interaction.InputBox("Enter you Id", "Hi", "0"));//entering the worker id
                 if (workerID == 0)
                 {
                     MessageBox.Show("Error, enter the worker's Id \n");
                 }
                 else
                 {
-                    BO.Engineer eng = s_bl?.Engineer.Read(workerID)!;
                     new WorkerWindow(workerID).Show();
                 }
             }
             catch (BO.BlDoesNotExistException) { MessageBox.Show("The worker's Id doesn't match any worker"); }
-            catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+            }
         }
 
         private void Button_ClickHour(object sender, RoutedEventArgs e)

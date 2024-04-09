@@ -86,13 +86,13 @@ public partial class AddOrUpdateEngineer : Window
             if (add==true)//in case of add
             {
                 s_bl.Engineer.Create(Eng);
-                MessageBox.Show("engineer was successfully created");
+                MessageBox.Show("Engineer was successfully created");
                 this.Close();
             }
             else//in case of update
             {
                 s_bl.Engineer.Update(Eng);
-                MessageBox.Show("engineer was successfully updated");
+                MessageBox.Show("Engineer was successfully updated");
             }
         }
 
@@ -118,7 +118,7 @@ public partial class AddOrUpdateEngineer : Window
             if (add == true)//in case of add
             {
                 s_bl.Engineer.Create(Eng);
-                MessageBox.Show("engineer was successfully created");
+                MessageBox.Show("Engineer was successfully created");
                 this.Close();
 
             }
@@ -154,7 +154,7 @@ public partial class AddOrUpdateEngineer : Window
             else//in case of update
             {
                 s_bl.Engineer.Update(Eng);
-                MessageBox.Show("engineer was successfully updated");
+                MessageBox.Show("Engineer was successfully updated");
                 this.Close();
             }
         }

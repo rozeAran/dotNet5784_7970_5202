@@ -4,13 +4,8 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using PL.Engineer;
 using PL.Task;
-using BO;
 using PL.Gantt;
 
 namespace PL;
@@ -59,18 +54,25 @@ public partial class ManagerWindow : Window
 
     private void ButtonGanttChart_Click(object sender, RoutedEventArgs e)
     {
-        new GanttWindow().Show();
         try
         {
-            //if (CreatingSchedule == 1)
-                //new GanttWindow().Show();
+            if (CreatingSchedule == 1)
+                new GanttWindow().Show();
 
         }
         catch (BO.BlNotAPossabilityException ex)
         {
             MessageBox.Show(ex.Message);
         }
-        catch (Exception ex) { MessageBox.Show(ex.Message); }
+        catch (Exception ex)
+        {
+            MessageBox.Show(
+                     ex.Message,
+                     "Error",
+                     MessageBoxButton.OK,
+                     MessageBoxImage.Hand,
+                     MessageBoxResult.Cancel);
+        }
     }
 
     private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)

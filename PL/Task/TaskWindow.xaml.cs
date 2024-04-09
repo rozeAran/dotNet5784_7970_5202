@@ -87,7 +87,15 @@ namespace PL.Task
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+            }
 
         }
 
@@ -103,8 +111,6 @@ namespace PL.Task
                 }
                 else
                 {
-                   // s_bl.
-                   // if(s_bl?.GetProjectStatus!= Status.Scheduled)
                     if (CreatingSchedule != 0)
                     {
                         MessageBox.Show("Cant add a task not during the schedule creation \n");
@@ -120,7 +126,15 @@ namespace PL.Task
                 this.Close();
             }
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+            }
         }
 
 
@@ -130,25 +144,33 @@ namespace PL.Task
             {
                 if (flagWorker==false) 
                 {
-                    if(Tsk.EngineerId!=engId)
+                    if(Tsk.EngineerId!=engId)//a manager cant choose a task for the worker
                     {
                         MessageBox.Show("A manager can't choose a task for the engineer \n");
                         this.Close();
                     }
-                    if(Tsk.StartDate!=start)
+                    if(Tsk.StartDate!=start)//a manager cant set the start date
                     {
                         MessageBox.Show("A manager can't choose the start date of the task\n");
                         this.Close();
                     }
                 }
-                s_bl.Task.Update(Tsk);
+                s_bl.Task.Update(Tsk);//update the task
                 MessageBox.Show("Task was successfully updated");
                 this.Close();
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+            }
         }
 
 
@@ -164,18 +186,9 @@ namespace PL.Task
                 {
                     if (CreatingSchedule == -1)
                     {
-                        int depId = int.Parse(Interaction.InputBox("Enter task Id", "Hi", "0"));
-                        BO.Task? dTask = s_bl.Task.Read(depId);
-                        if (dTask == null)
-                        {
-                            MessageBox.Show("Task was not found \n");
-                        }
-                        else
-                        {
-                            s_bl.Task.AddDependency(dTask, depId);
-                            MessageBox.Show("Dependency was successfully created \n");
-                        }
-
+                        int depId = int.Parse(Interaction.InputBox("Enter task Id", "Hi", "0"));//reciving the id of tha depend on task
+                        s_bl.Task.AddDependency(Tsk, depId);//ading the dependency
+                        MessageBox.Show("Dependency was successfully created \n");
                     }
                     else
                     {
@@ -186,7 +199,15 @@ namespace PL.Task
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+            }
         }
        
 
@@ -195,19 +216,27 @@ namespace PL.Task
         {
             try
             {
-                if (flagWorker == true)
+                if (flagWorker == true)//only a worker can say that he finished the task
                 {
                     Tsk.CompleteDate = DateTime.Now;
                     MessageBox.Show("Task was successfully finished \n");
                 }
-                else
+                else//a manager cant say the task is finished
                 {
                     MessageBox.Show("You do not have permission for this action \n");
                 }
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                         ex.Message,
+                         "Error",
+                         MessageBoxButton.OK,
+                         MessageBoxImage.Hand,
+                         MessageBoxResult.Cancel);
+            }
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
