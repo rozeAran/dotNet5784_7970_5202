@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\schedulePicture.png"
         Title="CreateSchedule" Height="450" Width="800">
+    <!--Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\schedulePicture.png"-->
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/pictures/scheduleBackground.jpg"/>
