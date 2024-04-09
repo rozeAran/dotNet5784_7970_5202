@@ -9,12 +9,7 @@
         Title="CreateSchedule" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF0A61EE"/>
-                <GradientStop Color="#FFE8E0EB" Offset="1"/>
-                <GradientStop Color="#FFA6D2BA" Offset="0.353"/>
-                <GradientStop Color="#FFDDCFE2" Offset="0.654"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/pictures/scheduleBackground.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="799*"/>
@@ -25,6 +20,8 @@
         <!--<ImageBrush ImageSource="/schedulePicture.jpg"/>-->
         <!--
         </Grid.Background>-->
+        <!-- With the Opacity Mask-->
+
         <Button Content="Add task" HorizontalAlignment="Left" Margin="113,78,0,0" VerticalAlignment="Top" Height="87" 
                 Width="200" FontSize="40"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>

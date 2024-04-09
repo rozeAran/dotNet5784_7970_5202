@@ -51,7 +51,8 @@
             </Button.Template>
         </Button>
 
-        <Button FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold" Click="ButtonWorker_Click" FontSize="30" Content="Worker Window" Margin="147,248,476,10">
+        <Button FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold" Click="ButtonWorker_Click" 
+                FontSize="30" Content="Worker Window" Margin="147,248,476,10" >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>

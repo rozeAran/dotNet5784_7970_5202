@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using PL.Engineer;
 using System.Windows;
+using System.Windows.Media;
 
 
 namespace PL
@@ -20,7 +21,7 @@ namespace PL
     public partial class MainWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-
+        //public System.Windows.TriggerCollection Triggers { get; }
         public DateTime? CurrentTime
         {
             get { return (DateTime)GetValue(CurrentTimeProperty); }
@@ -45,14 +46,16 @@ namespace PL
 
             try
             {
-                int workerID = int.Parse(Interaction.InputBox("Enter you Id", "Hi", "0"));//entering the worker id
-                if (workerID == 0)
+                bool flag = int.TryParse(Interaction.InputBox("Enter you Id", "Hi", "0"), out int workerId);//entering the worker id
+                //int workerID = int.Parse(Interaction.InputBox("Enter you Id", "Hi", "0"));//entering the worker id
+                if (flag == false)
                 {
+                    //workerButton.Background=Brushes.Red;
                     MessageBox.Show("Error, enter the worker's Id \n");
                 }
                 else
                 {
-                    new WorkerWindow(workerID).Show();
+                    new WorkerWindow(workerId).Show();
                 }
             }
             catch (BO.BlDoesNotExistException) { MessageBox.Show("The worker's Id doesn't match any worker"); }

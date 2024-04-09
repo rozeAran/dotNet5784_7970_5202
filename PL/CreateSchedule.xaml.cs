@@ -15,6 +15,8 @@ namespace PL
     /// <method name="ButtonFinishCreating_Click"> : if the schedules building is finished</method>
     public partial class CreateSchedule : Window
     {
+        //public System.Windows.Media.Brush OpacityMask { get; set; }
+
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
         //static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
