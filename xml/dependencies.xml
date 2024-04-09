@@ -75,4 +75,14 @@
     <DependentTask>134</DependentTask>
     <DependOnTask>14</DependOnTask>
   </Dependency>
+  <Dependency>
+    <Id>4</Id>
+    <DependentTask>134</DependentTask>
+    <DependOnTask>10</DependOnTask>
+  </Dependency>
+  <Dependency>
+    <Id>5</Id>
+    <DependentTask>134</DependentTask>
+    <DependOnTask>14</DependOnTask>
+  </Dependency>
 </ArrayOfDependency>
