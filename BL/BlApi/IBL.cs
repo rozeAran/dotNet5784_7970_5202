@@ -19,6 +19,8 @@ public interface IBl
     public DateTime? AddHourClock();
     public DateTime? StartProjectDate { get; set; }
     public DateTime? EndProjectDate { get; set; }
+    //public static Status GetProjectStatus();
+
 
 
 }

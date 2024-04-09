@@ -40,21 +40,19 @@ namespace PL.Task
             set => SetValue(TaskListProperty, value);
         }
        
-        public TaskForListWindow( BO.EngineerExperience? workerExperience=null)
+        public TaskForListWindow( int engineerID=0)
         {
             InitializeComponent();
             try
             {
-                if (workerExperience == null)
+                if (engineerID ==0)
                 {
                     TaskList = s_bl?.Task.ReadAll()!;
                 }
                 else
                 {
                     flagWorker = true;
-                    TaskList = s_bl?.Task.ReadAll(item => item.TaskStatus == BO.Status.Unscheduled);//myby not true
-                    TaskList = s_bl?.Task.ReadAll(item => item.Complexity <= workerExperience);
-                    TaskList = s_bl?.Task.ReadAll(item => item.Dependencies == null);
+                    TaskList = s_bl?.Task.ReadAllTasksEngineerCanBeAssigned(engineerID);
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

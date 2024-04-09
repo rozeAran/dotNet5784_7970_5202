@@ -103,6 +103,8 @@ namespace PL.Task
                 }
                 else
                 {
+                   // s_bl.
+                   // if(s_bl?.GetProjectStatus!= Status.Scheduled)
                     if (CreatingSchedule != 0)
                     {
                         MessageBox.Show("Cant add a task not during the schedule creation \n");
@@ -170,14 +172,7 @@ namespace PL.Task
                         }
                         else
                         {
-                            BO.TaskInList dep = new BO.TaskInList
-                            {
-                                Id = depId,
-                                Alias = dTask.Alias,
-                                Description = dTask.Description,
-                                Status = dTask.TaskStatus
-                            };
-                            Tsk.Dependencies.Add(dep);
+                            s_bl.Task.AddDependency(dTask, depId);
                             MessageBox.Show("Dependency was successfully created \n");
                         }
 

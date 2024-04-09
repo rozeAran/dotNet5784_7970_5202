@@ -156,9 +156,9 @@ internal class TaskImplementation : ITask
             taskInList = listDep.ElementAt(i);
             task =_dal.Task.Read(taskInList.Id);
             if (task.ScheduledDate == null)
-                throw new BO.WrongOrderOfDatesException($"task with id:{taskInList.Id} doesnt have scheduled date");
+                throw new BO.WrongOrderOfDatesException($"Task with id:{taskInList.Id} doesnt have scheduled date");
             if(task.ScheduledDate>= begin)
-                throw new BO.WrongOrderOfDatesException("order of dates is impossible");
+                throw new BO.WrongOrderOfDatesException("Order of dates is impossible");
             i--;
         }
        
@@ -184,25 +184,29 @@ internal class TaskImplementation : ITask
     {
         if (item.StartDate == null)
             return BO.Status.Unscheduled;
+            
         if (item.StartDate.Value > _bl.Clock)
             return  BO.Status.Scheduled;
         if (item.CompleteDate==null)
             return BO.Status.OnTrack;
         if (item.CompleteDate <= _bl.Clock)
             return BO.Status.Done;
-        throw new WrongOrderOfDatesException("impossible order of dates");
+        throw new WrongOrderOfDatesException("Impossible order of dates");
     }
 
     public int Create(BO.Task task)//creates a new task
     {
 
+        int engineerId = task.Engineer is not null && Bl.GetProjectStatus() is Status.OnTrack && IsTaskCanBeAssigntToWorker(_bl.Engineer.Read(task.Engineer.Id)!, task)
+            ? task.Engineer.Id : 0;
+
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate,
-            task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables,task.Engineer.Id,
+            task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables, engineerId,
             task.Remarks, task.ScheduledDate, task.CompleteDate, task.DeadLineDate,false, task.StartDate);
         try
         {
             int idTask = _dal.Task.Create(doTask);
-            addOrUpdateDependencies(task);
+            AddOrUpdateDependencies(task);
             return idTask;
         }
         catch (DO.DalAlreadyExistsException ex)
@@ -270,11 +274,68 @@ internal class TaskImplementation : ITask
                    ScheduledDate = doTask.ScheduledDate,
                    CompleteDate = doTask.CompleteDate,
                    DeadLineDate = doTask.DeadLineDate,
-                   StartDate = doTask.StartDate
+                   StartDate = doTask.StartDate,
+                   TaskStatus = FindStatus(doTask),
+                   Dependencies = FindDependencies(doTask),
+                   Engineer = FindEngineer(doTask),
                };
     }
+    public IEnumerable<BO.Task?> ReadAllTasksEngineerCanBeAssigned( int engineerId, Func<BO.Task, bool>? filter = null)//returns a list of tasks that matches the function
+    {
+       var engineer=_bl.Engineer.Read(engineerId);
 
-    private void addOrUpdateDependencies(BO.Task task)
+        return from BO.Task boTask in _bl.Task.ReadAll()
+               where filter is null ? true : filter(Read(boTask.Id))
+               where IsTaskCanBeAssigntToWorker(engineer, boTask)
+               select new BO.Task
+               {
+                   Id = boTask.Id,
+                   Alias = boTask.Alias,
+                   Description = boTask.Description,
+                   CreatedAtDate = boTask.CreatedAtDate,
+                   RequiredEffortTime = boTask.RequiredEffortTime,
+                   Complexity = (BO.EngineerExperience)boTask.Complexity,
+                   Deliverables = boTask.Deliverables,
+                   EngineerId = boTask.EngineerId,
+                   Remarks = boTask.Remarks,
+                   ScheduledDate = boTask.ScheduledDate,
+                   CompleteDate = boTask.CompleteDate,
+                   DeadLineDate = boTask.DeadLineDate,
+                   StartDate = boTask.StartDate,
+                   TaskStatus = boTask.TaskStatus,
+                   Dependencies = boTask.Dependencies,
+                   Engineer = boTask.Engineer,
+               };
+    }
+    
+    public void AddDependency(BO.Task task,int depId)
+    {
+        BO.Task? dTask = _bl.Task.Read(depId);
+        if (dTask == null)
+        {
+            throw new BO.BlDoesNotExistException($"Task with ID={depId} does Not exist");
+        }
+        else
+        {
+            DO.Dependency dep = new DO.Dependency()
+            { 
+                DependentTask=task.Id,
+                DependOnTask=depId,
+            };
+            _dal.Dependency.Create(dep);
+
+            BO.TaskInList taskDep = new BO.TaskInList
+            {
+                Id = depId,
+                Alias = dTask.Alias,
+                Description = dTask.Description,
+                Status = dTask.TaskStatus
+            };
+            task.Dependencies.Add(taskDep);
+
+        }
+    }
+    private void AddOrUpdateDependencies(BO.Task task)
     {
         if (task.Dependencies is not null && task.Dependencies.Any())
         {
@@ -284,7 +345,7 @@ internal class TaskImplementation : ITask
             }
         }
     }
-
+    
     public void Update(BO.Task task)// updates a task
     {
         var oldTask = _dal.Task.Read(task.Id);
@@ -300,7 +361,7 @@ internal class TaskImplementation : ITask
         try
         {
           _dal.Task.Update(doTask);
-          addOrUpdateDependencies(task);
+          //AddOrUpdateDependencies(task);
 
         }
         catch (DO.DalAlreadyExistsException ex)

@@ -24,6 +24,8 @@ public interface ITask
     public List<BO.TaskInList> FindDependencies(DO.Task item);
     public BO.EngineerInTask FindEngineer(DO.Task item);
     public BO.Status FindStatus(DO.Task item);
+    public void AddDependency(BO.Task task, int depId);
+    public IEnumerable<BO.Task?> ReadAllTasksEngineerCanBeAssigned(int engineerId, Func<BO.Task, bool>? filter = null);
 }
     
       

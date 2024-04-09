@@ -43,7 +43,7 @@ public partial class WorkerWindow : Window
 
     private void ButtonTaskForList_Click(object sender, RoutedEventArgs e)
     {
-        new TaskForListWindow(s_bl.Engineer.Read(id).Level).Show();//סינון המשימות
+        new TaskForListWindow(id).Show();//סינון המשימות
     }
 
 

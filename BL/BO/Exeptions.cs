@@ -70,3 +70,9 @@ public class StartTimeOfDependenceTaskNotExist : Exception//There is no start da
     public StartTimeOfDependenceTaskNotExist(string? message) : base(message) { }
 }
 
+[Serializable]
+public class ProjectStatusWrong : Exception//There is no start date to the dependent task
+{
+    public ProjectStatusWrong(string? message) : base(message) { }
+}
+

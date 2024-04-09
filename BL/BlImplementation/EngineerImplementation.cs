@@ -26,11 +26,24 @@ internal class EngineerImplementation : IEngineer
 
         try
         {
-            if (item.Id <= 0 || item.Name == "" || item.Cost <= 0 || item.Email.Contains(" ") || !(item.Email.Contains("@") || item.Email.Contains(".co")))
+            if (item.Id <= 0)
             {
-                throw new BlDataNotValidException("data is not valid\n");
+                throw new BlDataNotValidException("Id is Illegal\n");
             }
-            DO.Engineer doEngineer = new(item.Id, item.Name, item.Email, (DO.EngineerExperience/*?*/)item.Level, item.Cost);
+            if (item.Name == "")
+            {
+                throw new BlDataNotValidException("Name is Illegal\n");
+            }
+            if (item.Cost <= 0)
+            {
+                throw new BlDataNotValidException("Cost is Illegal\n");
+            }
+
+            if (!new EmailAddressAttribute().IsValid(item.Email))
+            {
+                throw new BlDataNotValidException("Email is Illegal\n");
+            }
+            DO.Engineer doEngineer = new(item.Id, item.Name, item.Email, (DO.EngineerExperience)item.Level, item.Cost);
             int idEng = _dal.Engineer.Create(doEngineer);
             return idEng;
         }
@@ -125,9 +138,22 @@ internal class EngineerImplementation : IEngineer
             throw new BlCantBeUpdetedException($"Engineer with ID={boEngineer.Id} cant be updated");
         }
 
-        if (boEngineer.Id <= 0 || boEngineer.Name == "" || boEngineer.Cost <= 0 || !new EmailAddressAttribute().IsValid(boEngineer.Email))
+        if (boEngineer.Id <= 0 )
         {
-            throw new BlDataNotValidException("data is not valid\n");
+            throw new BlDataNotValidException("Id is Illegal\n");
+        }
+        if ( boEngineer.Name == "" )
+        {
+            throw new BlDataNotValidException("Name is Illegal\n");
+        }
+        if ( boEngineer.Cost <= 0 )
+        {
+            throw new BlDataNotValidException("Cost is Illegal\n");
+        }
+
+        if ( !new EmailAddressAttribute().IsValid(boEngineer.Email))
+        {
+            throw new BlDataNotValidException("Email is Illegal\n");
         }
         doEngineer = new(boEngineer.Id, boEngineer.Name, boEngineer.Email, (DO.EngineerExperience)boEngineer.Level, boEngineer.Cost);
         _dal.Engineer.Update(doEngineer);
