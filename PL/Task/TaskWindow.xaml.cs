@@ -87,6 +87,7 @@ namespace PL.Task
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.ProjectStatusWrong ex) { MessageBox.Show(ex.Message); }
             catch (Exception ex)
             {
                 MessageBox.Show(
@@ -105,26 +106,22 @@ namespace PL.Task
         {
             try
             {
-                if(flagWorker)
+                if (flagWorker)
                 {
                     MessageBox.Show("You do not have permission for this action \n");
                 }
                 else
                 {
-                    if (CreatingSchedule != 0)
-                    {
-                        MessageBox.Show("Cant add a task not during the schedule creation \n");
-                    }
-                    else
                     {   //if not finished bulidlig schedule then add task
                         s_bl.Task.Create(Tsk);
                         MessageBox.Show("Task was successfully created");
                         this.Close();
-                    }
 
+                    }
+                    this.Close();
                 }
-                this.Close();
             }
+            catch (BO.ProjectStatusWrong ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
             catch (Exception ex)
             {
@@ -184,21 +181,15 @@ namespace PL.Task
                 }
                 else
                 {
-                    if (CreatingSchedule == -1)
-                    {
-                        int depId = int.Parse(Interaction.InputBox("Enter task Id", "Hi", "0"));//reciving the id of tha depend on task
-                        s_bl.Task.AddDependency(Tsk, depId);//ading the dependency
-                        MessageBox.Show("Dependency was successfully created \n");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cant add a dependency after schedule was created \n");
-                    }
+                    int depId = int.Parse(Interaction.InputBox("Enter task Id", "Hi", "0"));//reciving the id of tha depend on task
+                    s_bl.Task.AddDependency(Tsk, depId);//ading the dependency
+                    MessageBox.Show("Dependency was successfully created \n");
                 }
 
             }
             catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
             catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
+            catch (BO.ProjectStatusWrong ex) { MessageBox.Show(ex.Message); }
             catch (Exception ex)
             {
                 MessageBox.Show(

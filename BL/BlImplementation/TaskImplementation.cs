@@ -200,6 +200,8 @@ internal class TaskImplementation : ITask
         int engineerId = task.Engineer is not null && Bl.GetProjectStatus() is Status.OnTrack && IsTaskCanBeAssigntToWorker(_bl.Engineer.Read(task.Engineer.Id)!, task)
             ? task.Engineer.Id : 0;
 
+        if (Bl.GetProjectStatus() != Status.Unscheduled)
+            throw  new ProjectStatusWrong("Cant add a task not during the schedule creation \n");
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate,
             task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables, engineerId,
             task.Remarks, task.ScheduledDate, task.CompleteDate, task.DeadLineDate,false, task.StartDate);
@@ -311,6 +313,8 @@ internal class TaskImplementation : ITask
     public void AddDependency(BO.Task task,int depId)
     {
         BO.Task? dTask = _bl.Task.Read(depId);
+        if (Bl.GetProjectStatus() != Status.Unscheduled)
+            throw new ProjectStatusWrong("Cant add a dependency after schedule was created \n");
         if (dTask == null)
         {
             throw new BO.BlDoesNotExistException($"Task with ID={depId} does Not exist");

@@ -83,7 +83,7 @@
         <Label Grid.Column="2" Content="Start Date" HorizontalAlignment="Center" Height="37" Margin="0,126,0,0" VerticalAlignment="Top" Width="106" FontSize="20"/>
         <Label Grid.Column="2" Content="DeadLine&#xD;&#xA; Date" HorizontalAlignment="Left" Height="64" Margin="10,175,0,0" VerticalAlignment="Top" Width="140" FontSize="20" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
         <Label Grid.Column="2" Content="Scheduled&#xD;&#xA; Date" HorizontalAlignment="Left" Height="83" VerticalAlignment="Top" Width="140" FontSize="20" Margin="8,230,0,0" Grid.RowSpan="4" Grid.ColumnSpan="2"/>
-        <ListView Grid.Column="3"  HorizontalAlignment="Left" Height="251" Margin="174,38,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="219" ItemsSource="{Binding Tsk.Dependencies}" SelectionChanged="ListView_SelectionChanged" Grid.ColumnSpan="2">
+        <ListView Grid.Column="3"  HorizontalAlignment="Left" Height="251" Margin="174,38,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="219" ItemsSource="{Binding Tsk.Dependencies}" SelectionChanged="ListView_SelectionChanged"  Grid.ColumnSpan="2">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF8AEBE4"/>
