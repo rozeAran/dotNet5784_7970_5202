@@ -78,7 +78,7 @@ public partial class ManagerWindow : Window
     private void ButtonCreateSchedule_Click(object sender, RoutedEventArgs e)
     {
         CreatingSchedule = 0;
-        new CreateSchedule(CreatingSchedule).Show();
+        new CreateSchedule().Show();
 
     }
 }

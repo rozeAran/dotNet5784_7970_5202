@@ -357,6 +357,8 @@ internal class TaskImplementation : ITask
 
         int engineerId = task.Engineer is not null && Bl.GetProjectStatus() is Status.OnTrack && IsTaskCanBeAssigntToWorker(_bl.Engineer.Read(task.Engineer.Id)!, task)
             ?task.Engineer.Id : oldTask.EngineerId;
+        if (Bl.GetProjectStatus() != Status.OnTrack)
+            throw new ProjectStatusWrong("Cant assign an engineer to a task untill the schedule is finished\n");
 
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate, task.RequiredEffortTime,
             (DO.EngineerExperience)task.Complexity, task.Deliverables, engineerId, task.Remarks, 
@@ -365,7 +367,7 @@ internal class TaskImplementation : ITask
         try
         {
           _dal.Task.Update(doTask);
-          //AddOrUpdateDependencies(task);
+          AddOrUpdateDependencies(task);
 
         }
         catch (DO.DalAlreadyExistsException ex)
