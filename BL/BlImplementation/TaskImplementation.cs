@@ -203,7 +203,7 @@ internal class TaskImplementation : ITask
         try
         {
             int idTask = _dal.Task.Create(doTask);
-            AddOrUpdateDependencies(task);
+            //AddOrUpdateDependencies(task);
             return idTask;
         }
         catch (DO.DalAlreadyExistsException ex)
@@ -367,7 +367,7 @@ internal class TaskImplementation : ITask
         try
         {
           _dal.Task.Update(doTask);
-          AddOrUpdateDependencies(task);
+         // AddOrUpdateDependencies(task);
 
         }
         catch (DO.DalAlreadyExistsException ex)
