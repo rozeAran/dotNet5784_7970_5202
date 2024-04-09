@@ -8,9 +8,7 @@
         Title="CreateSchedule" Height="450" Width="800">
     <!--Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\schedulePicture.png"-->
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/pictures/scheduleBackground.jpg"/>
-        </Grid.Background>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="799*"/>
             <ColumnDefinition/>

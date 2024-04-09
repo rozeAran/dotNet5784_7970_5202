@@ -56,7 +56,7 @@ public partial class ManagerWindow : Window
     {
         try
         {
-            //if (CreatingSchedule == 1)
+            if (CreatingSchedule == 1)
              new GanttWindow().Show();
 
         }
