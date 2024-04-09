@@ -28,14 +28,14 @@ internal class TaskImplementation : ITask
     public List<BO.TaskInList>? FindDependencies(DO.Task item) //finds the tasks this task is depended on
     {
         var temp= (from DO.Dependency dep in _dal.Dependency.ReadAll()
-                   where dep.DependOnTask == item.Id//task is depended on this task
+                   where dep.DependentTask == item.Id//task is depended on this task
                    select new BO.TaskInList
                    {
                        //a list of all the task this task is depended on
-                       Id = dep.DependentTask,
-                       Description = _dal.Task.Read(dep.DependOnTask).Description,
-                       Alias = _dal.Task.Read(dep.DependOnTask).Alias,
-                       Status = FindStatus(_dal.Task.Read(dep.DependOnTask))
+                       Id = dep.DependOnTask,
+                       Description = _dal.Task.Read(dep.DependentTask).Description,
+                       Alias = _dal.Task.Read(dep.DependentTask).Alias,
+                       Status = FindStatus(_dal.Task.Read(dep.DependentTask))
 
                    });
         List<BO.TaskInList> lst=temp.ToList();
@@ -108,13 +108,7 @@ internal class TaskImplementation : ITask
 
     public BO.EngineerInTask FindEngineer(DO.Task item)//finds the engineer this task is asigned to
     {
-        /* return ((BO.EngineerInTask)(from DO.Engineer eng in _dal.Task.ReadAll()
-                                  where eng.Id == item.EngineerId
-                                  select new BO.EngineerInTask
-                                  {
-                                      Id = eng.Id,
-                                      Name = eng.Name,
-                                  }));*/
+
         if (item.EngineerId == 0)
             return null;
        var temp= (from DO.Engineer eng in _dal.Task.ReadAll()
