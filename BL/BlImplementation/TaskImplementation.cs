@@ -38,6 +38,7 @@ internal class TaskImplementation : ITask
                        Status = FindStatus(_dal.Task.Read(dep.DependentTask))
 
                    });
+        
         List<BO.TaskInList> lst=temp.ToList();
         return lst;
     }
@@ -310,7 +311,7 @@ internal class TaskImplementation : ITask
         BO.Task? dTask = _bl.Task.Read(depId);
         if (Bl.GetProjectStatus() != Status.Unscheduled)
             throw new ProjectStatusWrong("Cant add a dependency after schedule was created \n");
-        foreach (var dep in task.Dependencies)
+        foreach (var dep in task.Dependencies)//checking that the dependency doesnt already exist
         {
             if (dep.Id == depId)
                 throw new BlAlreadyExistsException("dependency already exists");
