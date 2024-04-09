@@ -8,6 +8,14 @@
         Title="CreateSchedule" Height="450" Width="800">
     <!--Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\schedulePicture.png"-->
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1462F4"/>
+                <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="#FFB0D8AD" Offset="0.374"/>
+                <GradientStop Color="#FFE6E3EA" Offset="0.686"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="799*"/>

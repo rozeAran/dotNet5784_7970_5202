@@ -79,37 +79,6 @@ public partial class AddOrUpdateEngineer : Window
     
     }
 
-    private void BtnAddUpdate_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (add==true)//in case of add
-            {
-                s_bl.Engineer.Create(Eng);
-                MessageBox.Show("Engineer was successfully created");
-                this.Close();
-            }
-            else//in case of update
-            {
-                s_bl.Engineer.Update(Eng);
-                MessageBox.Show("Engineer was successfully updated");
-            }
-        }
-
-        catch (BO.BlAlreadyExistsException ex) { MessageBox.Show(ex.Message); }
-        catch (BO.BlDoesNotExistException ex) { MessageBox.Show(ex.Message); }
-        catch (BO.BlDataNotValidException ex) { MessageBox.Show(ex.Message); }
-        catch (BO.BlCantBeUpdetedException ex) { MessageBox.Show(ex.Message); }
-        catch(Exception ex)
-        {
-            MessageBox.Show(
-                         ex.Message,
-                         "Error",
-                         MessageBoxButton.OK,
-                         MessageBoxImage.Hand,
-                         MessageBoxResult.Cancel);
-        }
-    }
 
     private void Button_Click_Add(object sender, RoutedEventArgs e)
     {

@@ -24,7 +24,7 @@ namespace PL;
 
 public partial class ManagerWindow : Window
 {
-    static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
+    //static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
     public ManagerWindow()
     {
         InitializeComponent();
@@ -56,7 +56,7 @@ public partial class ManagerWindow : Window
     {
         try
         {
-            if (CreatingSchedule == 1)
+            //if (CreatingSchedule == 1)
              new GanttWindow().Show();
 
         }

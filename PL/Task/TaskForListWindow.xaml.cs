@@ -74,8 +74,16 @@ namespace PL.Task
         {
             try
             {
-                TaskList = (Experience != BO.EngineerExperience.Level) ?
-                    s_bl?.Task.ReadAll(item => item.Complexity == Experience) : s_bl?.Task.ReadAll();
+                if (Status == BO.Status.Status)
+                {
+                    TaskList = (Experience != BO.EngineerExperience.Level) ?
+                        s_bl?.Task.ReadAll(item => item.Complexity == Experience) : s_bl?.Task.ReadAll();
+                }
+                else//if also the status combo box is on
+                {
+                    TaskList = (Experience != BO.EngineerExperience.Level) ?
+                         s_bl?.Task.ReadAll(item => item.Complexity == Experience&& item.TaskStatus==Status) : s_bl?.Task.ReadAll();
+                }
             }
             catch (Exception ex)
             {
@@ -94,8 +102,17 @@ namespace PL.Task
         {
             try
             {
-                TaskList = (Status != BO.Status.Status) ?
-                     s_bl?.Task.ReadAll(item => item.TaskStatus == Status) : s_bl?.Task.ReadAll();
+                if(Experience== BO.EngineerExperience.Level)
+                {
+                    TaskList = (Status != BO.Status.Status) ?
+                        s_bl?.Task.ReadAll(item => item.TaskStatus == Status) : s_bl?.Task.ReadAll();
+                }
+                else//if also the experience combo box is on
+                {
+                    TaskList = (Status != BO.Status.Status) ?
+                        s_bl?.Task.ReadAll(item => item.Complexity == Experience && item.TaskStatus == Status) : s_bl?.Task.ReadAll();
+                }
+
             }
             catch (Exception ex)
             {
