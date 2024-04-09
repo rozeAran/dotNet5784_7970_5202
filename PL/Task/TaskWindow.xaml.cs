@@ -113,7 +113,7 @@ namespace PL.Task
                 else
                 {
                     {   //if not finished bulidlig schedule then add task
-                        s_bl.Task.Create(Tsk);
+                       s_bl.Task.Create(Tsk);
                         MessageBox.Show("Task was successfully created");
                         this.Close();
 

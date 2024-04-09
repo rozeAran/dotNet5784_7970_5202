@@ -202,10 +202,18 @@ internal class TaskImplementation : ITask
 
         if (Bl.GetProjectStatus() != Status.Unscheduled)
             throw  new ProjectStatusWrong("Cant add a task not during the schedule creation \n");
+        if (task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null)
+        {
+            throw new BlDataNotValidException("you can't add dates to the new task. the system will add the new task without the dates\n");
+        }
+        if (task.EngineerId != 0)
+        {
+            throw new BlDataNotValidException("you can't add engineer to the new task at this point. the system will add the new task without asigning it to the engineer\n");
+        }
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate,
-            task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables, engineerId,
-            task.Remarks, task.ScheduledDate, task.CompleteDate, task.DeadLineDate,false, task.StartDate);
-        try
+            task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables, 0,
+            task.Remarks, null, null, null, false, null);
+         try
         {
             int idTask = _dal.Task.Create(doTask);
             AddOrUpdateDependencies(task);

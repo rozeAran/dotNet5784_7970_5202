@@ -33,7 +33,7 @@ public partial class AddOrUpdateEngineer : Window
         set { SetValue(EngProperty, value); }
     }
 
-    // Using a DependencyProperty as the backing store for Task.  This enables animation, styling, binding, etc...
+   
     public static readonly DependencyProperty EngProperty =
         DependencyProperty.Register("Eng", typeof(BO.Engineer), typeof(AddOrUpdateEngineer));
 
