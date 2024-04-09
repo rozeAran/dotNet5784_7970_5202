@@ -353,7 +353,7 @@ internal class TaskImplementation : ITask
     public void Update(BO.Task task)// updates a task
     {
         var oldTask = _dal.Task.Read(task.Id);
-        if (oldTask is null) throw new BO.BlDoesNotExistException("");
+        if (oldTask is null) throw new BO.BlDoesNotExistException($"The task doesnt exists");
 
         int engineerId = task.Engineer is not null && Bl.GetProjectStatus() is Status.OnTrack && IsTaskCanBeAssigntToWorker(_bl.Engineer.Read(task.Engineer.Id)!, task)
             ?task.Engineer.Id : oldTask.EngineerId;

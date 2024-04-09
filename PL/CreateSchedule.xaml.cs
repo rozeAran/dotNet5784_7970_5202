@@ -1,19 +1,8 @@
-﻿using PL.Task;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.VisualBasic;
+using PL.Task;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace PL
 {
@@ -28,7 +17,7 @@ namespace PL
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
-        static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
+        //static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
 
         static DateTime? StartProjectDate=null;
 
@@ -41,38 +30,49 @@ namespace PL
             set => SetValue(TaskListProperty, value);
         }
 
-        public CreateSchedule(int getCreatingSchedule=0)
+        public CreateSchedule()//int getCreatingSchedule=0)
         {
             InitializeComponent();
-            CreatingSchedule = getCreatingSchedule;
+            //CreatingSchedule = getCreatingSchedule;
             
         }
         private void ButtonAddTask_Click(object sender, RoutedEventArgs e)
         {
-            new TaskWindow(CreatingSchedule).Show();
+            new TaskWindow().Show();
         }
 
         private void ButtonFinishCreating_Click(object sender, RoutedEventArgs e)
         {
-            CreatingSchedule=1;
-            if (StartProjectDate == null)
+            //CreatingSchedule=1;
+            if (StartProjectDate != null)
             {
-                s_bl.StartProjectDate = StartProjectDate;
+                //s_bl.StartProjectDate = StartProjectDate;
                 s_bl.Task.AddScheduledDates();
             }
             else
             {
-                MessageBox.Show("you must enter start project date to continue");
+                MessageBox.Show("You must enter start project date to continue");
             }
 
 
 
-            new ManagerWindow().Show();
+            //new ManagerWindow().Show();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        private void Button_Click_Start_Project(object sender, RoutedEventArgs e)
+        {
+            if(StartProjectDate.HasValue) 
+            {
+                MessageBox.Show("ERROR, The project already has a start date");
+            }
+            StartProjectDate = DateTime.Parse(Interaction.InputBox("Enter start project date", "Hi", ""));//entering the start project date
+            s_bl.StartProjectDate=StartProjectDate;
+        }
+
+        private void Button_Click_End_Project(object sender, RoutedEventArgs e)
+        {
+            s_bl.EndProjectDate = DateTime.Now;
         }
     }
 }

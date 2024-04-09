@@ -29,7 +29,7 @@ namespace PL.Task
     public partial class TaskWindow : Window
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
-        static int CreatingSchedule=-1;
+        //static int CreatingSchedule=-1;
 
 
         public BO.Task Tsk
@@ -46,14 +46,14 @@ namespace PL.Task
         DateTime? start;
         bool flagWorker= false;//if the flag=true the window was oppend from a worker, if the flag = false than from manager
      
-        public TaskWindow(int id=0, bool fworker=false,int getCreatingSchedule=-1)
+        public TaskWindow(int id=0, bool fworker=false)//,int getCreatingSchedule=-1)
         {
-            if(getCreatingSchedule!=-1)
-                CreatingSchedule=getCreatingSchedule;
+           // if(getCreatingSchedule!=-1)
+              //  CreatingSchedule=getCreatingSchedule;
             InitializeComponent();
             try
             {
-                if (id == 0 && getCreatingSchedule == 0)//in case of add only if the schedule is not finished yet
+                if (id == 0 )//in case of add
                     Tsk = new BO.Task()
                     {
                         Id = id,

@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="CreateSchedule" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0A61EE"/>
+                <GradientStop Color="#FFE8E0EB" Offset="1"/>
+                <GradientStop Color="#FFA6D2BA" Offset="0.353"/>
+                <GradientStop Color="#FFDDCFE2" Offset="0.654"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="799*"/>
             <ColumnDefinition/>
@@ -16,33 +24,49 @@
         <!--<ImageBrush ImageSource="/schedulePicture.jpg"/>-->
         <!--
         </Grid.Background>-->
-        <Button Content="Add task" HorizontalAlignment="Left" Margin="116,92,0,0" VerticalAlignment="Top" Height="126" 
-                Width="234" FontSize="50"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
+        <Button Content="Add task" HorizontalAlignment="Left" Margin="113,78,0,0" VerticalAlignment="Top" Height="87" 
+                Width="200" FontSize="40"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-21.312"/>
-                    <ScaleTransform ScaleX="1.5"
-                        ScaleY="1" />
+                    <ScaleTransform ScaleX="1.444" ScaleY="1.039"/>
+                    <SkewTransform AngleX="15.756948992344917"/>
+                    <RotateTransform Angle="-14.578688566975055"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button Content="Finish schedule" HorizontalAlignment="Left" Margin="409,230,0,0" VerticalAlignment="Top" Height="126" Width="256" FontSize="50" Click="ButtonFinishCreating_Click" Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
+        <Button Content="Finish schedule" HorizontalAlignment="Left" Margin="455,261,0,0" VerticalAlignment="Top" Height="79" Width="195" 
+                FontSize="40" Click="ButtonFinishCreating_Click" Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-19.293"/>
-                    <ScaleTransform ScaleX="1.5"
-                        ScaleY="1" />
+                    <ScaleTransform ScaleX="1.454" ScaleY="1.032"/>
+                    <SkewTransform AngleX="14.567252948050793"/>
+                    <RotateTransform Angle="-13.136118608071454"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox Text="{Binding CreatingDate, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Margin="544,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="46" TextChanged="TextBox_TextChanged" />
-        <Label Content="start project date:" HorizontalAlignment="Left" Margin="554,24,0,0" VerticalAlignment="Top" Width="148"/>
+        <Button Content="Add start &#xD;&#xA;project date" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontSize="30"
+                HorizontalAlignment="Left" Height="91" Margin="112,216,0,0" VerticalAlignment="Top" Width="185" Click="Button_Click_Start_Project" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.454" ScaleY="1.032"/>
+                    <SkewTransform AngleX="14.567252948050793"/>
+                    <RotateTransform Angle="-13.136118608071454"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Finish project" FontSize="40" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Height="88" Margin="485,108,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_End_Project" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.454" ScaleY="1.032"/>
+                    <SkewTransform AngleX="14.567252948050793"/>
+                    <RotateTransform Angle="-13.136118608071454"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 </Window>
