@@ -31,7 +31,7 @@ public class Task
     public List<BO.TaskInList>? Dependencies { get; set; }
     public BO.EngineerInTask? Engineer { get; set; }
     public string? Remarks { get; set; }
-    public int? EngineerId { get; set; } = null;
+    public int EngineerId { get; set; } = 0;
     public DateTime? ScheduledDate { get; set; } = null;
     public DateTime? CompleteDate { get; set; } = null;
     public DateTime? DeadLineDate { get; set; } = null;
