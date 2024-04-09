@@ -42,16 +42,19 @@ internal class Bl : IBl
     }
     public DateTime? AddYearClock()
     {
-        return Clock.AddYears(1);
+        Clock= Clock.AddYears(1);
+        return Clock;
     }
     public DateTime? AddDayClock()
     {
-        
-        return Clock.AddDays(1);
+
+        Clock = Clock.AddDays(1);
+        return Clock;
     }
     public DateTime? AddHourClock()
     {
-        return Clock.AddHours(1);
+        Clock = Clock.AddHours(1);
+        return Clock;
     }
 
     public static Status GetProjectStatus()

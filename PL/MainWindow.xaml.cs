@@ -26,16 +26,13 @@ namespace PL
             get { return (DateTime)GetValue(CurrentTimeProperty); }
             set { SetValue(CurrentTimeProperty, value); }
         }
-
      
-        public static readonly DependencyProperty CurrentTimeProperty =
+        public static DependencyProperty CurrentTimeProperty =
             DependencyProperty.Register("CurrentTime", typeof(DateTime), typeof(MainWindow));
         public MainWindow()
         {
             CurrentTime = s_bl.Clock;
             InitializeComponent();
-           
-            
         }
 
         private void ButtonManager_Click(object sender, RoutedEventArgs e)
@@ -81,6 +78,6 @@ namespace PL
         private void Button_ClickYear(object sender, RoutedEventArgs e)
         {
             CurrentTime = s_bl?.AddYearClock();
-         }
+        }
     }
 }
