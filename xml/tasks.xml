@@ -320,4 +320,20 @@
     <IsMilestone>false</IsMilestone>
     <StartDate xsi:nil="true" />
   </Task>
+  <Task>
+    <Id>2</Id>
+    <Alias>task1</Alias>
+    <Description>first</Description>
+    <CreatedAtDate>2024-04-09T15:08:04.9364622+03:00</CreatedAtDate>
+    <RequiredEffortTime>PT30S</RequiredEffortTime>
+    <Complexity>Beginner</Complexity>
+    <Deliverables />
+    <EngineerId>0</EngineerId>
+    <Remarks />
+    <ScheduledDate xsi:nil="true" />
+    <CompleteDate xsi:nil="true" />
+    <DeadLineDate xsi:nil="true" />
+    <IsMilestone>false</IsMilestone>
+    <StartDate xsi:nil="true" />
+  </Task>
 </ArrayOfTask>

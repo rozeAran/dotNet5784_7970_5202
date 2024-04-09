@@ -205,6 +205,10 @@ internal class TaskImplementation : ITask
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate,
             task.RequiredEffortTime, (DO.EngineerExperience)task.Complexity, task.Deliverables, engineerId,
             task.Remarks, task.ScheduledDate, task.CompleteDate, task.DeadLineDate,false, task.StartDate);
+        if (task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null)
+            throw new BlDataNotValidException("you can't add dates to the new task. the system will add the new task without the dates\n");
+        if (task.EngineerId != null)
+            throw new BlDataNotValidException("you can't add engineer to the new task at this point. the system will add the new task without asigning it to the engineer\n");
         try
         {
             int idTask = _dal.Task.Create(doTask);

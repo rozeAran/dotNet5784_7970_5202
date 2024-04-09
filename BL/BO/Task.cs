@@ -27,11 +27,11 @@ public class Task
     public TimeSpan RequiredEffortTime { get; set; }
     public BO.EngineerExperience Complexity { get; set; }
     public string? Deliverables { get; set; }
-    public int EngineerId { get; set; }
     public BO.Status TaskStatus { get; set; }
     public List<BO.TaskInList>? Dependencies { get; set; }
     public BO.EngineerInTask? Engineer { get; set; }
     public string? Remarks { get; set; }
+    public int? EngineerId { get; set; } = null;
     public DateTime? ScheduledDate { get; set; } = null;
     public DateTime? CompleteDate { get; set; } = null;
     public DateTime? DeadLineDate { get; set; } = null;
