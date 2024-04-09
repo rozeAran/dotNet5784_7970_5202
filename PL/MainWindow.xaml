@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
+        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\mainPictuer.jpg"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.Background>
