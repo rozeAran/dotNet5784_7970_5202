@@ -49,8 +49,8 @@ public partial class EngineerListWindow : Window
         EngList = s_bl?.Engineer.ReadAllEngineers();
     }
 
-    private void Window_Loaded(object sender, RoutedEventArgs e)
+    /*private void Window_Loaded(object sender, RoutedEventArgs e)
     {
         EngList = s_bl?.Engineer.ReadAllEngineers();
-    }
+    }*/
 }

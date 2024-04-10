@@ -38,6 +38,7 @@ internal class TaskImplementation : ITask
                        Status = FindStatus(_dal.Task.Read(dep.DependentTask))
 
                    });
+        
         List<BO.TaskInList> lst=temp.ToList();
         return lst;
     }
@@ -103,7 +104,7 @@ internal class TaskImplementation : ITask
 
     private DateTime? getTaskEnd(DO.Task item)
     {
-        return item.CompleteDate; //fix
+        return item.CompleteDate; 
     }
 
     public BO.EngineerInTask FindEngineer(DO.Task item)//finds the engineer this task is asigned to
@@ -122,7 +123,7 @@ internal class TaskImplementation : ITask
         return tempE;
     }
 
-    public void AddBeginingDateBO(BO.Task item, DateTime? begin)
+    /*public void AddBeginingDateBO(BO.Task item, DateTime? begin)
     {
         AddBeginingDate(_dal.Task.Read(item.Id), begin);
     }
@@ -162,7 +163,7 @@ internal class TaskImplementation : ITask
             StartDate = item.StartDate
         };
         _dal.Task.Update(temp);
-    }
+    }*/
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
         if (item.StartDate == null)
@@ -310,17 +311,24 @@ internal class TaskImplementation : ITask
         BO.Task? dTask = _bl.Task.Read(depId);
         if (Bl.GetProjectStatus() != Status.Unscheduled)
             throw new ProjectStatusWrong("Cant add a dependency after schedule was created \n");
+        foreach (var dep in task.Dependencies)//checking that the dependency doesnt already exist
+        {
+            if (dep.Id == depId)
+                throw new BlAlreadyExistsException("dependency already exists");
+        }
         if (dTask == null)
         {
             throw new BO.BlDoesNotExistException($"Task with ID={depId} does Not exist");
         }
         else
         {
+
             DO.Dependency dep = new DO.Dependency()
             { 
                 DependentTask=task.Id,
                 DependOnTask=depId,
             };
+            
             _dal.Dependency.Create(dep);
 
             BO.TaskInList taskDep = new BO.TaskInList
@@ -334,7 +342,7 @@ internal class TaskImplementation : ITask
 
         }
     }
-    private void AddOrUpdateDependencies(BO.Task task)
+    /*private void AddOrUpdateDependencies(BO.Task task)
     {
         if (task.Dependencies is not null && task.Dependencies.Any())
         {
@@ -343,7 +351,7 @@ internal class TaskImplementation : ITask
                 _dal.Dependency!.Create(new Dependency(0, task.Id, dependency.Id));
             }
         }
-    }
+    }*/
     
     public void Update(BO.Task task)// updates a task
     {
@@ -355,7 +363,7 @@ internal class TaskImplementation : ITask
         if (Bl.GetProjectStatus() != Status.OnTrack && task.EngineerId!=0)
             throw new ProjectStatusWrong("Cant assign an engineer to a task untill the schedule is finished\n");
 
-        if (task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null)
+        if ((task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null))
         {
             throw new BlDataNotValidException("you can't add dates to the task untill the schedule is finished. the system will update the new task without the dates\n");
         }

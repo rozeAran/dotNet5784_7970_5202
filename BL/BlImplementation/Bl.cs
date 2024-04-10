@@ -61,7 +61,7 @@ internal class Bl : IBl
     {
         if (s_dal.StartProjectDate is null) return Status.Unscheduled;
         if (s_dal.Task!.ReadAll().All(t => t.ScheduledDate is not null)) return Status.Scheduled;
-        if (s_dal.Task!.ReadAll().Take(3).All(t => t.StartDate is not null)) return Status.OnTrack;
+        if (s_dal.Task!.ReadAll().Take(10).All(t => t.StartDate is not null)) return Status.OnTrack;
         throw new ProjectStatusWrong("Wrong Project Status");
     }
 
