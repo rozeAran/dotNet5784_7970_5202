@@ -357,7 +357,7 @@ internal class TaskImplementation : ITask
 
         if (task.ScheduledDate != null || task.DeadLineDate != null || task.StartDate != null)
         {
-            throw new BlDataNotValidException("you can't add dates to the task untill the schedule is finished. the system will add the new task without the dates\n");
+            throw new BlDataNotValidException("you can't add dates to the task untill the schedule is finished. the system will update the new task without the dates\n");
         }
 
         DO.Task doTask = new DO.Task(task.Id, task.Alias, task.Description, task.CreatedAtDate, task.RequiredEffortTime,
