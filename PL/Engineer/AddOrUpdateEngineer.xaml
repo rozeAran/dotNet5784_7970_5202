@@ -37,11 +37,15 @@
         <TextBox 
               Text="{Binding Eng.Cost, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
               HorizontalAlignment="Center" Height="35" Margin="0,307,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" />
+        <TextBlock
+              Text="{Binding Eng.Task.Id, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  
+              HorizontalAlignment="Center" Height="34" Margin="0,364,0,0"  VerticalAlignment="Top" Width="148" Background="SeaShell" />
         <Label Content="Id:" HorizontalAlignment="Left" Margin="95,54,0,0" VerticalAlignment="Top" FontSize="30" Height="50" Width="42"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="98,111,0,0" VerticalAlignment="Top" FontSize="30" Height="50" Width="96"/>
         <Label Content="Email:" HorizontalAlignment="Left" Height="57" Margin="92,172,0,0" VerticalAlignment="Top" Width="91" FontSize="30" RenderTransformOrigin="-0.155,0.206" />
         <Label Content="Experience:" HorizontalAlignment="Left" Height="73" Margin="87,234,0,0" VerticalAlignment="Top" Width="167" FontSize="30" />
-        <Label Content="Cost:" HorizontalAlignment="Left" Height="69" Margin="92,290,0,0" VerticalAlignment="Top" Width="78" FontSize="30"/>
+        <Label Content="Task Id:" HorizontalAlignment="Left" Height="69" Margin="90,361,0,0" VerticalAlignment="Top" Width="162" FontSize="30"/>
+        <Label Content="Cost:" HorizontalAlignment="Left" Height="69" Margin="98,305,0,0" VerticalAlignment="Top" Width="78" FontSize="30"/>
         <Button Content="Add" FontFamily="Gill Sans MT Condensed" FontSize="40" Background="SeaShell" HorizontalAlignment="Left" Height="97" Margin="326,450,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_Add"/>
         <Button Content="Update" FontFamily="Gill Sans MT Condensed" FontSize="40" Background="SeaShell"  HorizontalAlignment="Left" Height="124" Margin="598,450,0,0" VerticalAlignment="Top" Width="136" Click="Button_Click_Update"/>
 

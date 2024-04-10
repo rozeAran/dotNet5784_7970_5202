@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL.Task"
-        mc:Ignorable="d" 
-        
+        mc:Ignorable="d"  
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-        
+        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\taskPicture.png"
         Title="TaskForListWindow" Height="450" Width="800">
     <!--Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\taskPicture.png"-->
     <Grid>
@@ -86,6 +85,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <!--button to add a task-->
         <Button Content="Add Task" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontSize="30" HorizontalAlignment="Left" Height="66" Margin="654,324,0,0" VerticalAlignment="Top" Width="104" Click="Button_Click_Add_Task" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>

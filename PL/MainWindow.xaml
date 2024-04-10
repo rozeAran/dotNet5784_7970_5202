@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
+        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\mainPictuer.jpg"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <!--Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\mainPictuer.jpg"-->
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -16,6 +17,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
+        <!--button to go to the manager window-->
         <Button Content="Manager Window" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold" Click="ButtonManager_Click" FontSize="30" Margin="463,248,155,10">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -51,6 +53,7 @@
             </Button.Template>
         </Button>
 
+        <!--button to go to the worker window-->
         <Button FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold" Click="ButtonWorker_Click" 
                 FontSize="30" Content="Worker Window" Margin="147,248,476,10" >
             <Button.Template>
@@ -80,8 +83,11 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+
+        <!--showes the clock-->
         <TextBlock Text="{Binding CurrentTime, Mode=TwoWay, NotifyOnValidationError=true,  ValidatesOnExceptions=true}"  FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="236,73,250,284" />
 
+        <!--to add one hour to the clock-->
         <Button Content="Add one hour" Click="Button_ClickHour" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" Margin="479,155,180,217">
             <Button.Style>
                 <Style  TargetType="Button">
@@ -93,6 +99,8 @@
                 </Style>
             </Button.Style>
         </Button>
+
+        <!--to add one day to the clock-->
         <Button Content="Add one day" Margin="322,155,346,217" Click="Button_ClickDay" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" >
             <Button.Style>
                 <Style  TargetType="Button">
@@ -104,6 +112,7 @@
                 </Style>
             </Button.Style>
         </Button>
+        <!--to add one year to the clock-->
         <Button Content="Add one year" Margin="162,157,497,217" Click="Button_ClickYear" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontWeight="DemiBold"  FontSize="30" >
             <Button.Style>
                 <Style  TargetType="Button">

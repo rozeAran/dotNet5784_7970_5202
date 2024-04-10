@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\schedulePicture.png"
         Title="CreateSchedule" Height="450" Width="800">
-    <!--Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\schedulePicture.png"-->
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -21,13 +21,8 @@
             <ColumnDefinition Width="799*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <!--<Grid.Background>
-            -->
-        <!--<ImageBrush ImageSource="/schedulePicture.jpg"/>-->
-        <!--
-        </Grid.Background>-->
-        <!-- With the Opacity Mask-->
 
+        <!--button to add a task first step of schedul-->
         <Button Content="Add task" HorizontalAlignment="Left" Margin="113,78,0,0" VerticalAlignment="Top" Height="87" 
                 Width="200" FontSize="40"  Click="ButtonAddTask_Click"  Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
@@ -39,6 +34,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+
+        <!--button to finish the schedule third step of schedule-->
         <Button Content="Finish schedule" HorizontalAlignment="Left" Margin="455,261,0,0" VerticalAlignment="Top" Height="79" Width="195" 
                 FontSize="40" Click="ButtonFinishCreating_Click" Background="SeaShell" FontFamily="Gill Sans MT Condensed" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
@@ -50,6 +47,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        
+        <!--button to add start date of the project the schedule second step of schedule-->
         <Button Content="Add start &#xD;&#xA;project date" Background="SeaShell" FontFamily="Gill Sans MT Condensed" FontSize="30"
                 HorizontalAlignment="Left" Height="91" Margin="112,216,0,0" VerticalAlignment="Top" Width="185" Click="Button_Click_Start_Project" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
@@ -61,6 +60,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+
+        <!--button to add finish date of the project the schedule last step -->
         <Button Content="Finish project" FontSize="40" Background="SeaShell" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Height="88" Margin="485,108,0,0" VerticalAlignment="Top" Width="180" Click="Button_Click_End_Project" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>

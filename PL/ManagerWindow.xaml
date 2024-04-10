@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
+        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\managerPicture.jpg"
         Title="ManagerWindow" Height="450" Width="800">
-    <!-- Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\managerPicture.jpg"-->
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -17,6 +18,7 @@
                 <GradientStop Color="#FF207297" Offset="0.371"/>
             </LinearGradientBrush>
         </Grid.Background>
+        
         <!--takes care of engineer-->
         <Button Content="Engineer List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="490,272,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonEngineer_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
@@ -30,6 +32,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+        
+        <!--button to initialize -->
         <Button Content="Initialization" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="260,272,0,0" VerticalAlignment="Top" Height="107" Width="192" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonInitialization_Click" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -42,6 +46,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+
+        <!--button to reset the all data-->
         <Button Content="Reset" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="52,263,0,0" VerticalAlignment="Top" Height="109" Width="173" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonReset_Click" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -52,6 +58,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+
+        <!--to go to the task list window -->
         <Button Content="Task List" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="524,98,0,0" VerticalAlignment="Top" Height="107" Width="221" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonTaskForList_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -64,6 +72,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+
+        <!--going to the gant chart window -->
         <Button Content="Gantt Chart" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="292,98,0,0" VerticalAlignment="Top" Height="107" Width="193" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonGanttChart_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -76,6 +86,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+
+        <!--a button to creat the schedule -->
         <Button Content="Create Schedule" FontFamily="Gill Sans MT Condensed" HorizontalAlignment="Left" Margin="20,98,0,0" VerticalAlignment="Top" Height="107" Width="239" FontSize="40" Background="SeaShell" FontWeight="DemiBold" Click="ButtonCreateSchedule_Click" Foreground="#FF161927" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -88,8 +100,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-
-
 
     </Grid>
 </Window>
