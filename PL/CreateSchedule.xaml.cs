@@ -17,23 +17,11 @@ namespace PL
     {
         static readonly BlApi.IBl s_bl = BlApi.Factory.Get();
 
-        //static int CreatingSchedule = -1;// -1: before starting, 0: while building, 1: finished
-
         static DateTime? StartProjectDate=null;
-
-       /* public static readonly DependencyProperty TaskListProperty =
-            DependencyProperty.Register(nameof(TaskList), typeof(IEnumerable<BO.Task>), typeof(CreateSchedule));
-       
-        public IEnumerable<BO.Task?>? TaskList
-        {
-            get => (IEnumerable<BO.Task>)GetValue(TaskListProperty);
-            set => SetValue(TaskListProperty, value);
-        }*/
 
         public CreateSchedule()
         {
             InitializeComponent();
-            //CreatingSchedule = getCreatingSchedule;
             
         }
         private void ButtonAddTask_Click(object sender, RoutedEventArgs e)
@@ -43,10 +31,8 @@ namespace PL
 
         private void ButtonFinishCreating_Click(object sender, RoutedEventArgs e)
         {
-            //CreatingSchedule=1;
             if (StartProjectDate != null)
             {
-                //s_bl.StartProjectDate = StartProjectDate;
                 s_bl.Task.AddScheduledDates();
             }
             else

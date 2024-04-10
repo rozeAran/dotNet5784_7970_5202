@@ -123,47 +123,6 @@ internal class TaskImplementation : ITask
         return tempE;
     }
 
-    /*public void AddBeginingDateBO(BO.Task item, DateTime? begin)
-    {
-        AddBeginingDate(_dal.Task.Read(item.Id), begin);
-    }
-
-    public void AddBeginingDate(DO.Task item, DateTime? begin)//adds a start date
-    {
-        List<BO.TaskInList> listDep = FindDependencies(item);
-        bool theDependencies= listDep.Any<BO.TaskInList>();
-        BO.TaskInList taskInList;
-        DO.Task task;
-        int i= listDep.Count();
-        foreach (BO.TaskInList dep in listDep)
-        {
-            taskInList = listDep.ElementAt(i);
-            task =_dal.Task.Read(taskInList.Id);
-            if (task.ScheduledDate == null)
-                throw new BO.WrongOrderOfDatesException($"Task with id:{taskInList.Id} doesnt have scheduled date");
-            if(task.ScheduledDate>= begin)
-                throw new BO.WrongOrderOfDatesException("Order of dates is impossible");
-            i--;
-        }
-       
-        DO.Task temp = new DO.Task
-        {
-            Id = item.Id,
-            Alias = item.Alias,
-            Description = item.Description,
-            CreatedAtDate = item.CreatedAtDate,
-            RequiredEffortTime = item.RequiredEffortTime,
-            Complexity = item.Complexity,
-            Deliverables = item.Deliverables,
-            EngineerId = item.Id,
-            Remarks = item.Remarks,
-            ScheduledDate = begin,
-            CompleteDate = item.CompleteDate,
-            DeadLineDate = item.DeadLineDate,
-            StartDate = item.StartDate
-        };
-        _dal.Task.Update(temp);
-    }*/
     public BO.Status FindStatus(DO.Task item)//sets the status of the task
     {
         if (item.StartDate == null)
