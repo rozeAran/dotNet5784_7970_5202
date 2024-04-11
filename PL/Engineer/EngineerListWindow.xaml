@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:PL.Engineer"
         mc:Ignorable="d"
         Title="EngineerWindow" Height="450" Width="800"
-        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\engineerListPicture.webp"
-        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
+       DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}">
     <!--Extrnal Grid-->
     <Grid x:Name="list" Height="434" VerticalAlignment="Center" HorizontalAlignment="Left" Width="800">
         <Grid.Background>

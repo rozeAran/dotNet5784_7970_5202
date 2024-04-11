@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using BL;
 using PL.Engineer;
 using PL.Task;
 using PL.Gantt;

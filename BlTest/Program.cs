@@ -5,7 +5,6 @@ namespace BlTest;
 
 using BlApi;
 using BO;
-using BL;
 
 /// <summary>
 /// the program in BO gets from user the data and calls DO to use it

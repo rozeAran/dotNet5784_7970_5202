@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:PL.Task"
         mc:Ignorable="d"  
         DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
-        Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\taskPicture.png"
         Title="TaskForListWindow" Height="450" Width="800">
     <!--Icon="C:\Users\rozea\OneDrive\Roze\dotNet5784_7970_5202\PL\pictures\taskPicture.png"-->
     <Grid>

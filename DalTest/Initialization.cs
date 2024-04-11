@@ -1,15 +1,6 @@
 ﻿namespace DalTest;
 using DalApi;
-using DalList;
 using DO;
-using System.Data.Common;
-using System.Reflection.Emit;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Xml.Serialization;
-using Dal;
-using System.Xml.Linq;
-using System.Threading.Tasks;
 
 public static class Initialization
 {
